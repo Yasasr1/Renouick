@@ -3,6 +3,7 @@ import TextField from '@material-ui/core/TextField';
 
 const MyTextField = (props) => (
     <TextField
+        error={props.error}
         id={props.id}
         label={props.label}
         style={{ margin: 12, width: '95%' }}

@@ -16,5 +16,13 @@
     
 }
 
+@media (max-width: 800px) {
+    .CustomerRegistrationInnerDiv {
+        width: 100%;
+        margin: auto;
+        
+    }
+}
+
 
 
