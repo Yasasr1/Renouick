@@ -1,11 +1,9 @@
 .CustomerRegistrationInnerDiv {
-    width: 60%;
-    margin: auto;
-    border: 1px solid gray;
-    border-radius: 5px;
-    box-shadow: 3px 3px 5px grey;
+    width: 40%;
+    margin: 40px auto;
+    box-shadow: 1px 1px 8px black;
     text-align: center;
-    padding: 30px;
+    padding: 40px;
     background-color: white;
 
 }
@@ -14,6 +12,7 @@
     background-image: url('../../../assests/backgrounds/backgroundHome.jpg');
     background-size: cover;
     background-repeat: no-repeat;
+    overflow: auto;
     
 }
 

@@ -5,7 +5,7 @@ const MyTextField = (props) => (
     <TextField
         id={props.id}
         label={props.label}
-        style={{ margin: 12, width: '80%' }}
+        style={{ margin: 12, width: '95%' }}
         placeholder={props.placeholder}
         helperText={props.helperText}
         

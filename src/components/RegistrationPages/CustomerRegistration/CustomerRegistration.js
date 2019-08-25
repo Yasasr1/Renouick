@@ -12,8 +12,8 @@ class CustomerRegistration extends Component {
         return(
             <div className="CustomerRegistrationOuterDiv">
                 <div className="CustomerRegistrationInnerDiv">
+                    <h5 className="text-uppercase text-center">Registration</h5>
                 <form>
-                    <h2>Customer Registration</h2>
                     <MyTextField
                     id="fname"
                     label="First Name"
@@ -65,15 +65,13 @@ class CustomerRegistration extends Component {
                     id="confirmPassword"
                     label="Confirm Password"
                     />
+                    <br/>
+                    <br/>
+                    <button className="btn btn-block btn-primary">Register</button>
+                    <button className="btn btn-block btn-danger">Clear</button>
+                    <p className="text-muted">have an account?</p>
+                    <a href="/">Sign in</a>
 
-                    <Grid container justify="center" spacing={8}>
-                        <Grid item>
-                            <OrangeButton content="Submit"/>
-                        </Grid>
-                        <Grid item>
-                            <OrangeButton content="Clear"/>
-                        </Grid>
-                    </Grid>
 
                 </form>
             </div>

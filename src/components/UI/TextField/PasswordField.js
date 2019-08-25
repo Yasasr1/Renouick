@@ -5,7 +5,7 @@ const PasswordField = (props) => (
     <TextField
         id={props.id}
         label={props.label}
-        style={{ margin: 12, width: '80%' }}
+        style={{ margin: 12, width: '95%' }}
         type="password"
         autoComplete="current-password"
         margin="normal"
