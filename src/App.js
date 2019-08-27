@@ -8,10 +8,11 @@ const app = () => {
   return (
     <div>
       <Layout>
-        <WorkerRegistration/>
+        <WorkerRegistration/> 
       </Layout>
     </div>
   );
 }
+
 
 export default app;
