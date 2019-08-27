@@ -1,0 +1,29 @@
+.WorkerRegistrationInnerDiv {
+    width: 40%;
+    margin: 40px auto;
+    box-shadow: 1px 1px 8px black;
+    text-align: center;
+    padding: 40px;
+    background-color: white;
+
+}
+
+.WorkerRegistrationOuterDiv {
+    background-image: url('../../../assests/backgrounds/backgroundHome.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: auto;
+    
+}
+
+@media (max-width: 800px) {
+    .WorkerRegistrationInnerDiv {
+        width: 100%;
+        margin: auto;
+        
+    }
+}
+
+.WorkerRegistrationCheckbox {
+    text-align: start
+}

@@ -2,13 +2,13 @@ import React from 'react';
 import './App.css';
 import Layout from './components/Layout/Layout';
 //import HomePage from './components/HomePage/HomePage';
-import CustomerRegistration from './components/RegistrationPages/CustomerRegistration/CustomerRegistration';
+import WorkerRegistration from './components/RegistrationPages/WorkerRegistration/WorkerRegistration';
 
 const app = () => {
   return (
     <div>
       <Layout>
-        <CustomerRegistration/>
+        <WorkerRegistration/>
       </Layout>
     </div>
   );
