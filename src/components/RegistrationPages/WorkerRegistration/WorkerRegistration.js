@@ -7,7 +7,6 @@ import validator from 'validator';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 
 
@@ -21,126 +20,258 @@ class WorkerRegistration extends Component {
         username: {value: '', isValid: true, message: ''},
         password: {value: '', isValid: true, message: ''},
         confirmPassword: {value: '', isValid: true, message: ''},
-        workingExperience : {value: '', isValid: true, message: ''},
-        workingCategory: {value: '', isValid: true, message: ''}
+        workingCategory : {value: [], isValid: true},
+        
     
     }
     
     state = {...this.inputValues};
 
+    inputHandler = (event) => {
+       const updatedState = {
+            ...this.state,
+            [event.target.id]: {
+                ...this.state[event.target.id],
+                value: event.target.value,
+            }
+        };
+
+        this.setState(updatedState)
+        
+    }
+
+    checkboxInputHandler =(event) => {
+        let updatedState = {...this.state};
+        let isDeleted = false;
+
+        //check if the value is already in the array. if it's already there that means user is clicking on the checkbox 2nd
+        //time and should delete the value
+        updatedState[event.target.id].value.map((element,index) => {
+            if(element === event.target.value) {
+                updatedState[event.target.id].value.splice(index,1);
+                isDeleted = true;
+            }
+            return 0;
+        })
+
+        //if true that means value is deleted and should not add it again to the array
+        if(isDeleted === false) {
+            updatedState = {
+                ...this.state,
+                [event.target.id]: {
+                    ...this.state[event.target.id],
+                    value: [...this.state[event.target.id].value,event.target.value]
+                }
+            };
+        }
+
+        this.setState(updatedState);
+
+       
+    }
+
+    formValidationHandler = () => {
+        const copiedState = {...this.state};
+        let isConfirmed = true;
+
+        if(!copiedState.firstName.value){
+            copiedState.firstName.isValid = false;
+            copiedState.firstName.message = '*Required';
+            isConfirmed = false;
+        } else  {
+            copiedState.firstName.isValid = true;
+            copiedState.firstName.message = '';
+        }
+        if(!copiedState.lastName.value){
+            copiedState.lastName.isValid = false;
+            copiedState.lastName.message = '*Required';
+            isConfirmed = false;
+        } else  {
+            copiedState.lastName.isValid = true;
+            copiedState.lastName.message = '';
+        }
+
+        if(!copiedState.username.value){
+            copiedState.username.isValid = false;
+            copiedState.username.message = '*Required';
+            isConfirmed = false;
+        } else  {
+            copiedState.username.isValid = true;
+            copiedState.username.message = '';
+        }
+        
+        if(copiedState.workingCategory.value.length === 0){
+            copiedState.workingCategory.isValid = false;
+            isConfirmed = false;
+        } else  {
+            copiedState.workingCategory.isValid = true;
+        }
+        
+        if (!validator.isEmail(copiedState.email.value)) {
+            copiedState.email.isValid = false;
+            copiedState.email.message = 'Not a valid email address';
+            isConfirmed = false;
+        } else  {
+            copiedState.email.isValid = true;
+            copiedState.email.message = '';
+        }
+
+        if(!copiedState.password.value){
+            copiedState.password.isValid = false;
+            copiedState.password.message = '*Required';
+            isConfirmed = false;
+        } else  {
+            copiedState.password.isValid = true;
+            copiedState.password.message = '';
+        }
+
+        if(copiedState.password.value !== copiedState.confirmPassword.value || !copiedState.confirmPassword.value){
+            copiedState.confirmPassword.isValid = false;
+            copiedState.confirmPassword.message = 'Password do not match';
+            isConfirmed = false;
+        } else  {
+            copiedState.confirmPassword.isValid = true;
+            copiedState.confirmPassword.message = '';
+        }
+
+        this.setState(copiedState);
+        return isConfirmed;
+        
+    }
+
+    submitHandler = (event) => {
+        event.preventDefault();
+        if (this.formValidationHandler()) {
+          // form processing here....
+        }
+    }
+    clearFormHandler = () => {
+        this.setState({...this.inputValues});
+    }
+
     render() {
         return (
             <div className="WorkerRegistrationOuterDiv">
                 <div className="WorkerRegistrationInnerDiv">
-                <h5 className="text-uppercase text-center">Customer Registration</h5>
-                <form>
-                <MyTextField
-                    id="firstName"
-                    //error={!this.state.firstName.isValid}
-                    label="First Name"
-                    placeholder="Insert First Name"
-                    //helperText={!this.state.firstName.isValid ? <p style={{color: 'red'}}>{this.state.firstName.message}</p> : null}
-                   // changed={this.inputHandler}
-                    />
+                    <h5 className="text-uppercase text-center">Worker Registration</h5>
+                    <form>
+                        <MyTextField
+                        id="firstName"
+                        error={!this.state.firstName.isValid}
+                        label="First Name"
+                        placeholder="Insert First Name"
+                        helperText={!this.state.firstName.isValid ? <p style={{color: 'red'}}>{this.state.firstName.message}</p> : null}
+                        changed={this.inputHandler}
+                        />
 
-                <MyTextField
-                id="lastname"
-                label="Last Name"
-                placeholder="Input Last Name"
-                />
+                        <MyTextField
+                        id="lastName"
+                        label="Last Name"
+                        placeholder="Input Last Name"
+                        error={!this.state.lastName.isValid}
+                        helperText={!this.state.lastName.isValid ? <p style={{color: 'red'}}>{this.state.lastName.message}</p> : null}
+                        changed={this.inputHandler}
+                        />
 
-                <TextField
-                id="birthday"
-                label="Birthday"
-                type="date"
-                //defaultValue="2017-05-24"
-                style={{ margin: 12, width: '95%' }}
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                onChange={this.inputHandler}
-                />
+                        <TextField
+                        id="birthday"
+                        label="Birthday"
+                        type="date"
+                        style={{ margin: 12, width: '95%' }}
+                        InputLabelProps={{
+                        shrink: true,
+                        }}
+                        onChange={this.inputHandler}
+                        />
 
-                 <MyTextField
-                    error={!this.state.email.isValid}
-                    id="email"
-                    label="E-mail"
-                    placeholder="Insert Email"
-                    //helperText={!this.state.email.isValid ? <p style={{color: 'red'}}>{this.state.email.message}</p> : null}
-                    //changed={this.inputHandler}
-                    />
+                        <MyTextField
+                        error={!this.state.email.isValid}
+                        id="email"
+                        label="E-mail"
+                        placeholder="Insert Email"
+                        helperText={!this.state.email.isValid ? <p style={{color: 'red'}}>{this.state.email.message}</p> : null}
+                        changed={this.inputHandler}
+                        />
 
-                    <MyTextField
-                    error={!this.state.username.isValid}
-                    id="username"
-                    label="Username"
-                    placeholder="Insert Username"
-                    //helperText={!this.state.username.isValid ? <p style={{color: 'red'}}>{this.state.username.message}</p> : null}
-                    //changed={this.inputHandler}
-                    />
+                        <MyTextField
+                        error={!this.state.username.isValid}
+                        id="username"
+                        label="Username"
+                        placeholder="Insert Username"
+                        helperText={!this.state.username.isValid ? <p style={{color: 'red'}}>{this.state.username.message}</p> : null}
+                        changed={this.inputHandler}
+                        />
 
-                    <PasswordField
-                    //error={!this.state.password.isValid}
-                    id="password"
-                    label="Password"
-                    //changed={this.inputHandler}
-                    />
+                        <PasswordField
+                        error={!this.state.password.isValid}
+                        id="password"
+                        label="Password"
+                        changed={this.inputHandler}
+                        />
 
-                    <PasswordField
-                    //error={!this.state.confirmPassword.isValid}
-                    id="confirmPassword"
-                    //label={!this.state.confirmPassword.isValid ?  "Don't match" : "Confirm Password"}
-                   // changed={this.inputHandler}
-                />
+                        <PasswordField
+                        error={!this.state.confirmPassword.isValid}
+                        id="confirmPassword"
+                        label={!this.state.confirmPassword.isValid ?  "Don't match" : "Confirm Password"}
+                        changed={this.inputHandler}
+                        />
 
-                <div className="WorkerRegistrationCheckbox">
-                    <FormLabel >Select Worker Catagory</FormLabel>
-                </div>
+                        <div className="WorkerRegistrationCheckbox">
+                            <FormLabel >Select Working Catagory</FormLabel>
+                        </div>
 
-                <FormGroup>
-                    <FormControlLabel
-                    control={<Checkbox value="plumbing" />}
-                    label="Plumbing"
-                    />
+                        <FormGroup>
+                            <FormControlLabel
+                            control={<Checkbox id="workingCategory" value="plumbing" color="primary" />}
+                            onChange={this.checkboxInputHandler}
+                            label="Plumbing"
+                            />
 
-                    <FormControlLabel
-                    control={<Checkbox value="painting" />}
-                    label="Painting"
-                    />
+                            <FormControlLabel
+                            control={<Checkbox id="workingCategory" value="painting" color="primary" />}
+                            label="Painting"
+                            onChange={this.checkboxInputHandler}
+                            />
           
-                    <FormControlLabel
-                    control={<Checkbox value="electricalWork" />}
-                    label="Electrical Work"
-                    />
+                            <FormControlLabel
+                            control={<Checkbox id="workingCategory" value="electricalWork" color="primary" />}
+                            label="Electrical Work"
+                            id="electricalWork"
+                            onChange={this.checkboxInputHandler}
+                            />
 
-                    <FormControlLabel
-                    control={<Checkbox value="grassCutting" />}
-                    label="Grass Cutting"
-                    />
+                            <FormControlLabel
+                            control={<Checkbox id="workingCategory" value="grassCutting" color="primary" />}
+                            label="Grass Cutting"
+                            id="grassCutting"
+                            onChange={this.checkboxInputHandler}
+                            />
 
-                    <FormControlLabel
-                    control={<Checkbox value="houseCleaning" />}
-                    label="House Cleaning"
-                    />
+                            <FormControlLabel
+                            control={<Checkbox id="workingCategory" value="houseCleaning" color="primary" />}
+                            label="House Cleaning"
+                            id="houseCleaning"
+                            onChange={this.checkboxInputHandler}
+                            />
 
-                    <FormControlLabel
-                    control={<Checkbox value="acRepair" />}
-                    label="A/C Repair"
-                    />
-
-
-                </FormGroup>
-
-                
-
-
-                </form>
+                            <FormControlLabel
+                            control={<Checkbox id="workingCategory" value="acRepair" color="primary" />}
+                            label="A/C Repair"
+                            id="acRepair"
+                            onChange={this.checkboxInputHandler}
+                            />
+                        </FormGroup>
+                        {!this.state.workingCategory.isValid ? <p style={{color: 'red'}}>Please select work category</p> : null}
+                        <br/>
+                        <br/>
+                        <button onClick={this.submitHandler} className="btn btn-block btn-primary">Register</button>
+                        <button type="reset" onClick={this.clearFormHandler} className="btn btn-block btn-danger">Clear</button>
+                        <p className="text-muted">have an account?</p>
+                        <a href="/">Sign in</a>
+                    </form>
                 </div>
             </div>
                 
-
-
-           
         );
     }
 }
