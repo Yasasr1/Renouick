@@ -4,6 +4,7 @@ import './CustomerRegistration.css';
 import PasswordField from '../../UI/TextField/PasswordField';
 import {TextField} from '@material-ui/core';
 import validator from 'validator';
+import axios from 'axios';
 
 
 class CustomerRegistration extends Component {
@@ -109,6 +110,20 @@ class CustomerRegistration extends Component {
         event.preventDefault();
         if (this.formValidationHandler()) {
           // form processing here....
+          const newCustomer = {
+            firstName: this.state.firstName.value,
+            lastName: this.state.lastName.value,
+            birthday: this.state.birthday.value,
+            address: this.state.address.value,
+            email: this.state.email.value,
+            username: this.state.username.value,
+            password: this.state.password.value
+            }
+
+          axios.post('http://localhost:4000/reno/addCustomer', newCustomer)
+            .then(res => {
+                console.log(res.data);
+            });
         }
     }
     clearFormHandler = () => {

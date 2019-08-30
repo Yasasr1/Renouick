@@ -8,6 +8,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
+import axios from 'axios';
 
 
 class WorkerRegistration extends Component {
@@ -143,6 +144,20 @@ class WorkerRegistration extends Component {
         event.preventDefault();
         if (this.formValidationHandler()) {
           // form processing here....
+          const newWorker = {
+              firstName: this.state.firstName.value,
+              lastName: this.state.lastName.value,
+              birthday: this.state.birthday.value,
+              email: this.state.email.value,
+              username: this.state.username.value,
+              password: this.state.password.value,
+              workingCategory: this.state.workingCategory.value
+          }
+
+          axios.post('http://localhost:4000/reno/addWorker', newWorker)
+            .then(res => {
+                console.log(res.data);
+            });
         }
     }
     clearFormHandler = () => {
