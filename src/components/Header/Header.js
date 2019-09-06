@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Logo from '../Logo/Logo';
 import OrangeButton from '../UI/OrangeButton/OrangeButton';
+import { NavLink } from 'react-router-dom';
 
 
 
@@ -27,6 +28,9 @@ const useStyles = makeStyles(theme =>({
       }
 }));
 
+//routing to material ui buttons
+const MyLink = React.forwardRef((props, ref) => <NavLink exact activeStyle={{color: 'blue'}} innerRef={ref} {...props} />);
+
 const Header = (props) => {
     const classes = useStyles();
 
@@ -39,13 +43,13 @@ const Header = (props) => {
                       <div  className={classes.logo}>
                         <Logo/>
                       </div>
-                      <Button color="primary" className={classes.button}>Home</Button>
-                      <Button color="primary" className={classes.button}>About</Button>
-                      <Button color="primary" className={classes.button}>Our Team</Button>
-                      <Button color="primary" className={classes.button}>FAQ</Button>
+                      <Button to="/" component={MyLink} color="primary" className={classes.button}>Home</Button>
+                      <Button to="/about" component={MyLink} color="primary" className={classes.button}>About</Button>
+                      <Button to="/our_team" component={MyLink} color="primary" className={classes.button}>Our Team</Button>
+                      <Button to="/faq" component={MyLink} color="primary" className={classes.button}>FAQ</Button>
                     </Grid>
                     <Grid justify="flex-end" container>
-                      <OrangeButton content="Login"/>
+                      <OrangeButton to="/login" component={MyLink} content="Login"/>
                     </Grid>
                 </Toolbar>
             </AppBar>

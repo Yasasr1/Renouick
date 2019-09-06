@@ -8,6 +8,7 @@ import Grid from '@material-ui/core/Grid';
 import { Paper } from '@material-ui/core';
 import './HomePage.css'; 
 import backImage from '../../assests/backgrounds/backgroundHome.jpg';
+import { Link } from 'react-router-dom';
 
 const style = {
   paperContainer: {
@@ -15,9 +16,7 @@ const style = {
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     height: 600
-  
-}
-
+  }
 };
 
 const ColorButton = withStyles(theme => ({
@@ -27,21 +26,22 @@ const ColorButton = withStyles(theme => ({
       margin: '100px',
       '&:hover': {
         backgroundColor: purple[700],
+        color: 'white'
       },
     },
   }))(Button);
 
+// routing for material ui button component
+const MyLink = React.forwardRef((props, ref) => <Link innerRef={ref} {...props} />);
+
 class HomePage extends Component {
-    
-    
-    
     render() {
         return(
           <React.Fragment>
               <Paper style={style.paperContainer}>
                 <div className="WrapperHomePage">
-                <ColorButton style={style} size="large" variant="contained" >I Want to work</ColorButton>
-                <ColorButton style={style} size="large" variant="contained" color="primary">I Want a Worker</ColorButton>
+                <ColorButton to="/worker_reg" component={MyLink} style={style} size="large" variant="contained" >I Want to work</ColorButton>
+                <ColorButton to="/customer_reg" component={MyLink} style={style} size="large" variant="contained" color="primary">I Want a Worker</ColorButton>
                 </div>
               </Paper>
                 <Grid container justify="center" spacing={8}>
@@ -74,12 +74,8 @@ class HomePage extends Component {
                   </Grid>
 
                 </Grid>
-            </React.Fragment>        
-                
-                
-              
+            </React.Fragment>           
         );
     }
 }
-
 export default HomePage;

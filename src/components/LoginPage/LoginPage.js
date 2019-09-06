@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import AccountBoxRoundedIcon from '@material-ui/icons/AccountBoxRounded';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import Link from '@material-ui/core/Link';
+import { Link } from 'react-router-dom';
 
 
 
@@ -59,9 +59,10 @@ class LoginPage extends Component  {
                     </Button>
                     <br/>
                     <br/>
-                    <Link href="#" variant="body2">
-                        {"Don't have an account? Sign Up"}
-                    </Link>
+                    <p className="text-muted">Don't have an account?</p>
+                    <Link to="/customer_reg">Register as a customer</Link>
+                    <br/>
+                    <Link to="/worker_reg">Register as a worker</Link>
                 </form>
                 </div>
             </React.Fragment>

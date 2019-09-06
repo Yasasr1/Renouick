@@ -9,12 +9,13 @@ const LoginButton = withStyles(theme => ({
       backgroundColor: orange[500],
       '&:hover': {
         backgroundColor: orange[700],
+        color: 'white'
       },
     },
   }))(Button);
 
 const OrangeButton = (props) => (
-    <LoginButton variant='contained'>{props.content}</LoginButton>
+    <LoginButton to={props.to} component={props.component} variant='contained'>{props.content}</LoginButton>
 );
 
 export default OrangeButton;

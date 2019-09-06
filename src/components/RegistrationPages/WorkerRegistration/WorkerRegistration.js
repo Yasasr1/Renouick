@@ -9,6 +9,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 
 class WorkerRegistration extends Component {
@@ -282,7 +283,7 @@ class WorkerRegistration extends Component {
                         <button onClick={this.submitHandler} className="btn btn-block btn-primary">Register</button>
                         <button type="reset" onClick={this.clearFormHandler} className="btn btn-block btn-danger">Clear</button>
                         <p className="text-muted">have an account?</p>
-                        <a href="/">Sign in</a>
+                        <Link to="/login">Sign in</Link>
                     </form>
                 </div>
             </div>
