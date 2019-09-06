@@ -47,6 +47,14 @@ appRoutes.route('/addWorker').post(function(req, res) {
         });
 })
 
+//get password of given email
+appRoutes.route('/login/:email').get(function(req,res) {
+    let email = req.params.email;
+    Customer.findOne({email: email}, function(err, password) {
+        res.json(password);
+    });
+});
+
 
 //here reno is the base route. all routes should go through here 
 app.use('/reno', appRoutes);

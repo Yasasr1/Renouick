@@ -22,8 +22,6 @@ const app = () => {
           <Route path="/customer_reg" exact component={CustomerRegistration}/>
           <Route path="/login" exact component={Login}/>
           <Route path="/faq" exact component={FAQ}/>
-
-
         </Switch>
       </Layout>
       </div>
