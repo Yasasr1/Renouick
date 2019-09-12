@@ -36,6 +36,7 @@ const MyLink = React.forwardRef((props, ref) => <Link innerRef={ref} {...props} 
 
 class HomePage extends Component {
     render() {
+      
         return(
           <React.Fragment>
               <Paper style={style.paperContainer}>

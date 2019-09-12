@@ -49,8 +49,8 @@ class LoginPage extends Component  {
 
             this.setState({error: error});
         })
-        .catch( error => {
-            console.log(error);
+        .catch( err => {
+            console.log(err);
         })
 
         
