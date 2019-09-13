@@ -1,8 +1,13 @@
-.CustomerHeader {
-    height: 45px;
-    
-}
 
 .CustomerHeaderList {
     width: 250px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.CustomerHeaderDiv {
+    float: right;
+    padding: 5px;
+    text-align: center;
 }
