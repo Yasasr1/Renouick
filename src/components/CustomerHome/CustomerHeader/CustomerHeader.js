@@ -90,12 +90,12 @@ class CustomerHeader extends Component  {
             <div>
                 <AppBar position="static">
                     <Toolbar>
-                        <IconButton onClick={()=> this.toggleDrawer(true)} edge="start" color="inherit">
+                        <IconButton onClick={()=> this.toggleDrawer(true)} edge="start" color="inherit" style={{outline: 'none'}}>
                             <MenuIcon/>
                         </IconButton>
                         <Grid justify="flex-end" container spacing={2} >
                             <Grid item>
-                                <IconButton>
+                                <IconButton style={{outline: 'none'}}>
                                     <Badge badgeContent={5} color="secondary">
                                         <MailIcon style={{color: 'white'}}/>
                                     </Badge>
@@ -105,7 +105,7 @@ class CustomerHeader extends Component  {
                                 <h6 style={{marginTop: "10px"}}>Username</h6>
                             </Grid>
                             <Grid item>
-                                <IconButton color="inherit">
+                                <IconButton color="inherit" style={{outline: 'none'}}>
                                    <AccountCircle/>
                                 </IconButton> 
                             </Grid> 
