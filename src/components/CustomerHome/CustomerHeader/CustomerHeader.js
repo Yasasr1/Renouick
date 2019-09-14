@@ -6,6 +6,7 @@ import IconButton from '@material-ui/core/IconButton';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Grid from '@material-ui/core/Grid';
 import Drawer from '@material-ui/core/Drawer';
+import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -17,6 +18,7 @@ import WorkIcon from '@material-ui/icons/Work';
 import Badge from '@material-ui/core/Badge';
 import MailIcon from '@material-ui/icons/Mail';
 import Avatar from '@material-ui/core/Avatar';
+
 //placeholder avatar
 import testAvatar from '../../../assests/testAvatar/avatar.jpg';
 
@@ -50,7 +52,8 @@ class CustomerHeader extends Component  {
                 src={testAvatar} 
                 style={{height: '90px', width: '90px', alignSelf: 'center', margin: '20px'}}
                 />
-                <h6>Username</h6>
+                <Typography variant="caption">Logged in as</Typography>
+                <h6>Yasas</h6>
                 <Divider/>
                 <List>
                     <ListItem button>

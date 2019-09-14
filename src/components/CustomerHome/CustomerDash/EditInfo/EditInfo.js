@@ -13,10 +13,10 @@ const EditInfo = (props) => {
     return(
         <Paper style={{padding: '25px', height: '100%'}}>
             <EditIcon style={{margin: '8px', color: 'blue'}}/>
-            <Link component="button">Edit profile</Link>
+            <Link component="button">Edit Profile</Link>
             <br/>
             <DeleteIcon style={{margin: '8px', color: 'red'}}/>
-            <Link component="button">Delete profile</Link>
+            <Link component="button">Delete Account</Link>
             <br/>
             <HelpIcon style={{margin: '8px', color: 'green'}}/>
             <Link component="button">Support</Link>
