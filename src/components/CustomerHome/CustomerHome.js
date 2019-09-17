@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import CustomerHeader from './CustomerHeader/CustomerHeader';
 import CustomerDash from './CustomerDash/CustomerDash';
+import PostJob from './PostJob/PostJob';
 
 const CustomerHome = (props) => {
 
@@ -9,7 +10,8 @@ const CustomerHome = (props) => {
         <React.Fragment>
             <CustomerHeader/>
             <Switch>
-                <Route path={props.match.url} component={CustomerDash}/>
+                <Route path={props.match.url} exact component={CustomerDash}/>
+                <Route path={props.match.url + '/post_job'} component={PostJob}/>
             </Switch>
         </React.Fragment>
     );

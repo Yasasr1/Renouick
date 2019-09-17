@@ -3,6 +3,8 @@ import Paper from '@material-ui/core/Paper';
 import { Divider } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
+import Rating from '@material-ui/lab/Rating';
+
 
 
 
@@ -15,18 +17,29 @@ const LatestJobInfo = (props) => {
            <Divider/>
            <br/>
            <Grid container>
-               <Grid item md={4}>
-                    <Typography variant="body1" gutterBottom>Job type </Typography>
-                    <Typography variant="body1" gutterBottom>Date created </Typography>
-                    <Typography variant="body1" gutterBottom>Assigned worker </Typography>
-                    <Typography variant="body1" gutterBottom>Status </Typography>
-               </Grid>
-               <Grid item md={4}>
-               <Typography variant="body1" gutterBottom>: (placeholder)</Typography>
-           <Typography variant="body1" gutterBottom>: (ph)</Typography>
-           <Typography variant="body1" gutterBottom>: (ph)</Typography>
-           <Typography variant="body1" gutterBottom>: (ph)</Typography>
-               </Grid>
+                <Grid item md={4}>
+                    <h2>Job photos</h2>
+                </Grid>
+                <Grid item md={8}>
+                <Typography variant="caption" gutterBottom>(Job category)</Typography>
+                <br/>
+                    <Typography variant="body1" gutterBottom>(job Description job Description job Description job Description job Description)</Typography>
+                    <Typography variant="h5" color="secondary" gutterBottom>(Status)</Typography>
+                    <Typography variant="body1" gutterBottom>(assigned worker - if any)</Typography>
+                </Grid>
+           </Grid>
+
+           <Divider/>
+           <br/>
+           <Grid container>      
+                <Grid item md={4}>
+                    <h5> assigned worker photo</h5>
+                </Grid>
+                <Grid item md={8}>
+                    <Typography variant="h5">(Worker name)</Typography>
+                    <Typography variant="body2">Worker rating</Typography>
+                    <Rating value={3} readOnly />
+                </Grid>
            </Grid>
            
            
