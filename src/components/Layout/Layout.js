@@ -6,6 +6,7 @@ import WorkerRegistration from '../RegistrationPages/WorkerRegistration/WorkerRe
 import CustomerRegistration from '../RegistrationPages/CustomerRegistration/CustomerRegistration';
 import Login from '../LoginPage/LoginPage';
 import FAQ from '../FAQ/FAQ'
+import About from '../About/About';
 
 
 const layout = (props) => {
@@ -20,6 +21,8 @@ const layout = (props) => {
                 <Route path={props.match.url + "customer_reg"} exact component={CustomerRegistration}/>
                 <Route path={props.match.url + "login"} exact component={Login}/>
                 <Route path={props.match.url + "faq"} exact component={FAQ}/>
+                <Route path={props.match.url + "about"} exact component={About}/>
+
             </Switch>
         </React.Fragment>
     );
