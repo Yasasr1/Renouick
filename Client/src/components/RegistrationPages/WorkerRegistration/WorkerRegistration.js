@@ -158,7 +158,12 @@ class WorkerRegistration extends Component {
           axios.post('http://localhost:4000/reno/addWorker', newWorker)
             .then(res => {
                 console.log(res.data);
-            });
+            })
+            .catch(error => {
+                console.log(error);
+                console.log(error.responce);
+                alert(error.responce);
+            })
         }
     }
     clearFormHandler = () => {

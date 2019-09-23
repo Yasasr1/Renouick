@@ -108,6 +108,7 @@ class CustomerRegistration extends Component {
     }
 
     submitHandler = (event) => {
+        
         event.preventDefault();
         if (this.formValidationHandler()) {
           // form processing here....
@@ -124,7 +125,12 @@ class CustomerRegistration extends Component {
           axios.post('http://localhost:4000/reno/addCustomer', newCustomer)
             .then(res => {
                 console.log(res.data);
-            });
+                
+            })
+            .catch(error => {
+                console.log(error.data);
+                
+            })
         }
     }
     clearFormHandler = () => {

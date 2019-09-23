@@ -37,6 +37,14 @@ appRoutes.route('/addCustomer').post(function(req, res) {
 
 //post a new worker to the database
 appRoutes.route('/addWorker').post(function(req, res) {
+    console.log(req.body.email)
+    
+    //check if worker already exists
+    Worker.findOne({email: req.body.email})
+        .then(user => {
+            if(user) return res.status(400).send('user already exists');
+        });
+
     let worker = new Worker(req.body);
     worker.save()
         .then(worker => {
