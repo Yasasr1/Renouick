@@ -8,6 +8,11 @@ import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
+//importing action creators
+import * as actions from '../../store/actions/auth';
+//importing to connect mapDispatchToProps to this component
+import { connect } from 'react-redux';
+
 
 
 
@@ -26,35 +31,23 @@ class LoginPage extends Component  {
         this.setState(updatedState);
     };
 
-    submitHandler = (event) => {
-        let email = this.state.email;
-        let password = this.state.password;
-        let receivedpassword = '';
-        let error = false;
+    submitHandler = () => {
 
-        axios.get('http://localhost:4000/reno/login/' + email)
-        .then(responce => {
-            if(responce.data) {
-                receivedpassword = responce.data.password;
-            }
-            
-            if(password === receivedpassword) {
-                console.log('logged in');
-                error = false;
-            }
-            else {
-                console.log('username or password incorrect');
-                error = true;
-            }
+        /*const authInfo = {
+            email: this.state.email,
+            password: this.state.password
+        }
 
-            this.setState({error: error});
-        })
-        .catch( err => {
-            console.log(err);
-        })
-
-        
-
+        axios.post('http://localhost:4000/auth', authInfo)
+            .then(res => {
+                console.log(res);
+            })
+            .catch(err => {
+                const error = {...err};
+                console.log(error.response.data.msg);
+                alert(error.response.data.msg);
+            })*/
+        this.props.onAuth(this.state.email,this.state.password)   
 
     };
    
@@ -126,4 +119,10 @@ class LoginPage extends Component  {
  
 }
 
-export default LoginPage;
+const mapDispatchToProps = dispatch => {
+    return {
+        onAuth: (email, password) => dispatch(actions.auth(email, password))
+    };
+}
+
+export default connect(null,mapDispatchToProps)(LoginPage);

@@ -1,0 +1,4 @@
+{
+    "mongoURI": "mongodb://127.0.0.1:27017/renouick",
+    "jwtSecret": "renouick_app_jwtSecret"
+}

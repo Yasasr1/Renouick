@@ -122,7 +122,9 @@ class CustomerRegistration extends Component {
             password: this.state.password.value
             }
 
-          axios.post('http://localhost:4000/reno/addCustomer', newCustomer)
+
+            //posting to customer schema
+          axios.post('http://localhost:4000/registration/addCustomer', newCustomer)
             .then(res => {
                 console.log(res.data);
                 
@@ -131,6 +133,23 @@ class CustomerRegistration extends Component {
                 console.log(error.data);
                 
             })
+
+            const newUser = {
+                email: this.state.email.value,
+                password: this.state.password.value,
+                userType: 'customer'
+            }
+
+            //posting to user schema
+            axios.post('http://localhost:4000/registration/addUser', newUser)
+                .then(res => {
+                    console.log(res.data);
+                })
+                .catch(error => {
+                    console.log(error.responce);
+                })
+
+
         }
     }
     clearFormHandler = () => {
