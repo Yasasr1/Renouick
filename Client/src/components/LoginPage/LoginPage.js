@@ -8,6 +8,8 @@ import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import validator from 'validator';
+import { Redirect } from 'react-router-dom'
+
 
 
 
@@ -122,8 +124,15 @@ class LoginPage extends Component  {
            passwordError = <p style={{color: 'red'}}>*{this.state.error.password}</p>
         }
 
+        //used to redirect user after login
+        let redirect = null;
+        if(this.props.isAuthenticated) {
+            redirect = <Redirect to="/customer"/>
+        }
+
         return (
             <React.Fragment>
+                {redirect}
                 <div className="LoginPageLeft">
                 </div>
                 <div className="LoginPageRight">
@@ -190,7 +199,9 @@ class LoginPage extends Component  {
 const mapStateToProps = state => {
     return {
         loading: state.loading,
-        error: state.error
+        error: state.error,
+        userType: state.userType,
+        isAuthenticated: state.token !== null
     }
 }
 

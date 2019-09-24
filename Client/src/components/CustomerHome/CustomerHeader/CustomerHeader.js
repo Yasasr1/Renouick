@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import * as actions from '../../../store/actions/auth';
+import { connect } from 'react-redux';
+
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -27,11 +30,12 @@ import testAvatar from '../../../assests/testAvatar/avatar.jpg';
 
 
 import './CustomerHeader.css';
-import { ListItem, Divider } from '@material-ui/core';
+import { ListItem, Divider, Menu, MenuItem } from '@material-ui/core';
 
 class CustomerHeader extends Component  {
     state = {
-        drawerOpen: false
+        drawerOpen: false,
+        menuAnchor: null
     }
     
     //toggle the open/close state of the side drawer
@@ -39,6 +43,22 @@ class CustomerHeader extends Component  {
 
         this.setState({drawerOpen: open});
     }
+
+    handleOpenMenu = (event) => {
+        this.setState({menuAnchor: event.currentTarget});
+    }
+
+    handleMenuClose = () => {
+        this.setState({menuAnchor: null});
+    }
+
+    handleLogout = () => {
+        this.props.onLogout();
+        this.props.history.replace('/');
+        
+    }
+
+
 
     render() {
         //holds the item list that goes in the side drawer
@@ -108,9 +128,23 @@ class CustomerHeader extends Component  {
                                 <h6 style={{marginTop: "10px"}}>Username</h6>
                             </Grid>
                             <Grid item>
-                                <IconButton color="inherit" style={{outline: 'none'}}>
+                                <IconButton 
+                                color="inherit"
+                                aria-controls="logout-menu"
+                                aria-haspopup="true"
+                                style={{outline: 'none'}}
+                                onClick={this.handleOpenMenu} 
+                                >
                                    <AccountCircle/>
-                                </IconButton> 
+                                </IconButton>
+                                <Menu
+                                id="logout-menu"
+                                anchorEl={this.state.menuAnchor}
+                                keepMounted
+                                open={Boolean(this.state.menuAnchor)}
+                                onClose={this.handleMenuClose}>
+                                    <MenuItem onClick={this.handleLogout}>Logout</MenuItem>
+                                </Menu>
                             </Grid> 
                         </Grid>
                     </Toolbar>
@@ -123,4 +157,10 @@ class CustomerHeader extends Component  {
     }
 };
 
-export default CustomerHeader;
+const matchDispatchToProps = dispatch => {
+    return {
+        onLogout: () => dispatch(actions.authLogout())
+    }
+}
+
+export default connect(null,matchDispatchToProps)(CustomerHeader);

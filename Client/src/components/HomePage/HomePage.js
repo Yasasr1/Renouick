@@ -9,6 +9,8 @@ import { Paper } from '@material-ui/core';
 import './HomePage.css'; 
 import backImage from '../../assests/backgrounds/backgroundHome.jpg';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom'
 
 const style = {
   paperContainer: {
@@ -36,9 +38,16 @@ const MyLink = React.forwardRef((props, ref) => <Link innerRef={ref} {...props} 
 
 class HomePage extends Component {
     render() {
+
+      //used to redirect to customer dash if user has a token in local storage
+      let redirect = null;
+      if(this.props.isAuthenticated) {
+          redirect = <Redirect to="/customer"/>
+      }
       
         return(
           <React.Fragment>
+              {redirect}
               <Paper style={style.paperContainer}>
                 <div className="WrapperHomePage">
                 <ColorButton to="/worker_reg" component={MyLink} style={style} size="large" variant="contained" >I Want to work</ColorButton>
@@ -79,4 +88,11 @@ class HomePage extends Component {
         );
     }
 }
-export default HomePage;
+
+const mapStateToProps = state => {
+  return {
+      isAuthenticated: state.token !== null
+  }
+}
+
+export default connect(mapStateToProps,null)(HomePage);
