@@ -8,7 +8,7 @@ const CustomerHome = (props) => {
 
     return (
         <React.Fragment>
-            <CustomerHeader/>
+            <CustomerHeader history={props.history}/>
             <Switch>
                 <Route path={props.match.url} exact component={CustomerDash}/>
                 <Route path={props.match.url + '/post_job'} component={PostJob}/>

@@ -145,6 +145,7 @@ class WorkerRegistration extends Component {
         event.preventDefault();
         if (this.formValidationHandler()) {
           // form processing here....
+          //posting to worker schema
           const newWorker = {
               firstName: this.state.firstName.value,
               lastName: this.state.lastName.value,
@@ -155,10 +156,32 @@ class WorkerRegistration extends Component {
               workingCategory: this.state.workingCategory.value
           }
 
-          axios.post('http://localhost:4000/reno/addWorker', newWorker)
+          axios.post('http://localhost:4000/registration/addWorker', newWorker)
             .then(res => {
                 console.log(res.data);
-            });
+            })
+            .catch(error => {
+                console.log(error);
+                console.log(error.responce);
+                alert(error.responce);
+            })
+
+            //posting to user schema
+            const newUser = {
+                email: this.state.email.value,
+                password: this.state.password.value,
+                userType: 'worker'
+            }
+
+            //posting to user schema
+            axios.post('http://localhost:4000/registration/addUser', newUser)
+                .then(res => {
+                    console.log(res.data);
+                })
+                .catch(error => {
+                    console.log(error.responce);
+                })
+
         }
     }
     clearFormHandler = () => {
