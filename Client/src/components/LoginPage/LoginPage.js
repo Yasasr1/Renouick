@@ -6,7 +6,10 @@ import AccountBoxRoundedIcon from '@material-ui/icons/AccountBoxRounded';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import LinearProgress from '@material-ui/core/LinearProgress';
+import validator from 'validator';
+
+
 
 //importing action creators
 import * as actions from '../../store/actions/auth';
@@ -20,7 +23,7 @@ class LoginPage extends Component  {
     state = {
         email: '',
         password: '',
-        error: false
+        error: {email: '', password: ''}
     };
 
     inputHandler = (event) => {
@@ -31,31 +34,94 @@ class LoginPage extends Component  {
         this.setState(updatedState);
     };
 
-    submitHandler = () => {
-
-        /*const authInfo = {
-            email: this.state.email,
-            password: this.state.password
+    validationHandler = () => {
+        //form validaton 
+        let updatedState = null;
+        let isValid = true;
+        if(!this.state.email) {
+            updatedState = {
+                ...this.state,
+                error: {
+                    ...this.state.error,
+                    email: 'Please enter email'
+                }
+            }
+            this.setState(updatedState);
+            isValid = false;
+        }
+        else if (!validator.isEmail(this.state.email)) {
+            updatedState = {
+                ...this.state,
+                error: {
+                    ...this.state.error,
+                    email: 'Not a valid email'
+                }
+            }
+            this.setState(updatedState);
+            isValid = false;
+        }
+        else {
+            if(!this.state.password) {
+                updatedState = {
+                    ...this.state,
+                    error: {
+                        ...this.state.error,
+                        password: 'Please enter password',
+                        email: ''
+                    }
+                }
+                this.setState(updatedState);
+                isValid = false;
+            }
+            else {
+                updatedState = {
+                    ...this.state,
+                    error: {
+                        ...this.state.error,
+                        password: '',
+                        email: ''
+                    }
+                }
+                this.setState(updatedState);
+            }
         }
 
-        axios.post('http://localhost:4000/auth', authInfo)
-            .then(res => {
-                console.log(res);
-            })
-            .catch(err => {
-                const error = {...err};
-                console.log(error.response.data.msg);
-                alert(error.response.data.msg);
-            })*/
-        this.props.onAuth(this.state.email,this.state.password)   
+        return isValid;
+    }
+
+    submitHandler = () => {   
+        let isValid = this.validationHandler();
+        if(isValid)
+            this.props.onAuth(this.state.email,this.state.password)   
 
     };
    
     render() {
-        let message = null;
-        if(this.state.error) {
-            message = <p style={{color: 'red'}}>*Email or password is incorrect</p>
+        //console.log({...this.state,...this.state.error,...this.state.error[email]: 'sfasf'})
+        //holds the error message if any
+        let error = null;
+        if(this.props.error) {
+            error = <p style={{color: 'red'}}>{this.props.error}</p>
         }
+
+        //hold the linier spinner
+        let spinner = null;
+        if(this.props.loading) {
+            spinner = <LinearProgress/>
+        }
+
+        //email error msg(front end)
+        let emailError = null;
+        if(this.state.error.email) {
+            emailError = <p style={{color: 'red'}}>*{this.state.error.email}</p>
+        }
+
+        //password error msg(front end)
+        let passwordError = null;
+        if(this.state.error.password) {
+           passwordError = <p style={{color: 'red'}}>*{this.state.error.password}</p>
+        }
+
         return (
             <React.Fragment>
                 <div className="LoginPageLeft">
@@ -78,11 +144,11 @@ class LoginPage extends Component  {
                     autoFocus
                     onChange={this.inputHandler}
                     />
-
+                    {emailError}
                     <TextField
+                    required
                     variant="outlined"
                     margin="normal"
-                    required
                     fullWidth
                     name="password"
                     label="Password"
@@ -91,10 +157,12 @@ class LoginPage extends Component  {
                     autoComplete="current-password"
                     onChange={this.inputHandler}
                     />
-
+                    {passwordError}
                     <br/>
                     <br/>
-                    {message}
+                    {error}
+                    {spinner}
+                    <br/>
                     <Button
                     fullWidth
                     variant="contained"
@@ -119,10 +187,17 @@ class LoginPage extends Component  {
  
 }
 
+const mapStateToProps = state => {
+    return {
+        loading: state.loading,
+        error: state.error
+    }
+}
+
 const mapDispatchToProps = dispatch => {
     return {
         onAuth: (email, password) => dispatch(actions.auth(email, password))
     };
 }
 
-export default connect(null,mapDispatchToProps)(LoginPage);
+export default connect(mapStateToProps,mapDispatchToProps)(LoginPage);

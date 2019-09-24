@@ -33,7 +33,8 @@ router.post('/', (req,res) => {
                             token,
                             user: {
                                 email: user.email,
-                                userType: user.userType
+                                userType: user.userType,
+                                expiresIn: 3600
                             }
                         });
                     }
