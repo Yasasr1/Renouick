@@ -15,18 +15,41 @@ class App extends Component {
   }
 
   render() {
+      //routing guards for unauthenticated users
+      //logged out
+      let routes = (
+        <Switch>
+          <Route path="/customer" render={() => <h1>not found</h1>}/>
+          <Route path="/worker" render={() => <h1>not found</h1>}/>
+          <Route path="/" component={Layout}/>
+        </Switch>
+      );
+      //logged in as customer
+      if(this.props.isAuthenticated && this.props.userType === "customer") {
+        routes = (
+          <Switch>
+          <Route path="/customer" component={CustomerHome}/>
+          <Route path="/worker" render={() => <h1>not found</h1>}/>
+          <Route path="/" component={Layout}/> 
+        </Switch>
+        );
+      }
     return (
       <BrowserRouter>
         <div>
-        <Switch>
-          <Route path="/customer" component={CustomerHome}/>
-          <Route path="/" component={Layout}/> 
-        </Switch>
+        {routes}
         </div>
       </BrowserRouter>
       
     );
     }  
+}
+
+const mapStateToProps = state => {
+  return {
+    isAuthenticated: state.token !== null,
+    userType: state.userType
+  }
 }
 
 const mapDispatchToProps = dispatch => {
@@ -35,4 +58,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(null,mapDispatchToProps)(App);
+export default connect(mapStateToProps,mapDispatchToProps)(App);
