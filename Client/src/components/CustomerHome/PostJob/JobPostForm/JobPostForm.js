@@ -13,8 +13,11 @@ import Button from '@material-ui/core/Button';
 
 
 const JobPostform = (props) => {
+    let errorMsg = null;
+        if(props.valid === false)
+            errorMsg = <p style={{color: 'red'}}>*Please fill all input fields</p>
     return(
-        <Paper style={{padding: '30px', textAlign: 'center'}}>
+        <Paper style={{padding: '80px', textAlign: 'center'}}>
                 <h5 align="center">New Job</h5>
                 <form>
                     <TextField
@@ -24,6 +27,7 @@ const JobPostform = (props) => {
                     margin="normal"
                     variant="filled"
                     fullWidth
+                    required
                     onChange={props.Change}
                     />
 
@@ -55,11 +59,12 @@ const JobPostform = (props) => {
                     margin="normal"
                     helperText="Enter a short description about the job"
                     variant="filled"
+                    required
                     />
 
                     <h6>(Upload images)</h6>
-
-                    <Button color="primary" variant="contained" style={{width: '60%',  margin: '20px'}}>
+                    {errorMsg}
+                    <Button onClick={props.onSubmit}  color="primary" variant="contained" style={{width: '60%',  margin: '20px'}}>
                         Post
                     </Button>
 
