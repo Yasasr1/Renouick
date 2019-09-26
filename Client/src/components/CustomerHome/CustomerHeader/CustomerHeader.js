@@ -21,16 +21,18 @@ import WorkIcon from '@material-ui/icons/Work';
 import Badge from '@material-ui/core/Badge';
 import MailIcon from '@material-ui/icons/Mail';
 import Avatar from '@material-ui/core/Avatar';
-
+import { NavLink } from 'react-router-dom';
 //placeholder avatar
 import testAvatar from '../../../assests/testAvatar/avatar.jpg';
-
-
-
-
-
 import './CustomerHeader.css';
 import { ListItem, Divider, Menu, MenuItem } from '@material-ui/core';
+
+//routing to material ui buttons
+const MyLink = React.forwardRef((props, ref) => <NavLink exact activeStyle={{color: 'blue', backgroundColor: '#CDC9C9'}} innerRef={ref} {...props} />);
+
+
+
+
 
 class CustomerHeader extends Component  {
     state = {
@@ -76,31 +78,31 @@ class CustomerHeader extends Component  {
                 <h6>Yasas</h6>
                 <Divider/>
                 <List>
-                    <ListItem button>
+                    <ListItem button to="/customer" component={MyLink}>
                         <ListItemIcon>
                             <DashboardIcon/>
                         </ListItemIcon>
                         <ListItemText primary="Dashboard"/>
                     </ListItem>
-                    <ListItem button>
+                    <ListItem button to="/customer/post_job" component={MyLink}>
                         <ListItemIcon>
                             <WorkIcon/>
                         </ListItemIcon>
                         <ListItemText primary="Post Job"/>
                     </ListItem>
-                    <ListItem button>
+                    <ListItem button to="/customer/my_jobs" component={MyLink}>
                         <ListItemIcon>
                             <HistoryIcon/>
                         </ListItemIcon>
-                        <ListItemText primary="Previous Jobs"/>
+                        <ListItemText primary="My Jobs"/>
                     </ListItem>
-                    <ListItem button>
+                    <ListItem button to="/customer/chat" component={MyLink}>
                         <ListItemIcon>
                             <ChatIcon/>
                         </ListItemIcon>
-                        <ListItemText primary="Messages"/>
+                        <ListItemText primary="Chat"/>
                     </ListItem>
-                    <ListItem button>
+                    <ListItem button to="/customer/edit_profile" component={MyLink}>
                         <ListItemIcon>
                             <CreateIcon/>
                         </ListItemIcon>

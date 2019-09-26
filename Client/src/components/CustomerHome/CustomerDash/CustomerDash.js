@@ -15,7 +15,7 @@ class CustomerDash extends Component {
     render() {
 
         return (
-            <React.Fragment>
+            <div style={{backgroundColor: '#F5F1FA'}}>
                 <Grid container spacing={3} justify="center" style={{padding: '30px', flexGrow: '1'}}>
                     <Grid item md={4}> <ProfileImg source={profilePic}/></Grid>
                     <Grid item sm={6} >
@@ -34,7 +34,7 @@ class CustomerDash extends Component {
                 <Grid container justify="center" style={{padding: '30px', flexGrow: '1'}}>    
                     <Grid item md={12}><LatestJobInfo/></Grid>
                 </Grid>
-            </React.Fragment>
+            </div>
         );
     }
 }

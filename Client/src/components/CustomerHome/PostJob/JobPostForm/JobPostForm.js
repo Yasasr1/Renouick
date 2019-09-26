@@ -29,6 +29,7 @@ const JobPostform = (props) => {
                     fullWidth
                     required
                     onChange={props.Change}
+                    value={props.title}
                     />
 
                     <FormControl variant="outlined" style={{width: '100%', marginBottom: '3em'}}>
@@ -68,7 +69,7 @@ const JobPostform = (props) => {
                         Post
                     </Button>
 
-                    <Button color="secondary" variant="contained" style={{width: '60%'}}>
+                    <Button onClick={props.clear} color="secondary" variant="contained" style={{width: '60%'}}>
                         Clear
                     </Button>
 

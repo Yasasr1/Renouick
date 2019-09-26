@@ -7,6 +7,7 @@ import axios from 'axios';
 
 
 
+
 class PostJob extends Component {
     state ={
         jobTitle: '',
@@ -37,6 +38,17 @@ class PostJob extends Component {
         }
     }
 
+    clearFormHandler = () => {
+        const newState = {
+            jobTitle: '',
+            jobDesc: '',
+            jobCategory: '',
+            isValid: true
+        }
+
+        this.setState(newState);
+    } 
+
     handleSubmit = () => {
         
         if(this.validateInputs()) {
@@ -54,13 +66,15 @@ class PostJob extends Component {
             .then(res => {
                 console.log(res.data);
                 alert(res.data.job);
+                this.clearFormHandler();
             })
             .catch(error => {
                 console.log(error);
                 alert('job posting failed');
             })
         }
-        
+    
+      
        
 
 
@@ -69,7 +83,11 @@ class PostJob extends Component {
     render() {
         
         return(
+            
             <Grid justify="center" container spacing={5} style={{padding: '80px', flexGrow: '1', marginTop: '20px'}}>
+                <Grid item md={12}>
+                    <h4></h4>
+                </Grid>
                 <Grid item md={7}>
                     <JobPostForm 
                     jobCategory={this.state.jobCategory}
@@ -77,6 +95,8 @@ class PostJob extends Component {
                     Desc={this.state.jobDesc}
                     onSubmit={this.handleSubmit}
                     valid={this.state.isValid}
+                    clear={this.clearFormHandler}
+                    title={this.state.jobTitle}
                   
                     />
                 </Grid>
@@ -84,6 +104,7 @@ class PostJob extends Component {
                     <Ad/>
                 </Grid>
             </Grid>
+            
         );
     }
 }
