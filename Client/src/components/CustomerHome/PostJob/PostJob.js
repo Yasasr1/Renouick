@@ -2,6 +2,9 @@ import React ,{ Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import JobPostForm from './JobPostForm/JobPostForm';
 import Ad from './Ad/Ad';
+import { connect } from 'react-redux';
+import axios from 'axios';
+
 
 
 
@@ -9,7 +12,9 @@ class PostJob extends Component {
     state ={
         jobTitle: '',
         jobDesc: '',
-        jobCategory: ''
+        jobCategory: '',
+        isValid: true
+       
     }
 
     handleInput = (event) => {
@@ -22,22 +27,92 @@ class PostJob extends Component {
 
     }
 
+    validateInputs = () => {
+        if(this.state.jobTitle === '' || this.state.jobCategory === '' || this.state.jobDesc === '') {
+            this.setState({isValid: false});
+            return false
+        }
+        else {
+            this.setState({isValid: true});
+            return true
+        }
+    }
+
+    clearFormHandler = () => {
+        const newState = {
+            jobTitle: '',
+            jobDesc: '',
+            jobCategory: '',
+            isValid: true
+        }
+
+        this.setState(newState);
+    } 
+
+    handleSubmit = () => {
+        
+        if(this.validateInputs()) {
+            let currentDate = new Date()
+            const newJob = {
+                title: this.state.jobTitle,
+                category: this.state.jobCategory,
+                description: this.state.jobDesc,
+                postDate: currentDate,
+                poster: this.props.email,
+                status: 'pending'
+            };
+    
+            axios.post('http://localhost:4000/job/post',newJob)
+            .then(res => {
+                console.log(res.data);
+                alert(res.data.job);
+                this.clearFormHandler();
+            })
+            .catch(error => {
+                console.log(error);
+                alert('job posting failed');
+            })
+        }
+    
+      
+       
+
+
+    }
+
     render() {
+        
         return(
-            <Grid container spacing={3} style={{padding: '30px', flexGrow: '1', marginTop: '50px'}}>
-                <Grid item md={9}>
+            
+            <Grid justify="center" container spacing={5} style={{padding: '80px', flexGrow: '1', marginTop: '20px'}}>
+                <Grid item md={12}>
+                    <h4></h4>
+                </Grid>
+                <Grid item md={7}>
                     <JobPostForm 
                     jobCategory={this.state.jobCategory}
                     Change={this.handleInput}
                     Desc={this.state.jobDesc}
+                    onSubmit={this.handleSubmit}
+                    valid={this.state.isValid}
+                    clear={this.clearFormHandler}
+                    title={this.state.jobTitle}
+                  
                     />
                 </Grid>
                 <Grid item md={3}>
                     <Ad/>
                 </Grid>
             </Grid>
+            
         );
     }
 }
 
-export default PostJob;
+const matchStateToProps = state => {
+    return {
+        email: state.email
+    }
+}
+
+export default connect(matchStateToProps,null)(PostJob);
