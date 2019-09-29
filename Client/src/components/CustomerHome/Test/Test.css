@@ -1,0 +1,6 @@
+.Test {
+    justify-content: center;
+    padding: 20px;
+    border: 2px;
+    border-block-color: 'red';
+}

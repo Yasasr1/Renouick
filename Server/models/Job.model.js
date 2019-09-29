@@ -19,7 +19,11 @@ let Job = new Schema({
    },
    status: {
        type: String
+   },
+   images: {
+       type: Object
    }
+
 });
 
 module.exports = mongoose.model('Job', Job);

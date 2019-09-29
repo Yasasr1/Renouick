@@ -11,6 +11,17 @@ import Rating from '@material-ui/lab/Rating';
 
 
 const LatestJobInfo = (props) => {
+    let imageElements = <Typography variant="caption">No photos</Typography>;
+
+    //if there are any images passed as props, url's of those images will be mapped to a array
+    const images = props.images;
+    if(images) {
+        const imagesArray = images.map(image => image.url)
+        //save images to img elements 
+        imageElements = imagesArray.map(url => 
+            <img src={url} key={url} alt="job photos" style={{width: '100%', height: '100%'}}></img>
+        )
+    }
     //if the props isWorkerAssigned is true worker info will also be displayed
     let workerInfo = (
         <React.Fragment>
@@ -35,7 +46,7 @@ const LatestJobInfo = (props) => {
            <br/>
            <Grid container>
                 <Grid item md={4}>
-                    <h2>Job photos</h2>
+                    {imageElements}
                 </Grid>
                 <Grid item md={8}>
                 <Typography variant="caption" gutterBottom>{props.category}</Typography>

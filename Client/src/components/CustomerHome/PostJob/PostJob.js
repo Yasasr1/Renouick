@@ -4,6 +4,7 @@ import JobPostForm from './JobPostForm/JobPostForm';
 import Ad from './Ad/Ad';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import { Divider } from '@material-ui/core';
 
 
 
@@ -13,6 +14,7 @@ class PostJob extends Component {
         jobTitle: '',
         jobDesc: '',
         jobCategory: '',
+        images: [],
         isValid: true
        
     }
@@ -25,6 +27,21 @@ class PostJob extends Component {
 
         this.setState(newState);
 
+    }
+
+    //save the image url and public id from cloudinary to state
+    saveImageData = (result) => { 
+        if(result.event === 'success') {
+            console.log(result.info);
+            const newState = {
+                ...this.state,
+                images : [...this.state.images,{
+                    url: result.info.secure_url,
+                    publicId: result.info.public_id
+                }]
+            }
+            this.setState(newState);
+        }
     }
 
     validateInputs = () => {
@@ -59,7 +76,8 @@ class PostJob extends Component {
                 description: this.state.jobDesc,
                 postDate: currentDate,
                 poster: this.props.email,
-                status: 'pending'
+                status: 'pending',
+                images: [...this.state.images]
             };
     
             axios.post('http://localhost:4000/job/post',newJob)
@@ -84,9 +102,10 @@ class PostJob extends Component {
         
         return(
             
-            <Grid justify="center" container spacing={5} style={{padding: '80px', flexGrow: '1', marginTop: '20px'}}>
+            <Grid justify="center" container spacing={5} style={{padding: '20px', flexGrow: '1', marginTop: '10px'}}>
                 <Grid item md={12}>
-                    <h4></h4>
+                    <h3 style={{fontFamily:'Roboto, sansSerif'}}>Post Job</h3>
+                    <Divider/>
                 </Grid>
                 <Grid item md={7}>
                     <JobPostForm 
@@ -97,6 +116,7 @@ class PostJob extends Component {
                     valid={this.state.isValid}
                     clear={this.clearFormHandler}
                     title={this.state.jobTitle}
+                    saveImages={(result)=>this.saveImageData(result)}
                   
                     />
                 </Grid>

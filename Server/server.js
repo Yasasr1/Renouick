@@ -15,6 +15,8 @@ const auth = require('./routes/auth');
 //importing all job routes
 const job = require('./routes/job');
 
+const test = require('./routes/test');
+
 //DB config
 const db = config.get('mongoURI');
 
@@ -45,6 +47,7 @@ connection.once('open', function() {
 app.use('/registration', registration);
 app.use('/auth', auth);
 app.use('/job', job);
+app.use('/test', test);
 
 
 app.listen(PORT, function() {
