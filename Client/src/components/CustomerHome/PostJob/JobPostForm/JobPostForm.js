@@ -13,16 +13,22 @@ const JobPostform = (props) => {
 
     //cloudinary upload widget
     const uploadWidget = () => {
-        window.cloudinary.openUploadWidget(
-          { 
-          cloud_name: 'dgrz2yde1', 
-          upload_preset: 'h8ecxg04',
-          thumbnails: '.JobPostFormUpload', 
-          tags:['xmas']
-          },
-          (error, result) => { props.saveImages(result) } 
-          
-        )
+        if(window.cloudinary) {
+            window.cloudinary.openUploadWidget(
+                { 
+                cloud_name: 'dgrz2yde1', 
+                upload_preset: 'h8ecxg04',
+                thumbnails: '.JobPostFormUpload',
+                maxFiles: 5,
+                tags:['xmas']
+                },
+                (error, result) => { props.saveImages(result) }  
+              )
+        }
+        else {
+            alert("Can't connect to server");
+        }
+        
     }
     
 

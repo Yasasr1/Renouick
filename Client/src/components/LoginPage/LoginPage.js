@@ -8,7 +8,10 @@ import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import validator from 'validator';
-import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
+import Particles from 'react-particles-js';
+import image from '../../assests/loginAnimation/image.svg';
+
 
 
 
@@ -134,6 +137,52 @@ class LoginPage extends Component  {
             <React.Fragment>
                 {redirect}
                 <div className="LoginPageLeft">
+                <Particles
+                  params={{
+                    "particles": {
+                        "number": {
+                            "value": 550,
+                            "density": {
+                                "enable": true,
+                                "value_area": 1500
+                            }
+                        },
+                        "line_linked": {
+                            "enable": true,
+                            "opacity": 0.02
+                        },
+                        "move": {
+                            "direction": "right",
+                            "speed": 0.5
+                        },
+                        "size": {
+                            "value": 1
+                        },
+                        "opacity": {
+                            "anim": {
+                                "enable": true,
+                                "speed": 1,
+                                "opacity_min": 0.05
+                            }
+                        }
+                    },
+                    "interactivity": {
+                        "events": {
+                            "onclick": {
+                                "enable": true,
+                                "mode": "push"
+                            }
+                        },
+                        "modes": {
+                            "push": {
+                                "particles_nb": 1
+                            }
+                        }
+                    },
+                    "retina_detect": true
+                }}
+                height='800px'
+                />
                 </div>
                 <div className="LoginPageRight">
                 <AccountBoxRoundedIcon style={{fontSize: '80px', color: 'orange'}} />
