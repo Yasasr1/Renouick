@@ -42,7 +42,7 @@ class LatestJobInfo extends Component {
                 this.selectedImage = <img src={imagesArray[imagesArray.length-1]} alt="selected" height="80%" width="80%"/>
                 this.firstLoad = false;
             }
-            //save images to img elements 
+            //save images to img elements.
             imageElements = imagesArray.map(url => 
                 (<Grid item xs={2} key={url} >
                    <img onClick={selectImage} src={url} alt="job photos" style={{width: '50%', height: '50%'}}></img> 
