@@ -6,7 +6,20 @@ const initialState = {
     email: null,
     userType: null,
     error: null,
-    loading: false
+    loading: false,
+    user: {
+        firstName: '',
+        lastName: '',
+        birthday: '',
+        address: '',
+        email: '',
+        password: '',
+        userName: '',
+        facebook: '',
+        twitter: '',
+        profilePicUrl: '',
+        profilePicId: ''
+    }
 };
 
 const reducer = (state = initialState, action) => {
@@ -41,7 +54,27 @@ const reducer = (state = initialState, action) => {
                     email: null,
                     userType: null
                 }
-            )    
+            )
+        case actionTypes.STORE_USER:
+            return ({
+                ...state,
+                user: {
+                    firstName: action.user.firstName,
+                    lastName: action.user.lastName,
+                    birthday: action.user.birthday,
+                    address: action.user.address,
+                    email: action.user.email,
+                    password: action.user.password,
+                    userName: action.user.username,
+                    facebook: action.user.facebook,
+                    twitter:  action.user.twitter,
+                    profilePicUrl:  action.user.profilePicUrl,
+                    profilePicId:  action.user.profilePicId
+
+                }
+            })
+            
+            
 
         default:
             return state

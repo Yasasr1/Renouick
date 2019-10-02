@@ -22,6 +22,18 @@ let Customer = new Schema({
     },
     password: {
         type: String
+    },
+    profilePicUrl: {
+        type: String
+    },
+    profilePicId: {
+        type: String
+    },
+    facebook: {
+        type: String
+    },
+    twitter: {
+        type: String
     }
 });
 

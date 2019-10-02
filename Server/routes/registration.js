@@ -17,7 +17,7 @@ router.post('/addCustomer', (req,res) => {
         .then(user => {
             console.log(user);
             if(user) {
-                return res.status(400).send('user already exists');
+                return res.status(400).json({'error': 'user already exists'});
             }
             else {
                 let customer = new Customer(req.body);
@@ -26,7 +26,7 @@ router.post('/addCustomer', (req,res) => {
                     res.status(200).json({'customer': 'customer added successfully'});
                 })
                 .catch(err => {
-                    res.status(400).send('adding new customer failed');
+                    res.status(400).json({'error' : 'adding new customer failed'});
                 });
             }
         })

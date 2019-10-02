@@ -119,18 +119,22 @@ class CustomerRegistration extends Component {
             address: this.state.address.value,
             email: this.state.email.value,
             username: this.state.username.value,
-            password: this.state.password.value
+            password: this.state.password.value,
+            facebook: '',
+            twitter: '',
+            profilePicUrl: '',
+            profilePicId: ''
             }
 
 
             //posting to customer schema
           axios.post('http://localhost:4000/registration/addCustomer', newCustomer)
             .then(res => {
-                console.log(res.data);
+                console.log(res);
                 
             })
             .catch(error => {
-                console.log(error.data);
+                console.log(error);
                 
             })
 
