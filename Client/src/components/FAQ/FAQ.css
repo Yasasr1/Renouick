@@ -1,9 +1,10 @@
 .FAQInnerDiv {
-    width: 75%;
+
+    width: 90%;
     margin: 80px auto;
     box-shadow: 1px 1px 8px rgb(151, 122, 122);
     text-align: center;
-    padding: 90px;
+    padding: 100px;
     background-color: white;
 
 }
