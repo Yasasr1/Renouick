@@ -7,6 +7,7 @@ import CustomerRegistration from '../RegistrationPages/CustomerRegistration/Cust
 import Login from '../LoginPage/LoginPage';
 import FAQ from '../FAQ/FAQ'
 import About from '../About/About';
+import OurTeam from '../OurTeam/OurTeam';
 
 
 const layout = (props) => {
@@ -22,6 +23,7 @@ const layout = (props) => {
                 <Route path={props.match.url + "login"} exact component={Login}/>
                 <Route path={props.match.url + "faq"} exact component={FAQ}/>
                 <Route path={props.match.url + "about"} exact component={About}/>
+                <Route path={props.match.url + "our_team"} exact component={OurTeam}/>
 
             </Switch>
         </React.Fragment>

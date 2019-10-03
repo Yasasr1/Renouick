@@ -1,6 +1,6 @@
 .FAQInnerDiv {
-    width: 50%;
-    margin: 140px auto;
+    width: 75%;
+    margin: 80px auto;
     box-shadow: 1px 1px 8px rgb(151, 122, 122);
     text-align: center;
     padding: 90px;
@@ -16,7 +16,7 @@
     
 }
 
-@media (max-width: 800px) {
+@media (max-width: 600px) {
     .FAQInnerDiv {
         width: 100%;
         margin: auto;

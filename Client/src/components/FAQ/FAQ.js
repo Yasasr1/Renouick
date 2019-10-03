@@ -31,11 +31,13 @@ const ExpansionPanelSummary = withStyles({
     minHeight: 56,
     '&$expanded': {
       minHeight: 56,
+
     },
   },
   content: {
     '&$expanded': {
       margin: '12px 0',
+      align: "center",
     },
   },
   expanded: {},
@@ -57,8 +59,8 @@ const ExpansionPanelDetails = withStyles(theme => ({
     
     return (
       <div className="FAQOuterDiv">
-        <div className="FAQInnerDiv">
-          <h1 className="text-uppercase text-center">Frequently Ask Quections</h1>
+        <div className="FAQInnerDiv" style={{padding: '60px'}}>
+          <Typography className="text-uppercase text-center" style={{ fontFamily:"Calibri " , fontSize:75 , fontStyle:"Italic" , color:"orange"}}>Frequently Ask Quections</Typography>
             <form>
             <ExpansionPanel square expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
               <ExpansionPanelSummary aria-controls="panel1d-content" id="panel1d-header">
@@ -96,6 +98,18 @@ const ExpansionPanelDetails = withStyles(theme => ({
           </Typography>
         </ExpansionPanelDetails>
       </ExpansionPanel>
+      <ExpansionPanel square expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
+              <ExpansionPanelSummary aria-controls="panel4d-content" id="panel4d-header">
+                <Typography>Collapsible Group Item #4</Typography>
+            </ExpansionPanelSummary>
+            <ExpansionPanelDetails>
+              <Typography>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
+                sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
+              </Typography>
+            </ExpansionPanelDetails>
+          </ExpansionPanel>
       </form>
       </div>
     </div>
