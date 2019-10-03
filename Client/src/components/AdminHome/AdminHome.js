@@ -12,8 +12,8 @@ const AdminHome = (props) => {
             <AdminHeader history={props.history}/>
             <Switch>
                 <Route path={props.match.url} exact component={AdminDash}/>
-                <Route path={props.match.url + '/post_job'} component={PostJob}/>
-                <Route path={props.match.url + '/my_jobs'} component={MyJobs}/>
+                <Route path={props.match.url + '/paths danna galapena ewa'} />
+                <Route path={props.match.url + '/paths danna galapena ewa'} />
             </Switch>
         </React.Fragment>
     );

@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
 import Layout from './components/Layout/Layout';
 import CustomerHome from './components/CustomerHome/CustomerHome';
+import AdminHome from './components/AdminHome/AdminHome';
 
 import { connect } from 'react-redux';
 import * as actions from './store/actions/auth';
@@ -21,6 +22,7 @@ class App extends Component {
         <Switch>
           <Route path="/customer" render={() => <h1>not found</h1>}/>
           <Route path="/worker" render={() => <h1>not found</h1>}/>
+          <Route path="/admin" component={AdminHome}/>
           <Route path="/" component={Layout}/>
         </Switch>
       );
@@ -34,6 +36,19 @@ class App extends Component {
         </Switch>
         );
       }
+
+      //logged in as admin
+      /*
+      if(this.props.isAuthenticated && this.props.userType === "admin") {
+        routes = (
+          <Switch>
+          <Route path="/customer" render={() => <h1>not found</h1>}/>
+          <Route path="/worker" render={() => <h1>not found</h1>}/>
+          <Route path="/admin" component={AdminHome}/>
+          <Route path="/" component={Layout}/> 
+        </Switch>
+        );
+      }*/
     return (
       <BrowserRouter>
         <div>

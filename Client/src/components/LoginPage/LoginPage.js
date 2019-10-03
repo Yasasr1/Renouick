@@ -128,8 +128,11 @@ class LoginPage extends Component  {
 
         //used to redirect user after login
         let redirect = null;
-        if(this.props.isAuthenticated) {
+        if(this.props.isAuthenticated && this.props.userType === 'customer') {
             redirect = <Redirect to="/customer"/>
+        }
+        else if (this.props.isAuthenticated && this.props.userType === 'admin') {
+            redirect = <Redirect to="/admin"/>
         }
 
         return (
