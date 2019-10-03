@@ -81,13 +81,14 @@ class MyJobs extends Component {
 
     //display the selected job details
     assignJobDetails = (selectedRowKey) => {
-        this.state.jobs.find(job => {
+        this.state.jobs.forEach(job => {
             if(job._id === selectedRowKey.toString()) {
                 this.jobDetails = <JobDetails
                     title={job.title}
                     category={job.category}
                     description={job.description}
                     status={job.status}
+                    images={job.images}
                     isWorkerAssigned={false}
                 />
                 this.setState({isSelected: true});
@@ -107,7 +108,7 @@ class MyJobs extends Component {
           };
           
         const data = [];
-        this.state.jobs.map(job => {
+        this.state.jobs.forEach(job => {
             data.push({
                 key: job._id,
                 title: job.title,
@@ -122,7 +123,7 @@ class MyJobs extends Component {
             <React.Fragment>
                 <Grid container justify="center" spacing={2} style={{padding: '30px', flexGrow: '1'}}>
                     <Grid item md={12}>
-                        <h3>My Jobs</h3>
+                        <h3 style={{fontFamily:'Roboto, sansSerif'}}>My Jobs</h3>
                         <Divider/>
                     </Grid>
                     <Grid item md={12}>

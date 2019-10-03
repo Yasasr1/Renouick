@@ -16,6 +16,7 @@ import reducer from './store/reducers/reducer';
 //for redux devtools advanced
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
+//creating the redux store
 const store = createStore(reducer, composeEnhancers(
     applyMiddleware(thunk)
 ));

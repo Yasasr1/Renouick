@@ -1,11 +1,9 @@
 .LoginPageLeft {
     width: 60%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-image: url('../../assests/backgrounds/loginBackground.jpeg');
-    background-position: center;
+    background: rgb(0,0,0);
+    background: linear-gradient(0deg, rgba(0,0,0,1) 23%, rgba(20,20,40,1) 45%, rgba(31,53,97,1) 100%);
     float: left;
-    height: 100vh;
+    height: 112vh;
 }
 
 .LoginPageRight {
@@ -13,9 +11,8 @@
     padding: 20px;
     text-align: center;
     float: right;
-    box-shadow: 1px 1px 4px black;
     background-color: white;
-    height: 100vh;
+    height: 112vh;
 
 }
 

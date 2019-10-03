@@ -9,6 +9,7 @@ const auth = require('../middleware/authMiddleware');
 //@desc add a new job
 //@access private
 router.post('/post', (req, res) => {
+    //console.log(req);
     let job = new Job(req.body);
     job.save()
     .then(job => {

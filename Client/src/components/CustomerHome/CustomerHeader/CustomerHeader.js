@@ -102,7 +102,7 @@ class CustomerHeader extends Component  {
                         </ListItemIcon>
                         <ListItemText primary="Chat"/>
                     </ListItem>
-                    <ListItem button to="/customer/edit_profile" component={MyLink}>
+                    <ListItem button to="/customer/edit" component={MyLink}>
                         <ListItemIcon>
                             <CreateIcon/>
                         </ListItemIcon>

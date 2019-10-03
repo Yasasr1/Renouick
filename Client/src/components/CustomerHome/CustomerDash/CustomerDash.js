@@ -1,4 +1,6 @@
 import React,{ Component } from 'react';
+import { connect } from 'react-redux';
+
 import Grid from '@material-ui/core/Grid';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
@@ -10,7 +12,15 @@ import RatingInfo from './RatingInfo/RatingInfo';
 import profilePic from '../../../assests/testAvatar/avatar.jpg';
 import LatestJobInfo from './LatestJobInfo/LatestJobInfo';
 
+//importing action creators
+import * as actions from '../../../store/actions/user';
+
 class CustomerDash extends Component {
+
+    //dispatch the action to get and save customer data in redux storw
+    componentDidMount() {
+        this.props.getCustomerInfo(this.props.email,this.props.token);
+    }
 
     render() {
 
@@ -39,4 +49,18 @@ class CustomerDash extends Component {
     }
 }
 
-export default CustomerDash;
+const mapStateToProps = state => {
+    return {
+        email: state.email,
+        token: state.token
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        getCustomerInfo: (email, token) => dispatch(actions.getUser(email, token))
+    };
+}
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(CustomerDash);
