@@ -80,7 +80,7 @@ router.post('/updateCustomer', (req,res) => {
         else {
             customer.firstName = updatedCustomer.firstName;
             customer.lastName = updatedCustomer.lastName;
-            customer.birthday = updatedCustomer.birthday;
+            customer.birthday = new Date(updatedCustomer.birthday);
             customer.address = updatedCustomer.address;
             customer.email = updatedCustomer.email;
             customer.username = updatedCustomer.username;

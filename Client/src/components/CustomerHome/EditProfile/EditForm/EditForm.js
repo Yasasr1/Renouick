@@ -63,19 +63,6 @@ class EditForm extends Component {
         })
     }
 
-    handleDateInput = (date) => {
-
-        this.setState({
-            ...this.state,
-            customer: {
-                ...this.state.customer,
-               birthday: new Date(date)
-               
-            }
-        })
-    }
-
-
     //changing password
     handlePwSubmit = () => {
         if(this.state.customer.password === this.state.customer.confirmPw) {
@@ -115,6 +102,7 @@ class EditForm extends Component {
             twitter: this.state.customer.twitter,
            
         };
+        console.log(updatedCustomer);
         axios.post('http://localhost:4000/customer/updateCustomer', updatedCustomer)
         .then(res => {
             alert(res.data);
@@ -165,21 +153,17 @@ class EditForm extends Component {
                         />
                     </Grid>
                     <Grid item md={12}>
-                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                        <KeyboardDatePicker
-                        disableToolbar
-                        variant="inline"
-                        format="MM/dd/yyyy"
-                        margin="normal"
-                        id="date-picker-inline"
-                        label="Date picker inline"
-                        onChange={this.handleDateInput}
-                        fullWidth
-                        KeyboardButtonProps={{
-                            'aria-label': 'change date',
-                        }}
-                        />
-                    </MuiPickersUtilsProvider>
+                    <TextField
+                    id="birthday"
+                    label="Birthday"
+                    type="date"
+                    defaultValue="2017-05-24"
+                    style={{ margin: 12, width: '95%' }}
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                    onChange={this.handleInput}
+                    />
 
                         <TextField
                         id="address"
