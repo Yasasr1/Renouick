@@ -1,0 +1,7 @@
+
+{
+    "mongoURI": "mongodb://127.0.0.1:27017/renouick",
+    "jwtSecret": "renouick_app_jwtSecret",
+    
+    "_comment" : "storing this info in a json rather than just a js file for better security. with the help of a package called config"
+}

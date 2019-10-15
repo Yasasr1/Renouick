@@ -1,0 +1,32 @@
+.LoginPageLeft {
+    width: 60%;
+    background: rgb(0,0,0);
+    background: linear-gradient(0deg, rgba(0,0,0,1) 23%, rgba(20,20,40,1) 45%, rgba(31,53,97,1) 100%);
+    float: left;
+    height: 112vh;
+}
+
+.LoginPageRight {
+    width: 40%;
+    padding: 20px;
+    text-align: center;
+    float: right;
+    background-color: white;
+    height: 112vh;
+
+}
+
+.LoginPageForm {
+    width: 100%;
+    padding: 20px;
+}
+
+@media(max-width: 600px) {
+    .LoginPageRight {
+        width: 100%;
+    }
+
+    .LoginPageLeft {
+        width: 0%;
+    }
+}

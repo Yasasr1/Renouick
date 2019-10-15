@@ -1,0 +1,29 @@
+.FAQInnerDiv {
+
+    width: 90%;
+    margin: 80px auto;
+    box-shadow: 1px 1px 8px rgb(151, 122, 122);
+    text-align: center;
+    padding: 100px;
+    background-color: white;
+
+}
+
+.FAQOuterDiv {
+    background-image: url('../../assests/backgrounds/backgroundHome.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: auto;
+    
+}
+
+@media (max-width: 600px) {
+    .FAQInnerDiv {
+        width: 100%;
+        margin: auto;
+        
+    }
+}
+
+
+
