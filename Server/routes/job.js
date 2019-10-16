@@ -36,5 +36,19 @@ router.get('/getAll', auth, (req, res) => {
     
 })
 
+//@route GET /job/getLatest
+//@desc get the latest job posted by a specified user
+//@access private
+router.get('/getLatest', auth, (req, res) => {
+    const email = req.query.email
+    Job.find({poster: email }, (err, job) => {
+        if(err)
+            console.log(err);
+        else    
+            res.json(job);    
+    }).limit(1).sort({$natural:-1})
+    
+})
+
 
 module.exports = router;

@@ -4,6 +4,7 @@ import './App.css';
 import Layout from './components/Layout/Layout';
 import CustomerHome from './components/CustomerHome/CustomerHome';
 import AdminHome from './components/AdminHome/AdminHome';
+import WorkerHome from './components/WorkerHome/WorkerHome';
 
 import { connect } from 'react-redux';
 import * as actions from './store/actions/auth';
@@ -21,7 +22,7 @@ class App extends Component {
       let routes = (
         <Switch>
           <Route path="/customer" render={() => <h1>not found</h1>}/>
-          <Route path="/worker" render={() => <h1>not found</h1>}/>
+          <Route path="/worker" component={WorkerHome}/>
           <Route path="/admin" component={AdminHome}/>
           <Route path="/" component={Layout}/>
         </Switch>
