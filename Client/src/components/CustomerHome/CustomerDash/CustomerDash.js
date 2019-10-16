@@ -2,16 +2,14 @@ import React,{ Component } from 'react';
 import { connect } from 'react-redux';
 
 import Grid from '@material-ui/core/Grid';
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
-
+//import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import ProfileImg from './ProfileImg/ProfileImg';
-import Profileinfo from './ProfileInfo/ProfileInfo';
+import Profileinfo from './ProfileInfo/ProfileInfo'; 
 import EditInfo from './EditInfo/EditInfo';
 import RatingInfo from './RatingInfo/RatingInfo';
 //placeholder profile pic
 import profilePic from '../../../assests/testAvatar/avatar.jpg';
 import LatestJobInfo from './LatestJobInfo/LatestJobInfo';
-
 //importing action creators
 import * as actions from '../../../store/actions/user';
 
@@ -34,10 +32,7 @@ class CustomerDash extends Component {
                     </Grid>                    
                     <Grid item sm={2}><EditInfo/></Grid>
                 </Grid>
-                <Grid container style={{padding: '30px'}}>
-                <ArrowForwardIosIcon color="primary"/>
-                <h5 style={{marginLeft: '30px'}}>Latest Job</h5>
-                </Grid>
+                
                 
                 
                 
