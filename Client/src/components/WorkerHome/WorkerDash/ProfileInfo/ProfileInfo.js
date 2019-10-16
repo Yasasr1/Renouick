@@ -6,21 +6,22 @@ import Divider from '@material-ui/core/Divider';
 import AlternateEmailIcon from '@material-ui/icons/AlternateEmail';
 import CakeIcon from '@material-ui/icons/Cake';
 import HomeIcon from '@material-ui/icons/Home';
+import FormatPaintIcon from '@material-ui/icons/FormatPaint';
 
 
 
 const ProfileInfo = (props) => {
     //get a date string from date object 
-    let date = '';
+    /*let date = '';
     if(props.birthday) {
         date = new Date(props.birthday).toLocaleDateString();
-    }
+    }*/
     
     return(
         <Paper style={{padding: '15px'}}>
             <Grid container spacing={1}>
                 <Grid item md={12}>
-                    <Typography variant="h5" gutterBottom>{props.fName} {props.lName}</Typography>
+                    <Typography variant="h5" gutterBottom>Yasas Ramanayaka</Typography>
                     <Divider/>
                 </Grid>
             </Grid>
@@ -31,7 +32,7 @@ const ProfileInfo = (props) => {
                     <Typography variant="caption">Birthday</Typography>
                 </Grid>
                 <Grid item md={10}>
-                    <Typography variant="caption">:{props.birthday ? date : ''}</Typography>
+                    <Typography variant="caption">:15/05/1996</Typography>
                 </Grid>
 
                 <Grid item md={2}>
@@ -39,23 +40,17 @@ const ProfileInfo = (props) => {
                     <Typography variant="caption">Address</Typography>
                 </Grid>
                 <Grid item md={10}>
-                    <Typography variant="caption">:{props.address}</Typography>
+                    <Typography variant="caption">:17/4 A, Amunupitiya road, Welisara</Typography>
                 </Grid>
 
-                <Grid item md={12}>
-                    <Divider/>
-                </Grid>
-                
                 <Grid item md={2}>
-                    <AlternateEmailIcon fontSize="small" color="primary" style={{padding:"3px"}}/>
-                    <Typography variant="caption">Email</Typography>
+                    <FormatPaintIcon fontSize="small" color="primary" style={{padding:"3px"}}/>
+                    <Typography variant="caption">Profession</Typography>
                 </Grid>
                 <Grid item md={10}>
-                    <Typography variant="caption">:{props.email}</Typography>
+                    <Typography variant="caption">:A/C Reapair</Typography>
                 </Grid>
-
-                
-                
+                    
             </Grid>
             
 
@@ -64,8 +59,3 @@ const ProfileInfo = (props) => {
 };
 
 export default ProfileInfo;
-
-/*<Typography variant="overline" gutterBottom>yasasramanayaka@gmail.com</Typography>
-            <Typography variant="body2" gutterBottom>1996-05-15</Typography>
-            <Typography variant="subtitle2" gutterBottom>Male</Typography>
-            <Typography variant="subtitle1" gutterBottom>17/4A Amunupitiya road, Welisara</Typography>*/

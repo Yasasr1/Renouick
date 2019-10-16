@@ -18,7 +18,6 @@ import ChatIcon from '@material-ui/icons/Chat';
 import WorkIcon from '@material-ui/icons/Work';
 import Badge from '@material-ui/core/Badge';
 import MailIcon from '@material-ui/icons/Mail';
-import Avatar from '@material-ui/core/Avatar';
 //placeholder avatar
 import testAvatar from '../../../assests/testAvatar/avatar.jpg';
 import { Menu, MenuItem, ListItem, Divider } from '@material-ui/core';
