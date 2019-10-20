@@ -2,19 +2,16 @@ import React,{ Component } from 'react';
 import { connect } from 'react-redux';
 
 import Grid from '@material-ui/core/Grid';
-//import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import ProfileImg from './ProfileImg/ProfileImg';
 import Profileinfo from './ProfileInfo/ProfileInfo'; 
 import EditInfo from './EditInfo/EditInfo';
 import RatingInfo from './RatingInfo/RatingInfo';
 import LatestJobInfo from './LatestJobInfo/LatestJobInfo';
-<<<<<<< HEAD
-=======
 import { IconButton, Divider } from '@material-ui/core';
 
 import Icon from '@mdi/react'
 import { mdiFacebookBox, mdiTwitter } from '@mdi/js';
->>>>>>> 0d66fff50000383a028e7967f9831cf178da32d1
 //importing action creators
 import * as actions from '../../../store/actions/user';
 
@@ -109,15 +106,11 @@ class CustomerDash extends Component {
                         <EditInfo/>
                     </Grid>
                 </Grid>
-<<<<<<< HEAD
-                
-=======
 
                 <Grid container style={{padding: '30px'}}>
                     <ArrowForwardIosIcon color="primary"/>
                     <h5 style={{marginLeft: '30px'}}>Latest Job</h5>
                 </Grid>
->>>>>>> 0d66fff50000383a028e7967f9831cf178da32d1
                 
                 <Grid container justify="center" style={{padding: '30px', flexGrow: '1'}}>    
                     <Grid item md={12}>
