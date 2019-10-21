@@ -1,0 +1,28 @@
+.AdminRegistrationInnerDiv {
+    width: 40%;
+    margin: 40px auto;
+    box-shadow: 1px 1px 8px rgb(151, 122, 122);
+    text-align: center;
+    padding: 40px;
+    background-color: white;
+
+}
+
+.AdminRegistrationOuterDiv {
+    background-image: url('../../../assests/backgrounds/backgroundHome.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: auto;
+    
+}
+
+@media (max-width: 800px) {
+    .AdminRegistrationInnerDiv {
+        width: 100%;
+        margin: auto;
+        
+    }
+}
+
+
+

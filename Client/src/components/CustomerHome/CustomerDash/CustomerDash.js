@@ -3,9 +3,8 @@ import { connect } from 'react-redux';
 
 import Grid from '@material-ui/core/Grid';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
-
 import ProfileImg from './ProfileImg/ProfileImg';
-import Profileinfo from './ProfileInfo/ProfileInfo';
+import Profileinfo from './ProfileInfo/ProfileInfo'; 
 import EditInfo from './EditInfo/EditInfo';
 import RatingInfo from './RatingInfo/RatingInfo';
 import LatestJobInfo from './LatestJobInfo/LatestJobInfo';

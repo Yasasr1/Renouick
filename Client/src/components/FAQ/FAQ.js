@@ -60,7 +60,7 @@ const ExpansionPanelDetails = withStyles(theme => ({
     return (
       <div className="FAQOuterDiv">
         <div className="FAQInnerDiv">
-          <Typography className="text-uppercase text-center" style={{ fontFamily:"Calibri " , fontSize:75 , fontStyle:"Italic" , color:"orange"}}>Frequently Ask Quections</Typography>
+          <Typography className="text-uppercase text-center" style={{ fontFamily:"Calibri " , fontSize:75 , fontStyle:"Italic" , color:"orange"}}>Frequently Ask Quections<br/></Typography>
             <form>
             <ExpansionPanel square expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
               <ExpansionPanelSummary aria-controls="panel1d-content" id="panel1d-header">
