@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
-import * as actions from '../../../store/actions/auth';
-import { connect } from 'react-redux';
+import React from 'react';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -14,67 +13,209 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import DashboardIcon  from '@material-ui/icons/Dashboard';
 import CreateIcon from '@material-ui/icons/Create';
-import FindInPageIcon from '@material-ui/icons/FindInPage';
-import PersonAddIcon from '@material-ui/icons/PersonAdd';
+import HistoryIcon from '@material-ui/icons/History';
+import ChatIcon from '@material-ui/icons/Chat';
+import WorkIcon from '@material-ui/icons/Work';
 import Badge from '@material-ui/core/Badge';
 import MailIcon from '@material-ui/icons/Mail';
-import Avatar from '@material-ui/core/Avatar';
-import { NavLink } from 'react-router-dom';
 //placeholder avatar
 import testAvatar from '../../../assests/testAvatar/avatar.jpg';
-import './AdminHeader.css';
-import { ListItem, Divider, Menu, MenuItem } from '@material-ui/core';
+import { Menu, MenuItem, ListItem, Divider } from '@material-ui/core';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+//utility for constructing className strings conditionally
+import clsx from 'clsx';
+import { NavLink } from 'react-router-dom';
 
 //routing to material ui buttons
 const MyLink = React.forwardRef((props, ref) => <NavLink exact activeStyle={{color: 'blue', backgroundColor: '#CDC9C9'}} innerRef={ref} {...props} />);
 
 
 
+const drawerWidth = 240;
 
-
-class AdminHeader extends Component  {
-    state = {
-        drawerOpen: false,
-        menuAnchor: null
-    }
+const useStyles = makeStyles(theme => ({
+  root: {
+    display: 'flex',
+  },
+  appBar: {
+    zIndex: theme.zIndex.drawer + 1,
+    transition: theme.transitions.create(['width', 'margin'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+  },
+  appBarShift: {
+    marginLeft: drawerWidth,
+    width: `calc(100% - ${drawerWidth}px)`,
+    transition: theme.transitions.create(['width', 'margin'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
+  menuButton: {
+    marginRight: 36,
+  },
+  hide: {
+    display: 'none',
+  },
+  drawer: {
+    width: drawerWidth,
+    flexShrink: 0,
+    whiteSpace: 'nowrap',
     
-    //toggle the open/close state of the side drawer
-    toggleDrawer = (open) => {
+  },
+  drawerOpen: {
+    width: drawerWidth,
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+    textAlign: 'center',
+    backgroundColor: '#E5E8F3'
+  },
+  drawerClose: {
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    overflowX: 'hidden',
+    width: theme.spacing(7) + 1,
+    [theme.breakpoints.up('sm')]: {
+      width: theme.spacing(9) + 1,
+    },
+    backgroundColor: '#BFC2CB'
+  },
+  toolbar: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    padding: theme.spacing(0, 1),
+    ...theme.mixins.toolbar,
+  },
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing(3),
+  },
+}));
 
-        this.setState({drawerOpen: open});
+
+const AdminHeader = (props) =>  {
+    const classes = useStyles();
+    const theme = useTheme();
+
+    const [open, setOpen] = React.useState(false);
+
+    const handleDrawerOpen = () => {
+        setOpen(true);
+    };
+
+    const handleDrawerClose = () => {
+        setOpen(false);
+    };
+
+
+    const [menuAnchor, setMenuAnchor] = React.useState(null);
+
+    //open logout menu
+    const handleOpenMenu = (event) => {
+        setMenuAnchor(event.currentTarget);
     }
 
-    handleOpenMenu = (event) => {
-        this.setState({menuAnchor: event.currentTarget});
+    //close logout menu
+    const handleMenuClose = () => {
+        setMenuAnchor(null);
     }
 
-    handleMenuClose = () => {
-        this.setState({menuAnchor: null});
+    let avatar = null;
+    if(open) {
+        avatar = <div>
+                    <img alt="Yasas Ramanayaka" 
+                    src={testAvatar} 
+                    style={{height: '90px', width: '90px', alignSelf: 'center', borderRadius: '50%'}}
+                    />
+                    <br/>
+                    <Typography variant="caption">Logged in as</Typography>
+                    <h6>Yasas</h6>
+                    <Divider/>
+                </div>
+
     }
 
-    handleLogout = () => {
-        this.props.onLogout();
-        this.props.history.replace('/');
-        
-    }
 
-
-
-    render() {
-        //holds the item list that goes in the side drawer
-        const itemList =  
-            <div
-            className="AdminHeaderList"
-            role="presentation"
-            onClick={()=> this.toggleDrawer(false)}
+    return (
+        <div className={classes.root}>
+            <AppBar
+            position="fixed"
+            className={clsx(classes.appBar, {
+                [classes.appBarShift]: open,
+            })}
             >
-                <Avatar alt="Yasas Ramanayaka" 
-                src={testAvatar} 
-                style={{height: '90px', width: '90px', alignSelf: 'center', margin: '20px'}}
-                />
-                <Typography variant="caption">Logged in as</Typography>
-                <h6>Yasas</h6>
-                <Divider/>
+                <Toolbar>
+                    <IconButton
+                    color="inherit"
+                    aria-label="open drawer"
+                    onClick={handleDrawerOpen}
+                    edge="start"
+                    className={clsx(classes.menuButton, {
+                    [classes.hide]: open,
+                    })}
+                    >
+                        <MenuIcon/>
+                    </IconButton>
+                    <Grid justify="flex-end" container spacing={2} >
+                        <Grid item>
+                            <IconButton style={{outline: 'none'}}>
+                                <Badge badgeContent={5} color="secondary">
+                                    <MailIcon style={{color: 'white'}}/>
+                                </Badge>
+                            </IconButton>
+                        </Grid>
+                        <Grid item>
+                            <h6 style={{marginTop: "10px"}}>Username</h6>
+                        </Grid>
+                        <Grid item>
+                            <IconButton 
+                            color="inherit"
+                            aria-controls="logout-menu"
+                            aria-haspopup="true"
+                            style={{outline: 'none'}}
+                            onClick={handleOpenMenu} 
+                            >
+                                <AccountCircle/>
+                            </IconButton>
+                            <Menu
+                            id="logout-menu"
+                            anchorEl={menuAnchor}
+                            keepMounted
+                            open={Boolean(menuAnchor)}
+                            onClose={handleMenuClose}>
+                                <MenuItem>Logout</MenuItem>
+                            </Menu>
+                        </Grid> 
+                    </Grid>
+                </Toolbar>
+            </AppBar>
+            <Drawer
+            variant="permanent"
+            className={clsx(classes.drawer, {
+            [classes.drawerOpen]: open,
+            [classes.drawerClose]: !open,
+            })}
+            classes={{
+            paper: clsx({
+                [classes.drawerOpen]: open,
+                [classes.drawerClose]: !open,
+            }),
+            }}
+            open={open}
+            >
+                <div className={classes.toolbar}>
+                    <IconButton onClick={handleDrawerClose}>
+                        {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+                    </IconButton>
+                </div>
+                {avatar}
                 <List>
                     <ListItem button to="/admin" component={MyLink}>
                         <ListItemIcon>
@@ -82,91 +223,43 @@ class AdminHeader extends Component  {
                         </ListItemIcon>
                         <ListItemText primary="Dashboard"/>
                     </ListItem>
-                    <ListItem button to="/admin/admin_registration" component={MyLink}>
+                    <ListItem button to="/admin/admin_registration" component={MyLink} >
                         <ListItemIcon>
-                            <PersonAddIcon/>
+                            <WorkIcon/>
                         </ListItemIcon>
                         <ListItemText primary="Admin Registration"/>
                     </ListItem>
-                    <ListItem button to="/admin/edit_admin_profile" component={MyLink}>
+                    <ListItem button to="/admin/edit_admin_profile" component={MyLink} >
                         <ListItemIcon>
-                            <CreateIcon/>
+                            <HistoryIcon/>
                         </ListItemIcon>
-                        <ListItemText primary="Edit Admin Profile"/>
+                        <ListItemText primary="Ëdit Admin Profile"/>
                     </ListItem>
-                    <ListItem button to="/admin/edit_customer_profile" component={MyLink}>
+                    <ListItem button to="/admin/edit_customer_profile" component={MyLink} >
                         <ListItemIcon>
-                            <CreateIcon/>   
+                            <ChatIcon/>
                         </ListItemIcon>
                         <ListItemText primary="Edit Customer Profile"/>
                     </ListItem>
-                    <ListItem button to="/admin/edit_worker_profile" component={MyLink}>
+                    <ListItem button to="/admin/edit_worker_profile" component={MyLink} >
                         <ListItemIcon>
                             <CreateIcon/>
                         </ListItemIcon>
-                        <ListItemText primary="Edit Worker Profile"/>
+                        <ListItemText primary="Edit Workers Profile"/>
                     </ListItem>
                     <ListItem button to="/admin/provide_support_page" component={MyLink}>
                         <ListItemIcon>
-                            <FindInPageIcon/>
+                            <CreateIcon/>
                         </ListItemIcon>
                         <ListItemText primary="Provide Support Page"/>
                     </ListItem>
                 </List>
-            </div>
+            </Drawer>
+        </div>
+    );
     
-        return (
-            <div>
-                <AppBar position="static">
-                    <Toolbar>
-                        <IconButton onClick={()=> this.toggleDrawer(true)} edge="start" color="inherit" style={{outline: 'none'}}>
-                            <MenuIcon/>
-                        </IconButton>
-                        <Grid justify="flex-end" container spacing={2} >
-                            <Grid item>
-                                <IconButton style={{outline: 'none'}}>
-                                    <Badge badgeContent={5} color="secondary">
-                                        <MailIcon style={{color: 'white'}}/>
-                                    </Badge>
-                                </IconButton>
-                            </Grid>
-                            <Grid item>
-                                <h6 style={{marginTop: "10px"}}>Username</h6>
-                            </Grid>
-                            <Grid item>
-                                <IconButton 
-                                color="inherit"
-                                aria-controls="logout-menu"
-                                aria-haspopup="true"
-                                style={{outline: 'none'}}
-                                onClick={this.handleOpenMenu} 
-                                >
-                                   <AccountCircle/>
-                                </IconButton>
-                                <Menu
-                                id="logout-menu"
-                                anchorEl={this.state.menuAnchor}
-                                keepMounted
-                                open={Boolean(this.state.menuAnchor)}
-                                onClose={this.handleMenuClose}>
-                                    <MenuItem onClick={this.handleLogout}>Logout</MenuItem>
-                                </Menu>
-                            </Grid> 
-                        </Grid>
-                    </Toolbar>
-                </AppBar>
-                <Drawer open={this.state.drawerOpen} onClose={()=> this.toggleDrawer(false)}>
-                    {itemList}
-                </Drawer>
-            </div>
-        );
-    }
 };
 
-const matchDispatchToProps = dispatch => {
-    return {
-        onLogout: () => dispatch(actions.authLogout())
-    }
-}
 
-export default connect(null,matchDispatchToProps)(AdminHeader);
+
+export default AdminHeader;
