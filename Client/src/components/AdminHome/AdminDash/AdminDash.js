@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import Grid from '@material-ui/core/Grid';
 //import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
-import ProfileImg from './ProfileImg/ProfileImg';
+import ProfileImg from '../../CustomerHome/CustomerDash/ProfileImg/ProfileImg';
 import Profileinfo from './ProfileInfo/ProfileInfo';
 import EditInfo from './EditInfo/AdminEditInfo';
 import profilePic from '../../../assests/testAvatar/avatar.jpg';
