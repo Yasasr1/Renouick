@@ -8,7 +8,7 @@ import Grid from '@material-ui/core/Grid';
 import { Paper } from '@material-ui/core';
 import './OurTeam.css'; 
 import backImage from '../../assests/backgrounds/backgroundHome.jpg';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import ShareIcon from '@material-ui/icons/Share';
@@ -28,7 +28,7 @@ const style = {
   }
 
 // routing for material ui button component
-const MyLink = React.forwardRef((props, ref) => <Link innerRef={ref} {...props} />);
+//const MyLink = React.forwardRef((props, ref) => <Link innerRef={ref} {...props} />);
 //const { style, href, hrefAs, children, prefetch } = this.props
 
 class OurTeam extends Component {
