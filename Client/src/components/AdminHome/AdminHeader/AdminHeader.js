@@ -113,7 +113,14 @@ const AdminHeader = (props) =>  {
     const handleDrawerClose = () => {
         setOpen(false);
     };
+/*
+    const handleLogout = () => {
+        this.props.onLogout();
+        this.props.history.replace('/');
+        
+    };*/
 
+    
 
     const [menuAnchor, setMenuAnchor] = React.useState(null);
 
@@ -126,6 +133,9 @@ const AdminHeader = (props) =>  {
     const handleMenuClose = () => {
         setMenuAnchor(null);
     }
+
+   
+
 
     let avatar = null;
     if(open) {
@@ -190,7 +200,7 @@ const AdminHeader = (props) =>  {
                             keepMounted
                             open={Boolean(menuAnchor)}
                             onClose={handleMenuClose}>
-                                <MenuItem>Logout</MenuItem>
+                                <MenuItem >Logout</MenuItem>
                             </Menu>
                         </Grid> 
                     </Grid>
@@ -231,13 +241,13 @@ const AdminHeader = (props) =>  {
                     </ListItem>
                     <ListItem button to="/admin/edit_admin_profile" component={MyLink} >
                         <ListItemIcon>
-                            <HistoryIcon/>
+                            <CreateIcon/>
                         </ListItemIcon>
                         <ListItemText primary="Ëdit Admin Profile"/>
                     </ListItem>
                     <ListItem button to="/admin/edit_customer_profile" component={MyLink} >
                         <ListItemIcon>
-                            <ChatIcon/>
+                            <CreateIcon/>
                         </ListItemIcon>
                         <ListItemText primary="Edit Customer Profile"/>
                     </ListItem>
@@ -249,7 +259,7 @@ const AdminHeader = (props) =>  {
                     </ListItem>
                     <ListItem button to="/admin/provide_support_page" component={MyLink}>
                         <ListItemIcon>
-                            <CreateIcon/>
+                            <HistoryIcon/>
                         </ListItemIcon>
                         <ListItemText primary="Provide Support Page"/>
                     </ListItem>
