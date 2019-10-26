@@ -9,8 +9,7 @@ import EditInfo from './EditInfo/EditInfo';
 import RatingInfo from './RatingInfo/RatingInfo';
 import LatestJobInfo from './LatestJobInfo/LatestJobInfo';
 import { IconButton, Divider } from '@material-ui/core';
-
-import Icon from '@mdi/react'
+import Icon from '@mdi/react';
 import { mdiFacebookBox, mdiTwitter } from '@mdi/js';
 //importing action creators
 import * as actions from '../../../store/actions/user';

@@ -1,0 +1,11 @@
+.ProfileImg {
+    width: 100%;
+    height: inherit;
+    border-radius: 6px;
+}
+
+.bigAvatar{
+    margin: 100;
+    width: 100;
+    height: 100;
+  }
