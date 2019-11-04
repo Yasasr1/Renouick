@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Paper from '@material-ui/core/Paper';
-import { AreaChart, Area, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer, ReferenceLine} from 'recharts';
+import { AreaChart, Area, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer} from 'recharts';
 import { Card, Select, MenuItem, FormControl, InputLabel } from '@material-ui/core';
 
 class EarningsChart extends Component {
@@ -58,6 +58,7 @@ class EarningsChart extends Component {
                 <FormControl style={{margin: '6px', Width: '100px'}}>
                     <InputLabel>Year</InputLabel>
                         <Select
+                        value={2019}
                         inputProps={{
                             name: 'age',
                             id: 'age-simple',

@@ -26,6 +26,10 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 //utility for constructing className strings conditionally
 import clsx from 'clsx';
 
+import { NavLink } from 'react-router-dom';
+
+//routing to material ui buttons
+const MyLink = React.forwardRef((props, ref) => <NavLink exact activeStyle={{color: 'blue', backgroundColor: '#CDC9C9'}} innerRef={ref} {...props} />);
 
 
 const drawerWidth = 240;
@@ -40,6 +44,7 @@ const useStyles = makeStyles(theme => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
+    
   },
   appBarShift: {
     marginLeft: drawerWidth,
@@ -212,13 +217,13 @@ const WorkerHeader = (props) =>  {
                 </div>
                 {avatar}
                 <List>
-                    <ListItem button >
+                    <ListItem button to="/worker" component={MyLink} >
                         <ListItemIcon>
                             <DashboardIcon/>
                         </ListItemIcon>
                         <ListItemText primary="Dashboard"/>
                     </ListItem>
-                    <ListItem button >
+                    <ListItem button to="/worker/jobs" component={MyLink} >
                         <ListItemIcon>
                             <WorkIcon/>
                         </ListItemIcon>

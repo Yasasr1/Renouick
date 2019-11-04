@@ -50,5 +50,17 @@ router.get('/getLatest', auth, (req, res) => {
     
 })
 
+//@route GET /job/getEveryJob
+//@desc get all the jobs which has a pending state
+//@access private
+router.get('/getEveryJob', (req, res) => {
+    Job.find({status: 'pending'}, (err, jobs) => {
+        if(err)
+            console.log(err);
+        else
+            res.json(jobs);
+    })
+})
+
 
 module.exports = router;
