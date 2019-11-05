@@ -16,6 +16,9 @@ class BrowseJobs extends Component {
         axios.get('http://localhost:4000/job/getEveryJob', {
             headers: {
                 'x-auth-token': this.props.token
+            },
+            params: {
+                email: this.props.email
             }
         })
         .then(res => {

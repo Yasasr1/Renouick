@@ -22,7 +22,7 @@ class App extends Component {
       let routes = (
         <Switch>
           <Route path="/customer" render={() => <h1>not found</h1>}/>
-          <Route path="/worker" component={WorkerHome}/>
+          <Route path="/worker" render={() => <h1>not found</h1>}/>
           <Route path="/admin" component={AdminHome}/>
           <Route path="/" component={Layout}/>
         </Switch>
@@ -33,6 +33,19 @@ class App extends Component {
           <Switch>
           <Route path="/customer" component={CustomerHome}/>
           <Route path="/worker" render={() => <h1>not found</h1>}/>
+          <Route path="/admin" render={() => <h1>not found</h1>}/>
+          <Route path="/" component={Layout}/> 
+        </Switch>
+        );
+      }
+
+      //logged in as worker
+      if(this.props.isAuthenticated && this.props.userType === "worker") {
+        routes = (
+          <Switch>
+          <Route path="/customer" render={() => <h1>not found</h1>} />
+          <Route path="/worker" component={WorkerHome}/>
+          <Route path="/admin" render={() => <h1>not found</h1>}/>
           <Route path="/" component={Layout}/> 
         </Switch>
         );
