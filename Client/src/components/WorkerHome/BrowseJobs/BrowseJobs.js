@@ -45,6 +45,7 @@ class BrowseJobs extends Component {
                         poster={job.poster}
                         desc={job.description}
                         cat={job.category}
+                        date={job.postDate}
                         />
             })
         }
@@ -127,6 +128,7 @@ class BrowseJobs extends Component {
 const mapStateToProps = state => {
     return {
         token: state.token,
+        email: state.email
     }
 }
 
