@@ -13,6 +13,8 @@ import img4 from '../../../../assests/testImages/images3.jpeg';
 const Job = (props) => {
     const category = props.cat;
     const date = new Date(props.date).toLocaleString();
+    
+    
     return (
         <Paper style={{padding: '30px', margin: '20px'}}>
             <Grid container spacing={1}>
