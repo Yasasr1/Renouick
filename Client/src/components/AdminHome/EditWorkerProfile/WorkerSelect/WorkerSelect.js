@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const CustomerSelect = (props) => {
+const WorkerSelect = (props) => {
   const classes = useStyles();
   const [values, setValues] = React.useState({
     age: '',
@@ -47,7 +47,7 @@ const CustomerSelect = (props) => {
 
 <form className={classes.root} autoComplete="off">
 <FormControl className={classes.formControl}>
-<InputLabel htmlFor="age-helper">Customer</InputLabel>
+<InputLabel htmlFor="age-helper">Worker</InputLabel>
 <Select
   value={values.age}
   onChange={handleChange}
@@ -64,10 +64,10 @@ const CustomerSelect = (props) => {
   <MenuItem value={30}>Thisara Gimhani</MenuItem>
   <MenuItem value={30}>Gayara Jayasinghe</MenuItem>
 </Select>
-<FormHelperText>Enter Customer Username</FormHelperText>
+<FormHelperText>Enter Worker Username</FormHelperText>
 </FormControl>
 </form>
   );
 }
 
-export default CustomerSelect;
+export default WorkerSelect;
