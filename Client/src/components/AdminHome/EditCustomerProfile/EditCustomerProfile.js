@@ -3,13 +3,20 @@ import { connect } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
 //import ProfileImg from './ProfileImg/ProfileImg';
 import Profileinfo from './ProfileInfo/ProfileInfo'; 
-//importing action creators
+
+import { IconButton, Divider } from '@material-ui/core';
+import Icon from '@mdi/react';
+import { mdiFacebookBox, mdiTwitter } from '@mdi/js';
+import ReportIcon from '@material-ui/icons/Report';
+
 import * as actions from '../../../store/actions/user';
 import axios from 'axios';
 import CustomerSelect from './CustomerSelect/CustomerSelect';
 import RatingInfo from './RatingInfo/RatingInfo';
-
-
+import ReportsReview from './ReportsReview/ReportsReview';
+import BottomNavigation from '@material-ui/core/BottomNavigation';
+import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
+//import { Link } from 'react-router-dom';
 class EditCustomerProfile extends Component {
     state = {
         latestJob : null
@@ -36,6 +43,7 @@ class EditCustomerProfile extends Component {
 
     }
 
+
     openSocialMedia = (type) => {
         if(type === 'facebook') {
             window.open(this.props.facebook)
@@ -53,8 +61,13 @@ class EditCustomerProfile extends Component {
                 <Grid container spacing={3}  justify="space-around"  alignItems="flex-start" style={{padding: '100px', flexGrow: '1'}}>
                 
                     <Grid item sm={7} >
-                        <Grid item ><CustomerSelect/> </Grid> 
                     
+                        <Grid item >
+                            <CustomerSelect/>                             
+                  
+                        
+                            </Grid> 
+                        
                         <Grid item md={12} style={{padding: '10px'}}>
                             
                              <Profileinfo
@@ -66,12 +79,13 @@ class EditCustomerProfile extends Component {
                              lName={this.props.lName}
                              />
 </Grid>
-                        
-                            
-
-                        
+                              
                     </Grid>                    
-                    <Grid item xs={4}><RatingInfo/></Grid>
+                    
+                    <Grid item xs={8}>
+                    
+                         </Grid>
+                
                 </Grid>
 
                 

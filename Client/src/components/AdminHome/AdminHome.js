@@ -7,7 +7,7 @@ import EditAdminProfile from './EditAdminProfile/EditAdminProfile';
 import EditCustomerProfile from './EditCustomerProfile/EditCustomerProfile';
 import EditWorkerProfile from './EditWorkerProfile/EditWorkerProfile';
 import ProvideSupportPage from './ProvideSupportPage/ProvideSupportPage';
-//import MyJobs from './MyJobs/MyJobs';
+import ReportView from './ReportView/ReportView';
 
 const AdminHome = (props) => {
 
@@ -21,6 +21,7 @@ const AdminHome = (props) => {
                 <Route path={props.match.url + '/edit_customer_profile'} component={EditCustomerProfile} />
                 <Route path={props.match.url + '/edit_worker_profile'} component={EditWorkerProfile}/>
                 <Route path={props.match.url + '/provide_support_page'} component={ProvideSupportPage}/>
+                <Route path={props.match.url + '/report_view'} component={ReportView}/>
             </Switch>
         </React.Fragment>
     );

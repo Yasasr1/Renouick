@@ -1,6 +1,5 @@
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
-
 import Grid from '@material-ui/core/Grid';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import ProfileImg from './ProfileImg/ProfileImg';

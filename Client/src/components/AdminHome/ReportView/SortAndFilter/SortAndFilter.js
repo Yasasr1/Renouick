@@ -1,11 +1,10 @@
-import React from 'react';
+import React,{ Component } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-
 
 
 const useStyles = makeStyles(theme => ({
@@ -22,7 +21,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const CustomerSelect = (props) => {
+const SortAndFilter = (props) => {
   const classes = useStyles();
   const [values, setValues] = React.useState({
     age: '',
@@ -32,8 +31,8 @@ const CustomerSelect = (props) => {
   
 
   const inputLabel = React.useRef(null);
-  const [setLabelWidth] = React.useState(0);
-  React.useEffect(() => {
+  const [labelWidth, setLabelWidth] = React.useState(0);
+  React.useEffect(() => { 
     setLabelWidth(inputLabel);
   }, []);
 
@@ -47,7 +46,7 @@ const CustomerSelect = (props) => {
 
 <form className={classes.root} autoComplete="off">
 <FormControl className={classes.formControl}>
-<InputLabel htmlFor="age-helper">Customer</InputLabel>
+<InputLabel htmlFor="age-helper">Sort</InputLabel>
 <Select
   value={values.age}
   onChange={handleChange}
@@ -56,18 +55,29 @@ const CustomerSelect = (props) => {
     id: 'age-helper',
   }}
 >
-  <MenuItem value="">
-    <em>None</em>
-  </MenuItem>
-  <MenuItem value={10}>Pasan Mahesha Herath kmek ngvron ngern</MenuItem>
-  <MenuItem value={20}>Yasas Ramanayake</MenuItem>
-  <MenuItem value={30}>Thisara Gimhani</MenuItem>
-  <MenuItem value={30}>Gayara Jayasinghe</MenuItem>
-</Select>
-<FormHelperText>Enter Customer Username</FormHelperText>
-</FormControl>
+        <MenuItem value={10}>Date</MenuItem>
+        <MenuItem value={20}>A - Z</MenuItem>
+        <MenuItem value={30}>Z - A</MenuItem>
+        </Select>
+      </FormControl>
+
+      <FormControl className={classes.formControl}>
+<InputLabel htmlFor="age-helper">Filter</InputLabel> 
+<Select
+  value={values.age}
+  onChange={handleChange}
+  inputProps={{
+    name: 'age',
+    id: 'age-helper',
+  }}
+>
+        <MenuItem value={10}>All</MenuItem>
+        <MenuItem value={20}>Customers Only</MenuItem>
+        <MenuItem value={30}>Workers Only</MenuItem>
+        </Select>
+      </FormControl>
 </form>
   );
 }
 
-export default CustomerSelect;
+export default SortAndFilter;
