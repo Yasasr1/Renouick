@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Divider, Typography, Link, CircularProgress } from '@material-ui/core';
+import { Grid, Divider, Typography, Link, CircularProgress, Button } from '@material-ui/core';
 import ExploreIcon from '@material-ui/icons/Explore';
 import axios from 'axios';
 import { connect } from 'react-redux';
@@ -8,7 +8,7 @@ import Job from './Job/Job';
 
 class BrowseJobs extends Component {
     state = {
-        jobs: [],
+        jobs: null,
         loading: true,
     }
 
@@ -30,6 +30,43 @@ class BrowseJobs extends Component {
             console.log(err);
         })
     }
+
+    //sort the job list based on date, poster or title
+    sortJobs = (event) => {
+        let jobs = this.state.jobs;
+        const selector = event.target.value;
+
+        if(selector === "1") {
+            jobs.sort((a,b) => (a.postDate > b.postDate) ? -1 : 1);
+            this.setState({jobs: jobs});
+            
+        }
+        else if(event.target.value === "2") {
+            jobs.sort((a,b) => (a.poster > b.poster) ? -1 : 1);
+            this.setState({jobs: jobs});
+        }
+        else if(event.target.value === "3") {
+            jobs.sort((a,b) => (a.category > b.category) ? -1 : 1);
+            this.setState({jobs: jobs});
+        }
+        else if(event.target.value === "4") {
+            jobs.sort((a,b) => (a.title > b.title) ? 1 : -1);
+            this.setState({jobs: jobs});
+        }
+        
+        
+    }
+
+    filterJobs = (input) => {
+        if(input === "painting") {
+            const jobsCopy = this.state.jobs.map(job => {
+                if(job.category === "painting") {
+                    return job;
+                }
+            });
+            console.log(jobsCopy);
+        }
+    }
     
     render () {
         let jobs = null;
@@ -46,6 +83,7 @@ class BrowseJobs extends Component {
                         desc={job.description}
                         cat={job.category}
                         date={job.postDate}
+                        images={job.images}
                         />
             })
         }
@@ -58,10 +96,11 @@ class BrowseJobs extends Component {
                             <Typography variant="body1">Sort By</Typography>
                         </Grid>
                         <Grid item md={5}>
-                            <select className="form-control form-control-sm" id="exampleFormControlSelect1" style={{width: '100px'}}>
-                            <option>Date</option>
-                            <option>Poster</option>
-                            <option>Job Type</option>
+                            <select onChange={(event)=>this.sortJobs(event)} className="form-control form-control-sm" id="exampleFormControlSelect1" style={{width: '100px'}}>
+                            <option value={1}>Date</option>
+                            <option value={2}>Poster</option>
+                            <option value={3}>Job Type</option>
+                            <option value={4}>Job Title</option>
                             </select>
                         </Grid>
                     </Grid>
@@ -85,14 +124,14 @@ class BrowseJobs extends Component {
                         </Grid>
                     </Grid>
                     <br/>
-                    <Typography variant="overline" style={{fontSize: '1em'}}>
-                        <Link href="#">
-                            All Jobs
-                        </Link>
+                    
+                        <Button>
+                            All jobs
+                        </Button>
                         <br/>
-                        <Link href="#" >
+                        <Button onClick={() => this.filterJobs("painting")}>
                             Painting
-                        </Link>
+                        </Button>
                         <br/>
                         <Link href="#" >
                             Plumbing
@@ -117,7 +156,7 @@ class BrowseJobs extends Component {
                         <Link href="#">
                             Equipment Repair
                         </Link>
-                    </Typography>
+                    
                 </Grid>
             </Grid>
             

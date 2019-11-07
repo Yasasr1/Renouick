@@ -5,39 +5,39 @@ import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 
 
-import img1 from '../../../../assests/testImages/images.jpg';
-import img2 from '../../../../assests/testImages/images1.jpg';
-import img3 from '../../../../assests/testImages/images2.jpeg';
-import img4 from '../../../../assests/testImages/images3.jpeg';
-
 const Job = (props) => {
     const category = props.cat;
     const date = new Date(props.date).toLocaleString();
     
+    //if there are images map them to the variable localimages
+    //and save the first image of the array to firstImage variable
+    let localImages = null;
+    let firstImage = null;
+    if(props.images.length > 0) {
+        firstImage = props.images[0].url;
+        localImages = props.images.slice(1).map(photo => {
+            return <GridListTile key={photo.publicId} cols={1}>
+                    <img src={photo.url} alt="job"  border={5}/>
+                </GridListTile>
+        })
+    }
     
+    //if images are available display them and if not display no photos message
     return (
         <Paper style={{padding: '30px', margin: '20px'}}>
             <Grid container spacing={1}>
                 <Grid item md={3}>
-                    <GridList cellHeight={120} cols={1}>
-                        <GridListTile cols={1}>
-                            <img src={img1} alt="painting"  border={5}/>
-                        </GridListTile>
-                    </GridList>
-                    <GridList cellHeight={70} cols={4}>  
-                        <GridListTile cols={1}>
-                            <img src={img2} alt="painting"/>
-                        </GridListTile>
-                        <GridListTile cols={1}>
-                            <img src={img3} alt="painting"/>
-                        </GridListTile>
-                        <GridListTile cols={1}>
-                            <img src={img4} alt="painting"/>
-                        </GridListTile>
-                        <GridListTile cols={1}>
-                            <img src={img1} alt="painting"/>
-                        </GridListTile>
-                    </GridList>
+                    {localImages ? <div>
+                            <GridList cellHeight={120} cols={1}>
+                            <GridListTile cols={1}>
+                                <img src={firstImage} alt="painting"  border={5}/>
+                            </GridListTile>
+                            </GridList>
+                            <GridList cellHeight={70} cols={4}>  
+                                {localImages}
+                            </GridList>
+                        </div> 
+                    : <p>No photos</p>}
                 </Grid>
 
                 <Grid item md={9}>

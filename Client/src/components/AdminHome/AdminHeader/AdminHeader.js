@@ -14,7 +14,6 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import DashboardIcon  from '@material-ui/icons/Dashboard';
 import CreateIcon from '@material-ui/icons/Create';
 import HistoryIcon from '@material-ui/icons/History';
-import ChatIcon from '@material-ui/icons/Chat';
 import WorkIcon from '@material-ui/icons/Work';
 import Badge from '@material-ui/core/Badge';
 import MailIcon from '@material-ui/icons/Mail';

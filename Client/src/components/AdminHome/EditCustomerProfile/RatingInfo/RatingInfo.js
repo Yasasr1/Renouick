@@ -44,9 +44,9 @@ function valuetext(value) {
   return `${value}`;
 }
 
-function valueLabelFormat(value) {
+/*function valueLabelFormat(value) {
   return marks.findIndex(mark => mark.value === value) + 1;
-}
+}*/
 
 const RatingInfo = (value) => {
   const classes = useStyles();
