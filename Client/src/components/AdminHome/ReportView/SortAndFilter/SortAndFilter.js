@@ -7,7 +7,6 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
 
-
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
@@ -22,7 +21,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const WorkerSelect = (props) => {
+const SortAndFilter = (props) => {
   const classes = useStyles();
   const [values, setValues] = React.useState({
     age: '',
@@ -33,7 +32,7 @@ const WorkerSelect = (props) => {
 
   const inputLabel = React.useRef(null);
   const [labelWidth, setLabelWidth] = React.useState(0);
-  React.useEffect(() => {
+  React.useEffect(() => { 
     setLabelWidth(inputLabel);
   }, []);
 
@@ -47,7 +46,7 @@ const WorkerSelect = (props) => {
 
 <form className={classes.root} autoComplete="off">
 <FormControl className={classes.formControl}>
-<InputLabel htmlFor="age-helper">Worker</InputLabel>
+<InputLabel htmlFor="age-helper">Sort</InputLabel>
 <Select
   value={values.age}
   onChange={handleChange}
@@ -56,18 +55,29 @@ const WorkerSelect = (props) => {
     id: 'age-helper',
   }}
 >
-  <MenuItem value="">
-    <em>None</em>
-  </MenuItem>
-  <MenuItem>Pasan Mahesha Herath kmek ngvron ngern</MenuItem>
-  <MenuItem value={20}>Yasas Ramanayake</MenuItem>
-  <MenuItem value={30}>Thisara Gimhani</MenuItem>
-  <MenuItem value={30}>Gayara Jayasinghe</MenuItem>
-</Select>
-<FormHelperText>Enter Worker Username</FormHelperText>
-</FormControl>
+        <MenuItem value={10}>Date</MenuItem>
+        <MenuItem value={20}>A - Z</MenuItem>
+        <MenuItem value={30}>Z - A</MenuItem>
+        </Select>
+      </FormControl>
+
+      <FormControl className={classes.formControl}>
+<InputLabel htmlFor="age-helper">Filter</InputLabel> 
+<Select
+  value={values.age}
+  onChange={handleChange}
+  inputProps={{
+    name: 'age',
+    id: 'age-helper',
+  }}
+>
+        <MenuItem value={10}>All</MenuItem>
+        <MenuItem value={20}>Customers Only</MenuItem>
+        <MenuItem value={30}>Workers Only</MenuItem>
+        </Select>
+      </FormControl>
 </form>
   );
 }
 
-export default WorkerSelect;
+export default SortAndFilter;

@@ -263,6 +263,12 @@ const AdminHeader = (props) =>  {
                         </ListItemIcon>
                         <ListItemText primary="Provide Support Page"/>
                     </ListItem>
+                    <ListItem button to="/admin/report_view" component={MyLink}>
+                        <ListItemIcon>
+                            <HistoryIcon/>
+                        </ListItemIcon>
+                        <ListItemText primary="Report View"/>
+                    </ListItem>
                 </List>
             </Drawer>
         </div>
