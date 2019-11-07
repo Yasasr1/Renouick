@@ -134,6 +134,9 @@ class LoginPage extends Component  {
         else if (this.props.isAuthenticated && this.props.userType === 'admin') {
             redirect = <Redirect to="/admin"/>
         }
+        else if (this.props.isAuthenticated && this.props.userType === 'worker') {
+            redirect = <Redirect to="/worker"/>
+        }
 
         return (
             <React.Fragment>

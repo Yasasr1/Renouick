@@ -27,6 +27,10 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import clsx from 'clsx';
 
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as actions from '../../../store/actions/auth';
+
+
 
 //routing to material ui buttons
 const MyLink = React.forwardRef((props, ref) => <NavLink exact activeStyle={{color: 'blue', backgroundColor: '#CDC9C9'}} innerRef={ref} {...props} />);
@@ -128,6 +132,12 @@ const WorkerHeader = (props) =>  {
         setMenuAnchor(null);
     }
 
+    const handleLogout = () => {
+        props.onLogout();
+        props.history.replace('/');
+        
+    }
+
     let avatar = null;
     if(open) {
         avatar = <div>
@@ -190,7 +200,7 @@ const WorkerHeader = (props) =>  {
                             keepMounted
                             open={Boolean(menuAnchor)}
                             onClose={handleMenuClose}>
-                                <MenuItem>Logout</MenuItem>
+                                <MenuItem onClick={handleLogout}>Logout</MenuItem>
                             </Menu>
                         </Grid> 
                     </Grid>
@@ -254,6 +264,12 @@ const WorkerHeader = (props) =>  {
     
 };
 
+const matchDispatchToProps = dispatch => {
+    return {
+        onLogout: () => dispatch(actions.authLogout())
+    }
+}
 
 
-export default WorkerHeader;
+
+export default connect(null,matchDispatchToProps)(WorkerHeader);
