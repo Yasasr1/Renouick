@@ -4,7 +4,8 @@ import MuiExpansionPanel from '@material-ui/core/ExpansionPanel';
 import MuiExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import MuiExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
-import './FAQ.css'; 
+import './FAQ.css';
+import Paper from '@material-ui/core/Paper'; 
 
 const ExpansionPanel = withStyles({
   root: {
@@ -25,12 +26,12 @@ const ExpansionPanel = withStyles({
 
 const ExpansionPanelSummary = withStyles({
   root: {
-    backgroundColor: 'rgba(0, 0, 0, .03)',
+    backgroundColor: 'rgba(1, 1, 1, .5)',
     borderBottom: '1px solid rgba(0, 0, 0, .125)',
     marginBottom: -1,
     minHeight: 56,
     '&$expanded': {
-      minHeight: 56,
+      minHeight: 50,
 
     },
   },
@@ -60,26 +61,28 @@ const ExpansionPanelDetails = withStyles(theme => ({
     return (
       <div className="FAQOuterDiv">
         <div className="FAQInnerDiv">
-          <Typography className="text-uppercase text-center" style={{ fontFamily:"Calibri " , fontSize:75 , fontStyle:"Italic" , color:"orange"}}>Frequently Ask Quections<br/></Typography>
+        <Paper>
+  <Typography className="Paper" style={{ fontFamily:"Algerian" , fontSize:32 , fontStyle:"Italic" , color:"black"}} >
+    Freaquently Ask Quesctions
+  </Typography>
+  
+</Paper>
+       <br/>
             <form>
             <ExpansionPanel square expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
               <ExpansionPanelSummary aria-controls="panel1d-content" id="panel1d-header">
-                <Typography>Collapsible Group Item #1</Typography>
+                <Typography style={{ fontFamily:"Calibri " , fontSize:18 , fontStyle:"Italic" , color:"white"}}>How can we find a good worker?</Typography>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
-              <Typography>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
-              </Typography>
+              <Typography style={{ fontFamily:"Calibri " , fontSize:24 , fontStyle:"Italic" , color:"blue"}}>You can check the ratings of a particular worker, also view his profile and start a chat to know further details.</Typography>
             </ExpansionPanelDetails>
           </ExpansionPanel>
       <ExpansionPanel square expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
         <ExpansionPanelSummary aria-controls="panel2d-content" id="panel2d-header">
-          <Typography>Collapsible Group Item #2</Typography>
+          <Typography style={{ fontFamily:"Calibri " , fontSize:18 , fontStyle:"Italic" , color:"white"}}>As a worker, How can we use this app to find works? Does it cost extra charges?</Typography>
         </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <Typography>
+        <ExpansionPanelDetails >
+          <Typography style={{ fontFamily:"Calibri " , fontSize:24 , fontStyle:"Italic" , color:"blue"}}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
             sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
             elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
@@ -88,10 +91,10 @@ const ExpansionPanelDetails = withStyles(theme => ({
       </ExpansionPanel>
       <ExpansionPanel square expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
         <ExpansionPanelSummary aria-controls="panel3d-content" id="panel3d-header">
-          <Typography>Collapsible Group Item #3</Typography>
+          <Typography style={{ fontFamily:"Calibri " , fontSize:18 , fontStyle:"Italic" , color:"white"}}>How can we pay money?How can we pay the registration fee?</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <Typography>
+          <Typography style={{ fontFamily:"Calibri " , fontSize:24 , fontStyle:"Italic" , color:"blue"}}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
             sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
             elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
@@ -100,10 +103,34 @@ const ExpansionPanelDetails = withStyles(theme => ({
       </ExpansionPanel>
       <ExpansionPanel square expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
               <ExpansionPanelSummary aria-controls="panel4d-content" id="panel4d-header">
-                <Typography>Collapsible Group Item #4</Typography>
+                <Typography style={{ fontFamily:"Calibri " , fontSize:18 , fontStyle:"Italic" , color:"white"}}>Will the bid be changed even after we see the real work?</Typography>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
-              <Typography>
+              <Typography style={{ fontFamily:"Calibri " , fontSize:24 , fontStyle:"Italic" , color:"blue"}}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
+                sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
+              </Typography>
+            </ExpansionPanelDetails>
+          </ExpansionPanel>
+          <ExpansionPanel square expanded={expanded === 'panel5'} onChange={handleChange('panel4')}>
+              <ExpansionPanelSummary aria-controls="panel5d-content" id="panel4d-header">
+                <Typography style={{ fontFamily:"Calibri " , fontSize:18 , fontStyle:"Italic" , color:"white"}}>Will the bid be changed even after we see the real work?</Typography>
+            </ExpansionPanelSummary>
+            <ExpansionPanelDetails>
+              <Typography style={{ fontFamily:"Calibri " , fontSize:24 , fontStyle:"Italic" , color:"blue"}}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
+                sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
+              </Typography>
+            </ExpansionPanelDetails>
+          </ExpansionPanel>
+          <ExpansionPanel square expanded={expanded === 'panel6'} onChange={handleChange('panel4')}>
+              <ExpansionPanelSummary aria-controls="panel6d-content" id="panel4d-header">
+                <Typography style={{ fontFamily:"Calibri " , fontSize:18 , fontStyle:"Italic" , color:"white"}}>Will the bid be changed even after we see the real work?</Typography>
+            </ExpansionPanelSummary>
+            <ExpansionPanelDetails>
+              <Typography style={{ fontFamily:"Calibri " , fontSize:24 , fontStyle:"Italic" , color:"blue"}}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
                 sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
                 elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
