@@ -18,10 +18,13 @@ import WorkIcon from '@material-ui/icons/Work';
 import Badge from '@material-ui/core/Badge';
 import MailIcon from '@material-ui/icons/Mail';
 //placeholder avatar
+import ChatIcon from '@material-ui/icons/Chat';
+import DescriptionIcon from '@material-ui/icons/Description';
 import testAvatar from '../../../assests/testAvatar/avatar.jpg';
 import { Menu, MenuItem, ListItem, Divider } from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import BusinessIcon from '@material-ui/icons/Business';
 //utility for constructing className strings conditionally
 import clsx from 'clsx';
 import { NavLink } from 'react-router-dom';
@@ -264,9 +267,21 @@ const AdminHeader = (props) =>  {
                     </ListItem>
                     <ListItem button to="/admin/report_view" component={MyLink}>
                         <ListItemIcon>
-                            <HistoryIcon/>
+                            <DescriptionIcon/>
                         </ListItemIcon>
                         <ListItemText primary="Report View"/>
+                    </ListItem>
+                    <ListItem button to="/admin/chat" component={MyLink}>
+                        <ListItemIcon>
+                            <ChatIcon/>
+                        </ListItemIcon>
+                        <ListItemText primary="Chat"/>
+                    </ListItem>
+                    <ListItem button to="/admin/add" component={MyLink} >
+                        <ListItemIcon>
+                            <BusinessIcon/>
+                        </ListItemIcon>
+                        <ListItemText primary="Advertisement Manage"/>
                     </ListItem>
                 </List>
             </Drawer>

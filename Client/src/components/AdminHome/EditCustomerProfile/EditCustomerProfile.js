@@ -1,16 +1,18 @@
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
+import CustomerImg from './CustomerImg/member2.jpg'
 import Grid from '@material-ui/core/Grid';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 //import ProfileImg from './ProfileImg/ProfileImg';
 import Profileinfo from './ProfileInfo/ProfileInfo'; 
-
 import { IconButton, Divider } from '@material-ui/core';
 import Icon from '@mdi/react';
 import { mdiFacebookBox, mdiTwitter } from '@mdi/js';
 import ReportIcon from '@material-ui/icons/Report';
-
 import * as actions from '../../../store/actions/user';
+import avatar from '../../../assests/testAvatar/avatar.jpg';
 import axios from 'axios';
+import MyTextField from '../../UI/TextField/TextField';
 import CustomerSelect from './CustomerSelect/CustomerSelect';
 import RatingInfo from './RatingInfo/RatingInfo';
 import ReportsReview from './ReportsReview/ReportsReview';
@@ -64,7 +66,6 @@ class EditCustomerProfile extends Component {
                     
                         <Grid item >
                             <CustomerSelect/>                             
-                  
                         
                             </Grid> 
                         
