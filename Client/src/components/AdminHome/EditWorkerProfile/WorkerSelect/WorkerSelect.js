@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ Component } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const CustomerSelect = (props) => {
+const WorkerSelect = (props) => {
   const classes = useStyles();
   const [values, setValues] = React.useState({
     age: '',
@@ -32,9 +32,9 @@ const CustomerSelect = (props) => {
   
 
   const inputLabel = React.useRef(null);
-  const [setLabelWidth] = React.useState(0);
+  const [labelWidth, setLabelWidth] = React.useState(0);
   React.useEffect(() => {
-   // setLabelWidth(inputLabel);
+    setLabelWidth(inputLabel);
   }, []);
 
   const handleChange = event => {
@@ -47,7 +47,7 @@ const CustomerSelect = (props) => {
 
 <form className={classes.root} autoComplete="off">
 <FormControl className={classes.formControl}>
-<InputLabel htmlFor="age-helper">Customer</InputLabel>
+<InputLabel htmlFor="age-helper">Worker</InputLabel>
 <Select
   value={values.age}
   onChange={handleChange}
@@ -59,15 +59,15 @@ const CustomerSelect = (props) => {
   <MenuItem value="">
     <em>None</em>
   </MenuItem>
-  <MenuItem value={10}>Pasan Mahesha Herath kmek ngvron ngern</MenuItem>
+  <MenuItem>Pasan Mahesha Herath kmek ngvron ngern</MenuItem>
   <MenuItem value={20}>Yasas Ramanayake</MenuItem>
   <MenuItem value={30}>Thisara Gimhani</MenuItem>
   <MenuItem value={30}>Gayara Jayasinghe</MenuItem>
 </Select>
-<FormHelperText>Enter Customer Username</FormHelperText>
+<FormHelperText>Enter Worker Username</FormHelperText>
 </FormControl>
 </form>
   );
 }
 
-export default CustomerSelect;
+export default WorkerSelect;
