@@ -7,6 +7,22 @@ import StarIcon from '@material-ui/icons/Star';
 
 const Worker = (props) => {
     let profilePic = true;
+
+    //calculate age
+    let today = new Date();
+    let birthday = new Date(props.date);
+    let age = today.getFullYear() - birthday.getFullYear();
+    let month = today.getMonth() - birthday.getMonth();
+    if (month < 0 || (month === 0 && today.getDate() < birthday.getDate())) {
+        age--;
+    }
+
+    //render the professions to a list
+    const profession = props.profession.map(p => {
+        return <li key={p}>{p}</li>
+    })
+        
+   
     return (
         <Paper style={{padding: '20px'}}>
              <Grid container spacing={1}>
@@ -17,7 +33,7 @@ const Worker = (props) => {
                     : <p>No Photo</p>}
                 </Grid>
                 <Grid item md={9}>
-                    <Typography variant="h6" align="center">Yasas Ramanayaka</Typography>
+                    <Typography variant="h6" align="center">{props.fName} {props.lName}</Typography>
                     <Divider/>
                     <br/>
                     <Grid container spacing={1}>
@@ -28,7 +44,9 @@ const Worker = (props) => {
                             <Typography variant="overline">Profession</Typography>
                         </Grid>
                         <Grid item md={9}>
-                            <Typography variant="overline">:Painting</Typography>
+                            <ul>
+                                {profession}
+                            </ul>
                         </Grid>
                         <Grid item md={1}>
                             <TodayIcon/>
@@ -37,7 +55,7 @@ const Worker = (props) => {
                         <Typography variant="overline">Age</Typography>
                         </Grid>
                         <Grid item md={9}>
-                            <Typography variant="overline">:45</Typography>
+                            <Typography variant="overline">:{age}</Typography>
                         </Grid>
                         <Grid item md={1}>
                             <StarIcon/>

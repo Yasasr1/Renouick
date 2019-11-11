@@ -101,7 +101,7 @@ class HomePage extends Component {
               <h2 className="display-4">Got Work ?</h2>
               <h3>
               Post a Job 
-              <small class="text-muted"> Get Work Done...</small>
+              <small className="text-muted"> Get Work Done...</small>
               </h3>
               <ul>
                 <li>Select a category</li>

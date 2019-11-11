@@ -1,10 +1,47 @@
 import React, { Component } from 'react';
-import { Grid, Typography, Divider, Button, TextField } from '@material-ui/core';
+import { Grid, Typography, Divider, Button, CircularProgress } from '@material-ui/core';
 import ExploreIcon from '@material-ui/icons/Explore';
 import Worker from './Worker/Worker';
+import axios from 'axios';
+import { connect } from 'react-redux';
 
 class FindWorker extends Component {
+    state = {
+        workers: null,
+        loading: true
+    }
+
+    componentDidMount() {
+        axios.get('http://localhost:4000/worker/getAll', {
+            headers: {
+                'x-auth-token': this.props.token
+            }
+           
+        })
+        .then(res => {
+            const workers = res.data;
+            this.setState({workers: workers, loading: false});
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }
     render () {
+        let workers = null;
+        if(this.state.loading === true) {
+            workers = <CircularProgress/>
+        }
+        if(this.state.loading === false) {
+            workers = this.state.workers.map(worker => {
+                return <Worker
+                        key={worker._id}
+                        fName={worker.firstName}
+                        lName={worker.lastName}
+                        profession={worker.workingCategory}
+                        date={worker.birthday}
+                        />
+            })
+        }
         return (
             <Grid container spacing={2} style={{flexGrow: '1', padding: '40px', marginTop: '80px', marginLeft: '50px'}}>
                  <Grid item md={12}>
@@ -31,7 +68,7 @@ class FindWorker extends Component {
                     <Divider orientation="horizontal"/>
                 </Grid>
                 <Grid item md ={9}>
-                    <Worker/>
+                    {workers}
                 </Grid>
                 <Grid item xl={1}>
                     <Divider orientation="vertical"/>
@@ -84,5 +121,10 @@ class FindWorker extends Component {
         );
     }
 };
+const matchStateToProps = state => {
+    return {
+        token: state.token
+    }
+}
 
-export default FindWorker;
+export default connect(matchStateToProps,null)(FindWorker);
