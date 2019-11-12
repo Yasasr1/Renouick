@@ -18,7 +18,6 @@ import ChatIcon from '@material-ui/icons/Chat';
 import WorkIcon from '@material-ui/icons/Work';
 import Badge from '@material-ui/core/Badge';
 import MailIcon from '@material-ui/icons/Mail';
-import Avatar from '@material-ui/core/Avatar';
 //placeholder avatar
 import testAvatar from '../../../assests/testAvatar/avatar.jpg';
 import { Menu, MenuItem, ListItem, Divider } from '@material-ui/core';
@@ -27,6 +26,14 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 //utility for constructing className strings conditionally
 import clsx from 'clsx';
 
+import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as actions from '../../../store/actions/auth';
+
+
+
+//routing to material ui buttons
+const MyLink = React.forwardRef((props, ref) => <NavLink exact activeStyle={{color: 'blue', backgroundColor: '#CDC9C9'}} innerRef={ref} {...props} />);
 
 
 const drawerWidth = 240;
@@ -41,6 +48,7 @@ const useStyles = makeStyles(theme => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
+    
   },
   appBarShift: {
     marginLeft: drawerWidth,
@@ -124,6 +132,12 @@ const WorkerHeader = (props) =>  {
         setMenuAnchor(null);
     }
 
+    const handleLogout = () => {
+        props.onLogout();
+        props.history.replace('/');
+        
+    }
+
     let avatar = null;
     if(open) {
         avatar = <div>
@@ -186,7 +200,7 @@ const WorkerHeader = (props) =>  {
                             keepMounted
                             open={Boolean(menuAnchor)}
                             onClose={handleMenuClose}>
-                                <MenuItem>Logout</MenuItem>
+                                <MenuItem onClick={handleLogout}>Logout</MenuItem>
                             </Menu>
                         </Grid> 
                     </Grid>
@@ -213,13 +227,13 @@ const WorkerHeader = (props) =>  {
                 </div>
                 {avatar}
                 <List>
-                    <ListItem button >
+                    <ListItem button to="/worker" component={MyLink} >
                         <ListItemIcon>
                             <DashboardIcon/>
                         </ListItemIcon>
                         <ListItemText primary="Dashboard"/>
                     </ListItem>
-                    <ListItem button >
+                    <ListItem button to="/worker/jobs" component={MyLink} >
                         <ListItemIcon>
                             <WorkIcon/>
                         </ListItemIcon>
@@ -250,6 +264,12 @@ const WorkerHeader = (props) =>  {
     
 };
 
+const matchDispatchToProps = dispatch => {
+    return {
+        onLogout: () => dispatch(actions.authLogout())
+    }
+}
 
 
-export default WorkerHeader;
+
+export default connect(null,matchDispatchToProps)(WorkerHeader);

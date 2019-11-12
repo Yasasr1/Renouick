@@ -1,17 +1,14 @@
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
-
 import Grid from '@material-ui/core/Grid';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
-
 import ProfileImg from './ProfileImg/ProfileImg';
-import Profileinfo from './ProfileInfo/ProfileInfo';
+import Profileinfo from './ProfileInfo/ProfileInfo'; 
 import EditInfo from './EditInfo/EditInfo';
 import RatingInfo from './RatingInfo/RatingInfo';
 import LatestJobInfo from './LatestJobInfo/LatestJobInfo';
 import { IconButton, Divider } from '@material-ui/core';
-
-import Icon from '@mdi/react'
+import Icon from '@mdi/react';
 import { mdiFacebookBox, mdiTwitter } from '@mdi/js';
 //importing action creators
 import * as actions from '../../../store/actions/user';

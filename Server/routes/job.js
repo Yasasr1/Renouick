@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 //job schema
 const Job = require('../models/Job.model');
+const Worker = require('../models/Worker.model');
 const auth = require('../middleware/authMiddleware');
 
 //@route POST /job/post
@@ -47,6 +48,28 @@ router.get('/getLatest', auth, (req, res) => {
         else    
             res.json(job);    
     }).limit(1).sort({$natural:-1})
+    
+})
+
+//@route GET /job/getEveryJob
+//@desc get all the jobs which has a pending state and that is matching to the workers work areas
+//@access private
+router.get('/getEveryJob',auth, (req, res) => {
+    const email = req.query.email
+    Worker.find({email: email},{workingCategory: 1,_id: 0}, (err,categories) => {
+        if(err)
+            console.log(err);
+        else    
+            {
+                var workCategories = categories[0].workingCategory;
+                Job.find({status: 'pending', category: {$in: workCategories}}, (err, jobs) => {
+                    if(err)
+                        console.log(err);
+                    else
+                        res.json(jobs);
+                })
+            }
+    })
     
 })
 

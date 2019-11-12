@@ -1,0 +1,111 @@
+import React,{ Component } from 'react';
+import { connect } from 'react-redux';
+import Grid from '@material-ui/core/Grid';
+//import ProfileImg from './ProfileImg/ProfileImg';
+import Profileinfo from './ProfileInfo/ProfileInfo'; 
+import * as actions from '../../../store/actions/user';
+import axios from 'axios';
+import CustomerSelect from './CustomerSelect/CustomerSelect';
+
+//import { Link } from 'react-router-dom';
+class EditCustomerProfile extends Component {
+    state = {
+        latestJob : null
+    }
+   
+    //dispatch the action to get and save customer data in redux storw
+    componentDidMount() {
+        this.props.getCustomerInfo(this.props.email,this.props.token);
+        axios.get('http://localhost:4000/job/getLatest', {
+            params: {
+                email: this.props.email
+            },
+            headers: {
+                'x-auth-token': this.props.token
+            }
+        })
+        .then(res => {
+            const job = res.data;
+            this.setState({latestJob: job[0]});
+        })
+        .catch(err => {
+            console.log(err);
+        })
+
+    }
+
+
+    openSocialMedia = (type) => {
+        if(type === 'facebook') {
+            window.open(this.props.facebook)
+        } else if(type === 'twitter') {
+            window.open(this.props.twitter)
+        }
+
+    }
+
+    render() {
+       
+        return (
+            <div style={{backgroundColor: '#F5F1FA'}}>
+               
+                <Grid container spacing={3}  justify="space-around"  alignItems="flex-start" style={{padding: '100px', flexGrow: '1'}}>
+                
+                    <Grid item sm={7} >
+                    
+                        <Grid item >
+                            <CustomerSelect/>                             
+                        
+                            </Grid> 
+                        
+                        <Grid item md={12} style={{padding: '10px'}}>
+                            
+                             <Profileinfo
+                             gender={this.props.gender}
+                             address={this.props.address}
+                             email={this.props.email}
+                             birthday={this.props.birthday}
+                             fName={this.props.fName}
+                             lName={this.props.lName}
+                             />
+</Grid>
+                              
+                    </Grid>                    
+                    
+                    <Grid item xs={8}>
+                    
+                         </Grid>
+                
+                </Grid>
+
+                
+                
+                
+            </div>
+        );
+    }
+}
+
+const mapStateToProps = state => {
+    return {
+        email: state.email,
+        token: state.token,
+        picUrl: state.user.profilePicUrl,
+        gender: state.user.gender,
+        address: state.user.address,
+        birthday: state.user.birthday,
+        fName: state.user.firstName,
+        lName: state.user.lastName,
+        facebook: state.user.facebook,
+        twitter: state.user.twitter
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        getCustomerInfo: (email, token) => dispatch(actions.getUser(email, token))
+    };
+}
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(EditCustomerProfile);

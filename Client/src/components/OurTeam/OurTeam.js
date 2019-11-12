@@ -8,12 +8,12 @@ import Grid from '@material-ui/core/Grid';
 import { Paper } from '@material-ui/core';
 import './OurTeam.css'; 
 import backImage from '../../assests/backgrounds/backgroundHome.jpg';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import ShareIcon from '@material-ui/icons/Share';
-import DeleteIcon from '@material-ui/icons/Delete';
-import EditIcon from '@material-ui/icons/Edit';
+import Icon from '@mdi/react';
+import { mdiFacebookBox, mdiTwitter } from '@mdi/js';
 
 
 
@@ -28,10 +28,19 @@ const style = {
   }
 
 // routing for material ui button component
-const MyLink = React.forwardRef((props, ref) => <Link innerRef={ref} {...props} />);
+//const MyLink = React.forwardRef((props, ref) => <Link innerRef={ref} {...props} />);
 //const { style, href, hrefAs, children, prefetch } = this.props
 
 class OurTeam extends Component {
+   openSocialMedia = (type) => {
+      if(type === 'facebook') {
+          window.open(this.props.facebook)
+      } else if(type === 'twitter') {
+          window.open(this.props.twitter)
+      }
+
+  }
+
     render() {
         return(
             
@@ -52,14 +61,14 @@ class OurTeam extends Component {
                   ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
                   nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
                   cillum dolore eu fugiat nulla pariatur"/>
-                   <IconButton color="secondary" className="OurTeamButton" target="_blank" href="http://www.google.com/" aria-label="edit" >
-                      <EditIcon />
-                   </IconButton>
-                   <IconButton color="secondary" className="OurTeamButton" target="_blank" href="http://www.google.com/" aria-label="share" >
+                   <IconButton color="black" className="OurTeamButton" target="_blank" href="http://www.google.com/" aria-label="share" >
                       <ShareIcon />
                    </IconButton>
-                   <IconButton color="secondary" className="OurTeamButton" target="_blank" href="http://www.google.com/" aria-label="delete" >
-                      <DeleteIcon />
+                   <IconButton onClick={()=>this.openSocialMedia('facebook')}>
+                                <Icon path={mdiFacebookBox} size={1} color="blue"/>
+                   </IconButton>
+                   <IconButton onClick={()=>this.openSocialMedia('twitter')}>
+                                <Icon path={mdiTwitter} size={1} color="cyan"/>
                    </IconButton>
                   </Grid>
                   <Grid item>
@@ -73,14 +82,14 @@ class OurTeam extends Component {
                   ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
                   nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
                   cillum dolore eu fugiat nulla pariatur"/>
-                  <IconButton color="secondary" className="OurTeamButton" target="_blank" href="http://www.google.com/" aria-label="edit" >
-                      <EditIcon />
-                   </IconButton>
-                   <IconButton color="secondary" className="OurTeamButton" target="_blank" href="http://www.google.com/" aria-label="share" >
+                  <IconButton color="black" className="OurTeamButton" target="_blank" href="http://www.google.com/" aria-label="share" >
                       <ShareIcon />
                    </IconButton>
-                   <IconButton color="secondary" className="OurTeamButton" target="_blank" href="http://www.google.com/" aria-label="delete" >
-                      <DeleteIcon />
+                   <IconButton onClick={()=>this.openSocialMedia('facebook')}>
+                                <Icon path={mdiFacebookBox} size={1} color="blue"/>
+                   </IconButton>
+                   <IconButton onClick={()=>this.openSocialMedia('twitter')}>
+                                <Icon path={mdiTwitter} size={1} color="cyan"/>
                    </IconButton>
                   </Grid>
                   <Grid item>
@@ -94,14 +103,14 @@ class OurTeam extends Component {
                   ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
                   nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
                   cillum dolore eu fugiat nulla pariatur"/>
-                  <IconButton color="secondary" className="OurTeamButton" target="_blank" href="http://www.google.com/" aria-label="edit" >
-                      <EditIcon />
-                   </IconButton>
-                   <IconButton color="secondary" className="OurTeamButton" target="_blank" href="http://www.google.com/" aria-label="share" >
+                  <IconButton color="black" className="OurTeamButton" target="_blank" href="http://www.google.com/" aria-label="share" >
                       <ShareIcon />
                    </IconButton>
-                   <IconButton color="secondary" className="OurTeamButton" target="_blank" href="http://www.google.com/" aria-label="delete" >
-                      <DeleteIcon />
+                   <IconButton onClick={()=>this.openSocialMedia('facebook')}>
+                                <Icon path={mdiFacebookBox} size={1} color="blue"/>
+                   </IconButton>
+                   <IconButton onClick={()=>this.openSocialMedia('twitter')}>
+                                <Icon path={mdiTwitter} size={1} color="cyan"/>
                    </IconButton>
                   </Grid>
                   <Grid item>
@@ -115,14 +124,14 @@ class OurTeam extends Component {
                   ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
                   nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
                   cillum dolore eu fugiat nulla pariatur"/>
-                  <IconButton color="secondary" className="OurTeamButton" target="_blank" href="http://www.google.com/" aria-label="edit" >
-                      <EditIcon />
-                   </IconButton>
-                   <IconButton color="secondary" className="OurTeamButton" target="_blank" href="http://www.google.com/" aria-label="share" >
+                 <IconButton color="black" className="OurTeamButton" target="_blank" href="http://www.google.com/" aria-label="share" >
                       <ShareIcon />
                    </IconButton>
-                   <IconButton color="secondary" className="OurTeamButton" target="_blank" href="http://www.google.com/" aria-label="delete" >
-                      <DeleteIcon />
+                   <IconButton onClick={()=>this.openSocialMedia('facebook')}>
+                                <Icon path={mdiFacebookBox} size={1} color="blue"/>
+                   </IconButton>
+                   <IconButton onClick={()=>this.openSocialMedia('twitter')}>
+                                <Icon path={mdiTwitter} size={1} color="cyan"/>
                    </IconButton>
                   </Grid>
 

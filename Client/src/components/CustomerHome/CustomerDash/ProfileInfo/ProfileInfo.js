@@ -4,7 +4,6 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
 import AlternateEmailIcon from '@material-ui/icons/AlternateEmail';
-import WcIcon from '@material-ui/icons/Wc';
 import CakeIcon from '@material-ui/icons/Cake';
 import HomeIcon from '@material-ui/icons/Home';
 

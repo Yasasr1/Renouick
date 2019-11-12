@@ -18,6 +18,7 @@ import CreateIcon from '@material-ui/icons/Create';
 import HistoryIcon from '@material-ui/icons/History';
 import ChatIcon from '@material-ui/icons/Chat';
 import WorkIcon from '@material-ui/icons/Work';
+import SearchIcon from '@material-ui/icons/Search';
 import Badge from '@material-ui/core/Badge';
 import MailIcon from '@material-ui/icons/Mail';
 import Avatar from '@material-ui/core/Avatar';
@@ -95,6 +96,12 @@ class CustomerHeader extends Component  {
                             <HistoryIcon/>
                         </ListItemIcon>
                         <ListItemText primary="My Jobs"/>
+                    </ListItem>
+                    <ListItem button to="/customer/find_worker" component={MyLink}>
+                        <ListItemIcon>
+                            <SearchIcon/>
+                        </ListItemIcon>
+                        <ListItemText primary="Find a Worker"/>
                     </ListItem>
                     <ListItem button to="/customer/chat" component={MyLink}>
                         <ListItemIcon>

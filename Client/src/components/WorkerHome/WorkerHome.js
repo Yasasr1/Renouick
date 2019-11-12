@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import WorkerHeader from './WorkerHeader/WorkerHeader';
 import WorkerDash from './WorkerDash/WorkerDash';
+import BrowseJobs from './BrowseJobs/BrowseJobs';
 
 
 const WorkerHome = (props) => {
@@ -11,6 +12,7 @@ const WorkerHome = (props) => {
             <WorkerHeader history={props.history}/>
             <Switch>
                 <Route path={props.match.url} exact component={WorkerDash}/>
+                <Route path={props.match.url + '/jobs'} component={BrowseJobs}/>
             </Switch>
         </React.Fragment>
     );

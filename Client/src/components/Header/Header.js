@@ -10,6 +10,7 @@ import { NavLink } from 'react-router-dom';
 
 
 
+
 const useStyles = makeStyles(theme =>({
     root: {
         flexGrow: 1,   
@@ -37,7 +38,7 @@ const Header = (props) => {
     return(
         <div >
             
-            <AppBar color='default' className={classes.root} position="static">
+            <AppBar style={{backgroundColor: '#111134'}} className={classes.root} position="static">
                 <Toolbar>
                     <Grid container justify="flex-start">
                       <div  className={classes.logo}>

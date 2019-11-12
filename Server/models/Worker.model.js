@@ -22,7 +22,14 @@ let Worker = new Schema({
     },
     workingCategory: {
         type: Array
+    },
+    profilePicUrl: {
+        type: String
+    },
+    profilePicId: {
+        type: String
     }
+
 });
 
 module.exports = mongoose.model('Worker', Worker);
