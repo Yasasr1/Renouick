@@ -68,6 +68,8 @@ class FindWorker extends Component {
             }else if(worker.lastName.match(re)) {
                 return worker;
             }
+            else
+                return null;
         });
         this.setState({workers: workerList});
     }

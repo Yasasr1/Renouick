@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Divider, Typography, Link, CircularProgress, Button } from '@material-ui/core';
+import { Grid, Divider, Typography, CircularProgress, Button } from '@material-ui/core';
 import ExploreIcon from '@material-ui/icons/Explore';
 import axios from 'axios';
 import { connect } from 'react-redux';
@@ -10,7 +10,10 @@ class BrowseJobs extends Component {
     state = {
         jobs: null,
         loading: true,
+        filtered: false
     }
+
+    jobs = null;
 
     componentDidMount() {
         axios.get('http://localhost:4000/job/getEveryJob', {
@@ -58,24 +61,139 @@ class BrowseJobs extends Component {
     }
 
     filterJobs = (input) => {
+        this.setState({filtered: true});
         if(input === "painting") {
-            const jobsCopy = this.state.jobs.map(job => {
+            this.jobs = this.state.jobs.map(job => {
                 if(job.category === "painting") {
-                    return job;
+                    return <Job
+                            key={job._id}
+                            title={job.title}
+                            poster={job.poster}
+                            desc={job.description}
+                            cat={job.category}
+                            date={job.postDate}
+                            images={job.images}
+                            />
                 }
+                else
+                    return null;
             });
-            console.log(jobsCopy);
         }
+        else if(input === "plumbing") {
+            this.jobs = this.state.jobs.map(job => {
+                if(job.category === "plumbing") {
+                    return <Job
+                            key={job._id}
+                            title={job.title}
+                            poster={job.poster}
+                            desc={job.description}
+                            cat={job.category}
+                            date={job.postDate}
+                            images={job.images}
+                            />
+                }
+                else
+                    return null;
+            });
+        }
+        else if(input === "grassCutting") {
+            this.jobs = this.state.jobs.map(job => {
+                if(job.category === "grassCutting") {
+                    return <Job
+                            key={job._id}
+                            title={job.title}
+                            poster={job.poster}
+                            desc={job.description}
+                            cat={job.category}
+                            date={job.postDate}
+                            images={job.images}
+                            />
+                }
+                else
+                    return null;
+            });
+        }
+        else if(input === "ac") {
+            this.jobs = this.state.jobs.map(job => {
+                if(job.category === "acRepair") {
+                    return <Job
+                            key={job._id}
+                            title={job.title}
+                            poster={job.poster}
+                            desc={job.description}
+                            cat={job.category}
+                            date={job.postDate}
+                            images={job.images}
+                            />
+                }
+                else
+                    return null;
+            });
+        }
+        else if(input === "houseCleaning") {
+            this.jobs = this.state.jobs.map(job => {
+                if(job.category === "houseCleaning") {
+                    return <Job
+                            key={job._id}
+                            title={job.title}
+                            poster={job.poster}
+                            desc={job.description}
+                            cat={job.category}
+                            date={job.postDate}
+                            images={job.images}
+                            />
+                }
+                else
+                    return null;
+            });
+        }
+        else if(input === "electricalWork") {
+            this.jobs = this.state.jobs.map(job => {
+                if(job.category === "electricalWork") {
+                    return <Job
+                            key={job._id}
+                            title={job.title}
+                            poster={job.poster}
+                            desc={job.description}
+                            cat={job.category}
+                            date={job.postDate}
+                            images={job.images}
+                            />
+                }
+                else
+                    return null;
+            });
+        }
+        else if(input === "equipmentRepair") {
+            this.jobs = this.state.jobs.map(job => {
+                if(job.category === "equipmentRepair") {
+                    return <Job
+                            key={job._id}
+                            title={job.title}
+                            poster={job.poster}
+                            desc={job.description}
+                            cat={job.category}
+                            date={job.postDate}
+                            images={job.images}
+                            />
+                }
+                else
+                    return null;
+            });
+        }
+        else if(input === "all") {
+           this.setState({filtered: false});
+        }
+
     }
     
     render () {
-        let jobs = null;
 
         if(this.state.loading === true) {
-            jobs = <CircularProgress/>
+            this.jobs = <CircularProgress/>
         }
-        if(this.state.loading === false) {
-            jobs = this.state.jobs.map(job => {
+        if(this.state.loading === false && this.state.filtered === false) {
+            this.jobs = this.state.jobs.map(job => {
                 return <Job
                         key={job._id}
                         title={job.title}
@@ -109,7 +227,7 @@ class BrowseJobs extends Component {
                     <Divider orientation="horizontal"/>
                 </Grid>
                 <Grid item md ={9}>
-                    {jobs}
+                    {this.jobs}
                 </Grid>
                 <Grid item xl={1}>
                     <Divider orientation="vertical"/>
@@ -125,7 +243,7 @@ class BrowseJobs extends Component {
                     </Grid>
                     <br/>
                     
-                        <Button>
+                        <Button onClick={() => this.filterJobs("all")}>
                             All jobs
                         </Button>
                         <br/>
@@ -133,29 +251,29 @@ class BrowseJobs extends Component {
                             Painting
                         </Button>
                         <br/>
-                        <Link href="#" >
+                         <Button onClick={() => this.filterJobs("plumbing")}>
                             Plumbing
-                        </Link>
+                        </Button>
                         <br/>
-                        <Link href="#" >
-                            A/C Repair and Maintance
-                        </Link>
+                        <Button onClick={() => this.filterJobs("ac")}>
+                            A/C Reapir and Maintance
+                        </Button>
                         <br/>
-                        <Link href="#" >
+                        <Button onClick={() => this.filterJobs("grassCutting")}>
                             Grass Cutting
-                        </Link>
+                        </Button>
                         <br/>
-                        <Link href="#" >
+                        <Button onClick={() => this.filterJobs("houseCleaning")}>
                             House Cleaning
-                        </Link>
+                        </Button>
                         <br/>
-                        <Link href="#" >
+                        <Button onClick={() => this.filterJobs("electricalWork")}>
                             Electrical Work
-                        </Link>
+                        </Button>
                         <br/>
-                        <Link href="#">
+                        <Button onClick={() => this.filterJobs("equipmentRepair")}>
                             Equipment Repair
-                        </Link>
+                        </Button>
                     
                 </Grid>
             </Grid>
