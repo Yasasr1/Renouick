@@ -1,23 +1,23 @@
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
-import WorkerImg from './WorkerImg/member2.jpg'
+//import WorkerImg from './WorkerImg/member2.jpg'
 import Grid from '@material-ui/core/Grid';
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+//import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 //import ProfileImg from './ProfileImg/ProfileImg';
 import Profileinfo from './ProfileInfo/ProfileInfo'; 
-import { IconButton, Divider } from '@material-ui/core';
-import Icon from '@mdi/react';
+import { IconButton } from '@material-ui/core';
+/*import Icon from '@mdi/react';
 import { mdiFacebookBox, mdiTwitter } from '@mdi/js';
-import ReportIcon from '@material-ui/icons/Report';
+import ReportIcon from '@material-ui/icons/Report';*/
 import * as actions from '../../../store/actions/user';
-import avatar from '../../../assests/testAvatar/avatar.jpg';
+//import avatar from '../../../assests/testAvatar/avatar.jpg';
 import axios from 'axios';
-import MyTextField from '../../UI/TextField/TextField';
+//import MyTextField from '../../UI/TextField/TextField';
 import WorkerSelect from './WorkerSelect/WorkerSelect';
-import RatingInfo from './RatingInfo/RatingInfo';
+/*import RatingInfo from './RatingInfo/RatingInfo';
 import ReportsReview from './ReportsReview/ReportsReview';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
-import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
+import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';*/
 
 class EditWorkerProfile extends Component {
     state = {

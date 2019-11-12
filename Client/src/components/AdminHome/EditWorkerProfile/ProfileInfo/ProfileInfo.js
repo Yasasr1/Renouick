@@ -5,7 +5,6 @@ import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
 import CallIcon from '@material-ui/icons/Call';
 import HomeIcon from '@material-ui/icons/Home';
-import FormatPaintIcon from '@material-ui/icons/FormatPaint';
 import Rating from '@material-ui/lab/Rating';
 import GradeIcon from '@material-ui/icons/Grade';
 import EmailIcon from '@material-ui/icons/Email';
@@ -15,14 +14,14 @@ import IconButton from '@material-ui/core/IconButton';
 import Avatar from '@material-ui/core/Avatar';
 
 const ProfileInfo = (props) => {
-    const openSocialMedia = (type) => {
+    /*const openSocialMedia = (type) => {
         if(type === 'facebook') {
             window.open(this.props.facebook)
         } else if(type === 'twitter') {
             window.open(this.props.twitter)
         }
   
-    }
+    }*/
   
    
     return(

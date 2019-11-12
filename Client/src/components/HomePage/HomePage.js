@@ -1,11 +1,10 @@
 import React , { Component } from 'react';
 import CardBox from '../UI/Card/CardBox';
-import Button from '@material-ui/core/Button';
+/*import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
-import { purple } from '@material-ui/core/colors';
+import { purple } from '@material-ui/core/colors';*/
 import cardImage from '../../assests/card/card.jpg';
 import Grid from '@material-ui/core/Grid';
-import { Paper } from '@material-ui/core';
 import './HomePage.css'; 
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -29,7 +28,7 @@ import workerImage2 from '../../assests/HomeImages/concept-handyman-worker_98292
   }
 };*/
 
-const ColorButton = withStyles(theme => ({
+/*const ColorButton = withStyles(theme => ({
     root: {
       color: 'white',
       backgroundColor: purple[500],
@@ -39,7 +38,7 @@ const ColorButton = withStyles(theme => ({
         color: 'white'
       },
     },
-  }))(Button);
+  }))(Button);*/
 
 // routing for material ui button component
 const MyLink = React.forwardRef((props, ref) => <Link innerRef={ref} {...props} />);
@@ -122,7 +121,7 @@ class HomePage extends Component {
               <h2 className="display-4">Need Work ?</h2>
               <h3>
               Place a Bid 
-              <small class="text-muted"> Earn Money...</small>
+              <small className="text-muted"> Earn Money...</small>
               </h3>
               <ul>
                 <li>Select a job</li>

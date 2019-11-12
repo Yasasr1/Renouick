@@ -1,4 +1,4 @@
-import React,{ Component } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -31,11 +31,11 @@ const WorkerSelect = (props) => {
 
   
 
-  const inputLabel = React.useRef(null);
+  /*const inputLabel = React.useRef(null);
   const [labelWidth, setLabelWidth] = React.useState(0);
   React.useEffect(() => {
     setLabelWidth(inputLabel);
-  }, []);
+  }, []);*/
 
   const handleChange = event => {
     setValues(oldValues => ({

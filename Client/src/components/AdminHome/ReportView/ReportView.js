@@ -1,5 +1,4 @@
 import React,{ Component } from 'react';
-import { connect } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
 import SortAndFilter from './SortAndFilter/SortAndFilter';
 import Reports from './Reports/Reports';

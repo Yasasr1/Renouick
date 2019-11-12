@@ -31,8 +31,8 @@ const CustomerSelect = (props) => {
 
   
 
-  const inputLabel = React.useRef(null);
-  const [setLabelWidth] = React.useState(0);
+  //const inputLabel = React.useRef(null);
+  //const [setLabelWidth] = React.useState(0);
   React.useEffect(() => {
    // setLabelWidth(inputLabel);
   }, []);

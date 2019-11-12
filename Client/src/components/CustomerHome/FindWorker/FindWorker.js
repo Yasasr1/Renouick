@@ -8,7 +8,8 @@ import { connect } from 'react-redux';
 class FindWorker extends Component {
     state = {
         workers: null,
-        loading: true
+        loading: true,
+        searchString: ''
     }
 
     componentDidMount() {
@@ -26,6 +27,51 @@ class FindWorker extends Component {
             console.log(err);
         })
     }
+
+    //sort the worker list based on name, age or rating
+    sortJobs = (event) => {
+        let workers = this.state.workers;
+        const selector = event.target.value;
+
+        if(selector === "1") {
+            workers.sort((a,b) => (a.firstName < b.firstName) ? -1 : 1);
+            this.setState({workers: workers});
+            
+        }
+        else if(event.target.value === "2") {
+            workers.sort((a,b) => (a.firstName < b.firstName) ? -1 : 1);
+            this.setState({workers: workers});
+        }
+        else if(event.target.value === "3") {
+            workers.sort((a,b) => (a.birthday > b.birthday) ? -1 : 1);
+            this.setState({workers: workers});
+        }
+        else if(event.target.value === "4") {
+            workers.sort((a,b) => (a.birthday < b.birthday) ? -1 : 1);
+            this.setState({workers: workers});
+        } 
+    }
+
+    //save the substring in the searchbar to state
+    inputChangeHandler = (event) => {
+        const substring = event.target.value;
+        this.setState({searchString: substring});
+    }
+
+    //search for a worker with a given name substring
+    searchWorker = (event) => {
+        const string = this.state.searchString;
+        const re = new RegExp(string,'i');
+        const workerList = this.state.workers.filter( worker => {
+            if(worker.firstName.match(re)) {
+                return worker;
+            }else if(worker.lastName.match(re)) {
+                return worker;
+            }
+        });
+        this.setState({workers: workerList});
+    }
+
     render () {
         let workers = null;
         if(this.state.loading === true) {
@@ -39,6 +85,7 @@ class FindWorker extends Component {
                         lName={worker.lastName}
                         profession={worker.workingCategory}
                         date={worker.birthday}
+                        profilePic={worker.profilePicUrl}
                         />
             })
         }
@@ -50,17 +97,18 @@ class FindWorker extends Component {
                             <Typography variant="body1">Sort By</Typography>
                         </Grid>
                         <Grid item md={2}>
-                            <select className="form-control form-control-sm" id="exampleFormControlSelect1" style={{width: '100px'}}>
+                            <select onChange={(event)=>this.sortJobs(event)} className="form-control form-control-sm" id="exampleFormControlSelect1" style={{width: '100px'}}>
                             <option value={1}>Name</option>
                             <option value={2}>Rating</option>
-                            <option value={3}>Age</option>
+                            <option value={3}>Age ascending</option>
+                            <option value={4}>Age decending</option>
                             </select>
                         </Grid>
                         <Grid item md={3}>
-                            <input type="text" className="form-control" placeholder="Search Worker"/>
+                            <input onChange={this.inputChangeHandler} type="text" className="form-control" placeholder="Search Worker"/>
                         </Grid>
                         <Grid item md={3}>
-                            <Button color="primary" variant="contained">Search</Button>
+                            <Button onClick={this.searchWorker} color="primary" variant="contained">Search</Button>
                         </Grid>
                     </Grid>
                 </Grid>

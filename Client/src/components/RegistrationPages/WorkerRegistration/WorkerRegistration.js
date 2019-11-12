@@ -22,9 +22,7 @@ class WorkerRegistration extends Component {
         username: {value: '', isValid: true, message: ''},
         password: {value: '', isValid: true, message: ''},
         confirmPassword: {value: '', isValid: true, message: ''},
-        workingCategory : {value: [], isValid: true},
-        
-    
+        workingCategory : {value: [], isValid: true}
     }
     
     state = {...this.inputValues};
@@ -153,7 +151,9 @@ class WorkerRegistration extends Component {
               email: this.state.email.value,
               username: this.state.username.value,
               password: this.state.password.value,
-              workingCategory: this.state.workingCategory.value
+              workingCategory: this.state.workingCategory.value,
+              profilePicUrl: '',
+              profilePicId: ''
           }
 
           axios.post('http://localhost:4000/registration/addWorker', newWorker)

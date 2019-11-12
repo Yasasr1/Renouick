@@ -1,12 +1,10 @@
 import React from 'react';
-import { Paper, Grid, Typography, Divider, Button, Chip } from '@material-ui/core';
-import profiePicture from '../../../../assests/testAvatar/avatar.jpg';
+import { Paper, Grid, Typography, Divider, Button } from '@material-ui/core';
 import WorkIcon from '@material-ui/icons/Work';
 import TodayIcon from '@material-ui/icons/Today';
 import StarIcon from '@material-ui/icons/Star';
 
 const Worker = (props) => {
-    let profilePic = true;
 
     //calculate age
     let today = new Date();
@@ -24,10 +22,11 @@ const Worker = (props) => {
         
    
     return (
-        <Paper style={{padding: '20px'}}>
+        <Paper className="shadow p-3 mb-5 bg-white rounded" style={{padding: '20px', margin: '20px'}}>
              <Grid container spacing={1}>
                 <Grid item md={3}>
-                    {profilePic ? <img src={profiePicture}
+                    <br/>
+                    {props.profilePic !== "" ? <img src={props.profilePic} alt="profilepic"
                     style={{width: '70%', height: 'inherent', borderRadius: '8px' }}
                     ></img>
                     : <p>No Photo</p>}
