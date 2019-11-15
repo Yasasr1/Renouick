@@ -5,6 +5,8 @@ import Ad from './Ad/Ad';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { Divider } from '@material-ui/core';
+//import { makeStyles } from '@material-ui/core/styles';
+//import Button from '@material-ui/core/Button';
 
 
 
@@ -105,6 +107,9 @@ class PostJob extends Component {
             <Grid justify="center" container spacing={5} style={{padding: '20px', flexGrow: '1', marginTop: '10px'}}>
                 <Grid item md={12}>
                     <h3 style={{fontFamily:'Roboto, sansSerif'}}>Post Job</h3>
+                    <h5 style={{ fontFamily:"Calibri " , fontStyle:"Italic" , color:"purple"}}>Feel free to post here whatever the job you require!</h5>
+                    <h8>Just enter the required details and uplaod images which shows the current condition. </h8>
+                    <h5 style={{ fontFamily:"Calibri " , fontStyle:"Italic" }}>If you are in a rush to find a worker for your job, click here.</h5>
                     <Divider/>
                 </Grid>
                 <Grid item md={7}>

@@ -19,8 +19,8 @@ const About = () => {
         <Paper style={style.paperContainer}>
         <div className="AboutPage" style={{padding: '40px', fontStyle:"normal"}}>
            
-           <h1 style={{ fontFamily:"Calibri " , fontSize:50 , fontStyle:"Italic" , color:"orange"}}>Welcome to Renouick!</h1>
-                <h2>What is Renoick?</h2>
+           <h1 style={{ fontFamily:"Calibri " , fontSize:50 , fontStyle:"Italic" , color:"purple"}}>Welcome to Renouick!</h1>
+                <h2>What is Renouick?</h2>
                 <div style={{fontSize:18}} >
         <p>Renouick is a way to connect customers and workers. </p>
         <p>We provide the services to customers who want to find workers and also to the workers who want to promote their services.</p>

@@ -64,8 +64,8 @@ class HomePage extends Component {
                 alt="First slide"
               />
               <Carousel.Caption>
-                <h3>First slide label</h3>
-                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                <h3>Have a work to do?</h3>
+                <p>Post a job to get the best work offer</p>
               </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -76,8 +76,8 @@ class HomePage extends Component {
               />
 
               <Carousel.Caption>
-                <h3>Second slide label</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <h3>Are you in a rush to find a worker?</h3>
+                <p>Find one here.</p>
               </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -87,8 +87,8 @@ class HomePage extends Component {
                 alt="Third slide"
               />
               <Carousel.Caption>
-                <h3>Third slide label</h3>
-                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                <h3>Want a job?</h3>
+                <p>Find jobs and bid here </p>
               </Carousel.Caption>
             </Carousel.Item>
           </Carousel>
@@ -138,28 +138,22 @@ class HomePage extends Component {
                 <CardBox 
                 title="Post Jobs" 
                 image={cardImage}
-                content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
-                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
-                cillum dolore eu fugiat nulla pariatur"/>
+                content="Renouick offers you the best facility to post your required job. Register with us today and  
+                tell us what you need to be done. This is a free and new way for you. You can select the best offer. "/>
                 </Grid>
                 <Grid item>
                 <CardBox 
                 title="Find workers" 
                 image={cardImage}
-                content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
-                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
-                cillum dolore eu fugiat nulla pariatur"/>
+                content="Register here to have the best experience of finding workers. No time wastage and no trouble anymore. 
+                Contact the best worker using Renouick and get your work done easily."/>
                 </Grid>
                 <Grid item>
                 <CardBox 
-                title="Get Work Done" 
+                title="Get a Work " 
                 image={cardImage}
-                content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
-                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
-                cillum dolore eu fugiat nulla pariatur"/>
+                content="If you are in the search of work use our platform. You just have to register with us. There you can have
+                the best and easiest way of contacting and sending offers to your clients. "/>
                 </Grid>
 
               </Grid>
