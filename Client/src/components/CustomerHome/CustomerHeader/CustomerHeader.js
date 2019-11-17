@@ -69,6 +69,7 @@ class CustomerHeader extends Component  {
             <div
             className="CustomerHeaderList"
             role="presentation"
+            
             onClick={()=> this.toggleDrawer(false)}
             >
                 <Avatar alt="Yasas Ramanayaka" 
@@ -120,7 +121,7 @@ class CustomerHeader extends Component  {
     
         return (
             <div>
-                <AppBar position="static">
+                <AppBar position="static" style={{backgroundColor: '#30291b', color: '#faba39'}}>
                     <Toolbar>
                         <IconButton onClick={()=> this.toggleDrawer(true)} edge="start" color="inherit" style={{outline: 'none'}}>
                             <MenuIcon/>
@@ -129,7 +130,7 @@ class CustomerHeader extends Component  {
                             <Grid item>
                                 <IconButton style={{outline: 'none'}}>
                                     <Badge badgeContent={5} color="secondary">
-                                        <MailIcon style={{color: 'white'}}/>
+                                        <MailIcon style={{color: '#faba39'}}/>
                                     </Badge>
                                 </IconButton>
                             </Grid>

@@ -74,6 +74,10 @@ class FindWorker extends Component {
         this.setState({workers: workerList});
     }
 
+    redirectHandler = () => {
+        this.props.history.push('/customer/post_job');
+    }
+
     render () {
         let workers = null;
         if(this.state.loading === true) {
@@ -92,13 +96,17 @@ class FindWorker extends Component {
             })
         }
         return (
-            <Grid container spacing={2} style={{flexGrow: '1', padding: '40px', marginTop: '80px', marginLeft: '50px'}}>
+            <Grid container spacing={2} style={{flexGrow: '1', padding: '40px', marginTop: '20px'}}>
                  <Grid item md={12}>
                      <h3>Find a worker</h3>
+                     <Divider/>
+                     <br/>
                      <h5 style={{ fontFamily:"Calibri " , fontStyle:"Italic" , color:"purple"}}>Get your job done by selecting the right person! </h5>
                         <h7>What you have to do is, search workers by name or job category. You can view their profiles and contact them further.</h7>
-                        <h5 style={{ fontFamily:"Calibri " , fontStyle:"Italic" }}>If you are in the search of best offer for your job, click here.</h5>
-                        <p></p>
+                        <h5 style={{ fontFamily:"Calibri " , fontStyle:"Italic" }}>Post a job if you are in the search of a best offer by a worker</h5>
+                        <Button onClick={this.redirectHandler} variant="outlined">Post a Job</Button>
+                        <br/>
+                        <br/>
                     <Grid container spacing={1}>
                         <Grid item xl={1}>
                             <Typography variant="body1">Sort By</Typography>
