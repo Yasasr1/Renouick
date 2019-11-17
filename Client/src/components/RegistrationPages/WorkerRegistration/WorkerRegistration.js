@@ -12,6 +12,10 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 
+
+
+
+
 class WorkerRegistration extends Component {
     inputValues = {
         
@@ -159,11 +163,13 @@ class WorkerRegistration extends Component {
           axios.post('http://localhost:4000/registration/addWorker', newWorker)
             .then(res => {
                 console.log(res.data);
+                alert(res.data.worker);
+                this.setState({isRegistered: true});
             })
             .catch(error => {
                 console.log(error);
                 console.log(error.responce);
-                alert(error.responce);
+                alert("Registration Failed");
             })
 
             //posting to user schema
@@ -177,6 +183,7 @@ class WorkerRegistration extends Component {
             axios.post('http://localhost:4000/registration/addUser', newUser)
                 .then(res => {
                     console.log(res.data);
+                    
                 })
                 .catch(error => {
                     console.log(error.responce);
@@ -188,12 +195,14 @@ class WorkerRegistration extends Component {
         this.setState({...this.inputValues});
     }
 
+
     render() {
         return (
             <div className="WorkerRegistrationOuterDiv">
                 <div className="WorkerRegistrationInnerDiv">
                     <h5 className="text-uppercase text-center">Worker Registration</h5>
                     <form>
+                        <button onClick={this.test}></button>
                         <MyTextField
                         id="firstName"
                         error={!this.state.firstName.isValid}

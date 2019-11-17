@@ -131,10 +131,12 @@ class CustomerRegistration extends Component {
           axios.post('http://localhost:4000/registration/addCustomer', newCustomer)
             .then(res => {
                 console.log(res);
+                alert(res.data.customer);
                 
             })
             .catch(error => {
                 console.log(error);
+                alert("Registration Failed");
                 
             })
 
