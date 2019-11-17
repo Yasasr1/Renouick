@@ -94,6 +94,11 @@ class FindWorker extends Component {
         return (
             <Grid container spacing={2} style={{flexGrow: '1', padding: '40px', marginTop: '80px', marginLeft: '50px'}}>
                  <Grid item md={12}>
+                     <h3>Find a worker</h3>
+                     <h5 style={{ fontFamily:"Calibri " , fontStyle:"Italic" , color:"purple"}}>Get your job done by selecting the right person! </h5>
+                        <h7>What you have to do is, search workers by name or job category. You can view their profiles and contact them further.</h7>
+                        <h5 style={{ fontFamily:"Calibri " , fontStyle:"Italic" }}>If you are in the search of best offer for your job, click here.</h5>
+                        <p></p>
                     <Grid container spacing={1}>
                         <Grid item xl={1}>
                             <Typography variant="body1">Sort By</Typography>
