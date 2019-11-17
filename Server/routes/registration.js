@@ -23,7 +23,7 @@ router.post('/addCustomer', (req,res) => {
                 let customer = new Customer(req.body);
                 customer.save()
                 .then(customer => {
-                    res.status(200).json({'customer': 'customer added successfully'});
+                    res.status(200).json({'customer': 'customer registration successfull'});
                 })
                 .catch(err => {
                     res.status(400).json({'error' : 'adding new customer failed'});
@@ -45,7 +45,7 @@ router.post('/addWorker', (req,res) => {
                 let worker = new Worker(req.body);
                 worker.save()
                 .then(worker => {
-                    res.status(200).json({'worker': 'worker added successfully'});
+                    res.status(200).json({'worker': 'worker registration successfull'});
                 })
                 .catch(err => {
                     res.status(400).send('adding new wroker failed');
