@@ -3,7 +3,7 @@ import { Paper, Typography, Grid, Divider} from '@material-ui/core'
 
 const LatestBidInfo = (props) => {
     return (
-        <Paper>
+        <Paper className="shadow p-3 mb-5 bg-white rounded">
             <Grid container spacing={1} style={{padding: '30px'}}>
                 <Grid item md={12}>
                     <Divider/>

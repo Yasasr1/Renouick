@@ -135,7 +135,7 @@ class CustomerHeader extends Component  {
                                 </IconButton>
                             </Grid>
                             <Grid item>
-                                <h6 style={{marginTop: "10px"}}>Username</h6>
+                                <h6 style={{marginTop: "10px", color: 'white'}}>Yasas</h6>
                             </Grid>
                             <Grid item>
                                 <IconButton 

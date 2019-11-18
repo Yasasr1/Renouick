@@ -17,7 +17,7 @@ const ProfileInfo = (props) => {
     }*/
     
     return(
-        <Paper style={{padding: '15px'}}>
+        <Paper className="shadow p-3 mb-5 bg-white rounded" style={{padding: '15px'}}>
             <Grid container spacing={1}>
                 <Grid item md={12}>
                     <Typography variant="h5" gutterBottom>Yasas Ramanayaka</Typography>
