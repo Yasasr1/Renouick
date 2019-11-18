@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import Paper from '@material-ui/core/Paper';
-import { Divider } from '@material-ui/core';
+import { Divider, GridList, GridListTile, Chip } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Rating from '@material-ui/lab/Rating';
+import LocalOfferIcon from '@material-ui/icons/LocalOffer';
+
 
 
 
@@ -44,9 +46,9 @@ class LatestJobInfo extends Component {
             }
             //save images to img elements.
             imageElements = imagesArray.map(url => 
-                (<Grid item xs={2} key={url} >
+                (<GridListTile key={url} cols={1}>
                    <img onClick={selectImage} src={url} alt="job photos" style={{width: '50%', height: '50%'}}></img> 
-                </Grid>)
+                </GridListTile>)
             )
         }
     
@@ -75,19 +77,28 @@ class LatestJobInfo extends Component {
                <Divider/>
                <br/>
                <Grid container>
-                    <Grid item md={5}>
+                    <Grid item md={4}>
                         <Grid container>
                             <Grid item md={12}> 
                                 {this.selectedImage}    
                             </Grid>
-                            {imageElements}
+                            <GridList cellHeight={100} cols={5}>
+                                {imageElements}
+                            </GridList>
                         </Grid>
                     </Grid>
+                    <Grid item md={1}>
+                        <Divider orientation="vertical"/>
+                    </Grid>
                     <Grid style={{padding:"20px"}} item md={7}>
-                    <Typography variant="caption" gutterBottom>{this.props.category}</Typography>
+                    <Chip size="small" label={this.props.category} icon={<LocalOfferIcon/>}/>
+                    <br/>
                     <br/>
                         <Typography variant="body1" gutterBottom>{this.props.description}</Typography>
-                        <Typography variant="h5" color="secondary" gutterBottom>{this.props.status}</Typography>
+                        <br/>
+                        <br/>
+                        <Typography variant="overline" color="secondary" gutterBottom>status: {this.props.status}</Typography>
+                        <br/>
                         <Typography variant="overline" gutterBottom>{this.props.worker || "No assigned workers.."}</Typography>
                     </Grid>
                </Grid>
