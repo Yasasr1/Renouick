@@ -57,10 +57,7 @@ class OurTeam extends Component {
                   <CardBox
                   title="Yasas Ramanayake" 
                   image={cardImage1}
-                  content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
-                  ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-                  nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
-                  cillum dolore eu fugiat nulla pariatur"/>
+                  content="Yasas is a student of University of Colombo School of Computing. He was a bright student of Gururkula Vidyalaya, Kelaniya. Yasas is talented in many ways such as singing and script writing.He was an active member of the Astrology Society of Gurukula Vidyalaya. He is passionate about game development.  "/>
                    <IconButton color="black" className="OurTeamButton" target="_blank" href="http://www.google.com/" aria-label="share" >
                       <ShareIcon />
                    </IconButton>
@@ -78,10 +75,7 @@ class OurTeam extends Component {
                   <CardBox 
                   title="Pasan Mahesha" 
                   image={cardImage2}
-                  content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
-                  ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-                  nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
-                  cillum dolore eu fugiat nulla pariatur"/>
+                  content="Pasan is a student of University of Colombo School of Computing. He was a bright student of Central College, Anuradhapura. Pasan is talented in many ways such as playing badminton and new inventions. He was an active member of the Science Society of Central College. He is passionate about arduino technology.  "/>
                   <IconButton color="black" className="OurTeamButton" target="_blank" href="http://www.google.com/" aria-label="share" >
                       <ShareIcon />
                    </IconButton>
@@ -99,10 +93,7 @@ class OurTeam extends Component {
                   <CardBox 
                   title="Thisara Gimhani" 
                   image={cardImage3}
-                  content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
-                  ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-                  nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
-                  cillum dolore eu fugiat nulla pariatur"/>
+                  content="Thisara is a student of University of Colombo School of Computing. She was a bright student of Newsted Girls College, Meegamuwa.Thisara is talented in many ways such as singing and dancing. She was an active member of the Social Services Society of Newsted College. She is passionate about virtual reality.  "/>
                   <IconButton color="black" className="OurTeamButton" target="_blank" href="http://www.google.com/" aria-label="share" >
                       <ShareIcon />
                    </IconButton>
@@ -115,15 +106,12 @@ class OurTeam extends Component {
                   </Grid>
                   <Grid item>
                     <Typography style={{fontStyle:"Italic" , color:"brown"}}>
-                       Business Developer
+                       Business Analysist
                     </Typography>
                   <CardBox 
                   title="Gayara Jayasinghe" 
                   image={cardImage4}
-                  content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
-                  ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-                  nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
-                  cillum dolore eu fugiat nulla pariatur"/>
+                  content="Gayara is a student of University of Colombo School of Computing. She was a bright student of Visakha Vidyalaya Colombo 05. Gayara is talented in many ways such as announcing and creative writing. She was an active member of the Student Parliament of Visakha Vidyalaya. She is passionate about business strategies.  "/>
                  <IconButton color="black" className="OurTeamButton" target="_blank" href="http://www.google.com/" aria-label="share" >
                       <ShareIcon />
                    </IconButton>
