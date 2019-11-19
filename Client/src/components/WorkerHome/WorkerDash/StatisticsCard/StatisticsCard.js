@@ -6,7 +6,8 @@ const StatisticsCard = (props) => {
         textAlign: 'center',
         padding: '20px',
         backgroundColor: props.color,
-        color: 'white'
+        color: 'white',
+        boxShadow: '20px 13px 33px -8px rgba(56,56,56,0.49)'
     }
 
     return (

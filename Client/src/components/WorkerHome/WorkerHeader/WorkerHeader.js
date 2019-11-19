@@ -48,7 +48,7 @@ const useStyles = makeStyles(theme => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    backgroundColor: '#30291b',
+    backgroundColor: '#171400',
     color: '#faba39'
     
   },
@@ -79,8 +79,8 @@ const useStyles = makeStyles(theme => ({
       duration: theme.transitions.duration.enteringScreen,
     }),
     textAlign: 'center',
-    backgroundColor: '#382e19',
-    color: 'white'
+    backgroundColor: '#fafa23',
+    color: 'black'
   },
   drawerClose: {
     transition: theme.transitions.create('width', {
@@ -92,7 +92,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('sm')]: {
       width: theme.spacing(9) + 1,
     },
-    backgroundColor: '#423417'
+    backgroundColor: '#f7d720'
   },
   toolbar: {
     display: 'flex',
@@ -150,7 +150,7 @@ const WorkerHeader = (props) =>  {
                     />
                     <br/>
                     <Typography variant="caption">Logged in as</Typography>
-                    <h6 style={{color: 'white'}}>Yasas</h6>
+                    <h6 style={{color: 'black'}}>Yasas</h6>
                     <Divider/>
                 </div>
 
@@ -232,31 +232,31 @@ const WorkerHeader = (props) =>  {
                 <List>
                     <ListItem button to="/worker" component={MyLink} >
                         <ListItemIcon>
-                            <DashboardIcon style={{color: '#faba39'}}/>
+                            <DashboardIcon style={{color: 'black'}}/>
                         </ListItemIcon>
                         <ListItemText primary="Dashboard"/>
                     </ListItem>
                     <ListItem button to="/worker/jobs" component={MyLink} >
                         <ListItemIcon>
-                            <WorkIcon style={{color: '#faba39'}}/>
+                            <WorkIcon style={{color: 'black'}}/>
                         </ListItemIcon>
                         <ListItemText primary="browse Jobs"/>
                     </ListItem>
                     <ListItem button >
                         <ListItemIcon>
-                            <HistoryIcon style={{color: '#faba39'}}/>
+                            <HistoryIcon style={{color: 'black'}}/>
                         </ListItemIcon>
                         <ListItemText primary="My Bids"/>
                     </ListItem>
                     <ListItem button >
                         <ListItemIcon>
-                            <ChatIcon style={{color: '#faba39'}}/>
+                            <ChatIcon style={{color: 'black'}}/>
                         </ListItemIcon>
                         <ListItemText primary="Chat"/>
                     </ListItem>
                     <ListItem button >
                         <ListItemIcon>
-                            <CreateIcon style={{color: '#faba39'}}/>
+                            <CreateIcon style={{color: 'black'}}/>
                         </ListItemIcon>
                         <ListItemText primary="Edit Profile"/>
                     </ListItem>

@@ -26,7 +26,7 @@ class WorkerDash extends Component {
     render() { 
         
         return (
-            <Grid container spacing={3} justify="center" style={{flexGrow: '1', padding: '40px', marginTop: '80px', marginLeft: '20px'}}>
+            <Grid container spacing={3} justify="center" style={{flexGrow: '1', padding: '40px', marginTop: '60px', marginLeft: '20px', backgroundColor: '#f0f0cc'}}>
 
                 <Grid item md={3}>
                     <ProfileImg source={avatar}/>
