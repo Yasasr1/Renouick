@@ -67,7 +67,7 @@ class CustomerDash extends Component {
         }
 
         return (
-            <div style={{backgroundColor: '#F5F1FA'}}>
+            <div style={{backgroundColor: '#fffdf5'}}>
                 <Grid container spacing={3} justify="center" style={{padding: '30px', flexGrow: '1'}}>
                     <Grid item md={3}>
                         <ProfileImg source={this.props.picUrl}/>

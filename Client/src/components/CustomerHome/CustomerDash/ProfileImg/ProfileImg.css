@@ -2,4 +2,7 @@
     width: 100%;
     height: inherit;
     border-radius: 6px;
+    box-shadow: 3px 6px 24px 0px rgba(135,133,135,0.53);
+
+
 }

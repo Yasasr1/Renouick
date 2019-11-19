@@ -79,7 +79,7 @@ const useStyles = makeStyles(theme => ({
       duration: theme.transitions.duration.enteringScreen,
     }),
     textAlign: 'center',
-    backgroundColor: '#fafa23',
+    backgroundColor: '#ffc800',
     color: 'black'
   },
   drawerClose: {

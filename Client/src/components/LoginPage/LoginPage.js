@@ -37,7 +37,7 @@ class LoginPage extends Component  {
 
         this.setState(updatedState);
     };
-
+    //validate the form before sening data to the backend
     validationHandler = () => {
         //form validaton 
         let updatedState = null;

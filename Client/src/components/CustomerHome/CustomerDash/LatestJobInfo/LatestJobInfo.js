@@ -72,7 +72,7 @@ class LatestJobInfo extends Component {
 
 
         return(
-            <Paper style={{padding: '25px'}}>
+            <Paper className="shadow p-3 mb-5 bg-white rounded" style={{padding: '25px'}}>
                <h4 align="center">{this.props.title}</h4>
                <Divider/>
                <br/>

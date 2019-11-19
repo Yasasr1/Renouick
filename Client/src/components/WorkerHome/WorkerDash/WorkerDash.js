@@ -75,7 +75,7 @@ class WorkerDash extends Component {
                             desc={"Total jobs completed"} 
                             number={23}
                             icon={<CheckCircleOutlineIcon fontSize='large' style={{color: 'white'}}/>}
-                            color={"Lime"}
+                            color={"#2aad0c"}
                             />
                         </Grid>
                         <Grid item md={12}>
@@ -83,7 +83,7 @@ class WorkerDash extends Component {
                             desc={"Ongoing Jobs"} 
                             number={4}
                             icon={<AutorenewIcon fontSize='large' style={{color: 'white'}}/>}
-                            color={"Gold"}
+                            color={"#faba39"}
                             />
                         </Grid>
                         <Grid item md={12}>

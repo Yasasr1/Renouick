@@ -31,6 +31,7 @@ class WorkerRegistration extends Component {
     
     state = {...this.inputValues};
 
+    //save input from textfields to state
     inputHandler = (event) => {
        const updatedState = {
             ...this.state,
@@ -43,7 +44,7 @@ class WorkerRegistration extends Component {
         this.setState(updatedState)
         
     }
-
+    //save inputs from checkboxes to state
     checkboxInputHandler =(event) => {
         let updatedState = {...this.state};
         let isDeleted = false;
