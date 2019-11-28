@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
     
   },
   back: {
-    backgroundImage:  `url(${backImage})`,
+    backgroundColor: 'gray',
   },
   
 }));

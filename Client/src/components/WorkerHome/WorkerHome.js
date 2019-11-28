@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import WorkerHeader from './WorkerHeader/WorkerHeader';
 import WorkerDash from './WorkerDash/WorkerDash';
 import BrowseJobs from './BrowseJobs/BrowseJobs';
+import viewJob from './ViewJob/ViewJob';
 
 
 const WorkerHome = (props) => {
@@ -13,6 +14,7 @@ const WorkerHome = (props) => {
             <Switch>
                 <Route path={props.match.url} exact component={WorkerDash}/>
                 <Route path={props.match.url + '/jobs'} component={BrowseJobs}/>
+                <Route path={props.match.url + '/viewJob'} component={viewJob}/>
             </Switch>
         </React.Fragment>
     );

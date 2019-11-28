@@ -19,7 +19,7 @@ import WorkIcon from '@material-ui/icons/Work';
 import Badge from '@material-ui/core/Badge';
 import MailIcon from '@material-ui/icons/Mail';
 //placeholder avatar
-import testAvatar from '../../../assests/testAvatar/avatar.jpg';
+import testAvatar from '../../../assests/testAvatar/AT.png';
 import { Menu, MenuItem, ListItem, Divider } from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';

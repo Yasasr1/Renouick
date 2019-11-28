@@ -5,7 +5,7 @@ import ProfileInfo from './ProfileInfo/ProfileInfo';
 import RatingInfo from '../../CustomerHome/CustomerDash/RatingInfo/RatingInfo';
 import StatisticsCard from './StatisticsCard/StatisticsCard';
 import EarningsChart from './EarningsChart/EarningsChart';
-import avatar from '../../../assests/testAvatar/avatar.jpg';
+import avatar from '../../../assests/testAvatar/AT.png';
 
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 import AutorenewIcon from '@material-ui/icons/Autorenew';
@@ -40,7 +40,7 @@ class WorkerDash extends Component {
 
                                     <Grid item md={12}>
                                         <AlternateEmailIcon fontSize="small" color="primary" style={{padding:"3px"}}/>
-                                        <Typography variant="caption">:yasasramanayaka@gmail.com</Typography>
+                                        <Typography variant="caption">:123@gmail.com</Typography>
                                     </Grid>
 
                                     <Grid item md={12}>

@@ -1,7 +1,7 @@
 import React ,{ Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import JobPostForm from './JobPostForm/JobPostForm';
-import Ad from './Ad/Ad';
+//import Ad from './Ad/Ad';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { Divider, Button } from '@material-ui/core';
@@ -124,9 +124,7 @@ class PostJob extends Component {
                   
                     />
                 </Grid>
-                <Grid item md={3}>
-                    <Ad/>
-                </Grid>
+                
             </Grid>
             
         );
