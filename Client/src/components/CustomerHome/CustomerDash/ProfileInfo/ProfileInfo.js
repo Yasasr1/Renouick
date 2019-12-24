@@ -45,6 +45,14 @@ const ProfileInfo = (props) => {
                 <Grid item md={12}>
                     <Divider/>
                 </Grid>
+
+                <Grid item md={2}>
+                    <AlternateEmailIcon fontSize="small" color="primary" style={{padding:"3px"}}/>
+                    <Typography variant="caption">Contact No</Typography>
+                </Grid>
+                <Grid item md={10}>
+                    <Typography variant="caption">:{props.contactNumber}</Typography>
+                </Grid>
                 
                 <Grid item md={2}>
                     <AlternateEmailIcon fontSize="small" color="primary" style={{padding:"3px"}}/>

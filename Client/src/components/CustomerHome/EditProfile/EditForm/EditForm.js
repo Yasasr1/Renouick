@@ -15,7 +15,7 @@ class EditForm extends Component {
         email: '',
         password: '',
         confirmPw: '',
-        userName: '',
+        contactNumber: '',
         facebook: '',
         twitter: '',
         profilePicUrl: '',
@@ -38,7 +38,7 @@ class EditForm extends Component {
                 address:  this.props.customer.address,
                 email: this.props.customer.email,
                 password:  this.props.customer.password,
-                userName:  this.props.customer.userName,
+                contactNumber:  this.props.customer.contactNumber,
                 facebook: this.props.customer.facebook,
                 twitter: this.props.customer.twitter,
                 profilePicUrl: this.props.customer.profilePicUrl,
@@ -92,7 +92,7 @@ class EditForm extends Component {
             birthday:  this.state.customer.birthday,
             address:  this.state.customer.address,
             email: this.state.customer.email,
-            username:  this.state.customer.userName,
+            contactNumber:  this.state.customer.contactNumber,
             password:  this.state.customer.password,
             profilePicUrl: this.state.customer.profilePicUrl,
             profilePicId : this.state.customer.profilePicId,
@@ -163,17 +163,29 @@ class EditForm extends Component {
                     onChange={this.handleInput}
                     />
 
-                        <TextField
-                        id="address"
-                        label="Address"
-                        margin="dense"
-                        variant="outlined"
-                        multiline
-                        rowsMax="4"
-                        value={this.state.customer.address}
-                        onChange={this.handleInput}
-                        fullWidth
-                        />
+                    <TextField
+                    id="address"
+                    label="Address"
+                    margin="dense"
+                    variant="outlined"
+                    multiline
+                    rowsMax="4"
+                    value={this.state.customer.address}
+                    onChange={this.handleInput}
+                    fullWidth
+                    />
+
+                    <TextField
+                    id="contactNumber"
+                    label="Contact Number"
+                    margin="dense"
+                    variant="outlined"
+                    multiline
+                    rowsMax="4"
+                    value={this.state.customer.contactNumber}
+                    onChange={this.handleInput}
+                    fullWidth
+                    />
                     </Grid>    
                </Grid>
                <Grid item md={8}>

@@ -202,6 +202,7 @@ class BrowseJobs extends Component {
                         cat={job.category}
                         date={job.postDate}
                         images={job.images}
+                        contactNumber={job.contactNumber}
                         />
             })
         }

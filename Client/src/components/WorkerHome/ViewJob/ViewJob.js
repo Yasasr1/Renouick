@@ -1,6 +1,6 @@
 //display a single job after clicking on it in the list
 import React from 'react';
-import { Grid, Divider, Button, Chip, Typography } from '@material-ui/core';
+import { Grid, Divider, Button, Chip, Typography, TextField } from '@material-ui/core';
 import { Carousel } from 'react-bootstrap';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 
@@ -41,16 +41,24 @@ const ViewJob = (props) => {
             <Chip size="medium" label={props.location.state.cat} icon={<LocalOfferIcon/>}/>
             <br/>
             <p style={{fontSize: '1.2rem'}}>{props.location.state.desc}</p>
+            
             </Grid>
             <Grid item md={12}>
                 <p className="h6">Posted By : {props.location.state.poster}</p>
                 <p className="h6">Poste Date : {date}</p>
+                <p className="h6">Contact Number : {props.location.state.contactNumber}</p>
             </Grid>
-            <Grid item md={1}>
-                <Button variant="contained" color="primary">Contact</Button>
+            <Grid item md={12}>
+                <Divider/>
+                <Typography variant="h5">Place a Bid</Typography>
+                <br/>
+                <Typography variant="body1">Enter the price you expect to charge for this job and click the bid button to place a bid</Typography>
             </Grid>
-            <Grid item md={1}>
-                <Button variant="contained" color="primary">Place Bid</Button>
+            <Grid item md={2}>
+                <TextField label="Amount" id="amount"/>
+            </Grid>
+            <Grid item md={2}>
+                <Button variant="contained" style={{marginTop:'12px', backgroundColor: 'orange'}}>Bid</Button>
             </Grid>
         </Grid>
     )

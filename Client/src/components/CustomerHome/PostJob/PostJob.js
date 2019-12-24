@@ -75,6 +75,7 @@ class PostJob extends Component {
                 description: this.state.jobDesc,
                 postDate: currentDate,
                 poster: this.props.email,
+                contactNumber:this.props.contactNumber,
                 status: 'pending',
                 images: [...this.state.images]
             };
@@ -133,7 +134,8 @@ class PostJob extends Component {
 
 const matchStateToProps = state => {
     return {
-        email: state.email
+        email: state.email,
+        contactNumber:state.contactNumber
     }
 }
 

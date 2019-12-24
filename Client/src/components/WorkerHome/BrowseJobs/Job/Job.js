@@ -21,7 +21,8 @@ class Job extends Component {
                 desc: this.props.desc,
                 cat: this.props.cat,
                 date: this.props.date,
-                images: this.props.images
+                images: this.props.images,
+                contactNumber:this.props.contactNumber
             }
         }}/>})  
     };
