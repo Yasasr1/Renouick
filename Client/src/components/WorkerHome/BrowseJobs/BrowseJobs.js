@@ -196,6 +196,7 @@ class BrowseJobs extends Component {
             this.jobs = this.state.jobs.map(job => {
                 return <Job
                         key={job._id}
+                        id={job._id}
                         title={job.title}
                         poster={job.poster}
                         desc={job.description}

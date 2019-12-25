@@ -18,6 +18,8 @@ const job = require('./routes/job');
 const customer = require('./routes/customer');
 //importing all worker info routes
 const worker = require('./routes/worker');
+//importing all bid routes
+const bid = require('./routes/bid');
 
 
 
@@ -56,6 +58,7 @@ app.use('/job', job);
 app.use('/customer', customer);
 app.use('/test', test);
 app.use('/worker', worker);
+app.use('/bid', bid);
 
 
 app.listen(PORT, function() {

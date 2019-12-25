@@ -16,6 +16,7 @@ class Job extends Component {
         this.setState({redirect: <Redirect push to={{
             pathname: "/worker/viewJob",
             state: {
+                id:this.props.id,
                 title: this.props.title,
                 poster: this.props.poster,
                 desc: this.props.desc,

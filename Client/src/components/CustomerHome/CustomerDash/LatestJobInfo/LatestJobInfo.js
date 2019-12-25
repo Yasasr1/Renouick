@@ -1,55 +1,99 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Paper from '@material-ui/core/Paper';
-import { Divider, GridList, GridListTile, Chip } from '@material-ui/core';
+import { Divider,Chip } from '@material-ui/core';
+import { Carousel } from 'react-bootstrap';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Rating from '@material-ui/lab/Rating';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
-
-
-
-
-
-
+import Bid from './Bid/Bid';
+import axios from 'axios';
 
 class LatestJobInfo extends Component {
     state = {
-        isImageSelected: false,
-        t : true
+        t : true,
+        bids: []
     }
 
-    selectedImage = <Typography variant="caption">No photos</Typography>
-
-    firstLoad = true;
-    
-    render() {
-        //display selected image bigger
-        const selectImage = (event) => {
-            console.log(event.target.src);
-            this.selectedImage = <img src={event.target.src} alt="selected" height="100%" width="100%"/>
-            this.setState({isImageSelected: !this.state.selectImage});
-        }
-    
-        let imageElements = <Typography variant="caption">No photos</Typography>;
-    
-        //if there are any images passed as props, url's of those images will be mapped to a array
-        
-        if(this.props.images) {
-            const imagesPassed = this.props.images;
-            const imagesArray = imagesPassed.map(image => image.url)
-            
-            //this should only run when component load for the first time
-            if(this.firstLoad) {
-                //setting the last image in the array to the selected image 
-                this.selectedImage = <img src={imagesArray[imagesArray.length-1]} alt="selected" height="80%" width="80%"/>
-                this.firstLoad = false;
+    componentDidMount(){
+        console.log("did mount ran");
+        axios.get('http://localhost:4000/bid/getBids', {
+            params: {
+                id: this.props.id
+            },
+            headers: {
+                'x-auth-token': this.props.token
             }
-            //save images to img elements.
-            imageElements = imagesArray.map(url => 
-                (<GridListTile key={url} cols={1}>
-                   <img onClick={selectImage} src={url} alt="job photos" style={{width: '50%', height: '50%'}}></img> 
-                </GridListTile>)
-            )
+        })
+        .then(res => {
+            const bids = res.data;
+            //console.log(res.data[0].jobId);
+            this.setState({bids: bids});
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }
+
+    componentDidUpdate(){
+        console.log("did update ran");
+        axios.get('http://localhost:4000/bid/getBids', {
+            params: {
+                id: this.props.id
+            },
+            headers: {
+                'x-auth-token': this.props.token
+            }
+        })
+        .then(res => {
+            const bids = res.data;
+            //console.log(res.data[0].jobId);
+            if(this.state.bids.length > 0 && res.data.length > 0){
+                if(this.state.bids[0].jobId !== res.data[0].jobId){
+                    this.setState({bids: bids});
+                }
+            }else if(this.state.bids.length === 0){
+                if(res.data.length > 0){
+                    this.setState({bids: bids});
+                }
+            }else if(this.state.bids.length > 0){
+                if(res.data.length === 0){
+                    this.setState({bids: bids});
+                }
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }
+
+    render() {
+
+        let images = <p>no images</p>;
+        let bids = <p className="h6">No bids..</p>
+
+        if(this.state.bids.length > 0){
+            bids = this.state.bids.map(bid => {
+                return <Bid
+                    amount={bid.amount}
+                    poster={bid.poster}
+                    date={bid.date}
+                />
+            })
+        }
+        
+
+        if(this.props.images.length > 0) {
+            images = this.props.images.map(image => {
+                return <Carousel.Item key={image.publicId}>
+                    <img
+                    className="d-block w-100 h-100"
+                    src={image.url}
+                    alt="First pic"
+                    /> 
+                </Carousel.Item>
+            })
         }
     
         //if the props isWorkerAssigned is true worker info will also be displayed
@@ -69,8 +113,6 @@ class LatestJobInfo extends Component {
                 </Grid>
             </React.Fragment>
         );
-
-
         return(
             <Paper className="shadow p-3 mb-5 bg-white rounded" style={{padding: '25px'}}>
                <h4 align="center">{this.props.title}</h4>
@@ -78,14 +120,9 @@ class LatestJobInfo extends Component {
                <br/>
                <Grid container>
                     <Grid item md={4}>
-                        <Grid container>
-                            <Grid item md={12}> 
-                                {this.selectedImage}    
-                            </Grid>
-                            <GridList cellHeight={100} cols={5}>
-                                {imageElements}
-                            </GridList>
-                        </Grid>
+                        <Carousel>
+                            {images}
+                        </Carousel>
                     </Grid>
                     <Grid item md={1}>
                         <Divider orientation="vertical"/>
@@ -103,10 +140,20 @@ class LatestJobInfo extends Component {
                     </Grid>
                </Grid>
                {this.props.isWorkerAssigned ? workerInfo : null}
+               <br/>
+               <Divider/>
+               <br/>
+               <p className="h4">Current Bids</p>
+               <br/>
+               {bids}
             </Paper>
         );
-    }
-    
+    }  
 };
 
-export default LatestJobInfo;
+const mapStateToProps = state => {
+    return {
+        token: state.token,
+    }
+}
+export default connect(mapStateToProps,null)(LatestJobInfo);

@@ -1,15 +1,25 @@
 //display a single job after clicking on it in the list
-import React from 'react';
-import { Grid, Divider, Button, Chip, Typography, TextField } from '@material-ui/core';
+import React, { useState } from 'react';
+import { Grid, Divider, Button, Chip, Typography, TextField, Snackbar, IconButton } from '@material-ui/core';
+import CloseIcon from '@material-ui/icons/Close';
 import { Carousel } from 'react-bootstrap';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
+import axios from 'axios';
 
 
 
 const ViewJob = (props) => {
 
+    //for bid amount
+    const[amount,setAmount] = useState(0);
+    //for opening the snackbar after bid is placed
+    const[open,setOpen] = useState(false);
+    //responce after bid is placeed
+    const[message,setMessage] = useState("");
+
     let images = null;
     const date = new Date(props.location.state.date).toLocaleString();
+
 
 
     if(props.location.state.images.length > 0) {
@@ -21,6 +31,38 @@ const ViewJob = (props) => {
                 alt="First pic"
                 /> 
             </Carousel.Item>
+        })
+    }
+
+    //close snackbar
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+          return;
+        }
+    
+        setOpen(false);
+      };
+    
+
+    const placeBIdHandler = () => {
+        const bid = {
+            amount: amount,
+            poster: props.location.state.poster,
+            jobId: props.location.state.id,
+            status: "pending",
+            postDate: props.location.state.date
+        }
+
+        axios.post('http://localhost:4000/bid/add',bid)
+        .then(res=> {
+            console.log(res.data);
+            setOpen(true);
+            setMessage(res.data.bid);
+        })
+        .catch(error=> {
+            console.log(error);
+            setOpen(true);
+            setMessage("Bid placing failed");
         })
     }
     //{props.location.state.title}
@@ -55,11 +97,38 @@ const ViewJob = (props) => {
                 <Typography variant="body1">Enter the price you expect to charge for this job and click the bid button to place a bid</Typography>
             </Grid>
             <Grid item md={2}>
-                <TextField label="Amount" id="amount"/>
+                <TextField onChange={(event) => setAmount(event.target.value)} label="Amount" id="amount"/>
             </Grid>
             <Grid item md={2}>
-                <Button variant="contained" style={{marginTop:'12px', backgroundColor: 'orange'}}>Bid</Button>
+                <Button onClick={placeBIdHandler} variant="contained" style={{marginTop:'12px', backgroundColor: 'orange'}}>Bid</Button>
             </Grid>
+
+
+
+            <Snackbar
+            style={{backgroundColor: 'green'}}
+            anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+            }}
+            open={open}
+            autoHideDuration={6000}
+            onClose={handleClose}
+            ContentProps={{
+            'aria-describedby': 'message-id',
+            }}
+            message={<span id="message-id">{message}</span>}
+            action={[
+            <IconButton
+                key="close"
+                aria-label="close"
+                color="inherit"
+                onClick={handleClose}
+            >
+                <CloseIcon />
+            </IconButton>
+            ]}
+            />
         </Grid>
     )
 };
