@@ -73,14 +73,19 @@ class LatestJobInfo extends Component {
         let images = <p>no images</p>;
         let bids = <p className="h6">No bids..</p>
 
-        if(this.state.bids.length > 0){
+        if(this.state.bids.length > 0 && this.props.status === "pending"){
             bids = this.state.bids.map(bid => {
                 return <Bid
+                    key={bid._id}
                     amount={bid.amount}
                     poster={bid.poster}
-                    date={bid.date}
+                    date={bid.postDate}
                 />
             })
+        }
+
+        if(this.props.status === "accepted"){
+            bids = null;
         }
         
 
