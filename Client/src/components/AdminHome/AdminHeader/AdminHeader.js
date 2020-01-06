@@ -20,7 +20,7 @@ import MailIcon from '@material-ui/icons/Mail';
 //placeholder avatar
 import ChatIcon from '@material-ui/icons/Chat';
 import DescriptionIcon from '@material-ui/icons/Description';
-import testAvatar from '../../../assests/testAvatar/avatar.jpg';
+import testAvatar from '../../../assests/OurTeam/member2.jpg';
 import { Menu, MenuItem, ListItem, Divider } from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';

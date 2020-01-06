@@ -23,7 +23,7 @@ class CustomerDash extends Component {
         latestJob : null
     }
 
-    //dispatch the action to get and save customer data in redux storw
+    //dispatch the action to get and save customer data in redux store
     componentDidMount() {
         this.props.getCustomerInfo(this.props.email,this.props.token);
         axios.get('http://localhost:4000/job/getLatest', {
@@ -67,7 +67,7 @@ class CustomerDash extends Component {
         }
 
         return (
-            <div style={{backgroundColor: '#F5F1FA'}}>
+            <div style={{backgroundColor: '#fffdf5'}}>
                 <Grid container spacing={3} justify="center" style={{padding: '30px', flexGrow: '1'}}>
                     <Grid item md={3}>
                         <ProfileImg source={this.props.picUrl}/>
@@ -94,6 +94,7 @@ class CustomerDash extends Component {
                              birthday={this.props.birthday}
                              fName={this.props.fName}
                              lName={this.props.lName}
+                             contactNumber={this.props.contactNumber}
                              />
                         </Grid>
                         <Grid item md={12}> 
@@ -131,7 +132,8 @@ const mapStateToProps = state => {
         fName: state.user.firstName,
         lName: state.user.lastName,
         facebook: state.user.facebook,
-        twitter: state.user.twitter
+        twitter: state.user.twitter,
+        contactNumber:state.user.contactNumber
     }
 }
 

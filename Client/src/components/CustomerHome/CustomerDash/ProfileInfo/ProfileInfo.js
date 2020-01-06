@@ -17,7 +17,7 @@ const ProfileInfo = (props) => {
     }
     
     return(
-        <Paper style={{padding: '15px'}}>
+        <Paper className="shadow p-3 mb-5 bg-white rounded" style={{padding: '15px'}}>
             <Grid container spacing={1}>
                 <Grid item md={12}>
                     <Typography variant="h5" gutterBottom>{props.fName} {props.lName}</Typography>
@@ -44,6 +44,14 @@ const ProfileInfo = (props) => {
 
                 <Grid item md={12}>
                     <Divider/>
+                </Grid>
+
+                <Grid item md={2}>
+                    <AlternateEmailIcon fontSize="small" color="primary" style={{padding:"3px"}}/>
+                    <Typography variant="caption">Contact No</Typography>
+                </Grid>
+                <Grid item md={10}>
+                    <Typography variant="caption">:{props.contactNumber}</Typography>
                 </Grid>
                 
                 <Grid item md={2}>

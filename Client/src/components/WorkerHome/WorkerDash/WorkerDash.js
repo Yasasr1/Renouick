@@ -5,7 +5,7 @@ import ProfileInfo from './ProfileInfo/ProfileInfo';
 import RatingInfo from '../../CustomerHome/CustomerDash/RatingInfo/RatingInfo';
 import StatisticsCard from './StatisticsCard/StatisticsCard';
 import EarningsChart from './EarningsChart/EarningsChart';
-import avatar from '../../../assests/testAvatar/avatar.jpg';
+import avatar from '../../../assests/testAvatar/AT.png';
 
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 import AutorenewIcon from '@material-ui/icons/Autorenew';
@@ -26,7 +26,7 @@ class WorkerDash extends Component {
     render() { 
         
         return (
-            <Grid container spacing={3} justify="center" style={{flexGrow: '1', padding: '40px', marginTop: '80px', marginLeft: '20px'}}>
+            <Grid container spacing={3} justify="center" style={{flexGrow: '1', padding: '40px', marginTop: '60px', marginLeft: '20px', backgroundColor: '#f0f0cc'}}>
 
                 <Grid item md={3}>
                     <ProfileImg source={avatar}/>
@@ -40,7 +40,7 @@ class WorkerDash extends Component {
 
                                     <Grid item md={12}>
                                         <AlternateEmailIcon fontSize="small" color="primary" style={{padding:"3px"}}/>
-                                        <Typography variant="caption">:yasasramanayaka@gmail.com</Typography>
+                                        <Typography variant="caption">:123@gmail.com</Typography>
                                     </Grid>
 
                                     <Grid item md={12}>
@@ -75,7 +75,7 @@ class WorkerDash extends Component {
                             desc={"Total jobs completed"} 
                             number={23}
                             icon={<CheckCircleOutlineIcon fontSize='large' style={{color: 'white'}}/>}
-                            color={"Lime"}
+                            color={"#2aad0c"}
                             />
                         </Grid>
                         <Grid item md={12}>
@@ -83,7 +83,7 @@ class WorkerDash extends Component {
                             desc={"Ongoing Jobs"} 
                             number={4}
                             icon={<AutorenewIcon fontSize='large' style={{color: 'white'}}/>}
-                            color={"Gold"}
+                            color={"#faba39"}
                             />
                         </Grid>
                         <Grid item md={12}>

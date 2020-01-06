@@ -17,6 +17,9 @@ let Job = new Schema({
    poster: {
        type: String
    },
+   contactNumber: {
+    type: String
+   },
    status: {
        type: String
    },

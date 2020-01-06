@@ -3,6 +3,7 @@ import { Paper, Grid, Typography, Divider, Button } from '@material-ui/core';
 import WorkIcon from '@material-ui/icons/Work';
 import TodayIcon from '@material-ui/icons/Today';
 import StarIcon from '@material-ui/icons/Star';
+import PhoneIcon from '@material-ui/icons/Phone';
 
 const Worker = (props) => {
 
@@ -64,6 +65,16 @@ const Worker = (props) => {
                         </Grid>
                         <Grid item md={9}>
                             <Typography variant="overline">:3.9</Typography>
+                        </Grid>
+
+                        <Grid item md={1}>
+                            <PhoneIcon/>
+                        </Grid>
+                        <Grid item md={2}>
+                        <Typography variant="overline">Contact No</Typography>
+                        </Grid>
+                        <Grid item md={9}>
+                            <Typography variant="overline">:0714683450</Typography>
                         </Grid>
                     </Grid>
                     <Button variant="outlined" style={{float: 'right', color: '#e68a00', borderColor: 'orange'}}>View Profile</Button>

@@ -1,7 +1,6 @@
 import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import backImage from '../../assests/backgrounds/backgroundHome.jpg';
-import './About.css'; 
 
 const style = {
     paperContainer: {

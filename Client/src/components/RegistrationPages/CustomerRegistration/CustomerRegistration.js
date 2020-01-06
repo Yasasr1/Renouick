@@ -16,7 +16,7 @@ class CustomerRegistration extends Component {
             birthday: {value: '', isValid: true, message: ''},
             address: {value: '', isValid: true, message: ''},
             email: {value: '', isValid: true, message: ''},
-            username: {value: '', isValid: true, message: ''},
+            contactNumber: {value: '', isValid: true, message: ''},
             password: {value: '', isValid: true, message: ''},
             confirmPassword: {value: '', isValid: true, message: ''}
         
@@ -66,13 +66,13 @@ class CustomerRegistration extends Component {
             copiedState.address.message = '';
         }
 
-        if(!copiedState.username.value){
-            copiedState.username.isValid = false;
-            copiedState.username.message = '*Required';
+        if(!copiedState.contactNumber.value){
+            copiedState.contactNumber.isValid = false;
+            copiedState.contactNumber.message = '*Required';
             isConfirmed = false;
         } else  {
-            copiedState.username.isValid = true;
-            copiedState.username.message = '';
+            copiedState.contactNumber.isValid = true;
+            copiedState.contactNumber.message = '';
         }
         
         if (!validator.isEmail(copiedState.email.value)) {
@@ -118,7 +118,7 @@ class CustomerRegistration extends Component {
             birthday: this.state.birthday.value,
             address: this.state.address.value,
             email: this.state.email.value,
-            username: this.state.username.value,
+            contactNumber: this.state.contactNumber.value,
             password: this.state.password.value,
             facebook: '',
             twitter: '',
@@ -218,11 +218,11 @@ class CustomerRegistration extends Component {
                     />
 
                     <MyTextField
-                    error={!this.state.username.isValid}
-                    id="username"
-                    label="Username"
-                    placeholder="Insert Username"
-                    helperText={!this.state.username.isValid ? <p style={{color: 'red'}}>{this.state.username.message}</p> : null}
+                    error={!this.state.contactNumber.isValid}
+                    id="contactNumber"
+                    label="Contact Number"
+                    placeholder="Insert Contact Number"
+                    helperText={!this.state.contactNumber.isValid ? <p style={{color: 'red'}}>{this.state.contactNumber.message}</p> : null}
                     changed={this.inputHandler}
                     />
 

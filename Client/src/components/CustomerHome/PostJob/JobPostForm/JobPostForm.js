@@ -37,7 +37,7 @@ const JobPostform = (props) => {
             errorMsg = <p style={{color: 'red'}}>*Please fill all input fields</p>
     return(
         <Paper style={{padding: '80px', textAlign: 'center'}}>
-                <h5 align="center">New Job</h5>
+                <h5 align="center">New Job Forum</h5>
                 <form>
                     <TextField
                     style={{marginBottom: '3em'}}

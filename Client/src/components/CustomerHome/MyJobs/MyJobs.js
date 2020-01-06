@@ -85,6 +85,7 @@ class MyJobs extends Component {
             if(job._id === selectedRowKey.toString()) {
                 this.jobDetails = <JobDetails
                     title={job.title}
+                    id={job._id}
                     category={job.category}
                     description={job.description}
                     status={job.status}

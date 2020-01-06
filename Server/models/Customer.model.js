@@ -17,7 +17,7 @@ let Customer = new Schema({
     email : {
         type: String
     },
-    username: {
+    contactNumber: {
         type: String
     },
     password: {

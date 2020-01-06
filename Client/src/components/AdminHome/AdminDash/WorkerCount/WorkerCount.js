@@ -23,9 +23,15 @@ const useStyles = makeStyles(theme => ({
     //backgroundColor:"rgba( 0, 60, 90 ,0.8)",
     
   },
+<<<<<<< HEAD
   //back: {
     //backgroundImage:  `url(${backImage})`,
   //},
+=======
+  back: {
+    backgroundColor: 'gray',
+  },
+>>>>>>> 480ebf27c029208e23b541c77569dc98313b9d5f
   
 }));
 

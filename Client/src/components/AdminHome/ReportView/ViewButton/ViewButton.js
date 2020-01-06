@@ -36,11 +36,10 @@ export default function ViewButton() {
         aria-labelledby="alert-dialog-slide-title"
         aria-describedby="alert-dialog-slide-description"
       >
-        <DialogTitle id="alert-dialog-slide-title">{"Use Google's location service?"}</DialogTitle>
+        <DialogTitle id="alert-dialog-slide-title">{"Lost money during the painter was painting the room"}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
-            Let Google help apps determine location. This means sending anonymous location data to
-            Google, even when no apps are running.
+            The worker came to our place around 9 am and he started work at 9.30 am. The job he was given was paint the room. He did the job arount 4 to 5 hours. There was 5000 rupee note under one of the book pills in that room. Later , after he left the place I found that the note was missing.  
           </DialogContentText>
         </DialogContent>
         <DialogActions>

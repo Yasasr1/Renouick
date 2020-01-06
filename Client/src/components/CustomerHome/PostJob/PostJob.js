@@ -1,13 +1,10 @@
 import React ,{ Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import JobPostForm from './JobPostForm/JobPostForm';
-import Ad from './Ad/Ad';
+//import Ad from './Ad/Ad';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import { Divider } from '@material-ui/core';
-//import { makeStyles } from '@material-ui/core/styles';
-//import Button from '@material-ui/core/Button';
-
+import { Divider, Button } from '@material-ui/core';
 
 
 
@@ -78,6 +75,7 @@ class PostJob extends Component {
                 description: this.state.jobDesc,
                 postDate: currentDate,
                 poster: this.props.email,
+                contactNumber:this.props.contactNumber,
                 status: 'pending',
                 images: [...this.state.images]
             };
@@ -93,11 +91,10 @@ class PostJob extends Component {
                 alert('job posting failed');
             })
         }
-    
-      
-       
+    }
 
-
+    redirectHandler = () => {
+        this.props.history.push('/customer/find_worker');
     }
 
     render() {
@@ -106,11 +103,14 @@ class PostJob extends Component {
             
             <Grid justify="center" container spacing={5} style={{padding: '20px', flexGrow: '1', marginTop: '10px'}}>
                 <Grid item md={12}>
-                    <h3 style={{fontFamily:'Roboto, sansSerif'}}>Post Job</h3>
-                    <h5 style={{ fontFamily:"Calibri " , fontStyle:"Italic" , color:"purple"}}>Feel free to post here whatever the job you require!</h5>
-                    <h8>Just enter the required details and uplaod images which shows the current condition. </h8>
-                    <h5 style={{ fontFamily:"Calibri " , fontStyle:"Italic" }}>If you are in a rush to find a worker for your job, click here.</h5>
+                    <h3 style={{fontFamily:'Roboto, sansSerif'}}>Post a Job</h3>
                     <Divider/>
+                    <br/>
+                    <h5 style={{ fontFamily:"Calibri " , fontStyle:"Italic" , color:"purple"}}>Feel free to post here whatever the job you require!</h5>
+                    <h6>Just enter the required details and uplaod images which shows the current condition. </h6>
+                    <h5 style={{ fontFamily:"Calibri " , fontStyle:"Italic" }}>Search a worker if you are in a rush to find a worker for your job</h5>
+                    <Button onClick={this.redirectHandler} variant="outlined">Search Worker</Button>
+                    
                 </Grid>
                 <Grid item md={7}>
                     <JobPostForm 
@@ -125,9 +125,7 @@ class PostJob extends Component {
                   
                     />
                 </Grid>
-                <Grid item md={3}>
-                    <Ad/>
-                </Grid>
+                
             </Grid>
             
         );
@@ -136,7 +134,8 @@ class PostJob extends Component {
 
 const matchStateToProps = state => {
     return {
-        email: state.email
+        email: state.email,
+        contactNumber:state.contactNumber
     }
 }
 

@@ -19,7 +19,7 @@ import WorkIcon from '@material-ui/icons/Work';
 import Badge from '@material-ui/core/Badge';
 import MailIcon from '@material-ui/icons/Mail';
 //placeholder avatar
-import testAvatar from '../../../assests/testAvatar/avatar.jpg';
+import testAvatar from '../../../assests/testAvatar/AT.png';
 import { Menu, MenuItem, ListItem, Divider } from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
@@ -48,6 +48,8 @@ const useStyles = makeStyles(theme => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
+    backgroundColor: '#171400',
+    color: '#faba39'
     
   },
   appBarShift: {
@@ -77,7 +79,8 @@ const useStyles = makeStyles(theme => ({
       duration: theme.transitions.duration.enteringScreen,
     }),
     textAlign: 'center',
-    backgroundColor: '#E5E8F3'
+    backgroundColor: '#ffc800',
+    color: 'black'
   },
   drawerClose: {
     transition: theme.transitions.create('width', {
@@ -89,7 +92,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('sm')]: {
       width: theme.spacing(9) + 1,
     },
-    backgroundColor: '#BFC2CB'
+    backgroundColor: '#f7d720'
   },
   toolbar: {
     display: 'flex',
@@ -147,7 +150,7 @@ const WorkerHeader = (props) =>  {
                     />
                     <br/>
                     <Typography variant="caption">Logged in as</Typography>
-                    <h6>Yasas</h6>
+                    <h6 style={{color: 'black'}}>Yasas</h6>
                     <Divider/>
                 </div>
 
@@ -177,7 +180,7 @@ const WorkerHeader = (props) =>  {
                         <Grid item>
                             <IconButton style={{outline: 'none'}}>
                                 <Badge badgeContent={5} color="secondary">
-                                    <MailIcon style={{color: 'white'}}/>
+                                    <MailIcon style={{color: '#faba39'}}/>
                                 </Badge>
                             </IconButton>
                         </Grid>
@@ -222,38 +225,38 @@ const WorkerHeader = (props) =>  {
             >
                 <div className={classes.toolbar}>
                     <IconButton onClick={handleDrawerClose}>
-                        {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+                        {theme.direction === 'rtl' ? <ChevronRightIcon style={{color: 'white'}} /> : <ChevronLeftIcon style={{color: 'white'}} />}
                     </IconButton>
                 </div>
                 {avatar}
                 <List>
                     <ListItem button to="/worker" component={MyLink} >
                         <ListItemIcon>
-                            <DashboardIcon/>
+                            <DashboardIcon style={{color: 'black'}}/>
                         </ListItemIcon>
                         <ListItemText primary="Dashboard"/>
                     </ListItem>
                     <ListItem button to="/worker/jobs" component={MyLink} >
                         <ListItemIcon>
-                            <WorkIcon/>
+                            <WorkIcon style={{color: 'black'}}/>
                         </ListItemIcon>
                         <ListItemText primary="browse Jobs"/>
                     </ListItem>
                     <ListItem button >
                         <ListItemIcon>
-                            <HistoryIcon/>
+                            <HistoryIcon style={{color: 'black'}}/>
                         </ListItemIcon>
                         <ListItemText primary="My Bids"/>
                     </ListItem>
                     <ListItem button >
                         <ListItemIcon>
-                            <ChatIcon/>
+                            <ChatIcon style={{color: 'black'}}/>
                         </ListItemIcon>
                         <ListItemText primary="Chat"/>
                     </ListItem>
                     <ListItem button >
                         <ListItemIcon>
-                            <CreateIcon/>
+                            <CreateIcon style={{color: 'black'}}/>
                         </ListItemIcon>
                         <ListItemText primary="Edit Profile"/>
                     </ListItem>

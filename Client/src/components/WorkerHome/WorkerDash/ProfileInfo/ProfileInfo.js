@@ -17,10 +17,10 @@ const ProfileInfo = (props) => {
     }*/
     
     return(
-        <Paper style={{padding: '15px'}}>
+        <Paper className="shadow p-3 mb-5 bg-white rounded" style={{padding: '15px'}}>
             <Grid container spacing={1}>
                 <Grid item md={12}>
-                    <Typography variant="h5" gutterBottom>Yasas Ramanayaka</Typography>
+                    <Typography variant="h5" gutterBottom>Kasun Perera</Typography>
                     <Divider/>
                 </Grid>
             </Grid>
@@ -31,7 +31,7 @@ const ProfileInfo = (props) => {
                     <Typography variant="caption">Birthday</Typography>
                 </Grid>
                 <Grid item md={10}>
-                    <Typography variant="caption">:15/05/1996</Typography>
+                    <Typography variant="caption">:01/05/1986</Typography>
                 </Grid>
 
                 <Grid item md={2}>
@@ -39,7 +39,7 @@ const ProfileInfo = (props) => {
                     <Typography variant="caption">Address</Typography>
                 </Grid>
                 <Grid item md={10}>
-                    <Typography variant="caption">:17/4 A, Amunupitiya road, Welisara</Typography>
+                    <Typography variant="caption">:17, Flower Road, Kotte</Typography>
                 </Grid>
 
                 <Grid item md={2}>
@@ -47,7 +47,7 @@ const ProfileInfo = (props) => {
                     <Typography variant="caption">Profession</Typography>
                 </Grid>
                 <Grid item md={10}>
-                    <Typography variant="caption">:A/C Reapair</Typography>
+                    <Typography variant="caption">:A/C repair</Typography>
                 </Grid>
                     
             </Grid>
