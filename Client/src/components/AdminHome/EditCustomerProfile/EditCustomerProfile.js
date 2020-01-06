@@ -1,13 +1,17 @@
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
-import Grid from '@material-ui/core/Grid';
+import {Grid, Button} from '@material-ui/core/';
 //import ProfileImg from './ProfileImg/ProfileImg';
 import Profileinfo from './ProfileInfo/ProfileInfo'; 
 import * as actions from '../../../store/actions/user';
 import axios from 'axios';
 import CustomerSelect from './CustomerSelect/CustomerSelect';
-
+import CardBox1 from '../../UI/Card/CardBox1';
+import ProfileImg from './ProfileImg/ProfileImg';
+import profilePic from '../../../assests/OurTeam/member2.jpg';
+import Typography from '@material-ui/core/Typography';
 //import { Link } from 'react-router-dom';
+//import Button from @material-ui
 class EditCustomerProfile extends Component {
     state = {
         latestJob : null
@@ -48,18 +52,14 @@ class EditCustomerProfile extends Component {
        
         return (
             <div style={{backgroundColor: '#F5F1FA'}}>
+                <Grid container spacing={3} justify="center"  style={{padding: '100px', flexGrow: '1'}}></Grid>
                
-                <Grid container spacing={3}  justify="space-around"  alignItems="flex-start" style={{padding: '100px', flexGrow: '1'}}>
-                
-                    <Grid item sm={7} >
-                    
-                        <Grid item >
-                            <CustomerSelect/>                             
+                    <Grid item xs={4}>
+                    <CardBox1 image={profilePic}/>
+                             
+                    </Grid>
+                    <Grid item xs={5} >
                         
-                            </Grid> 
-                        
-                        <Grid item md={12} style={{padding: '10px'}}>
-                            
                              <Profileinfo
                              gender={this.props.gender}
                              address={this.props.address}
@@ -68,19 +68,14 @@ class EditCustomerProfile extends Component {
                              fName={this.props.fName}
                              lName={this.props.lName}
                              />
-</Grid>
-                              
-                    </Grid>                    
-                    
-                    <Grid item xs={8}>
-                    
-                         </Grid>
+                        </Grid>
+                        <Grid item xs={3}>
+                        <CustomerSelect/>
+                        </Grid>
+                                       
+                   
                 
-                </Grid>
-
-                
-                
-                
+         
             </div>
         );
     }

@@ -11,7 +11,7 @@ import EmailIcon from '@material-ui/icons/Email';
 import Icon from '@mdi/react';
 import { mdiFacebookBox, mdiTwitter } from '@mdi/js';
 import IconButton from '@material-ui/core/IconButton';
-import Avatar from '@material-ui/core/Avatar';
+//import Avatar from '@material-ui/core/Avatar';
 
 const ProfileInfo = (props) => {
     /*const openSocialMedia = (type) => {
@@ -29,10 +29,9 @@ const ProfileInfo = (props) => {
             <Grid container spacing={1} >
                 <Grid item md={10}>
                     <Typography variant="h5" gutterBottom>Yasas Ramanayaka</Typography>
-                    <Grid item md={10} justify="flex-end" alignItems="flex-start">
-                    <Avatar alt="xxx"  src="./CustomerImg/member2.jpg" className="bigAvatar"  />
+                    
                     <Divider/>
-                    </Grid>
+
                 </Grid>
             </Grid>
             <Grid container spacing={1}>

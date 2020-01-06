@@ -34,7 +34,7 @@ const MyLink = React.forwardRef((props, ref) => <NavLink exact activeStyle={{col
 
 
 
-const drawerWidth = 240;
+const drawerWidth = 250;
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -229,60 +229,51 @@ const AdminHeader = (props) =>  {
                 </div>
                 {avatar}
                 <List>
+
                     <ListItem button to="/admin" component={MyLink}>
                         <ListItemIcon>
                             <DashboardIcon/>
                         </ListItemIcon>
                         <ListItemText primary="Dashboard"/>
                     </ListItem>
+
                     <ListItem button to="/admin/admin_registration" component={MyLink} >
                         <ListItemIcon>
                             <WorkIcon/>
                         </ListItemIcon>
                         <ListItemText primary="Admin Registration"/>
                     </ListItem>
+
                     <ListItem button to="/admin/edit_admin_profile" component={MyLink} >
                         <ListItemIcon>
                             <CreateIcon/>
                         </ListItemIcon>
                         <ListItemText primary="Ëdit Admin Profile"/>
                     </ListItem>
+                    
                     <ListItem button to="/admin/edit_customer_profile" component={MyLink} >
                         <ListItemIcon>
                             <CreateIcon/>
                         </ListItemIcon>
                         <ListItemText primary="Edit Customer Profile"/>
                     </ListItem>
+
                     <ListItem button to="/admin/edit_worker_profile" component={MyLink} >
                         <ListItemIcon>
                             <CreateIcon/>
                         </ListItemIcon>
                         <ListItemText primary="Edit Workers Profile"/>
                     </ListItem>
-                    <ListItem button to="/admin/provide_support_page" component={MyLink}>
-                        <ListItemIcon>
-                            <HistoryIcon/>
-                        </ListItemIcon>
-                        <ListItemText primary="Provide Support Page"/>
-                    </ListItem>
+
+                    
+                        
                     <ListItem button to="/admin/report_view" component={MyLink}>
                         <ListItemIcon>
                             <DescriptionIcon/>
                         </ListItemIcon>
                         <ListItemText primary="Report View"/>
                     </ListItem>
-                    <ListItem button to="/admin/chat" component={MyLink}>
-                        <ListItemIcon>
-                            <ChatIcon/>
-                        </ListItemIcon>
-                        <ListItemText primary="Chat"/>
-                    </ListItem>
-                    <ListItem button to="/admin/add" component={MyLink} >
-                        <ListItemIcon>
-                            <BusinessIcon/>
-                        </ListItemIcon>
-                        <ListItemText primary="Advertisement Manage"/>
-                    </ListItem>
+                    
                 </List>
             </Drawer>
         </div>

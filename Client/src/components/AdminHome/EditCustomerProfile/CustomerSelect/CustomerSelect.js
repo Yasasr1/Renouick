@@ -5,6 +5,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import { Grid } from '@material-ui/core';
 
 
 
@@ -44,30 +45,32 @@ const CustomerSelect = (props) => {
     }));
   }
   return(
-
-<form className={classes.root} autoComplete="off">
-<FormControl className={classes.formControl}>
-<InputLabel htmlFor="age-helper">Customer</InputLabel>
-<Select
-  value={values.age}
-  onChange={handleChange}
-  inputProps={{
-    name: 'age',
-    id: 'age-helper',
-  }}
+                         
+                    
+      <form className={classes.root} autoComplete="off">
+        <FormControl className={classes.formControl}>
+        <InputLabel htmlFor="age-helper">Customer</InputLabel>
+      <Select
+        value={values.age}
+        onChange={handleChange}
+        inputProps={{
+        name: 'age',
+        id: 'age-helper',
+      }}
 >
-  <MenuItem value="">
-    <em>None</em>
-  </MenuItem>
-  <MenuItem value={10}>Pasan Mahesha Herath kmek ngvron ngern</MenuItem>
-  <MenuItem value={20}>Yasas Ramanayake</MenuItem>
-  <MenuItem value={30}>Thisara Gimhani</MenuItem>
-  <MenuItem value={30}>Gayara Jayasinghe</MenuItem>
-</Select>
-<FormHelperText>Enter Customer Username</FormHelperText>
-</FormControl>
-</form>
-  );
-}
+      <MenuItem value="">
+        <em>None</em>
+      </MenuItem>
+      <MenuItem value={10}>Pasan Mahesha Herath kmek ngvron ngern</MenuItem>
+      <MenuItem value={20}>Yasas Ramanayake</MenuItem>
+      <MenuItem value={30}>Thisara Gimhani</MenuItem>
+      <MenuItem value={30}>Gayara Jayasinghe</MenuItem>
+    </Select>
+    <FormHelperText>Enter Customer Username</FormHelperText>
+    </FormControl>
+    </form>
+    
+      );
+    }
 
 export default CustomerSelect;
