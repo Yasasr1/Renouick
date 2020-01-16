@@ -74,6 +74,7 @@ class PostJob extends Component {
                 category: this.state.jobCategory,
                 description: this.state.jobDesc,
                 postDate: currentDate,
+                acceptedBid: "",
                 poster: this.props.email,
                 contactNumber:this.props.contactNumber,
                 status: 'pending',

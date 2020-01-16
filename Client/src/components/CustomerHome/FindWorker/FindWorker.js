@@ -102,7 +102,7 @@ class FindWorker extends Component {
                      <Divider/>
                      <br/>
                      <h5 style={{ fontFamily:"Calibri " , fontStyle:"Italic" , color:"purple"}}>Get your job done by selecting the right person! </h5>
-                        <h7>What you have to do is, search workers by name or job category. You can view their profiles and contact them further.</h7>
+                        <h6>What you have to do is, search workers by name or job category. You can view their profiles and contact them further.</h6>
                         <h5 style={{ fontFamily:"Calibri " , fontStyle:"Italic" }}>Post a job if you are in the search of a best offer by a worker</h5>
                         <Button onClick={this.redirectHandler} variant="outlined">Post a Job</Button>
                         <br/>

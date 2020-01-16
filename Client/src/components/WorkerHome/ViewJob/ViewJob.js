@@ -5,6 +5,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import { Carousel } from 'react-bootstrap';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import axios from 'axios';
+import { connect } from 'react-redux';
 
 
 
@@ -47,7 +48,7 @@ const ViewJob = (props) => {
     const placeBIdHandler = () => {
         const bid = {
             amount: amount,
-            poster: props.location.state.poster,
+            poster: props.email,
             jobId: props.location.state.id,
             status: "pending",
             postDate: props.location.state.date
@@ -133,4 +134,11 @@ const ViewJob = (props) => {
     )
 };
 
-export default ViewJob;
+const mapStateToProps = state => {
+    return {
+        email: state.email,
+        
+    }
+}
+
+export default connect(mapStateToProps,null)(ViewJob);

@@ -36,6 +36,28 @@ router.get('/getAll', auth, (req, res) => {
     
 })
 
+//@route GET /job/update
+//@desc update job status when a bid is accepted
+//@access private
+router.post('/update', (req,res) => {
+    const info = req.body;
+    console.log(info);
+    //Job.update({title: "Paint an interior wall"},{$set:{status:"done"}})
+    /*Job.update({_id:info.jobId},{status: info.status})
+    Job.find({_id:info.jobId}, (err,job)=> {
+        if(err)
+            console.log(err);
+        else
+            console.log(job);
+    })*/
+    Job.updateOne({_id: info.jobId},{$set:{status:info.status,acceptedBid:info.bidid,assignedWorker:info.worker}},(err,res)=> {
+        if(err)
+            console.log(err);
+        console.log("job updated");
+    })
+    
+})
+
 //@route GET /job/getLatest
 //@desc get the latest job posted by a specified user
 //@access private

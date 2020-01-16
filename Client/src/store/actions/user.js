@@ -32,3 +32,24 @@ export const getUser = (email, token) => {
     }
 }
 
+export const getWorker = (email, token) => {
+    return dispatch => {
+        
+        //getting worker info from backend
+        axios.get('http://localhost:4000/worker/getInfo',{
+            params: {
+                email: email
+            },
+            headers: {
+                'x-auth-token': token
+            }
+        })
+        .then(response => {
+            dispatch(storeUser(response.data[0]));
+        })
+        .catch(err => {
+            console.log({...err});
+        })
+    }
+}
+
