@@ -2,10 +2,9 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 //import ViewButton from '../ViewButton/ViewButton';
-
-import Reply from  '../Reply/Reply';
+import View from  '../View/View';
 const action = (
-  <Reply/>
+  <View/>
 );
 
 const useStyles = makeStyles(theme => ({

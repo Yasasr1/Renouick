@@ -6,7 +6,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import HelpIcon from '@material-ui/icons/Help';
 import CardBox1 from '../../../UI/Card/CardBox1';
 import Typography from '@material-ui/core/Typography';
-import profilePic from '../../../../assests/OurTeam/member2.jpg';
+import ProfilePic from '../../../../assests/OurTeam/member2.jpg';
 //import CardBox from '../UI/Card/CardBox';
 
 
@@ -21,7 +21,7 @@ const AdminEditInfo = (props) => {
                   nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
                   cillum dolore eu fugiat nulla pariatur"/>*/
         <Paper style={{padding: '20px', height: '100%'}}>
-            <CardBox1 image={profilePic}/>
+            <img src={ProfilePic} width={300} height={150}/>
             <br/>
             <Typography variant="h5" gutterBottom>Pasan Mahesha</Typography>
             <Typography variant="overline" gutterBottom>pmahesha.hera@gmail.com</Typography>

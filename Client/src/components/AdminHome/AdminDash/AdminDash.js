@@ -12,7 +12,7 @@ import PieChart from './PieChart/PieChart';
 import Typography from '@material-ui/core/Typography';
 //import Button from @material-ui
 import LineChart from './LineChart/LineChart';
-//import Tabe from './Table/SimpleTable';
+//import TableInfo from './SimpleTable/SimpleTable';
 
  
 

@@ -62,7 +62,7 @@ export default function CustomizedDialogs() {
   return (
     <div>
       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        View
+       View
       </Button>
       <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
@@ -80,9 +80,11 @@ export default function CustomizedDialogs() {
           
         </DialogContent>
         <DialogActions>
-          
           <Button autoFocus onClick={handleClose} color="primary">
-            Contact
+            Action taken
+          </Button>
+          <Button autoFocus onClick={handleClose} color="primary">
+            Action not taken
           </Button>
         </DialogActions>
       </Dialog>

@@ -158,7 +158,7 @@ const AdminHeader = (props) =>  {
     return (
         <div className={classes.root}>
             <AppBar
-            position="fixed"
+            position="fixed" style={{background:'#111134', color:'#faba39'}}
             className={clsx(classes.appBar, {
                 [classes.appBarShift]: open,
             })}
@@ -179,12 +179,12 @@ const AdminHeader = (props) =>  {
                         <Grid item>
                             <IconButton style={{outline: 'none'}}>
                                 <Badge badgeContent={5} color="secondary">
-                                    <MailIcon style={{color: 'white'}}/>
+                                    <MailIcon style={{color: '#faba39'}}/>
                                 </Badge>
                             </IconButton>
                         </Grid>
                         <Grid item>
-                            <h6 style={{marginTop: "10px"}}>Username</h6>
+                            <h6 style={{marginTop: "10px", color:'#faba39'}}>Username</h6>
                         </Grid>
                         <Grid item>
                             <IconButton 

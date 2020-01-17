@@ -6,10 +6,8 @@ import AdminRegistration from './AdminRegistration/AdminRegistration';
 import EditAdminProfile from './EditAdminProfile/EditAdminProfile';
 import EditCustomerProfile from './EditCustomerProfile/EditCustomerProfile';
 import EditWorkerProfile from './EditWorkerProfile/EditWorkerProfile';
-//import ProvideSupportPage from './ProvideSupportPage/ProvideSupportPage';
 import ReportView from './ReportView/ReportView';
-//import Chat from './Chat/Chat';
-//import AdvertisementManage from './AdvertisementManage/AdvertisementManage';
+
 const AdminHome = (props) => {
 
     return (

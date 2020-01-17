@@ -3,8 +3,8 @@ import React, { PureComponent } from 'react';
 import Pie from '@bit/recharts.recharts.pie';
 import Sector from '@bit/recharts.recharts.sector';*/
 import {Pie , PieChart, Sector} from 'recharts';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
+//import Paper from '@material-ui/core/Paper';
+//import Typography from '@material-ui/core/Typography';
  
 const data = [
 	{ name: 'Pending Accounts', value: 40 },

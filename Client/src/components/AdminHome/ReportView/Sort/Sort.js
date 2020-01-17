@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const SortAndFilter = (props) => {
+const Sort = (props) => {
   const classes = useStyles();
   const [values, setValues] = React.useState({
     age: '',
@@ -61,22 +61,10 @@ const SortAndFilter = (props) => {
       </FormControl>
 
       <FormControl className={classes.formControl}>
-<InputLabel htmlFor="age-helper">Filter</InputLabel> 
-<Select
-  value={values.age}
-  onChange={handleChange}
-  inputProps={{
-    name: 'age',
-    id: 'age-helper',
-  }}
->
-        <MenuItem value={10}>All</MenuItem>
-        <MenuItem value={20}>Customers Only</MenuItem>
-        <MenuItem value={30}>Workers Only</MenuItem>
-        </Select>
+
       </FormControl>
 </form>
   );
 }
 
-export default SortAndFilter;
+export default Sort;
