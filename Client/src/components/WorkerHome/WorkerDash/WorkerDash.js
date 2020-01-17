@@ -6,6 +6,9 @@ import RatingInfo from '../../CustomerHome/CustomerDash/RatingInfo/RatingInfo';
 import StatisticsCard from './StatisticsCard/StatisticsCard';
 import EarningsChart from './EarningsChart/EarningsChart';
 import avatar from '../../../assests/testAvatar/AT.png';
+import { connect } from 'react-redux';
+import * as actions from '../../../store/actions/user';
+
 
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 import AutorenewIcon from '@material-ui/icons/Autorenew';
@@ -22,6 +25,10 @@ import LatestBidInfo from './LatestBidInfo/LatestBidInfo';
 
 class WorkerDash extends Component {
 
+    componentDidMount(){
+        this.props.getWorkerInfo(this.props.email,this.props.token);
+    }
+
     
     render() { 
         
@@ -29,7 +36,7 @@ class WorkerDash extends Component {
             <Grid container spacing={3} justify="center" style={{flexGrow: '1', padding: '40px', marginTop: '60px', marginLeft: '20px', backgroundColor: '#f0f0cc'}}>
 
                 <Grid item md={3}>
-                    <ProfileImg source={avatar}/>
+                    <ProfileImg source={this.props.picUrl}/>
                     <Grid container justify="center" spacing={3}>
                             <Grid item md={12}>
                                 <br/>
@@ -40,12 +47,12 @@ class WorkerDash extends Component {
 
                                     <Grid item md={12}>
                                         <AlternateEmailIcon fontSize="small" color="primary" style={{padding:"3px"}}/>
-                                        <Typography variant="caption">:123@gmail.com</Typography>
+                                        <Typography variant="caption">:{this.props.email}</Typography>
                                     </Grid>
 
                                     <Grid item md={12}>
                                         <PhoneIcon fontSize="small" color="primary" style={{padding:"3px"}}/>
-                                        <Typography variant="caption">:071738036</Typography>
+                                        <Typography variant="caption">:{this.props.contactNumber}</Typography>
                                     </Grid>
 
                                 </Grid>
@@ -61,7 +68,12 @@ class WorkerDash extends Component {
                 <Grid item md={6}>
                     <Grid container spacing={2}>
                         <Grid item md={12}>
-                            <ProfileInfo/>
+                            <ProfileInfo
+                            fName={this.props.fName}
+                            lName={this.props.lName}
+                            birthday={this.props.birthday}
+                            profession={this.props.profession}
+                            />
                         </Grid>
                         <Grid item md={12}>
                             <RatingInfo/>
@@ -133,4 +145,27 @@ class WorkerDash extends Component {
     }
 }
 
-export default WorkerDash;
+const mapStateToProps = state => {
+    return {
+        email: state.email,
+        token: state.token,
+        picUrl: state.user.profilePicUrl,
+        gender: state.user.gender,
+        address: state.user.address,
+        birthday: state.user.birthday,
+        fName: state.user.firstName,
+        lName: state.user.lastName,
+        facebook: state.user.facebook,
+        twitter: state.user.twitter,
+        contactNumber:state.user.contactNumber,
+        profession:state.user.profession
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        getWorkerInfo: (email, token) => dispatch(actions.getWorker(email, token))
+    };
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(WorkerDash);

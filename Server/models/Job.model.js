@@ -23,6 +23,12 @@ let Job = new Schema({
    status: {
        type: String
    },
+   acceptedBid: {
+       type: String
+   },
+   assignedWorker: {
+       type: String
+   },
    images: {
        type: Object
    }

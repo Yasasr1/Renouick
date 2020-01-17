@@ -13,7 +13,10 @@ import axios from 'axios';
 class LatestJobInfo extends Component {
     state = {
         t : true,
-        bids: []
+        bids: [],
+        workerFName: '',
+        workerLName: '',
+        workerPic: ''
     }
 
     componentDidMount(){
@@ -34,10 +37,24 @@ class LatestJobInfo extends Component {
         .catch(err => {
             console.log(err);
         })
+
+        if(this.props.status == "Ongoing"){
+            axios.get("http://localhost:4000/worker/getsomeInfo", {
+                params: {
+                    email: this.props.worker
+                }
+            })
+            .then(res => {
+                console.log(res.data[0].firstName);
+                this.setState({workerFName: res.data[0].firstName,workerLName: res.data[0].lastName,workerPic: res.data[0].profilePicUrl});
+            })
+            .catch(err => {
+                console.log(err);
+            })
+        }
     }
 
     componentDidUpdate(){
-        console.log("did update ran");
         axios.get('http://localhost:4000/bid/getBids', {
             params: {
                 id: this.props.id
@@ -68,18 +85,27 @@ class LatestJobInfo extends Component {
         })
     }
 
+    
+
     render() {
 
         let images = <p>no images</p>;
         let bids = <p className="h6">No bids..</p>
 
+        let isOngoing = false;
+        if(this.props.status === "Ongoing"){
+            isOngoing = true;
+        }
+
         if(this.state.bids.length > 0 && this.props.status === "pending"){
             bids = this.state.bids.map(bid => {
                 return <Bid
                     key={bid._id}
+                    bidId={bid._id}
                     amount={bid.amount}
                     poster={bid.poster}
                     date={bid.postDate}
+                    jobId={bid.jobId}
                 />
             })
         }
@@ -104,14 +130,16 @@ class LatestJobInfo extends Component {
         //if the props isWorkerAssigned is true worker info will also be displayed
         const workerInfo = (
             <React.Fragment>
+                <br/>
+                <Typography variant="body1">Assigned worker:</Typography>
                 <Divider/>
                 <br/>
                 <Grid container>      
                     <Grid item md={4}>
-                        <h5> assigned worker photo</h5>
+                        <img src={this.state.workerPic} alt="worker"/>
                     </Grid>
                     <Grid item md={8}>
-                        <Typography variant="h5">(Worker name)</Typography>
+                        <Typography variant="h5">{this.state.workerFName} {this.state.workerLName}</Typography>
                         <Typography variant="body2">Worker rating</Typography>
                         <Rating value={3} readOnly />
                     </Grid>
@@ -141,10 +169,10 @@ class LatestJobInfo extends Component {
                         <br/>
                         <Typography variant="overline" color="secondary" gutterBottom>status: {this.props.status}</Typography>
                         <br/>
-                        <Typography variant="overline" gutterBottom>{this.props.worker || "No assigned workers.."}</Typography>
+                        <Typography variant="overline" gutterBottom>{isOngoing ? "" : "No assigned workers.."}</Typography>
                     </Grid>
                </Grid>
-               {this.props.isWorkerAssigned ? workerInfo : null}
+               {isOngoing ? workerInfo : null}
                <br/>
                <Divider/>
                <br/>
@@ -159,6 +187,7 @@ class LatestJobInfo extends Component {
 const mapStateToProps = state => {
     return {
         token: state.token,
+        
     }
 }
 export default connect(mapStateToProps,null)(LatestJobInfo);

@@ -18,7 +18,8 @@ const initialState = {
         facebook: '',
         twitter: '',
         profilePicUrl: '',
-        profilePicId: ''
+        profilePicId: '',
+        profession: ''
     }
 };
 
@@ -69,7 +70,8 @@ const reducer = (state = initialState, action) => {
                     facebook: action.user.facebook,
                     twitter:  action.user.twitter,
                     profilePicUrl:  action.user.profilePicUrl,
-                    profilePicId:  action.user.profilePicId
+                    profilePicId:  action.user.profilePicId,
+                    profession: action.user.workingCategory
 
                 }
             })

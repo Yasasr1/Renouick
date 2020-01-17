@@ -90,7 +90,7 @@ class MyJobs extends Component {
                     description={job.description}
                     status={job.status}
                     images={job.images}
-                    isWorkerAssigned={false}
+                    worker={job.assignedWorker}
                 />
                 this.setState({isSelected: true});
                 console.log(job.title);
