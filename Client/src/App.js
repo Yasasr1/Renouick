@@ -23,7 +23,7 @@ class App extends Component {
         <Switch>
           <Route path="/customer" render={() => <h1>not found</h1>}/>
           <Route path="/worker" render={() => <h1>not found</h1>}/>
-          <Route path="/admin" component={AdminHome}/>
+          <Route path="/admin" render={() => <h1>not found</h1>}/>
           <Route path="/" component={Layout}/>
         </Switch>
       );
@@ -52,7 +52,7 @@ class App extends Component {
       }
 
       //logged in as admin
-      /*
+      
       if(this.props.isAuthenticated && this.props.userType === "admin") {
         routes = (
           <Switch>
@@ -62,7 +62,7 @@ class App extends Component {
           <Route path="/" component={Layout}/> 
         </Switch>
         );
-      }*/
+      }
     return (
       <BrowserRouter>
         <div>
