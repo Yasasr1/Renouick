@@ -13,11 +13,51 @@ import Typography from '@material-ui/core/Typography';
 //import Button from @material-ui
 import LineChart from './LineChart/LineChart';
 //import TableInfo from './SimpleTable/SimpleTable';
-
+import axios from "axios";
  
 
 class AdminDash extends Component {
+    state={
+        cCount: 0, 
+        wCount: 0,
+        tCount: 0
+    }
 
+    componentDidMount(){
+        axios.get('http://localhost:4000/admin/getCountCustomer' , {
+            params: {
+                email: this.props.email
+            },
+            headers: {
+                'x-auth-token': this.props.token
+            }
+        })
+        .then(res => {
+            const CustomerNumber = res.data;
+            console.log("customers: "+CustomerNumber);
+            this.setState({cCount:CustomerNumber})
+            
+            
+        })
+
+        axios.get('http://localhost:4000/admin/getCountWorker' , {
+            params: {
+                email: this.props.email
+            },
+            headers: {
+                'x-auth-token': this.props.token
+            }
+        })
+        .then(res => {
+            const workerNumber = res.data;
+            console.log("workers: "+workerNumber);
+            this.setState({wCount:workerNumber})
+            let customers = this.state.cCount;
+            let total = customers + workerNumber;
+            this.setState({tCount: total});
+            
+        })
+    }
     render() {
 
         return (
@@ -25,7 +65,7 @@ class AdminDash extends Component {
                 <Grid container spacing={5} justify="center" direction="row" style={{padding: '100px', flexGrow: '1'}}>
                     
                     <Grid item xs={3}  > <EditInfo/> ></Grid>                        
-                    <Grid item xs={9} > <WorkerCount/></Grid>                 
+                    <Grid item xs={9} > <WorkerCount Workers={this.state.wCount} customers={this.state.cCount} total={this.state.tCount}/></Grid>                 
                      
 
                     <Grid item xs={8}  > <br/>

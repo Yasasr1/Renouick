@@ -7,7 +7,7 @@ import {Pie , PieChart, Sector} from 'recharts';
 //import Typography from '@material-ui/core/Typography';
  
 const data = [
-	{ name: 'Pending Accounts', value: 40 ,colour: "#36ba38"},
+	{ name: 'Pending Accounts', value: 40 },
 	{ name: 'Active Accounts', value: 100 },
 	{ name: 'Ban Accounts', value: 15 },
 //	{ name: 'Group D', value: 200 },
