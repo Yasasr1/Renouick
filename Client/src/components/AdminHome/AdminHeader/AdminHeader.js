@@ -34,7 +34,7 @@ const MyLink = React.forwardRef((props, ref) => <NavLink exact activeStyle={{col
 
 
 
-const drawerWidth = 240;
+const drawerWidth = 250;
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -158,7 +158,7 @@ const AdminHeader = (props) =>  {
     return (
         <div className={classes.root}>
             <AppBar
-            position="fixed"
+            position="fixed" style={{background:'#111134', color:'#faba39'}}
             className={clsx(classes.appBar, {
                 [classes.appBarShift]: open,
             })}
@@ -179,12 +179,12 @@ const AdminHeader = (props) =>  {
                         <Grid item>
                             <IconButton style={{outline: 'none'}}>
                                 <Badge badgeContent={5} color="secondary">
-                                    <MailIcon style={{color: 'white'}}/>
+                                    <MailIcon style={{color: '#faba39'}}/>
                                 </Badge>
                             </IconButton>
                         </Grid>
                         <Grid item>
-                            <h6 style={{marginTop: "10px"}}>Username</h6>
+                            <h6 style={{marginTop: "10px", color:'#faba39'}}>Username</h6>
                         </Grid>
                         <Grid item>
                             <IconButton 
@@ -229,60 +229,51 @@ const AdminHeader = (props) =>  {
                 </div>
                 {avatar}
                 <List>
+
                     <ListItem button to="/admin" component={MyLink}>
                         <ListItemIcon>
                             <DashboardIcon/>
                         </ListItemIcon>
                         <ListItemText primary="Dashboard"/>
                     </ListItem>
+
                     <ListItem button to="/admin/admin_registration" component={MyLink} >
                         <ListItemIcon>
                             <WorkIcon/>
                         </ListItemIcon>
                         <ListItemText primary="Admin Registration"/>
                     </ListItem>
+
                     <ListItem button to="/admin/edit_admin_profile" component={MyLink} >
                         <ListItemIcon>
                             <CreateIcon/>
                         </ListItemIcon>
                         <ListItemText primary="Ëdit Admin Profile"/>
                     </ListItem>
+                    
                     <ListItem button to="/admin/edit_customer_profile" component={MyLink} >
                         <ListItemIcon>
                             <CreateIcon/>
                         </ListItemIcon>
                         <ListItemText primary="Edit Customer Profile"/>
                     </ListItem>
+
                     <ListItem button to="/admin/edit_worker_profile" component={MyLink} >
                         <ListItemIcon>
                             <CreateIcon/>
                         </ListItemIcon>
                         <ListItemText primary="Edit Workers Profile"/>
                     </ListItem>
-                    <ListItem button to="/admin/provide_support_page" component={MyLink}>
-                        <ListItemIcon>
-                            <HistoryIcon/>
-                        </ListItemIcon>
-                        <ListItemText primary="Provide Support Page"/>
-                    </ListItem>
+
+                    
+                        
                     <ListItem button to="/admin/report_view" component={MyLink}>
                         <ListItemIcon>
                             <DescriptionIcon/>
                         </ListItemIcon>
                         <ListItemText primary="Report View"/>
                     </ListItem>
-                    <ListItem button to="/admin/chat" component={MyLink}>
-                        <ListItemIcon>
-                            <ChatIcon/>
-                        </ListItemIcon>
-                        <ListItemText primary="Chat"/>
-                    </ListItem>
-                    <ListItem button to="/admin/add" component={MyLink} >
-                        <ListItemIcon>
-                            <BusinessIcon/>
-                        </ListItemIcon>
-                        <ListItemText primary="Advertisement Manage"/>
-                    </ListItem>
+                    
                 </List>
             </Drawer>
         </div>

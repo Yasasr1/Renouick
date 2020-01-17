@@ -74,18 +74,19 @@ const ExpansionPanelDetails = withStyles(theme => ({
                 <Typography style={{ fontFamily:"Calibri " , fontSize:18 , fontStyle:"Italic" , color:"white"}}>How can we find a good worker?</Typography>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
-              <Typography style={{ fontFamily:"Calibri " , fontSize:24 , fontStyle:"Italic" , color:"blue"}}>You can check the ratings of a particular worker, also view his profile and start a chat to know further details.</Typography>
+              <Typography style={{ fontFamily:"Calibri " , fontSize:24 , fontStyle:"Italic" , color:"blue"}}>You can check the ratings of a particular worker by going to "find a worker page".  
+              Here you can search profiles by name or job category. Then you can start a chat to know further details.</Typography>
             </ExpansionPanelDetails>
           </ExpansionPanel>
       <ExpansionPanel square expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
         <ExpansionPanelSummary aria-controls="panel2d-content" id="panel2d-header">
-          <Typography style={{ fontFamily:"Calibri " , fontSize:18 , fontStyle:"Italic" , color:"white"}}>As a worker, How can we use this app to find works? Does it cost extra charges?</Typography>
+          <Typography style={{ fontFamily:"Calibri " , fontSize:18 , fontStyle:"Italic" , color:"white"}}>As a worker, How can I use this app to find works? Does it cost extra charges?</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails >
           <Typography style={{ fontFamily:"Calibri " , fontSize:24 , fontStyle:"Italic" , color:"blue"}}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
+            After you login to the system, you can view posted by going to browse job in dashboard. 
+            There you can see all the jobs that are related to what you are registered for. 
+            
           </Typography>
         </ExpansionPanelDetails>
       </ExpansionPanel>
@@ -95,15 +96,15 @@ const ExpansionPanelDetails = withStyles(theme => ({
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <Typography style={{ fontFamily:"Calibri " , fontSize:24 , fontStyle:"Italic" , color:"blue"}}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
+            Renouick provides you the advantage of having registration for free. 
+            Also, we don't handle any payments that is occuring between the workers and customers. So you have to settle payments 
+            outside the application.  
           </Typography>
         </ExpansionPanelDetails>
       </ExpansionPanel>
       <ExpansionPanel square expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
               <ExpansionPanelSummary aria-controls="panel4d-content" id="panel4d-header">
-                <Typography style={{ fontFamily:"Calibri " , fontSize:18 , fontStyle:"Italic" , color:"white"}}>Will the bid be changed even after we see the real work?</Typography>
+                <Typography style={{ fontFamily:"Calibri " , fontSize:18 , fontStyle:"Italic" , color:"white"}}>Can I change my bid after I see the real work?</Typography>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
               <Typography style={{ fontFamily:"Calibri " , fontSize:24 , fontStyle:"Italic" , color:"blue"}}>
@@ -115,7 +116,7 @@ const ExpansionPanelDetails = withStyles(theme => ({
           </ExpansionPanel>
           <ExpansionPanel square expanded={expanded === 'panel5'} onChange={handleChange('panel4')}>
               <ExpansionPanelSummary aria-controls="panel5d-content" id="panel4d-header">
-                <Typography style={{ fontFamily:"Calibri " , fontSize:18 , fontStyle:"Italic" , color:"white"}}>Will the bid be changed even after we see the real work?</Typography>
+                <Typography style={{ fontFamily:"Calibri " , fontSize:18 , fontStyle:"Italic" , color:"white"}}>Is it safe for me to give all these details including home routine here?</Typography>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
               <Typography style={{ fontFamily:"Calibri " , fontSize:24 , fontStyle:"Italic" , color:"blue"}}>
@@ -127,7 +128,7 @@ const ExpansionPanelDetails = withStyles(theme => ({
           </ExpansionPanel>
           <ExpansionPanel square expanded={expanded === 'panel6'} onChange={handleChange('panel4')}>
               <ExpansionPanelSummary aria-controls="panel6d-content" id="panel4d-header">
-                <Typography style={{ fontFamily:"Calibri " , fontSize:18 , fontStyle:"Italic" , color:"white"}}>Will the bid be changed even after we see the real work?</Typography>
+                <Typography style={{ fontFamily:"Calibri " , fontSize:18 , fontStyle:"Italic" , color:"white"}}>Can I change my bid after I see the real work?</Typography>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
               <Typography style={{ fontFamily:"Calibri " , fontSize:24 , fontStyle:"Italic" , color:"blue"}}>

@@ -1,23 +1,16 @@
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
-//import WorkerImg from './WorkerImg/member2.jpg'
-import Grid from '@material-ui/core/Grid';
-//import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
-//import ProfileImg from './ProfileImg/ProfileImg';
+import {Grid, Button} from '@material-ui/core/';
 import Profileinfo from './ProfileInfo/ProfileInfo'; 
-import { IconButton } from '@material-ui/core';
-/*import Icon from '@mdi/react';
-import { mdiFacebookBox, mdiTwitter } from '@mdi/js';
-import ReportIcon from '@material-ui/icons/Report';*/
 import * as actions from '../../../store/actions/user';
-//import avatar from '../../../assests/testAvatar/avatar.jpg';
 import axios from 'axios';
-//import MyTextField from '../../UI/TextField/TextField';
 import WorkerSelect from './WorkerSelect/WorkerSelect';
-/*import RatingInfo from './RatingInfo/RatingInfo';
-import ReportsReview from './ReportsReview/ReportsReview';
-import BottomNavigation from '@material-ui/core/BottomNavigation';
-import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';*/
+import ProfilePic from '../../../assests/OurTeam/member2.jpg';
+import Typography from '@material-ui/core/Typography';
+import ChatIcon from '@material-ui/icons/Chat';
+import ReportView from './ReportView/ReportView'; 
+import { IconButton, Divider } from '@material-ui/core';
+
 
 class EditWorkerProfile extends Component {
     state = {
@@ -59,20 +52,16 @@ class EditWorkerProfile extends Component {
        
         return (
             <div style={{backgroundColor: '#F5F1FA'}}>
+                <Grid container spacing={3} justify="center" direction="row" style={{padding: '100px', flexGrow: '1'}}>
                
-                <Grid container spacing={3}  justify="space-around"  alignItems="flex-start" style={{padding: '100px', flexGrow: '1'}}>
-                
-                    <Grid item sm={7} >
-                    
-                        <Grid item >
-                            <WorkerSelect/>                             
-                            <IconButton color="primary" >
-                        
-                    </IconButton>
-                            </Grid> 
-                        
-                        <Grid item md={12} style={{padding: '10px'}}>
+                    <Grid item sm={3}>
+                        <img src={ProfilePic} width={350} height={250}/>
                             
+                    </Grid>
+
+                    <Grid item sm={6} >
+                        <Grid item md={12} style={{marginBottom: '40px'}}>
+                        
                              <Profileinfo
                              gender={this.props.gender}
                              address={this.props.address}
@@ -81,19 +70,58 @@ class EditWorkerProfile extends Component {
                              fName={this.props.fName}
                              lName={this.props.lName}
                              />
-</Grid>
-                              
-                    </Grid>                    
-                    
-                    <Grid item xs={8}>
-                    
-                         </Grid>
-                
-                </Grid>
+                        </Grid> 
+                    </Grid>  
 
+                    <Grid item sm={3} container justify="center" style={{marginBottom: '40px'}}>
+                        <Typography variant="h4" component="h4" align="center"
+                        style={{ fontFamily:"Calibri " , fontSize:20 , fontStyle:"Italic" , color:"black"}}>
+                        <br/>Search a worker here <br/>to view details <br/></Typography>
+                     <WorkerSelect/>
+                    </Grid> 
+
+                </Grid>
                 
+                <Grid container spacing={3} justify="center" style={{padding: '1px', flexGrow: '1'}}>
                 
-                
+               
+                    <Grid item sm={8}>
+                        <Grid  justify="center"  style={{padding: '1px', flexGrow: '1'}}>
+                            <Grid item xs={12} >
+                            <Typography variant="h4" component="h4" align="center"
+                            style={{ fontFamily:"Calibri " , fontSize:27 , fontStyle:"Italic" , color:"black"}}>
+                         Complaints by customers against him</Typography>
+                            </Grid>
+                            <Grid><ReportView/></Grid>
+                        </Grid>
+                    </Grid>
+                    <Grid item sm={1}>                                      
+                    </Grid>
+
+                    
+                    <Grid item xs={3} container spacing={3}>
+                        
+                        <Grid item sm={12} >
+                            <Button onClick={this.searchWorker} color="secondary" variant="contained">Ban This Worker</Button>
+                        </Grid>
+                        <Grid item  sm={12}>
+                            <Grid item xs={3}>
+                              <Grid item sx={12}>
+                                 <Typography variant="h4" component="h4" align="center"
+                                    style={{ fontFamily:"Calibri " , fontSize:20 , fontStyle:"Italic" , color:"rblack"}}>
+                                    Chat</Typography> <br/>
+                              </Grid>
+                              <Grid item sx={12}>
+                                <IconButton aria-label="chat" >  <ChatIcon style={{ fontSize: 60 }}/></IconButton>
+                              </Grid>
+                            </Grid>
+                                               
+                        </Grid>
+                    </Grid>  
+ 
+                </Grid>             
+          
+         
             </div>
         );
     }
