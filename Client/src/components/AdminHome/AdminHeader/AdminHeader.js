@@ -13,22 +13,20 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import DashboardIcon  from '@material-ui/icons/Dashboard';
 import CreateIcon from '@material-ui/icons/Create';
-import HistoryIcon from '@material-ui/icons/History';
 import WorkIcon from '@material-ui/icons/Work';
 import Badge from '@material-ui/core/Badge';
 import MailIcon from '@material-ui/icons/Mail';
 //placeholder avatar
-import ChatIcon from '@material-ui/icons/Chat';
 import DescriptionIcon from '@material-ui/icons/Description';
 import testAvatar from '../../../assests/OurTeam/member2.jpg';
 import { Menu, MenuItem, ListItem, Divider } from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import BusinessIcon from '@material-ui/icons/Business';
 //utility for constructing className strings conditionally
 import clsx from 'clsx';
 import { NavLink } from 'react-router-dom';
-
+import {connect} from "react-redux";
+import * as actions from '../../../store/actions/auth';
 //routing to material ui buttons
 const MyLink = React.forwardRef((props, ref) => <NavLink exact activeStyle={{color: 'blue', backgroundColor: '#CDC9C9'}} innerRef={ref} {...props} />);
 
@@ -115,12 +113,12 @@ const AdminHeader = (props) =>  {
     const handleDrawerClose = () => {
         setOpen(false);
     };
-/*
-    const handleLogout = () => {
-        this.props.onLogout();
-        this.props.history.replace('/');
+
+    const handlelogout = () => {
+        props.onLogout();
+        props.history.replace('/');
         
-    };*/
+    };
 
     
 
@@ -202,7 +200,7 @@ const AdminHeader = (props) =>  {
                             keepMounted
                             open={Boolean(menuAnchor)}
                             onClose={handleMenuClose}>
-                                <MenuItem >Logout</MenuItem>
+                                <MenuItem onClick={handlelogout}>Log out</MenuItem>
                             </Menu>
                         </Grid> 
                     </Grid>
@@ -280,7 +278,11 @@ const AdminHeader = (props) =>  {
     );
     
 };
+const matchDispatchToProps = dispatch => {
+    return {
+        onLogout: () => dispatch(actions.authLogout())
+    }
+}
 
 
-
-export default AdminHeader;
+export default connect(null,matchDispatchToProps)(AdminHeader);
