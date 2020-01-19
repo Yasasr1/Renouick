@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import ChatIcon from '@material-ui/icons/Chat';
 import ReportView from './ReportView/ReportView'; 
 import { IconButton, Divider } from '@material-ui/core';
+import Fab from '@material-ui/core/Fab';
 
 
 class EditWorkerProfile extends Component {
@@ -56,7 +57,9 @@ class EditWorkerProfile extends Component {
                
                     <Grid item sm={3}>
                         <img src={ProfilePic} width={350} height={250}/>
-                            
+                        <Grid style={{padding: '100px', flexGrow: '1'}} >
+                        <Button size="small" height="15%" color="secondary" variant="contained" style={{fontSize:16}}>Ban This worker</Button>
+                    </Grid>  
                     </Grid>
 
                     <Grid item sm={6} >
@@ -70,54 +73,21 @@ class EditWorkerProfile extends Component {
                              fName={this.props.fName}
                              lName={this.props.lName}
                              />
+                              <Grid style={{padding: '20px', flexGrow: '1'}} >
+                             <Typography variant="h4" component="h4" style={{fontSize:30 , fontStyle:"Italic" , color:"Black" }}>
+                         Complaints by customers against him
+                         </Typography>
+                             <ReportView/>
+                             </Grid>
                         </Grid> 
                     </Grid>  
 
                     <Grid item sm={3} container justify="center" style={{marginBottom: '40px'}}>
-                        <Typography variant="h4" component="h4" align="center"
-                        style={{ fontFamily:"Calibri " , fontSize:20 , fontStyle:"Italic" , color:"black"}}>
-                        <br/>Search a worker here <br/>to view details <br/></Typography>
-                     <WorkerSelect/>
-                    </Grid> 
-
-                </Grid>
-                
-                <Grid container spacing={3} justify="center" style={{padding: '1px', flexGrow: '1'}}>
-                
-               
-                    <Grid item sm={8}>
-                        <Grid  justify="center"  style={{padding: '1px', flexGrow: '1'}}>
-                            <Grid item xs={12} >
-                            <Typography variant="h4" component="h4" align="center"
-                            style={{ fontFamily:"Calibri " , fontSize:27 , fontStyle:"Italic" , color:"black"}}>
-                         Complaints by customers against him</Typography>
-                            </Grid>
-                            <Grid><ReportView/></Grid>
+                        <WorkerSelect/><br/>
+                        <Fab color="primary" aria-label="add">
+                         <ChatIcon />
+                        </Fab>
                         </Grid>
-                    </Grid>
-                    <Grid item sm={1}>                                      
-                    </Grid>
-
-                    
-                    <Grid item xs={3} container spacing={3}>
-                        
-                        <Grid item sm={12} >
-                            <Button onClick={this.searchWorker} color="secondary" variant="contained">Ban This Worker</Button>
-                        </Grid>
-                        <Grid item  sm={12}>
-                            <Grid item xs={3}>
-                              <Grid item sx={12}>
-                                 <Typography variant="h4" component="h4" align="center"
-                                    style={{ fontFamily:"Calibri " , fontSize:20 , fontStyle:"Italic" , color:"rblack"}}>
-                                    Chat</Typography> <br/>
-                              </Grid>
-                              <Grid item sx={12}>
-                                <IconButton aria-label="chat" >  <ChatIcon style={{ fontSize: 60 }}/></IconButton>
-                              </Grid>
-                            </Grid>
-                                               
-                        </Grid>
-                    </Grid>  
  
                 </Grid>             
           

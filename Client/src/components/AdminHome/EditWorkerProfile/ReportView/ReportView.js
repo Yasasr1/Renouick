@@ -9,11 +9,8 @@ class ReportView extends Component {
 
         return (
             <div style={{backgroundColor: '#F5F1FA'}}>
-               
-               <Grid container spacing={3}  justify="space-around"  alignItems="flex-start" style={{padding: '100px', flexGrow: '1'}} >
+               <Grid container spacing={1} alignItems="flex-start" style={{padding: '1px'}} > 
                 <Sort/>
-                </Grid>
-                <Grid container justify="center">
                     <Reports/>
                 </Grid>
                 
