@@ -30,7 +30,8 @@ class WorkerDash extends Component {
             jobPoster: "",
             price: 0,
             status: ""
-        }
+        },
+        bids: []
     }
 
     componentDidMount(){
@@ -47,12 +48,14 @@ class WorkerDash extends Component {
         })
         .then(res => {
             const bid = res.data;
-            console.log(bid);
+            //console.log(bid);
             this.setState({latestBid:bid});
         })
         .catch(err => {
             console.log(err);
         })
+
+        
     }
 
     
@@ -169,7 +172,9 @@ class WorkerDash extends Component {
                     </Grid>  
                 </Grid>
                 <Grid item md={11}>
-                    <EarningsChart/>
+                    <EarningsChart 
+                    data={this.state.bids}
+                    />
                 </Grid>
             </Grid>
         );
