@@ -95,5 +95,24 @@ router.get('/getAll', auth, (req, res) => {
 })
 
 
+//@route GET /bid/getAll
+//@desc get bid info for the chart
+//@access private
+router.get('/getEvery', auth, (req, res) => {
+    const email = req.query.email
+    Bid.find({poster: email}, (err, bids) => {
+        if(err)
+            console.log(err);
+        else{ 
+            //console.log(bids); 
+            res.json(bids);
+            
+        }
+    })
+    
+})
+
+
+
 
 module.exports = router;
