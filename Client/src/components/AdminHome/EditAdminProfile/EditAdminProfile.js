@@ -2,13 +2,8 @@ import React , { Component } from 'react';
 import MyTextField from '../../UI/TextField/TextField';
 import './EditAdminProfile.css';
 import PasswordField from '../../UI/TextField/PasswordField';
-//import {TextField} from '@material-ui/core';
 import validator from 'validator';
 import axios from 'axios';
-//import { Link } from 'react-router-dom';
-//import Icon from '@material-ui/core/Icon';
-//import SaveIcon from '@material-ui/icons/Save';
-//import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
 

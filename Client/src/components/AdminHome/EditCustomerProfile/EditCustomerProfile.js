@@ -1,13 +1,10 @@
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
 import {Grid, Button} from '@material-ui/core/';
-//import ProfileImg from './ProfileImg/ProfileImg';
 import Profileinfo from './ProfileInfo/ProfileInfo'; 
 import * as actions from '../../../store/actions/user';
 import axios from 'axios';
 import CustomerSelect from './CustomerSelect/CustomerSelect';
-//import CardBox1 from '../../UI/Card/CardBox1';
-//import ProfileImg from './ProfileImg/ProfileImg';
 import ProfilePic from '../../../assests/OurTeam/member2.jpg';
 import Typography from '@material-ui/core/Typography';
 import ChatIcon from '@material-ui/icons/Chat';
@@ -15,11 +12,7 @@ import ReportView from './ReportView/ReportView';
 //import IconButton from '@material-ui/core/IconButton';
 //import ChatIcon from '@material-ui/icons/Chat';
 import { IconButton, Divider } from '@material-ui/core';
-import Icon from '@mdi/react';
-import { mdiFacebookBox, mdiTwitter } from '@mdi/js';
-//import { Link } from 'react-router-dom';
-//import Button from @material-ui
-import Paper from '@material-ui/core/Paper';
+
 class EditCustomerProfile extends Component {
     state = {
         latestJob : null

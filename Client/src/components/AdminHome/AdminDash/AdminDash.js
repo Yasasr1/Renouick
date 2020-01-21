@@ -1,18 +1,13 @@
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
-import {Grid , Button, Table} from '@material-ui/core';
-import ProfileImg from '../../CustomerHome/CustomerDash/ProfileImg/ProfileImg';
-import Profileinfo from './ProfileInfo/ProfileInfo';
+import {Grid , Button} from '@material-ui/core';
 import EditInfo from './EditInfo/AdminEditInfo';
-import profilePic from '../../../assests/OurTeam/member2.jpg';
 import WorkerCount from './WorkerCount/WorkerCount';
 import * as actions from '../../../store/actions/user';
 import PieChart from './PieChart/PieChart';
-//import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-//import Button from @material-ui
 import LineChart from './LineChart/LineChart';
-//import TableInfo from './SimpleTable/SimpleTable';
+import SimpleTable from './SimpleTable/SimpleTable';
 import axios from "axios";
  
 
@@ -20,7 +15,10 @@ class AdminDash extends Component {
     state={
         cCount: 0, 
         wCount: 0,
-        tCount: 0
+        tCount: 0,
+        pWork : 0,
+        cWork : 0,
+        oWork : 0
     }
 
     componentDidMount(){
@@ -36,8 +34,7 @@ class AdminDash extends Component {
             const CustomerNumber = res.data;
             console.log("customers: "+CustomerNumber);
             this.setState({cCount:CustomerNumber})
-            
-            
+                    
         })
 
         axios.get('http://localhost:4000/admin/getCountWorker' , {
@@ -57,6 +54,48 @@ class AdminDash extends Component {
             this.setState({tCount: total});
             
         })
+        axios.get('http://localhost:4000/admin/getCountPJob' , {
+            params: {
+                email: this.props.email
+            },
+            headers: {
+                'x-auth-token': this.props.token
+            }
+        })
+        .then(res => {
+            const jobPNumber = res.data;
+            console.log("Pendingjobs: "+jobPNumber);
+            this.setState({pWork:jobPNumber})
+                    
+        })
+        axios.get('http://localhost:4000/admin/getCountCJob' , {
+            params: {
+                email: this.props.email
+            },
+            headers: {
+                'x-auth-token': this.props.token
+            }
+        })
+        .then(res => {
+            const jobCNumber = res.data;
+            console.log("Completedjobs: "+jobCNumber);
+            this.setState({cWork:jobCNumber})
+                    
+        })
+        axios.get('http://localhost:4000/admin/getCountOJob' , {
+            params: {
+                email: this.props.email
+            },
+            headers: {
+                'x-auth-token': this.props.token
+            }
+        })
+        .then(res => {
+            const jobONumber = res.data;
+            console.log("Ongoingjobs: "+jobONumber);
+            this.setState({oWork:jobONumber})
+                    
+        })
     }
     render() {
 
@@ -65,7 +104,7 @@ class AdminDash extends Component {
                 <Grid container spacing={5} justify="center" direction="row" style={{padding: '100px', flexGrow: '1'}}>
                     
                     <Grid item xs={3}  > <EditInfo/> ></Grid>                        
-                    <Grid item xs={9} > <WorkerCount Workers={this.state.wCount} customers={this.state.cCount} total={this.state.tCount}/></Grid>                 
+                    <Grid item xs={9} > <WorkerCount Workers={this.state.wCount} Customers={this.state.cCount} Total={this.state.tCount} PWork={this.state.pWork} CWork={this.state.cWork} UWork={this.state.oWork}/></Grid>                 
                      
 
                     <Grid item xs={8}  > <br/>
@@ -99,7 +138,7 @@ class AdminDash extends Component {
                             <Button onClick={this.searchWorker} color="primary" variant="contained">Search</Button>
                         </Grid>
 
-                        <Grid item xs={12}  > <EditInfo/> ></Grid>   
+                        <Grid item xs={12}  > <SimpleTable/> ></Grid>   
 
                     
                     

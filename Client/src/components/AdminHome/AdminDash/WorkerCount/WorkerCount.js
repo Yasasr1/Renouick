@@ -1,14 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import FormLabel from '@material-ui/core/FormLabel';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import { OmitProps } from 'antd/lib/transfer/renderListBody';
-//import { genericTypeAnnotation } from '@babel/types';
-//import backImage from '../../../../assests/backgrounds/workers.gif';
-//import { mdiBlackMesa } from '@mdi/js';
 
 
 const useStyles = makeStyles(theme => ({
@@ -48,27 +42,27 @@ const WorkerCount = (props) => {
               </Paper>
              <Paper className={classes.paper} style={{backgroundColor: '#06cd88'}}>
               <Typography style={{ fontFamily:"Calibri " , fontSize:27 , fontStyle:"Italic" , color:"black"}} align="center"> Customers Count </Typography>
-              <Typography style={{ fontSize:60 , color:"black"}} align="center"> {props.customers} </Typography>
+              <Typography style={{ fontSize:60 , color:"black"}} align="center"> {props.Customers} </Typography>
               </Paper>
               <Paper className={classes.paper} style={{backgroundColor: '#fd9b6d'}}>
               <Typography style={{ fontFamily:"Calibri " , fontSize:27 , fontStyle:"Italic" , color:"black"}} align="center"> Total existing Accounts </Typography>
-              <Typography style={{ fontSize:60 , color:"black"}} align="center"> {props.total} </Typography>
+              <Typography style={{ fontSize:60 , color:"black"}} align="center"> {props.Total} </Typography>
               </Paper>
         </Grid>
         <Grid container  className={classes.root} direction="row" alignItems="center" justify="space-between" spacing={3} padding="100%">
               <Paper className={classes.paper} style={{backgroundColor: '#00afb2'}}>
               <Typography style={{ fontFamily:"Calibri " , fontSize:27 , fontStyle:"Italic" , color:"black"}} align="center"> Pending jobs </Typography>
-              <Typography style={{ fontSize:60 , color:"black"}} align="center"> 352 </Typography>
+              <Typography style={{ fontSize:60 , color:"black"}} align="center"> {props.PWork} </Typography>
               </Paper>
      
               <Paper className={classes.paper} style={{backgroundColor: '#8b9bcc'}}>
               <Typography style={{ fontFamily:"Calibri " , fontSize:27 , fontStyle:"Italic" , color:"black"}} align="center"> Completed Works </Typography>
-              <Typography style={{ fontSize:60 , color:"black"}} align="center"> 298 </Typography>
+              <Typography style={{ fontSize:60 , color:"black"}} align="center"> {props.CWork} </Typography>
               </Paper>
 
               <Paper className={classes.paper} style={{backgroundColor: '#fbd777'}}>
               <Typography style={{ fontFamily:"Calibri " , fontSize:27 , fontStyle:"Italic" , color:"black"}} align="center"> Uncompleted Works </Typography>
-              <Typography style={{ fontSize:60 , color:"black"}} align="center"> 40 </Typography>
+              <Typography style={{ fontSize:60 , color:"black"}} align="center"> {props.UWork} </Typography>
               </Paper>
             
       </Grid>

@@ -14,7 +14,9 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import DashboardIcon  from '@material-ui/icons/Dashboard';
 import CreateIcon from '@material-ui/icons/Create';
 import WorkIcon from '@material-ui/icons/Work';
+import PersonIcon from '@material-ui/icons/Person';
 import Badge from '@material-ui/core/Badge';
+import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 import MailIcon from '@material-ui/icons/Mail';
 //placeholder avatar
 import DescriptionIcon from '@material-ui/icons/Description';
@@ -251,14 +253,14 @@ const AdminHeader = (props) =>  {
                     
                     <ListItem button to="/admin/edit_customer_profile" component={MyLink} >
                         <ListItemIcon>
-                            <CreateIcon/>
+                            <PersonIcon/>
                         </ListItemIcon>
                         <ListItemText primary="Edit Customer Profile"/>
                     </ListItem>
 
                     <ListItem button to="/admin/edit_worker_profile" component={MyLink} >
                         <ListItemIcon>
-                            <CreateIcon/>
+                            <PersonOutlineIcon/>
                         </ListItemIcon>
                         <ListItemText primary="Edit Workers Profile"/>
                     </ListItem>
