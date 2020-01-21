@@ -15,7 +15,7 @@ const LatestBidInfo = (props) => {
                     <Typography variant="h6">:</Typography>
                 </Grid>
                 <Grid item sm={7}>
-                    <Typography variant="h6">Paint Wall</Typography>
+                    <Typography variant="h6">{props.jobTitle}</Typography>
                 </Grid>
                 <Grid item sm={3}>
 
@@ -25,7 +25,7 @@ const LatestBidInfo = (props) => {
                     <Typography variant="h6">:</Typography>
                 </Grid>
                 <Grid item sm={7}>
-                    <Typography variant="h6">Yasas Ramanayaka</Typography>
+                    <Typography variant="h6">{props.jobPoster}</Typography>
                 </Grid>
                 
                 <Grid item sm={3}>
@@ -35,7 +35,7 @@ const LatestBidInfo = (props) => {
                     <Typography variant="h6">:</Typography>
                 </Grid>
                 <Grid item sm={7}>
-                    <Typography variant="h6">Rs. 5000</Typography>
+                    <Typography variant="h6">{props.price}</Typography>
                 </Grid>
 
                 <Grid item sm={3}>
@@ -45,7 +45,7 @@ const LatestBidInfo = (props) => {
                     <Typography variant="h6">:</Typography>
                 </Grid>
                 <Grid item sm={7}>
-                    <Typography variant="h6">pending</Typography>
+                    <Typography variant="h6">{props.status}</Typography>
                 </Grid>
             </Grid>
         </Paper>

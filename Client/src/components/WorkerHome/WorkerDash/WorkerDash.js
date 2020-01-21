@@ -5,7 +5,6 @@ import ProfileInfo from './ProfileInfo/ProfileInfo';
 import RatingInfo from '../../CustomerHome/CustomerDash/RatingInfo/RatingInfo';
 import StatisticsCard from './StatisticsCard/StatisticsCard';
 import EarningsChart from './EarningsChart/EarningsChart';
-import avatar from '../../../assests/testAvatar/AT.png';
 import { connect } from 'react-redux';
 import * as actions from '../../../store/actions/user';
 
@@ -22,11 +21,41 @@ import LabelImportantIcon from '@material-ui/icons/LabelImportant';
 import PhoneIcon from '@material-ui/icons/Phone';
 import HistoryIcon from '@material-ui/icons/History';
 import LatestBidInfo from './LatestBidInfo/LatestBidInfo';
+import axios from 'axios';
 
 class WorkerDash extends Component {
+    state = {
+        latestBid: {
+            jobTitle: "",
+            jobPoster: "",
+            price: 0,
+            status: ""
+        },
+        bids: []
+    }
 
     componentDidMount(){
         this.props.getWorkerInfo(this.props.email,this.props.token);
+
+        //to get latest bid info
+        axios.get('http://localhost:4000/bid/getLatest', {
+            headers: {
+                'x-auth-token': this.props.token
+            },
+            params: {
+                email: this.props.email
+            }
+        })
+        .then(res => {
+            const bid = res.data;
+            //console.log(bid);
+            this.setState({latestBid:bid});
+        })
+        .catch(err => {
+            console.log(err);
+        })
+
+        
     }
 
     
@@ -122,7 +151,12 @@ class WorkerDash extends Component {
                     </Grid>  
                 </Grid>
                 <Grid item md={11}>
-                    <LatestBidInfo/>
+                    <LatestBidInfo
+                    jobTitle={this.state.latestBid.jobTitle}
+                    jobPoster={this.state.latestBid.jobPoster}
+                    price={this.state.latestBid.price}
+                    status={this.state.latestBid.status}
+                    />
                 </Grid>
                 <Grid item md={11}>
                     <Divider/>
@@ -138,7 +172,9 @@ class WorkerDash extends Component {
                     </Grid>  
                 </Grid>
                 <Grid item md={11}>
-                    <EarningsChart/>
+                    <EarningsChart 
+                    data={this.state.bids}
+                    />
                 </Grid>
             </Grid>
         );

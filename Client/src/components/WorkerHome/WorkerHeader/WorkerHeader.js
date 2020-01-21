@@ -242,7 +242,7 @@ const WorkerHeader = (props) =>  {
                         </ListItemIcon>
                         <ListItemText primary="browse Jobs"/>
                     </ListItem>
-                    <ListItem button >
+                    <ListItem button to="/worker/MyBids" component={MyLink} >
                         <ListItemIcon>
                             <HistoryIcon style={{color: 'black'}}/>
                         </ListItemIcon>
