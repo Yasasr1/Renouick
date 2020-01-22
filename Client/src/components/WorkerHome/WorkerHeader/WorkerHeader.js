@@ -254,7 +254,7 @@ const WorkerHeader = (props) =>  {
                         </ListItemIcon>
                         <ListItemText primary="Chat"/>
                     </ListItem>
-                    <ListItem button >
+                    <ListItem button to="/worker/editProfile" component={MyLink} >
                         <ListItemIcon>
                             <CreateIcon style={{color: 'black'}}/>
                         </ListItemIcon>

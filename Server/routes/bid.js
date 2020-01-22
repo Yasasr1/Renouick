@@ -100,6 +100,7 @@ router.get('/getAll', auth, (req, res) => {
 //@access private
 router.get('/getEvery', auth, (req, res) => {
     const email = req.query.email
+    
     Bid.find({poster: email}, (err, bids) => {
         if(err)
             console.log(err);

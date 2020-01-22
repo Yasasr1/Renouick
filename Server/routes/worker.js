@@ -46,5 +46,37 @@ router.get('/getSomeInfo', (req, res) => {
     
 })
 
+//@route POST /worker/updateWorker
+//@desc update worker info
+//@access private
+router.post('/updateWorker', (req,res) => {
+    const updatedWorker = req.body;
+    console.log(updatedWorker);
+    Worker.findOne({email: updatedWorker.email}, (err,worker) => {
+        if(!worker) {
+            res.status(404).send('user is not found');
+        }
+        else {
+            worker.firstName = updatedWorker.firstName;
+            worker.lastName = updatedWorker.lastName;
+            worker.birthday = new Date(updatedWorker.birthday);
+            worker.email = updatedWorker.email;
+            worker.contactNumber = updatedWorker.contactNumber;
+            worker.password = updatedWorker.password;
+            worker.profilePicUrl = updatedWorker.profilePicUrl;
+            worker.profilePicId = updatedWorker.profilePicId;
+            worker.facebook = updatedWorker.facebook;
+            worker.twitter = updatedWorker.twitter;
+            //console.log(worker);
+            worker.save().then(responce => {
+                res.json("user info updated")
+            })
+            .catch(err => {
+                res.status(400).end("Update not possible");
+            })
+        }
+    })
+})
+
 
 module.exports = router;
