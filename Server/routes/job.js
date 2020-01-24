@@ -95,4 +95,19 @@ router.get('/getEveryJob',auth, (req, res) => {
 })
 
 
+//@route GET /job/getOne
+//@desc get the job with the given id
+//@access private
+router.get('/getOne', auth, (req, res) => {
+    const id = req.query.id
+    Job.findOne({_id: id }, (err, job) => {
+        if(err)
+            console.log(err);
+        else    
+            res.json(job);    
+    })
+    
+})
+
+
 module.exports = router;

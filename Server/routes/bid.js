@@ -3,6 +3,8 @@ const express = require('express');
 const router = express.Router();
 //bid schema
 const Bid = require('../models/Bid.model');
+//job schema
+const Job = require('../models/Job.model');
 
 const auth = require('../middleware/authMiddleware');
 
@@ -30,6 +32,87 @@ router.get('/getBids', auth, (req, res) => {
     })
     
 })
+
+//@route GET /bid/getLatest
+//@desc get latest bid info
+//@access private
+router.get('/getLatest', auth, (req,res)=> {
+    const email = req.query.email;
+    let jobId;
+    let details = {
+        jobTitle: "",
+        jobPoster: "",
+        price: 0,
+        status: ""
+    }
+    //console.log(email);
+    Bid.findOne({poster:email},null,{ "sort": { "_id": -1 } },(err,bid)=> {
+        if(err)
+            console.log(err);
+        //console.log(bid);
+        jobId = bid.jobId;
+        details.price = bid.amount;
+        details.status = bid.status;
+        //console.log(details);
+        //console.log("before job find"+jobId);
+        Job.findOne({_id:jobId},(err,job)=>{
+            if(err)
+                console.log(err);
+            //console.log(job.title);
+            //console.log(job.poster);
+            details.jobTitle = job.title;
+            details.jobPoster = job.poster;
+            console.log(details);
+
+            res.json(details);
+
+                 
+            
+            
+        })
+
+    })
+    
+        
+    
+})
+
+//@route GET /bid/getAll
+//@desc get bid info for the chart
+//@access private
+router.get('/getAll', auth, (req, res) => {
+    const email = req.query.email
+    Bid.find({poster: email,status:"ongoing" },{postDate: 1, amount: 1}, (err, bids) => {
+        if(err)
+            console.log(err);
+        else{ 
+            //console.log(bids); 
+            res.json(bids)
+            
+        }
+    })
+    
+})
+
+
+//@route GET /bid/getAll
+//@desc get bid info for the chart
+//@access private
+router.get('/getEvery', auth, (req, res) => {
+    const email = req.query.email
+    
+    Bid.find({poster: email}, (err, bids) => {
+        if(err)
+            console.log(err);
+        else{ 
+            //console.log(bids); 
+            res.json(bids);
+            
+        }
+    })
+    
+})
+
 
 
 

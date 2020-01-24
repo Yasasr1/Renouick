@@ -242,7 +242,7 @@ const WorkerHeader = (props) =>  {
                         </ListItemIcon>
                         <ListItemText primary="browse Jobs"/>
                     </ListItem>
-                    <ListItem button >
+                    <ListItem button to="/worker/MyBids" component={MyLink} >
                         <ListItemIcon>
                             <HistoryIcon style={{color: 'black'}}/>
                         </ListItemIcon>
@@ -254,7 +254,7 @@ const WorkerHeader = (props) =>  {
                         </ListItemIcon>
                         <ListItemText primary="Chat"/>
                     </ListItem>
-                    <ListItem button >
+                    <ListItem button to="/worker/editProfile" component={MyLink} >
                         <ListItemIcon>
                             <CreateIcon style={{color: 'black'}}/>
                         </ListItemIcon>
