@@ -248,23 +248,7 @@ const AdminHeader = (props) =>  {
                         </ListItemIcon>
                         <ListItemText primary="Ëdit Admin Profile"/>
                     </ListItem>
-                    
-                    <ListItem button to="/admin/edit_customer_profile" component={MyLink} >
-                        <ListItemIcon>
-                            <CreateIcon/>
-                        </ListItemIcon>
-                        <ListItemText primary="Edit Customer Profile"/>
-                    </ListItem>
 
-                    <ListItem button to="/admin/edit_worker_profile" component={MyLink} >
-                        <ListItemIcon>
-                            <CreateIcon/>
-                        </ListItemIcon>
-                        <ListItemText primary="Edit Workers Profile"/>
-                    </ListItem>
-
-                    
-                        
                     <ListItem button to="/admin/report_view" component={MyLink}>
                         <ListItemIcon>
                             <DescriptionIcon/>

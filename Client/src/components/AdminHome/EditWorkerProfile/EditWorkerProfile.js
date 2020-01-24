@@ -12,34 +12,11 @@ import ReportView from './ReportView/ReportView';
 import { IconButton, Divider } from '@material-ui/core';
 import Fab from '@material-ui/core/Fab';
 
-
 class EditWorkerProfile extends Component {
-    state = {
-        latestJob : null
-    }
-   
-    //dispatch the action to get and save customer data in redux storw
     componentDidMount() {
         this.props.getWorkerInfo(this.props.email,this.props.token);
-        axios.get('http://localhost:4000/job/getLatest', {
-            params: {
-                email: this.props.email
-            },
-            headers: {
-                'x-auth-token': this.props.token
-            }
-        })
-        .then(res => {
-            const job = res.data;
-            this.setState({latestJob: job[0]});
-        })
-        .catch(err => {
-            console.log(err);
-        })
-
     }
-
-
+    
     openSocialMedia = (type) => {
         if(type === 'facebook') {
             window.open(this.props.facebook)
@@ -66,29 +43,28 @@ class EditWorkerProfile extends Component {
                         <Grid item md={12} style={{marginBottom: '40px'}}>
                         
                              <Profileinfo
-                             gender={this.props.gender}
+                             workingCategory={this.props.workingCategory}
                              address={this.props.address}
                              email={this.props.email}
-                             birthday={this.props.birthday}
                              fName={this.props.fName}
                              lName={this.props.lName}
                              />
                               <Grid style={{padding: '20px', flexGrow: '1'}} >
                              <Typography variant="h4" component="h4" style={{fontSize:30 , fontStyle:"Italic" , color:"Black" }}>
-                         Complaints by customers against him
+                         Complaints by Customers
                          </Typography>
                              <ReportView/>
                              </Grid>
                         </Grid> 
                     </Grid>  
 
-                    <Grid item sm={3} container justify="center" style={{marginBottom: '40px'}}>
+                    {/* <Grid item sm={3} container justify="center" style={{marginBottom: '40px'}}>
                         <WorkerSelect/><br/>
                         <Fab color="primary" aria-label="add">
                          <ChatIcon />
                         </Fab>
                         </Grid>
- 
+  */}
                 </Grid>             
           
          
@@ -101,6 +77,7 @@ const mapStateToProps = state => {
     return {
         email: state.email,
         token: state.token,
+        workingCategory: state.workingCategory,
         picUrl: state.user.profilePicUrl,
         gender: state.user.gender,
         address: state.user.address,
@@ -114,7 +91,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getWorkerInfo: (email, token) => dispatch(actions.getUser(email, token))
+        getWorkerInfo: (email, token) => dispatch(actions.getWorker(email, token))
     };
 }
 

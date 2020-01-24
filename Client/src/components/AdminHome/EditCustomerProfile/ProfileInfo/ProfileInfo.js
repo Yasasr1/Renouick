@@ -11,25 +11,16 @@ import EmailIcon from '@material-ui/icons/Email';
 import Icon from '@mdi/react';
 import { mdiFacebookBox, mdiTwitter } from '@mdi/js';
 import IconButton from '@material-ui/core/IconButton';
-
-//import Avatar from '@material-ui/core/Avatar';
+//import ProfileInfo from '../../../WorkerHome/WorkerDash/ProfileInfo/ProfileInfo';
 
 const ProfileInfo = (props) => {
-    /*const openSocialMedia = (type) => {
-        if(type === 'facebook') {
-            window.open(this.props.facebook)
-        } else if(type === 'twitter') {
-            window.open(this.props.twitter)
-        }
-  
-    }*/
-  
-   
+    
+
     return(
         <Paper style={{padding: '25px'}}>
             <Grid container spacing={1} >
                 <Grid item md={10}>
-                    <Typography variant="h5" gutterBottom>Yasas Ramanayaka</Typography>
+                    <Typography variant="h5" gutterBottom>{props.fName} {props.lName}</Typography>
                     
                     <Divider/>
 
@@ -42,7 +33,7 @@ const ProfileInfo = (props) => {
                     <Typography variant="caption">Contact No</Typography>
                 </Grid>
                 <Grid item md={9}>
-                    <Typography variant="caption">:0710841248</Typography>
+                    <Typography variant="caption">{props.contactNumber}</Typography>
                 </Grid>
 
                 <Grid item md={3}>
@@ -50,7 +41,7 @@ const ProfileInfo = (props) => {
                     <Typography variant="caption">E mail</Typography>
                 </Grid>
                 <Grid item md={9}>
-                    <Typography variant="caption">:pasan@gmail.com</Typography>
+                    <Typography variant="caption">{props.email}</Typography>
                 </Grid>
 
                 <Grid item md={3}>
@@ -58,7 +49,7 @@ const ProfileInfo = (props) => {
                     <Typography variant="caption">Address</Typography>
                 </Grid>
                 <Grid item md={9}>
-                    <Typography variant="caption">:17/4 A, Amunupitiya road, Welisara</Typography>
+                    <Typography variant="caption">{props.address}</Typography>
                 </Grid>
 
                 <Grid item md={3}>
@@ -83,6 +74,6 @@ const ProfileInfo = (props) => {
 
         </Paper>
     );
-};
+}
 
 export default ProfileInfo;

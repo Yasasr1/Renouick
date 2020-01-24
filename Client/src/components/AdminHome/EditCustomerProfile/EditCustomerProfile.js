@@ -24,34 +24,13 @@ import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import Sort from './ReportView/Sort/Sort';
 import Fab from '@material-ui/core/Fab';
-
+import getUser from '../../../store/actions/user';
 
 class EditCustomerProfile extends Component {
-    state = {
-        latestJob : null
-    }
-   
-    //dispatch the action to get and save customer data in redux storw
     componentDidMount() {
         this.props.getCustomerInfo(this.props.email,this.props.token);
-        axios.get('http://localhost:4000/job/getLatest', {
-            params: {
-                email: this.props.email
-            },
-            headers: {
-                'x-auth-token': this.props.token
-            }
-        })
-        .then(res => {
-            const job = res.data;
-            this.setState({latestJob: job[0]});
-        })
-        .catch(err => {
-            console.log(err);
-        })
-
     }
-
+   
 
     openSocialMedia = (type) => {
         if(type === 'facebook') {
@@ -79,16 +58,15 @@ class EditCustomerProfile extends Component {
                         <Grid item md={12} style={{marginBottom: '40px'}}>
                         
                              <Profileinfo
-                             gender={this.props.gender}
-                             address={this.props.address}
+                             contactNumber={this.props.contactNumber}
                              email={this.props.email}
-                             birthday={this.props.birthday}
+                             address={this.props.address}
                              fName={this.props.fName}
                              lName={this.props.lName}
                              />
                               <Grid style={{padding: '20px', flexGrow: '1'}} >
-                             <Typography variant="h4" component="h4" style={{fontSize:30 , fontStyle:"Italic" , color:"Black" }}>
-                         Complaints by workers against him
+                             <Typography variant="h4" component="h4" style={{fontSize:30 ,fontFamily:"Calibri" , fontStyle:"Italic" , color:"Black" }}>
+                         Complaints by Workers
                          </Typography>
                              <ReportView/>
                              </Grid>
@@ -96,12 +74,12 @@ class EditCustomerProfile extends Component {
                         
                     </Grid>  
 
-                    <Grid item sm={3} container justify="center" style={{marginBottom: '40px'}}>
-                        <CustomerSelect/><br/>
-                        <Fab color="primary" aria-label="add">
+                    {/* <Grid item sm={3} container justify="center" style={{marginBottom: '40px'}}> */}
+                        {/* <CustomerSelect/><br/> */}
+                        {/* <Fab color="primary" aria-label="add">
                          <ChatIcon />
                         </Fab>
-                        </Grid>  
+                        </Grid>   */}
                        
                 </Grid>
                
@@ -133,6 +111,5 @@ const mapDispatchToProps = dispatch => {
         getCustomerInfo: (email, token) => dispatch(actions.getUser(email, token))
     };
 }
-
 
 export default connect(mapStateToProps,mapDispatchToProps)(EditCustomerProfile);

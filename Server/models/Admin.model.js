@@ -8,7 +8,13 @@ let Admin = new Schema({
     lastName: {
         type: String
     },
+    contactNumber: {
+        type: String
+    },
     email : {
+        type: String
+    },
+    username: {
         type: String
     },
     password: {
