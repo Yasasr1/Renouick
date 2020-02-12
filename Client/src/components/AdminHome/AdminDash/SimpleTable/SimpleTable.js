@@ -11,7 +11,8 @@ import Divider from '@material-ui/core/Divider';
 class SimpleTable extends Component {
     state = {
         customers: null,
-        //workers : null
+        workers : null,
+       
     }
 
     //defining table columns
@@ -56,9 +57,9 @@ class SimpleTable extends Component {
             console.log(customers);
             this.setState({customers: customers})
         })
-    }
+    //}
 
-    /*componentDidMount() {
+    //componentDidMount() {
         //requesting server for all customers posted by the user
         axios.get('http://localhost:4000/admin/getAllWorkers' , {
             params: {
@@ -73,40 +74,43 @@ class SimpleTable extends Component {
             console.log(workers);
             this.setState({workers: workers})
         })
-    }*/
+
+    }
 
 
     
     render () {
-
              
         let test1 = [];
-        //let test2 = [];
-        if(this.state.customers)
+        let test2 = [];
+        if(this.state.customers && this.state.workers){
             test1 = this.state.customers;
+            test2 = this.state.workers;
+        }
+
         const data = [];
         test1.forEach(customer => {
             data.push({
                 key: customer._id,
-                username: customer.username,
+                username: customer.firstName +" "+ customer.lastName,
                 contactNumber: customer.contactNumber,
                 registrationDate: new Date(customer.registrationDate).toDateString(),
-                //userType: users.userType
+                //userType: "customer"
             })
         });
-        //console.log("render ran");
-        /*if(this.state.workers)
-            test2 = this.state.workers;
+
         test2.forEach(worker => {
             data.push({
                 key: worker._id,
-                username: worker.username,
+                username: worker.firstNmae +" "+worker.LastName ,
                 contactNumber: worker.contactNumber,
                 registrationDate: new Date(worker.registrationDate).toDateString(),
-                //userType: users.userType
+                userType: "worker"
             })
-        });*/
+        });
+        
         console.log("render ran");
+        
         return (
             <React.Fragment>
                 <Grid container justify="center" spacing={2} style={{padding: '30px', flexGrow: '1'}}>

@@ -126,7 +126,7 @@ class AdminDash extends Component {
                             <Typography variant="body1">Show</Typography>
                         </Grid>
                         <Grid item md={2}>
-                            <select onChange={(event)=>this.sortJobs(event)} className="form-control form-control-sm" id="exampleFormControlSelect1" style={{width: '200px'}}>
+                            <select  className="form-control form-control-sm" id="exampleFormControlSelect1" style={{width: '200px'}}>
                             <option value={1}>All</option>
                             <option value={2}>Workers Only</option>
                             <option value={3}>Customers Only</option>                         
