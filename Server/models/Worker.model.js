@@ -28,6 +28,9 @@ let Worker = new Schema({
     },
     profilePicId: {
         type: String
+    },
+    contactNumber: {
+        type: Number
     }
 
 });
