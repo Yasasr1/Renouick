@@ -6,12 +6,12 @@ import 'antd/dist/antd.css';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Divider from '@material-ui/core/Divider';
-//import JobDetails from '../CustomerDash/LatestJobInfo/LatestJobInfo';
+
 
 class SimpleTable extends Component {
     state = {
         customers: null,
-        workers : null
+        //workers : null
     }
 
     //defining table columns
@@ -58,15 +58,34 @@ class SimpleTable extends Component {
         })
     }
 
+    /*componentDidMount() {
+        //requesting server for all customers posted by the user
+        axios.get('http://localhost:4000/admin/getAllWorkers' , {
+            params: {
+                email: this.props.email
+            },
+            headers: {
+                'x-auth-token': this.props.token
+            }
+        })
+        .then(res => {
+            const workers = res.data;
+            console.log(workers);
+            this.setState({workers: workers})
+        })
+    }*/
+
+
     
     render () {
 
              
-        let test = [];
+        let test1 = [];
+        //let test2 = [];
         if(this.state.customers)
-            test = this.state.customers;
+            test1 = this.state.customers;
         const data = [];
-        test.forEach(customer => {
+        test1.forEach(customer => {
             data.push({
                 key: customer._id,
                 username: customer.username,
@@ -75,6 +94,18 @@ class SimpleTable extends Component {
                 //userType: users.userType
             })
         });
+        //console.log("render ran");
+        /*if(this.state.workers)
+            test2 = this.state.workers;
+        test2.forEach(worker => {
+            data.push({
+                key: worker._id,
+                username: worker.username,
+                contactNumber: worker.contactNumber,
+                registrationDate: new Date(worker.registrationDate).toDateString(),
+                //userType: users.userType
+            })
+        });*/
         console.log("render ran");
         return (
             <React.Fragment>

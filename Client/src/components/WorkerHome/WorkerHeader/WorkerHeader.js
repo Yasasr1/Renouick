@@ -248,17 +248,23 @@ const WorkerHeader = (props) =>  {
                         </ListItemIcon>
                         <ListItemText primary="My Bids"/>
                     </ListItem>
-                    <ListItem button >
+                    <ListItem button to="/worker/chat" component={MyLink} >
                         <ListItemIcon>
                             <ChatIcon style={{color: 'black'}}/>
                         </ListItemIcon>
                         <ListItemText primary="Chat"/>
                     </ListItem>
-                    <ListItem button >
+                    <ListItem button to="/worker/editProfile" component={MyLink} >
                         <ListItemIcon>
                             <CreateIcon style={{color: 'black'}}/>
                         </ListItemIcon>
                         <ListItemText primary="Edit Profile"/>
+                    </ListItem>
+                    <ListItem button to="/worker/report" component={MyLink} >
+                        <ListItemIcon>
+                            <DashboardIcon style={{color: 'black'}}/>
+                        </ListItemIcon>
+                        <ListItemText primary="Report"/>
                     </ListItem>
                 </List>
             </Drawer>

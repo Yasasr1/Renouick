@@ -38,7 +38,7 @@ class LatestJobInfo extends Component {
             console.log(err);
         })
 
-        if(this.props.status == "Ongoing"){
+        if(this.props.status === "Ongoing"){
             axios.get("http://localhost:4000/worker/getsomeInfo", {
                 params: {
                     email: this.props.worker

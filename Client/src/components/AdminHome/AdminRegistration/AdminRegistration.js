@@ -12,7 +12,7 @@ class AdminRegistration extends Component {
         
             firstName: {value: '', isValid: true, message: ''},
             lastName: {value: '', isValid: true, message: ''},
-            telephone:{value: '', isValid: true, meddsge: ''},
+            contactNumber: {value: '', isValid: true, message: ''},
             email: {value: '', isValid: true, message: ''},
             username: {value: '', isValid: true, message: ''},
             password: {value: '', isValid: true, message: ''},
@@ -54,25 +54,14 @@ class AdminRegistration extends Component {
             copiedState.lastName.isValid = true;
             copiedState.lastName.message = '';
         }
-
-        if(!copiedState.address.value){
-            copiedState.address.isValid = false;
-            copiedState.address.message = '*Required';
+        if(!copiedState.contactNumber.value){
+            copiedState.contactNumber.isValid = false;
+            copiedState.contactNumber.message = '*Required';
             isConfirmed = false;
         } else  {
-            copiedState.address.isValid = true;
-            copiedState.address.message = '';
+            copiedState.contactNumber.isValid = true;
+            copiedState.contactNumber.message = '';
         }
-
-        if(!copiedState.username.value){
-            copiedState.username.isValid = false;
-            copiedState.username.message = '*Required';
-            isConfirmed = false;
-        } else  {
-            copiedState.username.isValid = true;
-            copiedState.username.message = '';
-        }
-        
         if (!validator.isEmail(copiedState.email.value)) {
             copiedState.email.isValid = false;
             copiedState.email.message = 'Not a valid email address';
@@ -81,7 +70,14 @@ class AdminRegistration extends Component {
             copiedState.email.isValid = true;
             copiedState.email.message = '';
         }
-
+        if(!copiedState.username.value){
+            copiedState.username.isValid = false;
+            copiedState.username.message = '*Required';
+            isConfirmed = false;
+        } else  {
+            copiedState.username.isValid = true;
+            copiedState.username.message = '';
+        }
         if(!copiedState.password.value){
             copiedState.password.isValid = false;
             copiedState.password.message = '*Required';
@@ -90,7 +86,6 @@ class AdminRegistration extends Component {
             copiedState.password.isValid = true;
             copiedState.password.message = '';
         }
-
         if(copiedState.password.value !== copiedState.confirmPassword.value || !copiedState.confirmPassword.value){
             copiedState.confirmPassword.isValid = false;
             copiedState.confirmPassword.message = 'Password do not match';
@@ -113,25 +108,22 @@ class AdminRegistration extends Component {
           const newAdmin = {
             firstName: this.state.firstName.value,
             lastName: this.state.lastName.value,
-            telephone: this.state.telephone.value,
+            contactNumber: this.state.contactNumber.value,
             email: this.state.email.value,
             username: this.state.username.value,
-            password: this.state.password.value,
-            facebook: '',
-            twitter: '',
-            profilePicUrl: '',
-            profilePicId: ''
+            password: this.state.password.value
             }
 
 
-            //posting to customer schema
+            //posting to admin schema
           axios.post('http://localhost:4000/registration/addAdmin', newAdmin)
             .then(res => {
                 console.log(res);
-                
+                alert(res.data.admin);
             })
             .catch(error => {
                 console.log(error);
+                alert("Registration Failed");
                 
             })
 
@@ -184,11 +176,11 @@ class AdminRegistration extends Component {
                     
 
                     <MyTextField
-                    error={!this.state.telephone.isValid}
-                    id="telephone"
+                    error={!this.state.contactNumber.isValid}
+                    id="contactNumber"
                     label="Telephone No"
                     placeholder="Insert Telephone Number"
-                    helperText={!this.state.telephone.isValid ? <p style={{color: 'red'}}>{this.state.telephone.message}</p> : null}
+                    helperText={!this.state.contactNumber.isValid ? <p style={{color: 'red'}}>{this.state.contactNumber.message}</p> : null}
                     changed={this.inputHandler}
                     />
 

@@ -8,6 +8,8 @@ let Customer = require('../models/Customer.model');
 let Worker = require('../models/Worker.model');
 //user schema
 let User = require('../models/User.model');
+//admin schema
+let Admin = require('../models/Admin.model');
 
 // @route POST registration/addCustomer
 // @desc register new customer
@@ -39,7 +41,7 @@ router.post('/addWorker', (req,res) => {
     Worker.findOne({email: req.body.email})
         .then(user => {
             if(user) {
-                return res.status(400).send('user already exists');
+                return res.status(400).send({'error':'user already exists'});
             }
             else {
                 let worker = new Worker(req.body);
@@ -49,6 +51,28 @@ router.post('/addWorker', (req,res) => {
                 })
                 .catch(err => {
                     res.status(400).send('adding new wroker failed');
+                });
+            }
+        });
+})
+
+// @route POST registration/addWorker
+// @desc register new worker
+router.post('/addAdmin', (req,res) => {
+    //check if worker already exists
+    Admin.findOne({email: req.body.email})
+        .then(user => {
+            if(user) {
+                return res.status(400).send({'error': 'user already exists'});
+            }
+            else {
+                let admin = new Admin(req.body);
+                admin.save()
+                .then(admin => {
+                    res.status(200).json({'admin': 'admin registration successfull'});
+                })
+                .catch(err => {
+                    res.status(400).send('adding new admin failed');
                 });
             }
         });

@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
   },
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 150,
+    minWidth: 120,
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
@@ -54,9 +54,9 @@ const Sort = (props) => {
     id: 'age-helper',
   }}
 >
-        <MenuItem value={10}>Date</MenuItem>
-        <MenuItem value={20}>A - Z</MenuItem>
-        <MenuItem value={30}>Z - A</MenuItem>
+        <MenuItem value={10}>Dilan Kasun</MenuItem>
+        <MenuItem value={20}>Nimal Karuanatilake</MenuItem>
+        <MenuItem value={30}>Kasun kasun</MenuItem>
         </Select>
       </FormControl>
 

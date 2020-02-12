@@ -1,6 +1,8 @@
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
+
 import {Grid, Button} from '@material-ui/core/';
+
 import Profileinfo from './ProfileInfo/ProfileInfo'; 
 import * as actions from '../../../store/actions/user';
 import axios from 'axios';
@@ -13,32 +15,12 @@ import ReportView from './ReportView/ReportView';
 //import ChatIcon from '@material-ui/icons/Chat';
 import { IconButton, Divider } from '@material-ui/core';
 
+
 class EditCustomerProfile extends Component {
-    state = {
-        latestJob : null
-    }
-   
-    //dispatch the action to get and save customer data in redux storw
     componentDidMount() {
         this.props.getCustomerInfo(this.props.email,this.props.token);
-        axios.get('http://localhost:4000/job/getLatest', {
-            params: {
-                email: this.props.email
-            },
-            headers: {
-                'x-auth-token': this.props.token
-            }
-        })
-        .then(res => {
-            const job = res.data;
-            this.setState({latestJob: job[0]});
-        })
-        .catch(err => {
-            console.log(err);
-        })
-
     }
-
+   
 
     openSocialMedia = (type) => {
         if(type === 'facebook') {
@@ -57,70 +39,43 @@ class EditCustomerProfile extends Component {
                
                     <Grid item sm={3}>
                         <img src={ProfilePic} width={350} height={250}/>
-                            
+                        <Grid style={{padding: '100px', flexGrow: '1'}} >
+                        <Button size="small" height="15%" color="secondary" variant="contained" style={{fontSize:16}}>Ban This customer</Button>
+                    </Grid>
                     </Grid>
 
                     <Grid item sm={6} >
                         <Grid item md={12} style={{marginBottom: '40px'}}>
                         
                              <Profileinfo
-                             gender={this.props.gender}
-                             address={this.props.address}
+                             contactNumber={this.props.contactNumber}
                              email={this.props.email}
-                             birthday={this.props.birthday}
+                             address={this.props.address}
                              fName={this.props.fName}
                              lName={this.props.lName}
                              />
+                              <Grid style={{padding: '20px', flexGrow: '1'}} >
+                             <Typography variant="h4" component="h4" style={{fontSize:30 ,fontFamily:"Calibri" , fontStyle:"Italic" , color:"Black" }}>
+                         Complaints by Workers
+                         </Typography>
+                             <ReportView/>
+                             </Grid>
                         </Grid> 
                         
                     </Grid>  
 
-                    <Grid item sm={3} container justify="center" style={{marginBottom: '40px'}}>
-                    <Typography variant="h4" component="h4" align="center"style={{ fontFamily:"Calibri " , fontSize:20 , fontStyle:"Italic" , color:"black"}}>
-                    <br/>Search a customer here <br/>to view details</Typography>
-                     <CustomerSelect/>
-                    </Grid>    
+                    {/* <Grid item sm={3} container justify="center" style={{marginBottom: '40px'}}> */}
+                        {/* <CustomerSelect/><br/> */}
+                        {/* <Fab color="primary" aria-label="add">
+                         <ChatIcon />
+                        </Fab>
+                        </Grid>   */}
+                       
                 </Grid>
-                
-                <Grid container spacing={3} justify="center" style={{padding: '1px', flexGrow: '1'}}>
-                
                
-                    <Grid item sm={8}>
-                        <Grid  justify="center"  style={{padding: '1px', flexGrow: '1'}}>
-                            <Grid item xs={12} >
-                            <Typography variant="h4" component="h4" align="center"style={{ fontFamily:"Calibri " , fontSize:27 , fontStyle:"Italic" , color:"black"}}>
-                         Complaints by workers against him</Typography>
-                            </Grid>
-                            <Grid><ReportView/></Grid>
-                        </Grid>
-                    </Grid>
-                    <Grid item sm={1}>                                      
-                    </Grid>
-
-                    
-                    <Grid item xs={3} container spacing={3}>
-                        
-                        <Grid item sm={12} >
-                            <Button onClick={this.searchWorker} color="secondary" variant="contained">Ban This customer</Button>
-                        </Grid>
-                        <Grid item  sm={12}>
-                            <Grid item xs={3}>
-                              <Grid item sx={12}>
-                                 <Typography variant="h4" component="h4" align="center"
-                                    style={{ fontFamily:"Calibri " , fontSize:20 , fontStyle:"Italic" , color:"rblack"}}>
-                                    Chat</Typography> <br/>
-                              </Grid>
-                              <Grid item sx={12}>
-                                <IconButton aria-label="chat" >  <ChatIcon style={{ fontSize: 60 }}/></IconButton>
-                              </Grid>
-                            </Grid>
-                                               
-                        </Grid>
-                    </Grid>  
+                   
+                   
  
-                </Grid>             
-          
-         
             </div>
         );
     }
@@ -146,6 +101,5 @@ const mapDispatchToProps = dispatch => {
         getCustomerInfo: (email, token) => dispatch(actions.getUser(email, token))
     };
 }
-
 
 export default connect(mapStateToProps,mapDispatchToProps)(EditCustomerProfile);

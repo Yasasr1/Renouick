@@ -250,6 +250,7 @@ const AdminHeader = (props) =>  {
                         </ListItemIcon>
                         <ListItemText primary="Ëdit Admin Profile"/>
                     </ListItem>
+
                     
                     <ListItem button to="/admin/edit_customer_profile" component={MyLink} >
                         <ListItemIcon>
@@ -266,7 +267,7 @@ const AdminHeader = (props) =>  {
                     </ListItem>
 
                     
-                        
+
                     <ListItem button to="/admin/report_view" component={MyLink}>
                         <ListItemIcon>
                             <DescriptionIcon/>
