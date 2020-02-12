@@ -28,6 +28,9 @@ let Worker = new Schema({
     },
     profilePicId: {
         type: String
+    },
+    registrationDate: {
+        type: Date
     }
 
 });

@@ -260,6 +260,12 @@ const WorkerHeader = (props) =>  {
                         </ListItemIcon>
                         <ListItemText primary="Edit Profile"/>
                     </ListItem>
+                    <ListItem button to="/worker/report" component={MyLink} >
+                        <ListItemIcon>
+                            <DashboardIcon style={{color: 'black'}}/>
+                        </ListItemIcon>
+                        <ListItemText primary="Report"/>
+                    </ListItem>
                 </List>
             </Drawer>
         </div>

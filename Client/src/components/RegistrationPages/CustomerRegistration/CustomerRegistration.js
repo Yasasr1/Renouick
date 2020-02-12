@@ -19,6 +19,7 @@ class CustomerRegistration extends Component {
             contactNumber: {value: '', isValid: true, message: ''},
             password: {value: '', isValid: true, message: ''},
             confirmPassword: {value: '', isValid: true, message: ''}
+            
         
     }
 
@@ -123,7 +124,8 @@ class CustomerRegistration extends Component {
             facebook: '',
             twitter: '',
             profilePicUrl: '',
-            profilePicId: ''
+            profilePicId: '',
+            registrationDate: new Date()
             }
 
 

@@ -15,17 +15,14 @@ const useStyles = makeStyles(theme => ({
   paper: {
     height: 150,
     width: 300,
-    //backgroundColor:"rgba( 0, 60, 90 ,0.8)",
+   
     
   },
-  //back: {
-    //backgroundImage:  `url(${backImage})`,
-  //},
   
 }));
 
 const WorkerCount = (props) => {
-  const [spacing, setSpacing] = React.useState(2);
+  const [setSpacing] = React.useState(2);
   const classes = useStyles();
 
   const handleChange = event => {

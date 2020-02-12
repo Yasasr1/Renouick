@@ -158,7 +158,8 @@ class WorkerRegistration extends Component {
               password: this.state.password.value,
               workingCategory: this.state.workingCategory.value,
               profilePicUrl: '',
-              profilePicId: ''
+              profilePicId: '',
+              registrationDate: new Date()
           }
 
           axios.post('http://localhost:4000/registration/addWorker', newWorker)

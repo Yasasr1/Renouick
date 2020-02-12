@@ -34,6 +34,9 @@ let Customer = new Schema({
     },
     twitter: {
         type: String
+    },
+    registrationDate: {
+        type: Date
     }
 });
 
