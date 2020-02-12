@@ -1,7 +1,13 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Grid, Button, TextField} from '@material-ui/core';
+
+import React , { Component } from 'react';
+import MyTextField from '../../UI/TextField/TextField';
+import './EditAdminProfile.css';
+import PasswordField from '../../UI/TextField/PasswordField';
+import validator from 'validator';
 import axios from 'axios';
+import Button from '@material-ui/core/Button';
+
+
 
 class EditAdminProfile extends Component {
     state = {
