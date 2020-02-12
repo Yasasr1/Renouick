@@ -5,8 +5,7 @@ import WorkerDash from './WorkerDash/WorkerDash';
 import BrowseJobs from './BrowseJobs/BrowseJobs';
 import viewJob from './ViewJob/ViewJob';
 import MyBids from './MyBids/MyBids';
-import WorkerEditProfile from './WorkerEditProfile/WorkerEditProfile';
-import ChatComponent from './Chat/ChatComponent';
+import Report from './ReportView/Report';
 
 
 const WorkerHome = (props) => {
@@ -19,8 +18,7 @@ const WorkerHome = (props) => {
                 <Route path={props.match.url + '/jobs'} component={BrowseJobs}/>
                 <Route path={props.match.url + '/viewJob'} component={viewJob}/>
                 <Route path={props.match.url + '/myBids'} component={MyBids}/>
-                <Route path={props.match.url + '/editProfile'} component={WorkerEditProfile}/>
-                <Route path={props.match.url + '/chat'} component={ChatComponent}/>
+                <Route path={props.match.url + '/report'} component={Report}/>
             </Switch>
         </React.Fragment>
     );

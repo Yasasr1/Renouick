@@ -18,7 +18,7 @@ class AdminDash extends Component {
         tCount: 0,
         pWork : 0,
         cWork : 0,
-        oWork : 0
+        oWork : 0,
     }
 
     componentDidMount(){
@@ -96,6 +96,7 @@ class AdminDash extends Component {
             this.setState({oWork:jobONumber})
                     
         })
+        
     }
     render() {
 
@@ -109,7 +110,7 @@ class AdminDash extends Component {
 
                     <Grid item xs={8}  > <br/>
                        <Typography variant="h4" component="h4" align="center"style={{ fontFamily:"Calibri " , fontSize:27 , fontStyle:"Italic" , color:"black"}}>
-                          Monthly Accounts Creation </Typography><br/><LineChart/> ></Grid>                                   
+                          Total Accounts per Month </Typography><br/><LineChart /> ></Grid>                                   
                     <Grid item xs={4} >  <br/>
                        <Typography variant="h4" component="h4" align="center"style={{ fontFamily:"Calibri " , fontSize:27 , fontStyle:"Italic" , color:"black"}}>
                            Exsisting User Accounts Details</Typography>
@@ -122,7 +123,7 @@ class AdminDash extends Component {
                     </Grid>    
                     
                         <Grid item xl={1}>
-                            <Typography variant="body1">Sort</Typography>
+                            <Typography variant="body1">Show</Typography>
                         </Grid>
                         <Grid item md={2}>
                             <select onChange={(event)=>this.sortJobs(event)} className="form-control form-control-sm" id="exampleFormControlSelect1" style={{width: '200px'}}>
