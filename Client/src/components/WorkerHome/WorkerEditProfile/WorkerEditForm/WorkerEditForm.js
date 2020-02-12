@@ -1,67 +1,59 @@
-
-import React , { Component } from 'react';
-import './EditAdminProfile.css';
-import axios from 'axios';
-import{ Button, Grid,TextField }from '@material-ui/core';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Grid, Button, TextField} from '@material-ui/core';
+import axios from 'axios';
 
 
 
-class EditAdminProfile extends Component {
+class WorkerEditForm extends Component {
     state = {
-        admin : {
+        worker : {
         firstName: '',
         lastName: '',
-        contactNumber: '',
+        birthday: '',
         email: '',
-        username: '',
         password: '',
-        confirmPw: ''
+        confirmPw: '',
+        contactNumber: '',
+        facebook: '',
+        twitter: '',
+        profilePicUrl: '',
+        profilePicId: ''
         },
         isValid: true
     }
-//mapping redux store to local component state. otherwise can't change the inputs
-    //when the admin dashboard load. it'll dispatch the action to save customer data to redux store
+
+    //mapping redux store to local component state. otherwise can't change the inputs
+    //when the customer dashboard load. it'll dispatch the action to save customer data to redux store
     //initial values of the inputs will be set to the values in the redux store
     componentDidMount() {
-        axios.get('http://localhost:4000/admin/getInfo' , {
-            params: {
-                email: this.props.email
-            },
-            headers: {
-                'x-auth-token': this.props.token
-            }
-        })
-        .then(res => {
-            const admin = res.data;
-            console.log("admin: "+admin);
-            this.setState({admin: {...admin}});
-            console.log(this.state.admin[0])
-        }).catch(err => {
-            console.log(err);
-        })
-       /* this.setState({
+        this.setState({
             ...this.state,
-            admin: {
-                ...this.state.admin,
-                firstName: this.props.admin.firstName,
-                lastName:  this.props.admin.lastName,
-                contactNumber:  this.props.admin.contactNumber,
-                email: this.props.admin.email,
-                username: this.props.admin.username,
-                password:  this.props.admin.password
+            worker: {
+                ...this.state.worker,
+                firstName: this.props.worker.firstName,
+                lastName:  this.props.worker.lastName,
+                birthday:  this.props.worker.birthday,
+                address:  this.props.worker.address,
+                email: this.props.worker.email,
+                password:  this.props.worker.password,
+                contactNumber:  this.props.worker.contactNumber,
+                facebook: this.props.worker.facebook,
+                twitter: this.props.worker.twitter,
+                profilePicUrl: this.props.worker.profilePicUrl,
+                profilePicId : this.props.worker.profilePicId
                 
             }
 
-        });*/
+        });
     }
 
     //change state with input
     handleInput = (event) => {
         this.setState({
             ...this.state,
-            admin: {
-                ...this.state.admin,
+            worker: {
+                ...this.state.worker,
                 [event.target.id]: event.target.value
                
             }
@@ -70,12 +62,12 @@ class EditAdminProfile extends Component {
 
     //changing password
     handlePwSubmit = () => {
-        if(this.state.admin.password === this.state.admin.confirmPw) {
+        if(this.state.worker.password === this.state.worker.confirmPw) {
             const details = {
-                email: this.state.admin.email,
-                password: this.state.admin.password
+                email: this.state.worker.email,
+                password: this.state.worker.password
             }
-            axios.post('http://localhost:4000/admin/updatePw', details)
+            axios.post('http://localhost:4000/worker/updatePw', details)
             .then(res => {
                 console.log(res);
                 alert(res.data);
@@ -93,17 +85,21 @@ class EditAdminProfile extends Component {
     }
 
     handleSubmit = () => {
-        const updatedAdmin = {
-            firstName: this.state.admin.firstName,
-            lastName:  this.state.admin.lastName,
-            contactNumber:  this.state.admin.contactNumber,
-            email: this.state.admin.email,
-            username: this.state.admin.username,
-            password:  this.state.admin.password,
+        const updatedWorker = {
+            firstName: this.state.worker.firstName,
+            lastName:  this.state.worker.lastName,
+            birthday:  this.state.worker.birthday,
+            email: this.state.worker.email,
+            contactNumber:  this.state.worker.contactNumber,
+            password:  this.state.worker.password,
+            profilePicUrl: this.state.worker.profilePicUrl,
+            profilePicId : this.state.worker.profilePicId,
+            facebook: this.state.worker.facebook,
+            twitter: this.state.worker.twitter,
            
         };
-        console.log(updatedAdmin);
-        axios.post('http://localhost:4000/admin/updateAdmin', updatedAdmin)
+        console.log(updatedWorker);
+        axios.post('http://localhost:4000/worker/updateWorker', updatedWorker)
         .then(res => {
             alert(res.data);
         })
@@ -112,13 +108,14 @@ class EditAdminProfile extends Component {
         })
     }
 
+
     render() {
         let error = null;
         if(!this.state.isValid) {
             error = <p style={{color: 'red'}}>Password doesn't match!</p>
         }
         return(
-            <Grid container justify="flex-start" spacing={10} style={{padding: '130px'}}>
+            <Grid container justify="flex-start" spacing={2} style={{padding: '30px'}}>
                <Grid item md={8}>
                     <h4>Basic Info</h4>
                </Grid>
@@ -135,7 +132,7 @@ class EditAdminProfile extends Component {
                         label="First Name"
                         margin="dense"
                         variant="outlined"
-                        value={this.state.admin.firstName}
+                        value={this.state.worker.firstName}
                         onChange={this.handleInput}
                         fullWidth
                         /> 
@@ -146,12 +143,24 @@ class EditAdminProfile extends Component {
                         label="Last Name"
                         margin="dense"
                         variant="outlined"
-                        value={this.state.admin.lastName}
+                        value={this.state.worker.lastName}
                         onChange={this.handleInput}
                         fullWidth
                         />
                     </Grid>
-                    <Grid item md={6}>
+                    <Grid item md={12}>
+                    <TextField
+                    id="birthday"
+                    label="Birthday"
+                    type="date"
+                    defaultValue="2017-05-24"
+                    style={{ margin: 12, width: '95%' }}
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                    onChange={this.handleInput}
+                    />
+
                     <TextField
                     id="contactNumber"
                     label="Contact Number"
@@ -159,46 +168,46 @@ class EditAdminProfile extends Component {
                     variant="outlined"
                     multiline
                     rowsMax="4"
-                    value={this.state.admin.contactNumber}
+                    value={this.state.worker.contactNumber}
                     onChange={this.handleInput}
                     fullWidth
                     />
-                    </Grid>   
-                    <Grid item md={6}>
-                    <TextField
-                    id="email"
-                    label="E mail"
-                    margin="dense"
-                    variant="outlined"
-                    multiline
-                    rowsMax="4"
-                    value={this.state.admin.email}
-                    onChange={this.handleInput}
-                    fullWidth
-                    />
-                    </Grid>  
-                    <Grid item md={6}>
-                    <TextField
-                    id="username"
-                    label="Username"
-                    margin="dense"
-                    variant="outlined"
-                    multiline
-                    rowsMax="4"
-                    value={this.state.admin.username}
-                    onChange={this.handleInput}
-                    fullWidth
-                    />
-                    </Grid> 
+                    </Grid>    
                </Grid>
-               
+               <Grid item md={8}>
+                    <br/>
+                    <h4>External Links</h4>
+                    <br/>
+               </Grid>
+               <Grid item md={12}>
+                    <TextField
+                    id="facebook"
+                    label="Facebook"
+                    margin="dense"
+                    variant="outlined"
+                    value={this.state.worker.facebook}
+                    onChange={this.handleInput}
+                    fullWidth
+                    />
+    
+                    <TextField
+                    id="twitter"
+                    label="Twitter"
+                    margin="dense"
+                    variant="outlined"
+                    value={this.state.worker.twitter}
+                    onChange={this.handleInput}
+                    fullWidth
+                    />
+    
+                </Grid> 
                <Grid item md={8}>
                     <br/>
                     <h4>Security</h4>
                     <br/>
                </Grid>
-               <Grid container spacing={3}>
-                    <Grid item md={4}>
+               <Grid container spacing={2}>
+                    <Grid item md={12}>
                         
     
                         <TextField
@@ -224,7 +233,7 @@ class EditAdminProfile extends Component {
                         {error}
                         <br/>
                     </Grid>
-                    <Grid container justify="flex-end" spacing={10}>
+                    <Grid container justify="flex-end" spacing={2}>
                     <Grid item md={2}>
                         <Button variant="contained" fullWidth>Cancel</Button>
                     </Grid>
@@ -242,12 +251,11 @@ class EditAdminProfile extends Component {
     
 };
 
-const matchStateToProps = state => {
+const mapStateToProps = state => {
     return {
-        email: state.email,
+        worker: state.user,
         token: state.token
     }
 }
 
-export default connect(matchStateToProps,null)(EditAdminProfile);
-
+export default connect(mapStateToProps,null)(WorkerEditForm);

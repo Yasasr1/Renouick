@@ -6,12 +6,13 @@ import 'antd/dist/antd.css';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Divider from '@material-ui/core/Divider';
-import JobDetails from '../../CustomerHome/CustomerDash/LatestJobInfo/LatestJobInfo';
+import BidInfo from './BidInfo/BidInfo';
 
 class MyBids extends Component {
     state = {
         bids: [],
-        isSelected: false
+        isSelected: false,
+        selectedJob: null
     }
 
     //defining table columns
@@ -22,13 +23,6 @@ class MyBids extends Component {
             sorter: (a, b) => {return a.title.localeCompare(b.title)},
             sortDirections: ['descend', 'ascend'],
           
-        },
-        {
-            title: 'Job Title',
-            dataIndex: 'jobTitle',
-            sorter: (a, b) => {return a.category.localeCompare(b.category)},
-            sortDirections: ['descend', 'ascend']
-           
         },
         {
             title: 'Post Date',
@@ -75,19 +69,32 @@ class MyBids extends Component {
 
     //display the selected job details
     assignJobDetails = (selectedRowKey) => {
-        this.state.bids.forEach(job => {
-            if(job._id === selectedRowKey.toString()) {
-                this.jobDetails = <JobDetails
-                    title={job.title}
-                    id={job._id}
-                    category={job.category}
-                    description={job.description}
-                    status={job.status}
-                    images={job.images}
-                    worker={job.assignedWorker}
-                />
-                this.setState({isSelected: true});
-                console.log(job.title);
+        this.state.bids.forEach(bid => {
+            if(bid._id === selectedRowKey.toString()) {
+                //console.log(bid.jobId);
+                axios.get('http://localhost:4000/job/getOne' , {
+                params: {
+                    id: bid.jobId
+                },
+                headers: {
+                    'x-auth-token': this.props.token
+                }
+                })
+                .then(res => {
+                    const job = res.data;
+                    console.log(job);
+                    this.jobDetails = <BidInfo 
+                    jobTitle={job.title}
+                    jobPoster={job.poster}
+                    jobDate={job.postDate}
+                    jobDesc={job.description}
+                    amount={bid.amount}
+                    />
+                    this.setState({selectedJob: job});
+                })
+
+                
+
             }
         })
     }
