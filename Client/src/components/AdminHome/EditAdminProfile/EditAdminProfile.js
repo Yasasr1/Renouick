@@ -1,11 +1,9 @@
 
 import React , { Component } from 'react';
-import MyTextField from '../../UI/TextField/TextField';
 import './EditAdminProfile.css';
-import PasswordField from '../../UI/TextField/PasswordField';
-import validator from 'validator';
 import axios from 'axios';
-import Button from '@material-ui/core/Button';
+import{ Button, Grid,TextField }from '@material-ui/core';
+import { connect } from 'react-redux';
 
 
 
