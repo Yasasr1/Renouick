@@ -50,26 +50,29 @@ router.get('/getLatest', auth, (req,res)=> {
         if(err)
             console.log(err);
         //console.log(bid);
-        jobId = bid.jobId;
-        details.price = bid.amount;
-        details.status = bid.status;
-        //console.log(details);
-        //console.log("before job find"+jobId);
-        Job.findOne({_id:jobId},(err,job)=>{
-            if(err)
-                console.log(err);
-            //console.log(job.title);
-            //console.log(job.poster);
-            details.jobTitle = job.title;
-            details.jobPoster = job.poster;
-            console.log(details);
-
-            res.json(details);
-
-                 
-            
-            
-        })
+        if(bid){
+            jobId = bid.jobId;
+            details.price = bid.amount;
+            details.status = bid.status;
+            //console.log(details);
+            //console.log("before job find"+jobId);
+            Job.findOne({_id:jobId},(err,job)=>{
+                if(err)
+                    console.log(err);
+                //console.log(job.title);
+                //console.log(job.poster);
+                details.jobTitle = job.title;
+                details.jobPoster = job.poster;
+                console.log(details);
+    
+                res.json(details);
+    
+                     
+                
+                
+            })
+        }
+        
 
     })
     
