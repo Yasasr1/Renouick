@@ -80,7 +80,7 @@ router.get('/getEveryJob',auth, (req, res) => {
     Worker.find({email: email},{workingCategory: 1,_id: 0}, (err,categories) => {
         if(err)
             console.log(err);
-        else    
+        if(categories)    
             {
                 var workCategories = categories[0].workingCategory;
                 Job.find({status: 'pending', category: {$in: workCategories}}, (err, jobs) => {

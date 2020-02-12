@@ -3,6 +3,7 @@ import { updateObject } from '../utility';
 
 const initialState = {
     token: null,
+    chatToken: null,
     email: null,
     userType: null,
     error: null,
@@ -33,6 +34,7 @@ const reducer = (state = initialState, action) => {
                 state,
                 {
                     token: action.token,
+                    chatToken: action.chatToken,
                     email: action.email,
                     userType: action.userType,
                     error: null,
@@ -53,7 +55,8 @@ const reducer = (state = initialState, action) => {
                 {
                     token: null,
                     email: null,
-                    userType: null
+                    userType: null,
+                    chatToken: null
                 }
             )
         case actionTypes.STORE_USER:
