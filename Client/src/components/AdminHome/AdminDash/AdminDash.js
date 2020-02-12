@@ -122,7 +122,7 @@ class AdminDash extends Component {
                     </Grid>    
                     
                         <Grid item xl={1}>
-                            <Typography variant="body1">Sort</Typography>
+                            <Typography variant="body1">Show</Typography>
                         </Grid>
                         <Grid item md={2}>
                             <select onChange={(event)=>this.sortJobs(event)} className="form-control form-control-sm" id="exampleFormControlSelect1" style={{width: '200px'}}>

@@ -56,12 +56,12 @@ const WorkerCount = (props) => {
               </Paper>
      
               <Paper className={classes.paper} style={{backgroundColor: '#8b9bcc'}}>
-              <Typography style={{ fontFamily:"Calibri " , fontSize:27 , fontStyle:"Italic" , color:"black"}} align="center"> Completed Works </Typography>
+              <Typography style={{ fontFamily:"Calibri " , fontSize:27 , fontStyle:"Italic" , color:"black"}} align="center"> Completed Jobs </Typography>
               <Typography style={{ fontSize:60 , color:"black"}} align="center"> {props.CWork} </Typography>
               </Paper>
 
               <Paper className={classes.paper} style={{backgroundColor: '#fbd777'}}>
-              <Typography style={{ fontFamily:"Calibri " , fontSize:27 , fontStyle:"Italic" , color:"black"}} align="center"> Uncompleted Works </Typography>
+              <Typography style={{ fontFamily:"Calibri " , fontSize:27 , fontStyle:"Italic" , color:"black"}} align="center"> Ongoing Works </Typography>
               <Typography style={{ fontSize:60 , color:"black"}} align="center"> {props.UWork} </Typography>
               </Paper>
             
