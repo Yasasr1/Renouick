@@ -1,253 +1,249 @@
-import React , { Component } from 'react';
-import MyTextField from '../../UI/TextField/TextField';
-import './EditAdminProfile.css';
-import PasswordField from '../../UI/TextField/PasswordField';
-//import {TextField} from '@material-ui/core';
-import validator from 'validator';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Grid, Button, TextField} from '@material-ui/core';
 import axios from 'axios';
-//import { Link } from 'react-router-dom';
-//import Icon from '@material-ui/core/Icon';
-//import SaveIcon from '@material-ui/icons/Save';
-//import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-
-
 
 class EditAdminProfile extends Component {
-    inputValues = {
-        
-            firstName: {value: '', isValid: true, message: ''},
-            lastName: {value: '', isValid: true, message: ''},
-            telephone: {value: '', isValid: true, message: ''},
-            email: {value: '', isValid: true, message: ''},
-            username: {value: '', isValid: true, message: ''},
-            password: {value: '', isValid: true, message: ''},
-            confirmPassword: {value: '', isValid: true, message: ''}
-        
+    state = {
+        admin : {
+        firstName: '',
+        lastName: '',
+        contactNumber: '',
+        email: '',
+        username: '',
+        password: '',
+        confirmPw: ''
+        },
+        isValid: true
     }
-
-    state = {...this.inputValues};
-
-    inputHandler = (event) => {
-        const updatedState = {
+//mapping redux store to local component state. otherwise can't change the inputs
+    //when the admin dashboard load. it'll dispatch the action to save customer data to redux store
+    //initial values of the inputs will be set to the values in the redux store
+    componentDidMount() {
+        axios.get('http://localhost:4000/admin/getInfo' , {
+            params: {
+                email: this.props.email
+            },
+            headers: {
+                'x-auth-token': this.props.token
+            }
+        })
+        .then(res => {
+            const admin = res.data;
+            console.log("admin: "+admin);
+            this.setState({admin: {...admin}});
+            console.log(this.state.admin[0])
+        }).catch(err => {
+            console.log(err);
+        })
+       /* this.setState({
             ...this.state,
-            [event.target.id]: {
-                ...this.state[event.target.id],
-                value: event.target.value,
-            }
-        };
-
-        this.setState(updatedState)
-    }
-
-       
-    formValidationHandler = () => {
-        const copiedState = {...this.state};
-        let isConfirmed = true;
-
-        if(!copiedState.firstName.value){
-            copiedState.firstName.isValid = false;
-            copiedState.firstName.message = '*Required';
-            isConfirmed = false;
-        } else  {
-            copiedState.firstName.isValid = true;
-            copiedState.firstName.message = '';
-        }
-        if(!copiedState.lastName.value){
-            copiedState.lastName.isValid = false;
-            copiedState.lastName.message = '*Required';
-            isConfirmed = false;
-        } else  {
-            copiedState.lastName.isValid = true;
-            copiedState.lastName.message = '';
-        }
-
-        if(!copiedState.address.value){
-            copiedState.address.isValid = false;
-            copiedState.address.message = '*Required';
-            isConfirmed = false;
-        } else  {
-            copiedState.address.isValid = true;
-            copiedState.address.message = '';
-        }
-
-        if(!copiedState.username.value){
-            copiedState.username.isValid = false;
-            copiedState.username.message = '*Required';
-            isConfirmed = false;
-        } else  {
-            copiedState.username.isValid = true;
-            copiedState.username.message = '';
-        }
-        
-        if (!validator.isEmail(copiedState.email.value)) {
-            copiedState.email.isValid = false;
-            copiedState.email.message = 'Not a valid email address';
-            isConfirmed = false;
-        } else  {
-            copiedState.email.isValid = true;
-            copiedState.email.message = '';
-        }
-
-        if(!copiedState.password.value){
-            copiedState.password.isValid = false;
-            copiedState.password.message = '*Required';
-            isConfirmed = false;
-        } else  {
-            copiedState.password.isValid = true;
-            copiedState.password.message = '';
-        }
-
-        if(copiedState.password.value !== copiedState.confirmPassword.value || !copiedState.confirmPassword.value){
-            copiedState.confirmPassword.isValid = false;
-            copiedState.confirmPassword.message = 'Password do not match';
-            isConfirmed = false;
-        } else  {
-            copiedState.confirmPassword.isValid = true;
-            copiedState.confirmPassword.message = '';
-        }
-
-        this.setState(copiedState);
-        return isConfirmed;
-        
-    }
-
-    submitHandler = (event) => {
-        
-        event.preventDefault();
-        if (this.formValidationHandler()) {
-          // form processing here....
-          const newAdmin = {
-            firstName: this.state.firstName.value,
-            lastName: this.state.lastName.value,
-            telephone: this.state.telephone.value,
-            email: this.state.email.value,
-            username: this.state.username.value,
-            password: this.state.password.value,
-            facebook: '',
-            twitter: '',
-            profilePicUrl: '',
-            profilePicId: ''
+            admin: {
+                ...this.state.admin,
+                firstName: this.props.admin.firstName,
+                lastName:  this.props.admin.lastName,
+                contactNumber:  this.props.admin.contactNumber,
+                email: this.props.admin.email,
+                username: this.props.admin.username,
+                password:  this.props.admin.password
+                
             }
 
+        });*/
+    }
 
-            //posting to customer schema
-          axios.post('http://localhost:4000/registration/addAdmin', newAdmin)
+    //change state with input
+    handleInput = (event) => {
+        this.setState({
+            ...this.state,
+            admin: {
+                ...this.state.admin,
+                [event.target.id]: event.target.value
+               
+            }
+        })
+    }
+
+    //changing password
+    handlePwSubmit = () => {
+        if(this.state.admin.password === this.state.admin.confirmPw) {
+            const details = {
+                email: this.state.admin.email,
+                password: this.state.admin.password
+            }
+            axios.post('http://localhost:4000/admin/updatePw', details)
             .then(res => {
                 console.log(res);
-                
+                alert(res.data);
             })
-            .catch(error => {
-                console.log(error);
-                
+            .catch(err => {
+                console.log(err);
+                alert(err);
             })
-
-            const newUser = {
-                email: this.state.email.value,
-                password: this.state.password.value,
-                userType: 'admin'
-            }
-
-            //posting to user schema
-            axios.post('http://localhost:4000/registration/addUser', newUser)
-                .then(res => {
-                    console.log(res.data);
-                })
-                .catch(error => {
-                    console.log(error.responce);
-                })
-
+            this.setState({isValid: true});
 
         }
+        else {
+            this.setState({isValid: false});
+        }
     }
-    clearFormHandler = () => {
-        this.setState({...this.inputValues});
+
+    handleSubmit = () => {
+        const updatedAdmin = {
+            firstName: this.state.admin.firstName,
+            lastName:  this.state.admin.lastName,
+            contactNumber:  this.state.admin.contactNumber,
+            email: this.state.admin.email,
+            username: this.state.admin.username,
+            password:  this.state.admin.password,
+           
+        };
+        console.log(updatedAdmin);
+        axios.post('http://localhost:4000/admin/updateAdmin', updatedAdmin)
+        .then(res => {
+            alert(res.data);
+        })
+        .catch(err => {
+            alert(err)
+        })
     }
 
     render() {
+        let error = null;
+        if(!this.state.isValid) {
+            error = <p style={{color: 'red'}}>Password doesn't match!</p>
+        }
         return(
-            <div className="AdminRegistrationOuterDiv">
-                <div className="AdminRegistrationInnerDiv">
-                    <h5 className="text-uppercase text-center">Edit Admin Information</h5>
-                <form>
-                    <MyTextField
-                    id="firstName"
-                    error={!this.state.firstName.isValid}
-                    label="First Name"
-                    placeholder="Insert First Name"
-                    helperText={!this.state.firstName.isValid ? <p style={{color: 'red'}}>{this.state.firstName.message}</p> : null}
-                    changed={this.inputHandler}
+            <Grid container justify="flex-start" spacing={10} style={{padding: '130px'}}>
+               <Grid item md={8}>
+                    <h4>Basic Info</h4>
+               </Grid>
+               <Grid item md={2}>
+                   <Button variant="contained" fullWidth>Cancel</Button>
+               </Grid>
+               <Grid item md={2}>
+                   <Button onClick={this.handleSubmit} variant="contained" color="primary" fullWidth>Save</Button>
+               </Grid>
+               <Grid container spacing={2}>
+                    <Grid item md={6}>
+                        <TextField
+                        id="firstName"
+                        label="First Name"
+                        margin="dense"
+                        variant="outlined"
+                        value={this.state.admin.firstName}
+                        onChange={this.handleInput}
+                        fullWidth
+                        /> 
+                    </Grid>
+                    <Grid item md={6}>
+                        <TextField
+                        id="lastName"
+                        label="Last Name"
+                        margin="dense"
+                        variant="outlined"
+                        value={this.state.admin.lastName}
+                        onChange={this.handleInput}
+                        fullWidth
+                        />
+                    </Grid>
+                    <Grid item md={6}>
+                    <TextField
+                    id="contactNumber"
+                    label="Contact Number"
+                    margin="dense"
+                    variant="outlined"
+                    multiline
+                    rowsMax="4"
+                    value={this.state.admin.contactNumber}
+                    onChange={this.handleInput}
+                    fullWidth
                     />
-
-                    <MyTextField
-                    error={!this.state.lastName.isValid}
-                    id="lastName"
-                    label="Last Name"
-                    placeholder="Insert Last Name"
-                    helperText={!this.state.lastName.isValid ? <p style={{color: 'red'}}>{this.state.lastName.message}</p> : null}
-                    changed={this.inputHandler}
-                    />
-
-                    <MyTextField
-                    error={!this.state.telephone.isValid}
-                    id="telephone"
-                    label="Telephone No"
-                    placeholder="Insert Telephone Number"
-                    helperText={!this.state.telephone.isValid ? <p style={{color: 'red'}}>{this.state.telephone.message}</p> : null}
-                    changed={this.inputHandler}
-                    />
-
-                    <MyTextField
-                    error={!this.state.email.isValid}
+                    </Grid>   
+                    <Grid item md={6}>
+                    <TextField
                     id="email"
-                    label="E-mail"
-                    placeholder="Insert Email"
-                    helperText={!this.state.email.isValid ? <p style={{color: 'red'}}>{this.state.email.message}</p> : null}
-                    changed={this.inputHandler}
+                    label="E mail"
+                    margin="dense"
+                    variant="outlined"
+                    multiline
+                    rowsMax="4"
+                    value={this.state.admin.email}
+                    onChange={this.handleInput}
+                    fullWidth
                     />
-
-                    <MyTextField
-                    error={!this.state.username.isValid}
+                    </Grid>  
+                    <Grid item md={6}>
+                    <TextField
                     id="username"
                     label="Username"
-                    placeholder="Insert Username"
-                    helperText={!this.state.username.isValid ? <p style={{color: 'red'}}>{this.state.username.message}</p> : null}
-                    changed={this.inputHandler}
+                    margin="dense"
+                    variant="outlined"
+                    multiline
+                    rowsMax="4"
+                    value={this.state.admin.username}
+                    onChange={this.handleInput}
+                    fullWidth
                     />
+                    </Grid> 
+               </Grid>
+               
+               <Grid item md={8}>
                     <br/>
-                     <Button variant="contained" color="primary" className="EditAdminButton">
-                        Save Information
-                     </Button>
-                    <br/><br/>
-
-                 <h5 className="text-uppercase text-center">Edit Admin Password</h5>
-             
-                    <PasswordField
-                    error={!this.state.password.isValid}
-                    id="password"
-                    label="Password"
-                    changed={this.inputHandler}
-                    />
-
-                    <PasswordField
-                    error={!this.state.confirmPassword.isValid}
-                    id="confirmPassword"
-                    label={!this.state.confirmPassword.isValid ?  "Don't match" : "Confirm Password"}
-                    changed={this.inputHandler}
-                    />
-                     <br/>
-                     <Button variant="contained" color="primary" className="EditAdminButton">
-                        Save Password
-                     </Button>
-                    <br/><br/>
-                    
-
-                </form>
-            </div>
-            </div>
-            
+                    <h4>Security</h4>
+                    <br/>
+               </Grid>
+               <Grid container spacing={3}>
+                    <Grid item md={4}>
+                        
+    
+                        <TextField
+                        id="password"
+                        type="password"
+                        label="Change Password"
+                        margin="dense"
+                        variant="outlined"
+                        onChange={this.handleInput}
+                        fullWidth
+                        /> 
+    
+                        <TextField
+                        id="confirmPw"
+                        type="password"
+                        label="Confirm Password"
+                        margin="dense"
+                        variant="outlined"
+                        onChange={this.handleInput}
+                        fullWidth
+                        />
+                        <br/>
+                        {error}
+                        <br/>
+                    </Grid>
+                    <Grid container justify="flex-end" spacing={10}>
+                    <Grid item md={2}>
+                        <Button variant="contained" fullWidth>Cancel</Button>
+                    </Grid>
+                    <Grid item md={2}>
+                        <Button onClick={this.handlePwSubmit} variant="contained" color="primary" fullWidth>Save</Button>
+                    </Grid>
+                    </Grid>
+    
+                </Grid> 
+      
+    
+            </Grid>
         );
     }
+    
 };
 
-export default EditAdminProfile;
+const matchStateToProps = state => {
+    return {
+        email: state.email,
+        token: state.token
+    }
+}
+
+export default connect(matchStateToProps,null)(EditAdminProfile);
+
