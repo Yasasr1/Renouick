@@ -3,7 +3,9 @@ import CardBox from '../UI/Card/CardBox';
 /*import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 import { purple } from '@material-ui/core/colors';*/
-import cardImage from '../../assests/card/card.jpg';
+import cardImage1 from '../../assests/card/card1.jpg';
+import cardImage2 from '../../assests/card/card2.jpg';
+import cardImage3 from '../../assests/card/card3.jpg';
 import Grid from '@material-ui/core/Grid';
 import './HomePage.css'; 
 import { Link } from 'react-router-dom';
@@ -155,21 +157,21 @@ class HomePage extends Component {
                 <Grid item>
                 <CardBox 
                 title="Post Jobs" 
-                image={cardImage}
+                image={cardImage1}
                 content="Renouick offers you the best facility to post your required job. Register with us today and  
                 tell us what you need to be done. This is a free and new way for you. You can select the best offer. "/>
                 </Grid>
                 <Grid item>
                 <CardBox 
                 title="Find workers" 
-                image={cardImage}
+                image={cardImage2}
                 content="Register here to have the best experience of finding workers. No time wastage and no trouble anymore. 
                 Contact the best worker using Renouick and get your work done easily."/>
                 </Grid>
                 <Grid item>
                 <CardBox 
                 title="Get a Work " 
-                image={cardImage}
+                image={cardImage3}
                 content="If you are in the search of work use our platform. You just have to register with us. There you can have
                 the best and easiest way of contacting and sending offers to your clients. "/>
                 </Grid>

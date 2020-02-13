@@ -1,3 +1,4 @@
+
 import React , { Component } from 'react';
 import './EditAdminProfile.css';
 import axios from 'axios';
@@ -220,7 +221,7 @@ class EditAdminProfile extends Component {
                         fullWidth
                         />
                         <br/>
-                        { {error} }
+                        {error }
                         <br/>
                     </Grid>
                     <Grid container justify="flex-end" spacing={10}>
