@@ -9,13 +9,14 @@ import 'stream-chat-react/dist/css/index.css';
 
 
 const ChatComponent = (props) => {
-  const client = new StreamChat("vpwfkwnszegg");
+  //client = stream.connect('dmr78d6h89rt', null, '68343');
+  const client = new StreamChat("vfkm5qedxex3");
   const userToken = props.chatToken;
 
   const email = props.email;
   var n = email.indexOf("@");
   var name = email.slice(0, n);
-  //console.log(name);
+  console.log(name);
 
   //client.disconnect();
   client.setUser(
@@ -27,27 +28,22 @@ const ChatComponent = (props) => {
     userToken,
   );
 
-  const filter = { type: 'messaging', members: { $in: ['yasas'] } };
-  const sort = { last_message_at: -1 };
-
-  const channels = client.queryChannels(filter, sort, {
-      watch: true,
-      state: true,
-  });
-
-  /*const conversation = client.channel('messaging', 'new-chat', {
+  /*const conversation = client.channel('messaging', 'new-chat3', {
     name: 'Chat',
     image: 'http://bit.ly/2O35mws',
 });*/
 
+ const filters = { type: 'messaging'};
+const sort = { last_message_at: -1 };
+const channels = client.queryChannels(filters, sort);
+
+
+
 
   return(
-    <div style={{margin: '100px'}}>
-      <h6>t</h6>
+    <div style={{marginLeft: '100px',marginTop: '50px'}}>
         <Chat client={client} theme={'messaging light'}>
-          <ChannelList 
-          filters={filter}
-          sort={sort}/>
+        <ChannelList filters={filters} sort={sort}/>
           <Channel>
             <Window>
               <ChannelHeader />
