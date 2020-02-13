@@ -122,22 +122,7 @@ class AdminDash extends Component {
                          Exsisting Users Details</Typography>
                     </Grid>    
                     
-                        <Grid item xl={1}>
-                            <Typography variant="body1">Show</Typography>
-                        </Grid>
-                        <Grid item md={2}>
-                            <select  className="form-control form-control-sm" id="exampleFormControlSelect1" style={{width: '200px'}}>
-                            <option value={1}>All</option>
-                            <option value={2}>Workers Only</option>
-                            <option value={3}>Customers Only</option>                         
-                            </select>
-                        </Grid>
-                        <Grid item md={3}>
-                            <input onChange={this.inputChangeHandler} type="text" className="form-control" placeholder="Search Worker or Customer here" />
-                        </Grid>
-                        <Grid item md={3}>
-                            <Button onClick={this.searchWorker} color="primary" variant="contained">Search</Button>
-                        </Grid>
+                                             
 
                         <Grid item xs={12}  > <SimpleTable/> ></Grid>   
 
