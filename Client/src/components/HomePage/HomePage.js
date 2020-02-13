@@ -11,13 +11,13 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { Carousel } from 'react-bootstrap';
 import { Card, CardContent, Fab } from '@material-ui/core';
-
+import Box from '@material-ui/core/Box';
 import slide1 from '../../assests/HomeSlides/17773.jpg';
 import slide2 from '../../assests/HomeSlides/63280.jpg';
 import slide3 from '../../assests/HomeSlides/412611-PD51HB-765.jpg';
 import workerImage1 from '../../assests/HomeImages/workers-uniform_3446-430.jpg';
 import workerImage2 from '../../assests/HomeImages/concept-handyman-worker_98292-1125.jpg';
-
+import logo from '../../assests/logo/logo1.PNG';
 
 /*const style = {
   paperContainer: {
@@ -94,7 +94,25 @@ class HomePage extends Component {
           </Carousel>
           </div>
           <br/>
-
+        <Grid container direction="row" justify="center" alignItems="center">
+        <Grid item xs={10}>
+        <Box borderRadius={16} border={2}  p={5} style={{backgroundColor: '	#361463' }}>
+      
+          <Grid container direction="row" justify="center"  justify="space-between">
+            <Grid item xs={8}>
+              <p style={{ fontFamily:"Calibri " , fontSize:80 , fontStyle:"Italic" , color:"	#e28b05"}}>Renouick</p>
+              <p style={{ fontFamily:"Calibri " , fontSize:30 , fontStyle:"Italic" , color:"white"}}> a web application that will be used to connect  household repair and maintenance professionals to their clients.</p>
+            </Grid>
+            <Grid item xs={4}>
+            <img
+                src={logo}
+                alt="Company logo"
+              />
+              </Grid>
+          </Grid>
+        </Box>
+        </Grid>
+         </Grid>
           <Grid container style={{padding: '20px'}}>
             <Grid item md={6}>
               <h2 className="display-4">Got Work ?</h2>

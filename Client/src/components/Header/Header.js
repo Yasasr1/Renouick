@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme =>({
       },
 
       logo: {
-        height: 43,
+        height: 60,
         '@media(max-width: 910px)': {
           display: 'none'
         }
