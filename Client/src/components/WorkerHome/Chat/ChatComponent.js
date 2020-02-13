@@ -63,7 +63,8 @@ const mapStateToProps = state => {
   return {
       email: state.email,
       token: state.token,
-      chatToken: state.chatToken
+      chatToken: state.chatToken,
+      profilePic: state.profilePicUrl
       
   }
 }

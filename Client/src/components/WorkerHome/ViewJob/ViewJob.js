@@ -96,7 +96,7 @@ const ViewJob = (props) => {
         {
             id: workername,
             name: workername,
-            image: 'https://i.imgur.com/fR9Jz14.png',
+            image: props.profilePicUrl,
         },
         userToken,
     );
