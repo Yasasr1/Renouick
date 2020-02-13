@@ -28,7 +28,7 @@ router.post('/', (req,res) => {
                 var n = email.indexOf("@");
                 var name = email.slice(0, n);
                 //console.log(name);
-                const client = new StreamChat('', 'sxhtaj7v5b2ehk3paehfpn7k6w7jq6msp6jkndwvx5cf8p9prmn5ag34nyex4caj');
+                const client = new StreamChat('', '638khuff8zxc5psdgynxb6x9mkwjmuqt8s6q4kq3t6a9ap7z626f2mtwvk469rkz');
                 const chatToken = client.createToken(name);
                 jwt.sign(
                     {id: user.id},
