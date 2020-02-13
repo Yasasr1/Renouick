@@ -1,9 +1,10 @@
 //display a single job after clicking on it in the list
 import React, { useState } from 'react';
-import { Grid, Divider, Button, Chip, Typography, TextField, Snackbar, IconButton,Dialog,DialogTitle } from '@material-ui/core';
+import { Grid, Divider, Button, Chip, Typography, TextField, Snackbar, IconButton,Fab } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import { Carousel,Modal } from 'react-bootstrap';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
+import ChatIcon from '@material-ui/icons/Chat';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { StreamChat } from 'stream-chat';
@@ -75,7 +76,7 @@ const ViewJob = (props) => {
     }
 
     //chat
-    const client = new StreamChat("vpwfkwnszegg");
+    const client = new StreamChat("vfkm5qedxex3");
     const userToken = props.chatToken;
 
     const workeremail = props.email;
@@ -101,9 +102,9 @@ const ViewJob = (props) => {
     );
 
     const conversation = client.channel('messaging', channelName, {
-        name: channelName,
+        name: customername,
         image: 'http://bit.ly/2O35mws',
-        members: [workername, 'pasan']
+        members: [workername, customername]
     });
 
 
@@ -160,7 +161,10 @@ const ViewJob = (props) => {
                 <p className="h6">Contact Number : {props.location.state.contactNumber}</p>
             </Grid>
             <Grid item md={12}>
-                <Button onClick={handlePopupShow}>Chat</Button>
+                <br/>
+                <Fab onClick={handlePopupShow} color="primary" aria-label="add">
+                    <ChatIcon />
+                </Fab>
                 <Modal style={{marginTop: '30px', marginBottom: '50px'}} show={show} onHide={handlePopupClose}>
                     {chatWindow}
                 </Modal>

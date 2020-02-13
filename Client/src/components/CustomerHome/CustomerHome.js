@@ -7,6 +7,7 @@ import MyJobs from './MyJobs/MyJobs';
 import Test from './Test/Test';
 import EditProfile from './EditProfile/Editprofile';
 import FindWorker from './FindWorker/FindWorker';
+import Chat from '../WorkerHome/Chat/ChatComponent';
 
 const CustomerHome = (props) => {
 
@@ -20,6 +21,7 @@ const CustomerHome = (props) => {
                 <Route path={props.match.url + '/test'} component={Test}/>
                 <Route path={props.match.url + '/edit'} component={EditProfile}/>
                 <Route path={props.match.url + '/find_worker'} component={FindWorker}/>
+                <Route path={props.match.url + '/chat'} component={Chat}/>
             </Switch>
         </React.Fragment>
     );

@@ -10,7 +10,7 @@ import 'stream-chat-react/dist/css/index.css';
 
 const ChatComponent = (props) => {
   //client = stream.connect('dmr78d6h89rt', null, '68343');
-  const client = new StreamChat("vpwfkwnszegg");
+  const client = new StreamChat("vfkm5qedxex3");
   const userToken = props.chatToken;
 
   const email = props.email;
@@ -41,8 +41,7 @@ const channels = client.queryChannels(filters, sort);
 
 
   return(
-    <div style={{margin: '100px'}}>
-      <h6>t</h6>
+    <div style={{marginLeft: '100px',marginTop: '50px'}}>
         <Chat client={client} theme={'messaging light'}>
         <ChannelList filters={filters} sort={sort}/>
           <Channel>
