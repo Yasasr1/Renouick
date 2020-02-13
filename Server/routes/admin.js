@@ -113,9 +113,10 @@ router.get('/getAllWorkers', auth, (req, res) => {
             console.log(err);
         else
             console.log(workers);    
-            res.json(worers);    
+            res.json(workers);    
     })
     
 })
+
 
 module.exports = router;

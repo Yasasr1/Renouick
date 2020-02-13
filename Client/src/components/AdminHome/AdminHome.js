@@ -19,7 +19,6 @@ const AdminHome = (props) => {
                 <Route path={props.match.url + '/edit_admin_profile'} component={EditAdminProfile}/>
                 <Route path={props.match.url + '/edit_customer_profile'} component={EditCustomerProfile} />
                 <Route path={props.match.url + '/edit_worker_profile'} component={EditWorkerProfile}/>
-                
                 <Route path={props.match.url + '/report_view'} component={ReportView}/>
                
                 

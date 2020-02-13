@@ -3,10 +3,10 @@ import {Pie , PieChart, Sector} from 'recharts';
 
  
 const data = [
-	{ name: 'Pending Accounts', value: 40 },
-	{ name: 'Active Accounts', value: 100 },
-	{ name: 'Ban Accounts', value: 15 },
-//	{ name: 'Group D', value: 200 },
+	{ name: 'Pending Accounts', value: 40, fill:'#db8c37' },
+	{ name: 'Active Accounts', value: 100, fill:'#1dc230' },
+	{ name: 'Ban Accounts', value: 15, fill:'#b0101b'},
+
 ];
 
 const renderActiveShape = (props) => {
@@ -77,11 +77,10 @@ export default class Example extends PureComponent {
 					activeIndex={this.state.activeIndex}
 					activeShape={renderActiveShape}
 					data={data}
-					cx={235}
+					cx={250}
 					cy={200}
 					innerRadius={80}
-					outerRadius={100}
-					fill="#cd779d"
+					outerRadius={120}
 					dataKey="value"
 					onMouseEnter={this.onPieEnter}
 				/>
