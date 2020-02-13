@@ -34,31 +34,31 @@ const WorkerCount = (props) => {
         <Grid container  className={classes.root} direction="row" alignItems="center" justify="space-between" spacing={3} padding="100%">
               
               <Paper className={classes.paper} style={{backgroundColor: '#fe657a'}}>
-              <Typography style={{ fontFamily:"Calibri " , fontSize:27 , fontStyle:"Italic" , color:"black"}} align="center"> Workers Count </Typography>
+              <Typography style={{ fontFamily:"Calibri " , fontSize:27 , fontStyle:"Bold" , color:"black"}} align="center"> Workers Count </Typography>
               <Typography style={{ fontSize:60 , color:"black"}} align="center"> {props.Workers} </Typography>
               </Paper>
              <Paper className={classes.paper} style={{backgroundColor: '#06cd88'}}>
-              <Typography style={{ fontFamily:"Calibri " , fontSize:27 , fontStyle:"Italic" , color:"black"}} align="center"> Customers Count </Typography>
+              <Typography style={{ fontFamily:"Calibri " , fontSize:27 , fontStyle:"Bold" , color:"black"}} align="center"> Customers Count </Typography>
               <Typography style={{ fontSize:60 , color:"black"}} align="center"> {props.Customers} </Typography>
               </Paper>
               <Paper className={classes.paper} style={{backgroundColor: '#fd9b6d'}}>
-              <Typography style={{ fontFamily:"Calibri " , fontSize:27 , fontStyle:"Italic" , color:"black"}} align="center"> Total existing Accounts </Typography>
+              <Typography style={{ fontFamily:"Calibri " , fontSize:27 , fontStyle:"Bold" , color:"black"}} align="center"> Total existing Accounts </Typography>
               <Typography style={{ fontSize:60 , color:"black"}} align="center"> {props.Total} </Typography>
               </Paper>
         </Grid>
         <Grid container  className={classes.root} direction="row" alignItems="center" justify="space-between" spacing={3} padding="100%">
               <Paper className={classes.paper} style={{backgroundColor: '#00afb2'}}>
-              <Typography style={{ fontFamily:"Calibri " , fontSize:27 , fontStyle:"Italic" , color:"black"}} align="center"> Pending jobs </Typography>
+              <Typography style={{ fontFamily:"Calibri " , fontSize:27 , fontStyle:"Bold" , color:"black"}} align="center"> Pending jobs </Typography>
               <Typography style={{ fontSize:60 , color:"black"}} align="center"> {props.PWork} </Typography>
               </Paper>
      
               <Paper className={classes.paper} style={{backgroundColor: '#8b9bcc'}}>
-              <Typography style={{ fontFamily:"Calibri " , fontSize:27 , fontStyle:"Italic" , color:"black"}} align="center"> Completed Works </Typography>
+              <Typography style={{ fontFamily:"Calibri " , fontSize:27 , fontStyle:"Bold" , color:"black"}} align="center"> Completed Jobs </Typography>
               <Typography style={{ fontSize:60 , color:"black"}} align="center"> {props.CWork} </Typography>
               </Paper>
 
               <Paper className={classes.paper} style={{backgroundColor: '#fbd777'}}>
-              <Typography style={{ fontFamily:"Calibri " , fontSize:27 , fontStyle:"Italic" , color:"black"}} align="center"> Uncompleted Works </Typography>
+              <Typography style={{ fontFamily:"Calibri " , fontSize:27 , fontStyle:"Bold" , color:"black"}} align="center"> Ongoing Works </Typography>
               <Typography style={{ fontSize:60 , color:"black"}} align="center"> {props.UWork} </Typography>
               </Paper>
             
