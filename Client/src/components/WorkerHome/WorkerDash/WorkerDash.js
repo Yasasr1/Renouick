@@ -105,7 +105,10 @@ class WorkerDash extends Component {
                             />
                         </Grid>
                         <Grid item md={12}>
-                            <RatingInfo/>
+                            <RatingInfo
+                            totalStars={this.props.totalStars}
+                            numberOfRatings={this.props.numberOfRatings}
+                            />
                         </Grid>
                     </Grid>
                 </Grid>
@@ -194,7 +197,9 @@ const mapStateToProps = state => {
         facebook: state.user.facebook,
         twitter: state.user.twitter,
         contactNumber:state.user.contactNumber,
-        profession:state.user.profession
+        profession:state.user.profession,
+        totalStars:state.user.totalStars,
+        numberOfRatings:state.user.numberOfRatings
     }
 }
 

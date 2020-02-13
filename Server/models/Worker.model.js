@@ -31,6 +31,12 @@ let Worker = new Schema({
     },
     registrationDate: {
         type: Date
+    },
+    totalStars: {
+        type: Number
+    },
+    numberOfRatings: {
+        type: Number
     }
 
 });

@@ -10,6 +10,8 @@ import Divider from '@material-ui/core/Divider';
 
 
 const RatingInfo = (props) => {
+    let rating = props.totalStars / props.numberOfRatings;
+    const fixedRating = rating.toFixed(2);
     return(
         <Paper className="shadow p-3 mb-5 bg-white rounded" style={{padding: '15px'}}>
             <Grid container spacing={2}>
@@ -18,9 +20,9 @@ const RatingInfo = (props) => {
                     <Divider/>
                 </Grid>
                 <Grid item md={12}>
-                    <Typography variant="h3">3.0</Typography>
+                    <Typography variant="h3">{fixedRating}</Typography>
                     <Rating value={3}readOnly/>
-                    <Typography variant="body2">45 reviews</Typography>
+                    <Typography variant="body2">{props.numberOfRatings} reviews</Typography>
                 </Grid>
             </Grid>
             

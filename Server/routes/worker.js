@@ -46,6 +46,31 @@ router.get('/getSomeInfo', (req, res) => {
     
 })
 
+//@route POST /worker/addRating
+//@desc add a rating
+//@access private
+router.post('/addRating', (req,res) => {
+    const rating = req.body;
+    console.log(rating);
+    Worker.findOne({email: rating.email}, (err,worker) => {
+        if(!worker) {
+            res.status(404).send('user is not found');
+        }
+        else {
+           worker.totalStars = rating.totalStars;
+           worker.numberOfRatings = rating.numberOfRatings
+            //console.log(worker);
+            worker.save().then(responce => {
+                res.json("user info updated")
+            })
+            .catch(err => {
+                res.status(400).end("Update not possible");
+            })
+        }
+    })
+})
+
+
 //@route POST /worker/updateWorker
 //@desc update worker info
 //@access private
