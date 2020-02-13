@@ -20,7 +20,9 @@ const initialState = {
         twitter: '',
         profilePicUrl: '',
         profilePicId: '',
-        profession: ''
+        profession: '',
+        totalStars: 0,
+        numberOfRatings: 0
     }
 };
 
@@ -74,7 +76,9 @@ const reducer = (state = initialState, action) => {
                     twitter:  action.user.twitter,
                     profilePicUrl:  action.user.profilePicUrl,
                     profilePicId:  action.user.profilePicId,
-                    profession: action.user.workingCategory
+                    profession: action.user.workingCategory,
+                    totalStars: action.user.totalStars,
+                    numberOfRatings: action.user.numberOfRatings
 
                 }
             })

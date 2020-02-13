@@ -16,7 +16,10 @@ class LatestJobInfo extends Component {
         bids: [],
         workerFName: '',
         workerLName: '',
-        workerPic: ''
+        workerPic: '',
+        totalStars: 0,
+        numberOfRatings: 0,
+        isRated: false
     }
 
     componentDidMount(){
@@ -45,8 +48,9 @@ class LatestJobInfo extends Component {
                 }
             })
             .then(res => {
-                console.log(res.data[0].firstName);
-                this.setState({workerFName: res.data[0].firstName,workerLName: res.data[0].lastName,workerPic: res.data[0].profilePicUrl});
+                console.log(res.data[0]);
+                this.setState({workerFName: res.data[0].firstName,workerLName: res.data[0].lastName,workerPic: res.data[0].profilePicUrl,
+                totalStars: res.data[0].totalStars, numberOfRatings: res.data[0].numberOfRatings});
             })
             .catch(err => {
                 console.log(err);
@@ -85,7 +89,26 @@ class LatestJobInfo extends Component {
         })
     }
 
-    
+    handleRating = (newValue) => {
+        let numberRated = this.state.numberOfRatings
+        let newTotalStars = this.state.totalStars + newValue;
+        //console.log(newRating);
+        this.setState({numberOfRatings: numberRated+1, totalStars: newTotalStars,isRated:true});
+        let ratingObject = {
+            email: this.props.worker,
+            totalStars: newTotalStars,
+            numberOfRatings: numberRated+1
+        }
+
+        axios.post('http://localhost:4000/worker/addRating',ratingObject)
+        .then(res => {
+            console.log(res.data);
+            
+        })
+        .catch(error => {
+            console.log(error);
+        })
+    }
 
     render() {
 
@@ -140,8 +163,13 @@ class LatestJobInfo extends Component {
                     </Grid>
                     <Grid item md={8}>
                         <Typography variant="h5">{this.state.workerFName} {this.state.workerLName}</Typography>
-                        <Typography variant="body2">Worker rating</Typography>
-                        <Rating value={3} readOnly />
+                        <br/>
+                        <Typography variant="body2">Rate the worker</Typography>
+                        {this.state.isRated ?
+                         <Rating value={this.state.totalStars/this.state.numberOfRatings} readOnly/> 
+                            : 
+                            <Rating value={this.state.totalStars/this.state.numberOfRatings} onChange={(event, newValue) => {
+                            this.handleRating(newValue)}}/>} 
                     </Grid>
                 </Grid>
             </React.Fragment>

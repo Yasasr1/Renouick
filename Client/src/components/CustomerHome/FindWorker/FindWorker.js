@@ -87,11 +87,14 @@ class FindWorker extends Component {
             workers = this.state.workers.map(worker => {
                 return <Worker
                         key={worker._id}
+                        workerEmail={worker.email}
                         fName={worker.firstName}
                         lName={worker.lastName}
                         profession={worker.workingCategory}
                         date={worker.birthday}
                         profilePic={worker.profilePicUrl}
+                        totalStars={worker.totalStars}
+                        numberOfRatings={worker.numberOfRatings}
                         />
             })
         }
