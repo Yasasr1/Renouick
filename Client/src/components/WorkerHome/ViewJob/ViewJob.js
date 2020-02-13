@@ -102,7 +102,7 @@ const ViewJob = (props) => {
     );
 
     const conversation = client.channel('messaging', channelName, {
-        name: customername,
+        name: channelName,
         image: 'http://bit.ly/2O35mws',
         members: [workername, customername]
     });
