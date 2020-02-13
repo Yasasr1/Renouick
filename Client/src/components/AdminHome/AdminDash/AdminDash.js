@@ -109,35 +109,20 @@ class AdminDash extends Component {
                      
 
                     <Grid item xs={8}  > <br/>
-                       <Typography variant="h4" component="h4" align="center"style={{ fontFamily:"Calibri " , fontSize:27 , fontStyle:"Italic" , color:"black"}}>
-                          Total Accounts per Month </Typography><br/><LineChart /> ></Grid>                                   
+                       <Typography variant="h4" component="h4" align="center"style={{ fontFamily:"Times New Roman " , fontSize:27 , fontStyle:"Bold" , color:"black"}}>
+                          Total Accounts Per Month </Typography><br/><LineChart /> ></Grid>                                   
                     <Grid item xs={4} >  <br/>
-                       <Typography variant="h4" component="h4" align="center"style={{ fontFamily:"Calibri " , fontSize:27 , fontStyle:"Italic" , color:"black"}}>
+                       <Typography variant="h4" component="h4" align="center"style={{ fontFamily:"Times New Roman " , fontSize:27 , fontStyle:"Bold" , color:"black"}}>
                            Exsisting User Accounts Details</Typography>
                            <PieChart/>
                     </Grid>    
                     
                     <Grid item xs={12} >  <br/>
-                       <Typography variant="h4" component="h4" align="center"style={{ fontFamily:"Calibri " , fontSize:27 , fontStyle:"Italic" , color:"black"}}>
+                       <Typography variant="h4" component="h4" align="center"style={{ fontFamily:"Times New Roman" , fontSize:27 , fontStyle:"Bold" , color:"black"}}>
                          Exsisting Users Details</Typography>
                     </Grid>    
                     
-                        <Grid item xl={1}>
-                            <Typography variant="body1">Show</Typography>
-                        </Grid>
-                        <Grid item md={2}>
-                            <select onChange={(event)=>this.sortJobs(event)} className="form-control form-control-sm" id="exampleFormControlSelect1" style={{width: '200px'}}>
-                            <option value={1}>All</option>
-                            <option value={2}>Workers Only</option>
-                            <option value={3}>Customers Only</option>                         
-                            </select>
-                        </Grid>
-                        <Grid item md={3}>
-                            <input onChange={this.inputChangeHandler} type="text" className="form-control" placeholder="Search Worker or Customer here" />
-                        </Grid>
-                        <Grid item md={3}>
-                            <Button onClick={this.searchWorker} color="primary" variant="contained">Search</Button>
-                        </Grid>
+                                             
 
                         <Grid item xs={12}  > <SimpleTable/> ></Grid>   
 
