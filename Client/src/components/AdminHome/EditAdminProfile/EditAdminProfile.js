@@ -113,10 +113,10 @@ class EditAdminProfile extends Component {
     }
 
     render() {
-        let error = null;
-        if(!this.state.isValid) {
-            error = <p style={{color: 'red'}}>Password doesn't match!</p>
-        }
+         let error = null;
+         if(!this.state.isValid) {
+             error = <p style={{color: 'red'}}>Password doesn't match!</p>
+         }
         return(
             <Grid container justify="flex-start" spacing={10} style={{padding: '130px'}}>
                <Grid item md={8}>
@@ -221,7 +221,7 @@ class EditAdminProfile extends Component {
                         fullWidth
                         />
                         <br/>
-                        {error}
+                        {error }
                         <br/>
                     </Grid>
                     <Grid container justify="flex-end" spacing={10}>

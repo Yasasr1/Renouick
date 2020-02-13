@@ -2,6 +2,7 @@
 const express = require('express');
 const router = express.Router();
 //customer schema
+const Admin = require('../models/Admin.model');
 const Customer = require('../models/Customer.model');
 const Worker = require('../models/Worker.model');
 const auth = require('../middleware/authMiddleware');
@@ -116,6 +117,92 @@ router.get('/getAllWorkers', auth, (req, res) => {
             res.json(workers);    
     })
     
+})
+
+
+//WHEN ACCESSING PARAMS PASSED FROM THE CLIENT - don't use params . use query - eg - req.query.email
+
+//@route GET /admin/getInfo
+//@desc get all info of a specific admin
+//@access private
+router.get('/getInfo', auth, (req, res) => {
+    const email = req.query.email
+    console.log(email);
+    Admin.findOne({email: email }, (err, info) => {
+        if(err)
+            console.log(err);
+        else 
+           // console.log(info);   
+            res.json(info);    
+    })
+    
+})
+
+//@route POST /admin/updatePw
+//@desc update admin password
+//@access private
+router.post('/updatePw', (req, res) => {
+    const password = req.body.password;
+    const email = req.body.email;
+    Admin.findOne({email: email}, (err, admin) => {
+        if(!admin) {
+            res.status(404).send('user is not found');
+        }
+        else {
+            admin.password = password;
+            admin.save().then(responce => {
+                res.json("password updated")
+            })
+            .catch(err => {
+                res.status(400).end("Update not possible");
+            })
+        }
+
+    })
+    User.findOne({email: email}, (err, user) => {
+        if(!user) {
+            res.status(404).send('user is not found');
+        }
+        else {
+            user.password = password;
+            user.save().then(responce => {
+                res.json("password updated")
+            })
+            .catch(err => {
+                res.status(400).end("Update not possible");
+            })
+        }
+
+    })
+    
+})
+
+
+//@route POST /Admin/updateAdmin
+//@desc update admin info
+//@access private
+router.post('/updateAdmin', (req,res) => {
+    const updatedAdmin = req.body;
+    //console.log(updatedAdmin);
+    Admin.findOne({email: updatedAdmin.email}, (err,admin) => {
+        if(!admin) {
+            res.status(404).send('user is not found');
+        }
+        else {
+            admin.firstName = updatedAdmin.firstName;
+            admin.lastName = updatedAdmin.lastName;
+            admin.contactNumber = updatedAdmin.contactNumber;
+            admin.email = updatedAdmin.email;
+            admin.password = updatedAdmin.password;
+            //console.log(admin);
+            admin.save().then(responce => {
+                res.json("user info updated")
+            })
+            .catch(err => {
+                res.status(400).end("Update not possible");
+            })
+        }
+    })
 })
 
 

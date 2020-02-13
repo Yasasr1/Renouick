@@ -72,7 +72,7 @@ router.post('/updatePw', (req, res) => {
 //@access private
 router.post('/updateCustomer', (req,res) => {
     const updatedCustomer = req.body;
-    //console.log(updatedCustomer);
+    console.log(updatedAdmin);
     Customer.findOne({email: updatedCustomer.email}, (err,customer) => {
         if(!customer) {
             res.status(404).send('user is not found');
