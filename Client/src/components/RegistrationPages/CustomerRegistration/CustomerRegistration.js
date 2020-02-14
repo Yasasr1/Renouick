@@ -145,7 +145,8 @@ class CustomerRegistration extends Component {
             const newUser = {
                 email: this.state.email.value,
                 password: this.state.password.value,
-                userType: 'customer'
+                userType: 'customer',
+                accountStatus: 'authorized'
             }
 
             //posting to user schema

@@ -24,6 +24,9 @@ router.post('/', (req,res) => {
 
             if(password !== user.password)
                 return res.status(400).json({msg: 'invalid username or password'});
+            else if(user.accountStatus === 'banned'){
+                return res.status(403).json({msg: 'Your account has been banned'});
+            }
             else {
                 var n = email.indexOf("@");
                 var name = email.slice(0, n);
@@ -49,6 +52,20 @@ router.post('/', (req,res) => {
                 )
             }        
         })
+})
+
+//@route GET /auth/ban
+//@desc ban a user
+//@access private
+router.post('/ban', (req, res) => {
+    const email = req.body.email
+    User.updateOne({email: email},{$set: {accountStatus: 'banned'}}, (err, reports) => {
+        if(err)
+            console.log(err);
+        else    
+            res.json(reports);    
+    })
+    
 })
 
 module.exports = router;

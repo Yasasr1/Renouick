@@ -33,6 +33,20 @@ router.get('/getAll', (req, res) => {
     
 })
 
+//@route GET /report/updateStatus
+//@desc update report status
+//@access private
+router.post('/updateStatus', (req, res) => {
+    const id = req.body.id
+    Report.updateOne({_id: id},{$set: {status: 'handled'}}, (err, reports) => {
+        if(err)
+            console.log(err);
+        else    
+            res.json(reports);    
+    })
+    
+})
+
 
 
 

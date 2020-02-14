@@ -11,6 +11,9 @@ let User = new Schema({
     },
     userType: {
         type: String
+    },
+    accountStatus: {
+        type: String
     }
 });
 

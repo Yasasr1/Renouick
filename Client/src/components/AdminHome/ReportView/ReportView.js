@@ -1,6 +1,4 @@
 import React,{ Component } from 'react';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 import Report from './Report/Report';
 import axios from 'axios';
 import { Divider } from '@material-ui/core';
@@ -28,6 +26,8 @@ class ReportView extends Component {
     render() {
         this.reports = this.state.reports.map(report => {
             return <Report
+                   key={report._id}
+                   id={report._id}
                    title={report.title}
                    description={report.description}
                    poster={report.poster}
@@ -37,7 +37,7 @@ class ReportView extends Component {
         })
 
         return (
-            <div style={{margin: '80px'}}>
+            <div style={{margin: '80px', marginTop: '100px'}}>
                 <h4>All reports</h4>
                 <br/>
                 <Divider/>

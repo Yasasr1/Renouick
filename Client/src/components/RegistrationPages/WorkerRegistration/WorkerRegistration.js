@@ -178,7 +178,8 @@ class WorkerRegistration extends Component {
             const newUser = {
                 email: this.state.email.value,
                 password: this.state.password.value,
-                userType: 'worker'
+                userType: 'worker',
+                accountStatus: 'authorized'
             }
 
             //posting to user schema
