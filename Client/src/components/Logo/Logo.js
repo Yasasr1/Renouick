@@ -1,5 +1,5 @@
 import React from 'react';
-import renouickLogo from '../../assests/logo/logo.PNG';
+import renouickLogo from '../../assests/logo/logo.png';
 import './Logo.css';
 
 const logo = () => (

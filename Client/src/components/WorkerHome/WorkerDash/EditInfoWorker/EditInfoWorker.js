@@ -14,7 +14,7 @@ import { connect } from 'react-redux';
 
 
 
-class EditInfo extends Component {
+class EditInfoWorker extends Component {
     state = {
         show: false,
         redirect: null
@@ -27,7 +27,7 @@ class EditInfo extends Component {
     }
 
     redirectToEdit = () => {
-        this.props.history.replace('/customer/edit');
+        this.props.history.replace('/worker/editProfile');
     }
 
     handlePopupClose = () => {
@@ -43,13 +43,14 @@ class EditInfo extends Component {
         const send = {
             email: this.props.email
         }
-        axios.post("http://localhost:4000/customer/delete",send)
+        axios.post("http://localhost:4000/worker/delete",send)
         .then(res => {
             console.log(res.data);
         })
         .catch(error => {
             console.log(error);
         })
+
 
         this.handleLogout();
     }
@@ -89,4 +90,4 @@ const matchDispatchToProps = dispatch => {
     }
 }
 
-export default connect(null,matchDispatchToProps)(EditInfo);
+export default connect(null,matchDispatchToProps)(EditInfoWorker);

@@ -5,7 +5,6 @@ import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import ProfileImg from './ProfileImg/ProfileImg';
 import Profileinfo from './ProfileInfo/ProfileInfo'; 
 import EditInfo from './EditInfo/EditInfo';
-import RatingInfo from './RatingInfo/RatingInfo';
 import LatestJobInfo from './LatestJobInfo/LatestJobInfo';
 import { IconButton, Divider } from '@material-ui/core';
 import Icon from '@mdi/react';
@@ -20,7 +19,8 @@ import axios from 'axios';
 
 class CustomerDash extends Component {
     state = {
-        latestJob : null
+        latestJob : null,
+        isModelOpen: false
     }
 
     //dispatch the action to get and save customer data in redux store
@@ -52,6 +52,7 @@ class CustomerDash extends Component {
         }
 
     }
+   
 
     render() {
         let latestJob = <p>No Jobs</p>
@@ -68,6 +69,7 @@ class CustomerDash extends Component {
 
         return (
             <div style={{backgroundColor: '#fffdf5'}}>
+                
                 <Grid container spacing={3} justify="center" style={{padding: '30px', flexGrow: '1'}}>
                     <Grid item md={3}>
                         <ProfileImg source={this.props.picUrl}/>
@@ -97,12 +99,13 @@ class CustomerDash extends Component {
                              contactNumber={this.props.contactNumber}
                              />
                         </Grid>
-                        <Grid item md={12}> 
-                            <RatingInfo/>
-                        </Grid>
+                        
                     </Grid>                    
                     <Grid item sm={2}>
-                        <EditInfo/>
+                        <EditInfo
+                        email={this.props.email}
+                        history={this.props.history}
+                        />
                     </Grid>
                 </Grid>
 

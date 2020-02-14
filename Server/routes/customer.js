@@ -72,7 +72,7 @@ router.post('/updatePw', (req, res) => {
 //@access private
 router.post('/updateCustomer', (req,res) => {
     const updatedCustomer = req.body;
-    console.log(updatedAdmin);
+    //console.log(updatedcustomer);
     Customer.findOne({email: updatedCustomer.email}, (err,customer) => {
         if(!customer) {
             res.status(404).send('user is not found');
@@ -117,6 +117,29 @@ router.post('/updatePic', (req,res) => {
             .catch(err => {
                 res.status(400).end("Update not possible");
             })
+        }
+    })
+})
+
+//@route POST /customer/delete
+//@desc delete customer account
+//@access private
+router.post('/delete', (req,res) => {
+    const email = req.body.email;
+    console.log(email);
+    Customer.deleteOne({email: email}, (err,res) => {
+        if(err) {
+           console.log(err);
+        } else {
+            console.log(res);
+        }
+    })
+
+    User.deleteOne({email: email}, (err,res) => {
+        if(err) {
+            console.log(err);
+        } else {
+            console.log(res);
         }
     })
 })

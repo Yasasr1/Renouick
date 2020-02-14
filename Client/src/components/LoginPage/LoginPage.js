@@ -9,7 +9,6 @@ import { Link } from 'react-router-dom';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import validator from 'validator';
 import { Redirect } from 'react-router-dom';
-import Particles from 'react-particles-js';
 
 
 

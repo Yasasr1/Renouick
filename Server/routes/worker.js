@@ -1,8 +1,10 @@
 // all routes related to worker info
 const express = require('express');
 const router = express.Router();
-//customer schema
+//worker schema
 const Worker = require('../models/Worker.model');
+//user schema
+const User = require('../models/User.model');
 const auth = require('../middleware/authMiddleware');
 
 
@@ -102,6 +104,30 @@ router.post('/updateWorker', (req,res) => {
         }
     })
 })
+
+//@route POST /worker/delete
+//@desc delete worker account
+//@access private
+router.post('/delete', (req,res) => {
+    const email = req.body.email;
+    console.log(email);
+    Worker.deleteOne({email: email}, (err,res) => {
+        if(err) {
+           console.log(err);
+        } else {
+            console.log(res);
+        }
+    })
+
+    User.deleteOne({email: email}, (err,res) => {
+        if(err) {
+            console.log(err);
+        } else {
+            console.log(res);
+        }
+    })
+})
+
 
 
 module.exports = router;

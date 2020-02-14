@@ -5,6 +5,7 @@ import ProfileInfo from './ProfileInfo/ProfileInfo';
 import RatingInfo from '../../CustomerHome/CustomerDash/RatingInfo/RatingInfo';
 import StatisticsCard from './StatisticsCard/StatisticsCard';
 import EarningsChart from './EarningsChart/EarningsChart';
+import EditInfoWorker from './EditInfoWorker/EditInfoWorker';
 import { connect } from 'react-redux';
 import * as actions from '../../../store/actions/user';
 
@@ -136,6 +137,12 @@ class WorkerDash extends Component {
                             number={2}
                             icon={<TimelapseIcon fontSize='large' style={{color: 'white'}}/>}
                             color={"DarkOrange"}
+                            />
+                        </Grid>
+                        <Grid item md={12}>
+                        <EditInfoWorker
+                             email={this.props.email}
+                             history={this.props.history}
                             />
                         </Grid>
                     </Grid>
