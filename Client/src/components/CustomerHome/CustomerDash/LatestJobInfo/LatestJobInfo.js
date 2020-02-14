@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Paper from '@material-ui/core/Paper';
-import { Divider,Chip } from '@material-ui/core';
-import { Carousel } from 'react-bootstrap';
+import { Divider,Chip, Button,TextField } from '@material-ui/core';
+import { Carousel,Modal,Alert} from 'react-bootstrap';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Rating from '@material-ui/lab/Rating';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
+
+
 import Bid from './Bid/Bid';
 import axios from 'axios';
 
@@ -19,7 +21,12 @@ class LatestJobInfo extends Component {
         workerPic: '',
         totalStars: 0,
         numberOfRatings: 0,
-        isRated: false
+        isRated: false,
+        isPopupOpen: false,
+        reportTitle: '',
+        reportDesc: '',
+        alert: null
+        
     }
 
     componentDidMount(){
@@ -110,8 +117,50 @@ class LatestJobInfo extends Component {
         })
     }
 
-    render() {
+    handleModelOpen = () => {
+        this.setState({isPopupOpen: true});
+    }
 
+    handleModelClose = () => {
+        this.setState({isPopupOpen: false});
+    }
+
+    //handle report input
+    handleChange = (event) => {
+        let newState = {
+            ...this.state,
+            [event.target.name]: event.target.value
+        }
+
+        this.setState(newState);
+    }
+
+    handleReportSubmit = ()=> {
+        let report = {
+            poster: this.props.email,
+            ReportedAbout: this.props.worker,
+            title: this.state.reportTitle,
+            description: this.state.reportDesc
+        }
+
+        axios.post('http://localhost:4000/report/post',report)
+            .then(res => {
+                console.log(res.data);
+                let alert = <Alert variant="success">Report submitted</Alert>
+                this.setState({alert: alert})
+                
+            })
+            .catch(error => {
+                console.log(error);
+                
+                
+            })
+
+        this.handleModelClose();
+    }
+
+    render() {
+        
         let images = <p>no images</p>;
         let bids = <p className="h6">No bids..</p>
 
@@ -170,6 +219,44 @@ class LatestJobInfo extends Component {
                             : 
                             <Rating value={this.state.totalStars/this.state.numberOfRatings} onChange={(event, newValue) => {
                             this.handleRating(newValue)}}/>} 
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <Button
+                        variant="contained"
+                        color="secondary"
+                        style={{float: 'right'}}
+                        onClick={this.handleModelOpen}
+                    >
+                        Report
+                    </Button>
+                    <Modal show={this.state.isPopupOpen} onHide={this.handleModelClose}>
+                        <Modal.Header closeButton>
+                        <Modal.Title>Report Worker</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <TextField onChange={this.handleChange} id="tile" name="reportTitle" label="Report Title" fullWidth />
+                            <br/>
+                            <br/>
+                            <TextField onChange={this.handleChange} id="description" name="reportDesc" label="Description" multiline rowsMax="10" fullWidth/>
+                        </Modal.Body>
+                        <Modal.Footer>
+                        <Button variant="secondary" onClick={this.handleModelClose}>
+                            Close
+                        </Button>
+                        <Button variant="primary" onClick={this.handleReportSubmit}>
+                            Submit
+                        </Button>
+                        </Modal.Footer>
+                    </Modal>
+                    <br/>
+                    <br/>
+                    {this.state.alert}
                     </Grid>
                 </Grid>
             </React.Fragment>
@@ -214,6 +301,7 @@ class LatestJobInfo extends Component {
 
 const mapStateToProps = state => {
     return {
+        email: state.email,
         token: state.token,
         
     }

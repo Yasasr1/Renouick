@@ -22,6 +22,8 @@ const worker = require('./routes/worker');
 const bid = require('./routes/bid');
 //importing all admin routes
 const admin = require('./routes/admin')
+//importing all report routes
+const report = require('./routes/report')
 
 
 const test = require('./routes/test');
@@ -61,6 +63,7 @@ app.use('/test', test);
 app.use('/worker', worker);
 app.use('/bid', bid);
 app.use('/admin',admin);
+app.use('/report',report);
 
 
 app.listen(PORT, function() {
