@@ -1,37 +1,48 @@
 import React,{ Component } from 'react';
 import Grid from '@material-ui/core/Grid';
-import Sort from './Sort/Sort';
-import Reports from './Reports/Reports';
 import Typography from '@material-ui/core/Typography';
+import Report from './Report/Report';
+import axios from 'axios';
+import { Divider } from '@material-ui/core';
+
 class ReportView extends Component {
+    state = {
+        reports: []
+    }
+
+    reports = null;
+
+    componentDidMount(){
+        axios.get('http://localhost:4000/report/getAll')
+        .then(res => {
+            const reports = res.data;
+            console.log(reports);
+            this.setState({reports: reports});
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }
+
 
     render() {
+        this.reports = this.state.reports.map(report => {
+            return <Report
+                   title={report.title}
+                   description={report.description}
+                   poster={report.poster}
+                   reportedAbout={report.ReportedAbout}
+                   status={report.status}
+                    />
+        })
 
         return (
-            <div style={{backgroundColor: '#F5F1FA'}}>
-               
-               <Grid container spacing={15}  justify="space-around"  alignItems="flex-start" style={{padding: '100px', flexGrow: '1'}} >
-               <Typography variant="h4" component="h4" style={{fontSize:30 , fontStyle:"Italic" , color:"Black" }}>
-                            Complaints against workers
-                     </Typography>
-                     <Typography variant="h4" component="h4" style={{fontSize:30 , fontStyle:"Italic" , color:"Black" }}>
-                            Complaints against workers
-                     </Typography>
-                     <Grid container justify="space-around">
-                            <Sort/> <Sort/>
-                    </Grid>
-                    <Grid  container spacing={10}  justify="center"  alignItems="center" style={{padding: '10px', flexGrow: '1'}} >
-                     <Grid item xs={5} container justify="center">
-                            <Reports/> 
-                    </Grid>
-                    <Grid item xs={5} container justify="center">
-                             <Reports/>
-                    </Grid>
-                </Grid>
-                
-                </Grid>
-                     
-                
+            <div style={{margin: '80px'}}>
+                <h4>All reports</h4>
+                <br/>
+                <Divider/>
+                <br/>
+                {this.reports}
             </div>
         );
     }

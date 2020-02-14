@@ -20,6 +20,19 @@ router.post('/post', (req, res) => {
     })
 })
 
+//@route GET /report/getAll
+//@desc get all reports
+//@access private
+router.get('/getAll', (req, res) => {
+    Report.find( (err, reports) => {
+        if(err)
+            console.log(err);
+        else    
+            res.json(reports);    
+    })
+    
+})
+
 
 
 

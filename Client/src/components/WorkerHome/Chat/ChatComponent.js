@@ -33,7 +33,7 @@ const ChatComponent = (props) => {
     image: 'http://bit.ly/2O35mws',
 });*/
 
- const filters = { type: 'messaging'};
+const filters = { type: 'messaging', members: { $in: [name] } };
 const sort = { last_message_at: -1 };
 const channels = client.queryChannels(filters, sort);
 

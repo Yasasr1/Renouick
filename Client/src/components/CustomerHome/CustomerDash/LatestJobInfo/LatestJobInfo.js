@@ -140,7 +140,8 @@ class LatestJobInfo extends Component {
             poster: this.props.email,
             ReportedAbout: this.props.worker,
             title: this.state.reportTitle,
-            description: this.state.reportDesc
+            description: this.state.reportDesc,
+            status: 'pending'
         }
 
         axios.post('http://localhost:4000/report/post',report)

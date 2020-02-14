@@ -14,6 +14,9 @@ let Report = new Schema({
    description: {
        type: String
    },
+   status: {
+       type: String
+   }
    
 
 });
