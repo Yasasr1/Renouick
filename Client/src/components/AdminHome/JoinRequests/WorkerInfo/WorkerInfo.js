@@ -26,6 +26,8 @@ class WorkerInfo extends Component {
         let alert = <Alert variant="success">Approved</Alert>
         this.setState({alert: alert})
 
+        this.sendEmailHandler('approved');
+
     }
 
     declineHandler = () => {
@@ -42,6 +44,24 @@ class WorkerInfo extends Component {
         })
         let alert = <Alert variant="danger">Declined</Alert>
         this.setState({alert: alert})
+        this.sendEmailHandler('declined');
+    }
+
+    sendEmailHandler = (msg) => {
+        const templateId = "template_F19KO30D";
+        let message = "Your account has been "+msg;
+        let variables = {
+            message_html: message,
+            from_name: 'Renouick',
+            to_name: this.props.fName,
+            reply_to: this.props.email
+        }
+        window.emailjs.send('gmail',templateId,variables)
+        .then(res => {
+            console.log('Email successfully sent!')
+          })
+          
+          .catch(err => console.error('Oh well, you failed. Here some thoughts on the error that occured:', err))
     }
 
     render(){
