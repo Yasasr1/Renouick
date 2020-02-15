@@ -1,5 +1,6 @@
 // all routes related to user registration
 const express = require('express');
+const bcrypt = require('bcryptjs');
 const router = express.Router();
 
 //customer schema
@@ -22,14 +23,23 @@ router.post('/addCustomer', (req,res) => {
                 return res.status(400).json({'error': 'user already exists'});
             }
             else {
-                let customer = new Customer(req.body);
-                customer.save()
-                .then(customer => {
-                    res.status(200).json({'customer': 'customer registration successfull'});
+                let customer = req.body;
+                //create salt and hash
+                bcrypt.genSalt(10,(err, salt)=>{
+                    bcrypt.hash(customer.password, salt, (err, hash)=>{
+                        if(err)
+                            console.log(err);
+                        customer.password = hash;
+                        let newCustomer = new Customer(customer);
+                        newCustomer.save()
+                    .then(worker => {
+                        res.status(200).json({'customer': 'customer successfuly registered'});
+                    })
+                    .catch(err => {
+                        res.status(400).send('adding new customer failed');
+                    });
+                    })
                 })
-                .catch(err => {
-                    res.status(400).json({'error' : 'adding new customer failed'});
-                });
             }
         })
 })
@@ -44,14 +54,23 @@ router.post('/addWorker', (req,res) => {
                 return res.status(400).send({'error':'user already exists'});
             }
             else {
-                let worker = new Worker(req.body);
-                worker.save()
-                .then(worker => {
-                    res.status(200).json({'worker': 'worker registration successfull'});
+                let worker = req.body;
+               //create salt and hash
+                bcrypt.genSalt(10,(err, salt)=>{
+                    bcrypt.hash(worker.password, salt, (err, hash)=>{
+                        if(err)
+                        console.log(err);
+                        worker.password = hash;
+                        let newWorker = new Worker(worker);
+                        newWorker.save()
+                    .then(worker => {
+                        res.status(200).json({'worker': 'Worker succesfully registered'});
+                    })
+                    .catch(err => {
+                        res.status(400).send('adding new wroker failed');
+                    });
+                    })
                 })
-                .catch(err => {
-                    res.status(400).send('adding new wroker failed');
-                });
             }
         });
 })
@@ -66,14 +85,23 @@ router.post('/addAdmin', (req,res) => {
                 return res.status(400).send({'error': 'user already exists'});
             }
             else {
-                let admin = new Admin(req.body);
-                admin.save()
-                .then(admin => {
-                    res.status(200).json({'admin': 'admin registration successfull'});
+                let admin = req.body;
+                //create salt and hash
+             bcrypt.genSalt(10,(err, salt)=>{
+                bcrypt.hash(admin.password, salt, (err, hash)=>{
+                    if(err)
+                       console.log(err);
+                    admin.password = hash;
+                    let newAdmin = new Admin(admin);
+                    newAdmin.save()
+                   .then(worker => {
+                       res.status(200).json({'admin': 'admin registered'});
+                   })
+                   .catch(err => {
+                       res.status(400).send('adding new admin failed');
+                   });
                 })
-                .catch(err => {
-                    res.status(400).send('adding new admin failed');
-                });
+            })
             }
         });
 })
@@ -88,14 +116,26 @@ router.post('/addUser', (req,res) => {
              return res.status(400).send('user already exists');
          }
          else {
-             let user = new User(req.body);
-             user.save()
-             .then(worker => {
-                 res.status(200).json({'user': 'also added to user'});
+             let user = req.body;
+             
+             //create salt and hash
+             bcrypt.genSalt(10,(err, salt)=>{
+                 bcrypt.hash(user.password, salt, (err, hash)=>{
+                     if(err)
+                        console.log(err);
+                     user.password = hash;
+                     let newUser = new User(user);
+                     newUser.save()
+                    .then(worker => {
+                        res.status(200).json({'user': 'also added to user'});
+                    })
+                    .catch(err => {
+                        res.status(400).send('adding new wroker failed');
+                    });
+                 })
              })
-             .catch(err => {
-                 res.status(400).send('adding new wroker failed');
-             });
+
+             
          }
      });
 })

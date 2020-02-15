@@ -4,6 +4,7 @@ const router = express.Router();
 //job schema
 const Job = require('../models/Job.model');
 const Worker = require('../models/Worker.model');
+const Bid = require('../models/Bid.model')
 const auth = require('../middleware/authMiddleware');
 
 //@route POST /job/post
@@ -58,6 +59,20 @@ router.post('/update', (req,res) => {
     
 })
 
+//@route GET /job/update
+//@desc update job status when a bid is accepted
+//@access private
+router.post('/updateToCompleted', (req,res) => {
+    const info = req.body;
+    console.log(info);
+    Job.updateOne({_id: info.id},{$set:{status:'completed'}},(err,res)=> {
+        if(err)
+            console.log(err);
+        console.log("job updated");
+    })
+    
+})
+
 //@route GET /job/getLatest
 //@desc get the latest job posted by a specified user
 //@access private
@@ -93,6 +108,54 @@ router.get('/getEveryJob',auth, (req, res) => {
     })
     
 })
+
+
+//@route GET /admin/get job pending count
+//@desc get all info of a specific pending job
+//@access private
+router.get('/getCounts',(req,res)=>{
+    let email = req.query.email
+    let counts = {
+        pending: 0,
+        Ongoing: 0,
+        completed: 0
+    }
+    Job.countDocuments({assignedWorker: email,status:"completed"},(err,jobNumber)=>{
+        if(err){
+            console.log(err);
+        }
+        counts = {
+            ...counts,
+            completed : jobNumber
+        }
+        Job.countDocuments({assignedWorker: email,status:"Ongoing"},(err,jobNumber)=>{
+            if(err){
+                console.log(err);
+            }
+            counts = {
+                ...counts,
+                Ongoing : jobNumber
+            }
+            Bid.countDocuments({poster: email,status:"pending"},(err,jobNumber)=>{
+                if(err){
+                    console.log(err);
+                }
+                counts = {
+                    ...counts,
+                    pending : jobNumber
+                }
+                res.json(counts);
+
+            })
+        })
+    })
+
+
+
+
+    
+})
+
 
 
 //@route GET /job/getOne

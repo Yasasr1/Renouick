@@ -26,40 +26,40 @@ const ProfileInfo = (props) => {
             </Grid>
             <Grid container spacing={1}>
 
-                <Grid item md={2}>
+                <Grid item md={3}>
                     <CakeIcon fontSize="small" color="primary" style={{padding:"3px"}}/>
-                    <Typography variant="caption">Birthday</Typography>
+                    <Typography variant="body1">Birthday</Typography>
                 </Grid>
-                <Grid item md={10}>
-                    <Typography variant="caption">:{props.birthday ? date : ''}</Typography>
+                <Grid item md={9}>
+                    <Typography variant="body1">:{props.birthday ? date : ''}</Typography>
                 </Grid>
 
-                <Grid item md={2}>
+                <Grid item md={3}>
                     <HomeIcon fontSize="small" color="primary" style={{padding:"3px"}}/>
-                    <Typography variant="caption">Address</Typography>
+                    <Typography variant="body1">Address</Typography>
                 </Grid>
-                <Grid item md={10}>
-                    <Typography variant="caption">:{props.address}</Typography>
+                <Grid item md={9}>
+                    <Typography variant="body1">:{props.address}</Typography>
                 </Grid>
 
                 <Grid item md={12}>
                     <Divider/>
                 </Grid>
 
-                <Grid item md={2}>
+                <Grid item md={3}>
                     <AlternateEmailIcon fontSize="small" color="primary" style={{padding:"3px"}}/>
-                    <Typography variant="caption">Contact No</Typography>
+                    <Typography variant="body1">Contact No</Typography>
                 </Grid>
-                <Grid item md={10}>
-                    <Typography variant="caption">:{props.contactNumber}</Typography>
+                <Grid item md={9}>
+                    <Typography variant="body1">:{props.contactNumber}</Typography>
                 </Grid>
                 
-                <Grid item md={2}>
+                <Grid item md={3}>
                     <AlternateEmailIcon fontSize="small" color="primary" style={{padding:"3px"}}/>
-                    <Typography variant="caption">Email</Typography>
+                    <Typography variant="body1">Email</Typography>
                 </Grid>
-                <Grid item md={10}>
-                    <Typography variant="caption">:{props.email}</Typography>
+                <Grid item md={9}>
+                    <Typography variant="body1">:{props.email}</Typography>
                 </Grid>
 
                 
@@ -72,8 +72,3 @@ const ProfileInfo = (props) => {
 };
 
 export default ProfileInfo;
-
-/*<Typography variant="overline" gutterBottom>yasasramanayaka@gmail.com</Typography>
-            <Typography variant="body2" gutterBottom>1996-05-15</Typography>
-            <Typography variant="subtitle2" gutterBottom>Male</Typography>
-            <Typography variant="subtitle1" gutterBottom>17/4A Amunupitiya road, Welisara</Typography>*/

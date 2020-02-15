@@ -30,7 +30,12 @@ class WorkerDash extends Component {
             jobTitle: "",
             jobPoster: "",
             price: 0,
-            status: ""
+            status: "",
+        },
+        counts: {
+            completed: 0,
+            Ongoing: 0,
+            pending: 0
         },
         bids: []
     }
@@ -51,6 +56,19 @@ class WorkerDash extends Component {
             const bid = res.data;
             //console.log(bid);
             this.setState({latestBid:bid});
+        })
+        .catch(err => {
+            console.log(err);
+        })
+
+        axios.get('http://localhost:4000/job/getCounts', {
+            params: {
+                email: this.props.email
+            }
+        })
+        .then(res => {
+            console.log(res.data);
+            this.setState({counts: res.data})
         })
         .catch(err => {
             console.log(err);
@@ -118,7 +136,7 @@ class WorkerDash extends Component {
                         <Grid item md={12}>
                             <StatisticsCard 
                             desc={"Total jobs completed"} 
-                            number={23}
+                            number={this.state.counts.completed}
                             icon={<CheckCircleOutlineIcon fontSize='large' style={{color: 'white'}}/>}
                             color={"#2aad0c"}
                             />
@@ -126,7 +144,7 @@ class WorkerDash extends Component {
                         <Grid item md={12}>
                             <StatisticsCard
                             desc={"Ongoing Jobs"} 
-                            number={4}
+                            number={this.state.counts.Ongoing}
                             icon={<AutorenewIcon fontSize='large' style={{color: 'white'}}/>}
                             color={"#faba39"}
                             />
@@ -134,7 +152,7 @@ class WorkerDash extends Component {
                         <Grid item md={12}>
                             <StatisticsCard
                             desc={"Pending Bids"} 
-                            number={2}
+                            number={this.state.counts.pending}
                             icon={<TimelapseIcon fontSize='large' style={{color: 'white'}}/>}
                             color={"DarkOrange"}
                             />

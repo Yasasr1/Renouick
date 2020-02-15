@@ -25,7 +25,8 @@ class LatestJobInfo extends Component {
         isPopupOpen: false,
         reportTitle: '',
         reportDesc: '',
-        alert: null
+        alert: null,
+        alert2: null
         
     }
 
@@ -160,6 +161,26 @@ class LatestJobInfo extends Component {
         this.handleModelClose();
     }
 
+    handlejobStatus = () => {
+        let send = {
+            id : this.props.id
+        }
+        axios.post('http://localhost:4000/job/updateToCompleted',send)
+        .then(res => {
+            console.log(res.data);
+            
+            
+        })
+        .catch(error => {
+            console.log(error);
+            
+            
+        })
+        let alert2 = <Alert variant="success">Job status updated</Alert>
+        this.setState({alert2: alert2})
+
+    }
+
     render() {
         
         let images = <p>no images</p>;
@@ -285,6 +306,9 @@ class LatestJobInfo extends Component {
                         <br/>
                         <Typography variant="overline" color="secondary" gutterBottom>status: {this.props.status}</Typography>
                         <br/>
+                        <br/>
+                        {this.props.status === "Ongoing" ? <Button onClick={this.handlejobStatus} variant="contained" style={{color: 'white', backgroundColor: 'green'}}>Mark as Completed</Button> : null}
+                        {this.state.alert2}
                         <Typography variant="overline" gutterBottom>{isOngoing ? "" : "No assigned workers.."}</Typography>
                     </Grid>
                </Grid>

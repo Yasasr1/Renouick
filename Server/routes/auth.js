@@ -5,6 +5,7 @@ const config = require('config');
 //for json web token
 const jwt = require('jsonwebtoken');
 
+const bcrypt = require('bcryptjs')
 //user model
 const User = require('../models/User.model');
 
@@ -16,44 +17,59 @@ const StreamChat = require('stream-chat').StreamChat;
 router.post('/', (req,res) => {
     const { email, password } = req.body;
 
+
+    /*bcrypt.genSalt(10,(err, salt)=>{
+        bcrypt.hash('1', salt, (err, hash)=>{
+            if(err)
+                console.log(err);
+            console.log(hash);
+    })
+    })*/
+
     //check if the user exist
     User.findOne({email})
         .then(user => {
             if(!user)  
                 return res.status(400).json({msg: 'User does not exist'});
 
-            if(password !== user.password)
-                return res.status(400).json({msg: 'invalid username or password'});
-            else if(user.accountStatus === 'banned'){
-                return res.status(403).json({msg: 'Your account has been banned'});
-            }
-            else if(user.accountStatus === 'pending'){
-                return res.status(403).json({msg: 'Account not yet approved'});
-            }
-            else {
-                var n = email.indexOf("@");
-                var name = email.slice(0, n);
-                //console.log(name);
-                const client = new StreamChat('', '638khuff8zxc5psdgynxb6x9mkwjmuqt8s6q4kq3t6a9ap7z626f2mtwvk469rkz');
-                const chatToken = client.createToken(name);
-                jwt.sign(
-                    {id: user.id},
-                    config.get('jwtSecret'),
-                    {expiresIn: 3600},
-                    (err, token) => {
-                        if(err) throw err;
-                        res.json({
-                            token,
-                            chatToken,
-                            user: {
-                                email: user.email,
-                                userType: user.userType,
-                                expiresIn: 3600
-                            }
-                        });
+
+            bcrypt.compare(password,user.password)
+            .then(isMatch => {
+                if(!isMatch)
+                    return res.status(400).json({msg: 'invalid username or password'});
+                else {
+                    if(user.accountStatus === 'banned'){
+                        return res.status(403).json({msg: 'Your account has been banned'});
                     }
-                )
-            }        
+                    else if(user.accountStatus === 'pending'){
+                        return res.status(403).json({msg: 'Account not yet approved'});
+                    }
+                    else {
+                        var n = email.indexOf("@");
+                        var name = email.slice(0, n);
+                        //console.log(name);
+                        const client = new StreamChat('', '638khuff8zxc5psdgynxb6x9mkwjmuqt8s6q4kq3t6a9ap7z626f2mtwvk469rkz');
+                        const chatToken = client.createToken(name);
+                        jwt.sign(
+                            {id: user.id},
+                            config.get('jwtSecret'),
+                            {expiresIn: 3600},
+                            (err, token) => {
+                                if(err) throw err;
+                                res.json({
+                                    token,
+                                    chatToken,
+                                    user: {
+                                        email: user.email,
+                                        userType: user.userType,
+                                        expiresIn: 3600
+                                    }
+                                });
+                            }
+                        )
+                    }     
+                }
+            })  
         })
 })
 
