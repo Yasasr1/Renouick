@@ -27,6 +27,9 @@ router.post('/', (req,res) => {
             else if(user.accountStatus === 'banned'){
                 return res.status(403).json({msg: 'Your account has been banned'});
             }
+            else if(user.accountStatus === 'pending'){
+                return res.status(403).json({msg: 'Account not yet approved'});
+            }
             else {
                 var n = email.indexOf("@");
                 var name = email.slice(0, n);

@@ -14,9 +14,8 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import DashboardIcon  from '@material-ui/icons/Dashboard';
 import CreateIcon from '@material-ui/icons/Create';
 import WorkIcon from '@material-ui/icons/Work';
-import PersonIcon from '@material-ui/icons/Person';
 import Badge from '@material-ui/core/Badge';
-import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
+import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 import MailIcon from '@material-ui/icons/Mail';
 //placeholder avatar
 import DescriptionIcon from '@material-ui/icons/Description';
@@ -255,6 +254,12 @@ const AdminHeader = (props) =>  {
                             <DescriptionIcon/>
                         </ListItemIcon>
                         <ListItemText primary="Report View"/>
+                    </ListItem>
+                    <ListItem button to="/admin/join_requests" component={MyLink}>
+                        <ListItemIcon>
+                            <PermIdentityIcon/>
+                        </ListItemIcon>
+                        <ListItemText primary="Join Requests"/>
                     </ListItem>
                     
                 </List>

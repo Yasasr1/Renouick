@@ -37,6 +37,9 @@ let Worker = new Schema({
     },
     numberOfRatings: {
         type: Number
+    },
+    accountStatus: {
+        type: String
     }
 
 });

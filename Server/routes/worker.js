@@ -20,6 +20,18 @@ router.get('/getAll', auth, (req,res) => {
     })
 })
 
+//@route GET /worker/getPending
+//@desc get all pending workers
+//@access private
+router.get('/getPending', (req,res) => {
+    Worker.find({accountStatus: 'pending'},(err,workers) => {
+        if(err)
+            console.log(err);
+        else    
+            res.json(workers);
+    })
+})
+
 //@route GET /worker/getInfo
 //@desc get all info of a specific worker
 //@access private
@@ -127,6 +139,55 @@ router.post('/delete', (req,res) => {
         }
     })
 })
+
+//@route POST /worker/approve
+//@desc accept a worker join request
+//@access private
+router.post('/approve', (req,res) => {
+    const email = req.body.email;
+    console.log(email);
+    Worker.updateOne({email: email},{$set: {accountStatus: 'authorized'}}, (err,res) => {
+        if(err) {
+           console.log(err);
+        } else {
+            console.log(res);
+        }
+    })
+
+    User.updateOne({email: email},{$set: {accountStatus: 'authorized'}}, (err,res) => {
+        if(err) {
+           console.log(err);
+        } else {
+            console.log(res);
+        }
+    })
+
+})
+
+//@route POST /worker/decline
+//@desc decline a worker join request
+//@access private
+router.post('/decline', (req,res) => {
+    const email = req.body.email;
+    console.log(email);
+    Worker.updateOne({email: email},{$set: {accountStatus: 'banned'}}, (err,res) => {
+        if(err) {
+           console.log(err);
+        } else {
+            console.log(res);
+        }
+    })
+
+    User.updateOne({email: email},{$set: {accountStatus: 'banned'}}, (err,res) => {
+        if(err) {
+           console.log(err);
+        } else {
+            console.log(res);
+        }
+    })
+
+})
+
 
 
 

@@ -5,6 +5,7 @@ import AdminDash from './AdminDash/AdminDash';
 import AdminRegistration from './AdminRegistration/AdminRegistration';
 import EditAdminProfile from './EditAdminProfile/EditAdminProfile';
 import ReportView from './ReportView/ReportView';
+import JoinRequests from './JoinRequests/JoinRequests';
 
 const AdminHome = (props) => {
 
@@ -16,6 +17,7 @@ const AdminHome = (props) => {
                 <Route path={props.match.url + '/admin_registration'} component={AdminRegistration} />
                 <Route path={props.match.url + '/edit_admin_profile'} component={EditAdminProfile}/>
                 <Route path={props.match.url + '/report_view'} component={ReportView}/> 
+                <Route path={props.match.url + '/join_requests'} component={JoinRequests}/>
             </Switch>
         </React.Fragment>
     );

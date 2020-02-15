@@ -159,7 +159,8 @@ class WorkerRegistration extends Component {
               workingCategory: this.state.workingCategory.value,
               profilePicUrl: '',
               profilePicId: '',
-              registrationDate: new Date()
+              registrationDate: new Date(),
+              accountStatus: 'pending'
           }
 
           axios.post('http://localhost:4000/registration/addWorker', newWorker)
@@ -179,7 +180,7 @@ class WorkerRegistration extends Component {
                 email: this.state.email.value,
                 password: this.state.password.value,
                 userType: 'worker',
-                accountStatus: 'authorized'
+                accountStatus: 'pending'
             }
 
             //posting to user schema
