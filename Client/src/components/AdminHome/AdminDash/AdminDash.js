@@ -19,6 +19,16 @@ class AdminDash extends Component {
         pWork : 0,
         cWork : 0,
         oWork : 0,
+        adminInfo: {
+            firstName: '',
+            lastName: '',
+            email: '',
+        },
+        accountCounts: {
+            authorized: 0,
+            pending: 0,
+            banned: 0
+        }
     }
 
     componentDidMount(){
@@ -96,6 +106,30 @@ class AdminDash extends Component {
             this.setState({oWork:jobONumber})
                     
         })
+
+        axios.get('http://localhost:4000/admin/getInfo' , {
+            params: {
+                email: this.props.email
+            }
+        })
+        .then(res => {
+            const info = res.data;
+            console.log(info);
+            this.setState({adminInfo: {
+                firstName: info.firstName,
+                lastName: info.lastName,
+                email: info.email
+            }})
+                    
+        })
+
+        axios.get('http://localhost:4000/admin/getAccountCounts' , {
+        })
+        .then(res => {
+            const info = res.data;
+            console.log(info);
+            this.setState({accountCounts: info})       
+        })
         
     }
     render() {
@@ -103,31 +137,52 @@ class AdminDash extends Component {
         return (
             <div style={{backgroundColor:'#F5F1FA'}}>
                 <Grid container spacing={5} justify="center" direction="row" style={{padding: '100px', flexGrow: '1'}}>
-                    
-                    <Grid item xs={3}  > <EditInfo/> ></Grid>                        
-                    <Grid item xs={9} > <WorkerCount Workers={this.state.wCount} Customers={this.state.cCount} Total={this.state.tCount} PWork={this.state.pWork} CWork={this.state.cWork} UWork={this.state.oWork}/></Grid>                 
-                     
-
-                    <Grid item xs={8}  > <br/>
-                       <Typography variant="h4" component="h4" align="center"style={{ fontFamily:"Times New Roman " , fontSize:27 , fontStyle:"Bold" , color:"black"}}>
-                          Total Accounts Per Month </Typography><br/><LineChart /> ></Grid>                                   
-                    <Grid item xs={4} >  <br/>
-                       <Typography variant="h4" component="h4" align="center"style={{ fontFamily:"Times New Roman " , fontSize:27 , fontStyle:"Bold" , color:"black"}}>
-                           Exsisting User Accounts Details</Typography>
-                           <PieChart/>
+                    <Grid item xs={3} > 
+                        <EditInfo 
+                        fName={this.state.adminInfo.firstName}
+                        lName={this.state.adminInfo.lastName}
+                        email={this.state.adminInfo.email}
+                        /> 
+                    </Grid>                        
+                    <Grid item xs={9} >
+                        <WorkerCount 
+                        Workers={this.state.wCount} 
+                        Customers={this.state.cCount} 
+                        Total={this.state.tCount} 
+                        PWork={this.state.pWork} 
+                        CWork={this.state.cWork} 
+                        UWork={this.state.oWork}/>
+                    </Grid>                 
+                    {/*<Grid item xs={8}> 
+                        <br/>
+                       <Typography 
+                       variant="h4" 
+                       component="h4" 
+                       align="center"
+                       style={{ fontFamily:"Times New Roman " , fontSize:27 , fontStyle:"Bold" , color:"black"}}
+                       >
+                        Total Accounts Per Month 
+                        </Typography>
+                        <br/>
+                        <LineChart />
+                    </Grid>       */}                            
+                    <Grid style={{textAlign: 'center'}} item xs={4}>
+                        <br/>
+                        <Typography variant="h4" component="h4" style={{ fontFamily:"Times New Roman " , fontSize:27 , fontStyle:"Bold" , color:"black"}}>
+                        Exsisting User Accounts Details</Typography>
+                        <PieChart
+                        authorized={this.state.accountCounts.authorized}
+                        pending={this.state.accountCounts.pending}
+                        banned={this.state.accountCounts.banned}
+                        />
                     </Grid>    
-                    
                     <Grid item xs={12} >  <br/>
-                       <Typography variant="h4" component="h4" align="center"style={{ fontFamily:"Times New Roman" , fontSize:27 , fontStyle:"Bold" , color:"black"}}>
-                         Exsisting Users Details</Typography>
+                        <Typography variant="h4" component="h4" align="center"style={{ fontFamily:"Times New Roman" , fontSize:27 , fontStyle:"Bold" , color:"black"}}>
+                        Exsisting Users Details</Typography>
                     </Grid>    
-                    
-                                             
-
-                        <Grid item xs={12}  > <SimpleTable/> ></Grid>   
-
-                    
-                    
+                    <Grid item xs={12}> 
+                        <SimpleTable/>
+                    </Grid>
                 </Grid>    
                     
                

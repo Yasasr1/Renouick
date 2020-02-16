@@ -1,13 +1,7 @@
 import React, { PureComponent } from 'react';
 import {Pie , PieChart, Sector} from 'recharts';
 
- 
-const data = [
-	{ name: 'Pending Accounts', value: 40, fill:'#db8c37' },
-	{ name: 'Active Accounts', value: 100, fill:'#1dc230' },
-	{ name: 'Ban Accounts', value: 15, fill:'#b0101b'},
 
-];
 
 const renderActiveShape = (props) => {
 	const RADIAN = Math.PI / 180;
@@ -69,6 +63,13 @@ export default class Example extends PureComponent {
 	};
 
 	render() {
+		 
+	const data = [
+		{ name: 'Pending Accounts', value: this.props.pending, fill:'#db8c37' },
+		{ name: 'Active Accounts', value: this.props.authorized, fill:'#1dc230' },
+		{ name: 'Ban Accounts', value: this.props.banned, fill:'#b0101b'},
+
+	];
 		return (
       
 			<PieChart width={600} height={400} align="center" style={{paddingLeft:"20px"}}>

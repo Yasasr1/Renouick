@@ -5,27 +5,18 @@ import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import HelpIcon from '@material-ui/icons/Help';
 import Typography from '@material-ui/core/Typography';
-import ProfilePic from '../../../../assests/OurTeam/member2.jpg';
+import ProfilePic from '../../../../assests/AdminDash/admin.png';
 
 
 
 const AdminEditInfo = (props) => {
     return(
 
-          <Paper style={{padding: '20px', height: '100%'}}>
-            <img src={ProfilePic} width={300} height={200}/>
+          <Paper style={{padding: '20px'}}>
+            <img src={ProfilePic} width={250} height={200}/>
             <br/>
-            <Typography variant="h5" gutterBottom>Pasan Mahesha</Typography>
-            <Typography variant="overline" gutterBottom>pmahesha.hera@gmail.com</Typography>
-             <br/>       
-            <EditIcon style={{margin: '8px', color: 'blue'}}/>
-            <Link component="button">Edit Profile</Link>
-            <br/>
-            <DeleteIcon style={{margin: '8px', color: 'red'}}/>
-            <Link component="button">Delete account</Link>
-            <br/>
-            <HelpIcon style={{margin: '8px', color: 'green'}}/>
-            <Link component="button">Support</Link>
+            <Typography variant="h5" gutterBottom>{props.fName} {props.lName}</Typography>
+            <Typography variant="overline" gutterBottom>{props.email}</Typography>
         </Paper>
     );
 };

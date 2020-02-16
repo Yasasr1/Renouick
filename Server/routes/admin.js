@@ -5,6 +5,7 @@ const router = express.Router();
 const Admin = require('../models/Admin.model');
 const Customer = require('../models/Customer.model');
 const Worker = require('../models/Worker.model');
+const User = require('../models/User.model');
 const auth = require('../middleware/authMiddleware');
 const Job = require('../models/Job.model');
 //for deleting pictures
@@ -19,7 +20,7 @@ router.get('/getCountCustomer',(req,res)=>{
         if(err){
             console.log(err);
         }
-        console.log(customerNumber);
+        //console.log(customerNumber);
         res.json(customerNumber);
     })
 
@@ -50,7 +51,7 @@ router.get('/getCountPJob',(req,res)=>{
         if(err){
             console.log(err);
         }
-        console.log(jobNumber);
+        //console.log(jobNumber);
         res.json(jobNumber);
     })
 
@@ -66,7 +67,7 @@ router.get('/getCountCJob',(req,res)=>{
         if(err){
             console.log(err);
         }
-        console.log(jobCNumber);
+        //console.log(jobCNumber);
         res.json(jobCNumber);
     })
 
@@ -82,8 +83,46 @@ router.get('/getCountOJob',(req,res)=>{
         if(err){
             console.log(err);
         }
-        console.log(jobONumber);
+        //console.log(jobONumber);
         res.json(jobONumber);
+    })
+
+    
+})
+
+//@route GET /admin/getAccountCounts 
+//@desc get accout status counts
+//@access private
+router.get('/getAccountCounts',(req,res)=>{
+    let counts = {
+        authorized: 0,
+        pending: 0,
+        banned: 0
+    }
+    User.countDocuments({accountStatus:"authorized"},(err,count)=>{
+        if(err){
+            console.log(err);
+        }
+        counts.authorized = count;
+        //console.log(jobONumber);
+        User.countDocuments({accountStatus:"pending"},(err,count2)=>{
+            if(err){
+                console.log(err);
+            }
+            counts.pending = count2;
+            //console.log(jobONumber);
+            User.countDocuments({accountStatus:"banned"},(err,count3)=>{
+                if(err){
+                    console.log(err);
+                }
+                counts.banned = count3;
+                //console.log(counts);
+                res.json(counts);
+                
+            })
+            
+        })
+        
     })
 
     
@@ -98,7 +137,7 @@ router.get('/getAllCustomers', auth, (req, res) => {
         if(err)
             console.log(err);
         else
-            console.log(customers);    
+            //console.log(customers);    
             res.json(customers);    
     })
     
@@ -113,11 +152,28 @@ router.get('/getAllWorkers', auth, (req, res) => {
         if(err)
             console.log(err);
         else
-            console.log(workers);    
+            //console.log(workers);    
             res.json(workers);    
     })
     
 })
+
+
+//@route GET /admin/getInfo
+//@desc get admin info
+//@access private
+router.get('/getInfo', (req, res) => {
+    const email = req.query.email
+    Admin.findOne((err, admin) => {
+        if(err)
+            console.log(err);
+        else
+            //console.log(admin);    
+            res.json(admin);    
+    })
+    
+})
+
 
 
 //WHEN ACCESSING PARAMS PASSED FROM THE CLIENT - don't use params . use query - eg - req.query.email
