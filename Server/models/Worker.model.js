@@ -11,10 +11,10 @@ let Worker = new Schema({
     birthday: {
         type: Date
     },
-    email : {
-        type: String
+    contactNumber: {
+        type: Number
     },
-    username: {
+    email : {
         type: String
     },
     password: {

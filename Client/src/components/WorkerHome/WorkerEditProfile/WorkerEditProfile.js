@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 //import WorkerEditPicture from './WorkerEditPicture/WorkerEditPicture';
 import WorkerEditForm from './WorkerEditForm/WorkerEditForm';
+import WorkerEditPicture from './WorkerEdirPicture/WorkerEditPicture'
 import { Grid, Divider } from '@material-ui/core';
 
 //importing action creators
@@ -17,18 +18,18 @@ class WorkerEditProfile extends Component {
 
     render() {
         return(
-            <Grid container spacing={1}>
+            <Grid style={{marginLeft: '100px'}} container spacing={1}>
                 <Grid item md={12} style={{padding: '20px'}}>
                     <h3 style={{fontFamily:'Roboto, sansSerif'}}>Edit Profile</h3>
                     <Divider/>
                 </Grid>
                 <Grid item md={3}>
-
+                    <WorkerEditPicture/>
                 </Grid>
                 <Grid item xl={1}>
                     <Divider orientation="vertical"/>
                 </Grid>
-                <Grid item md={8}>
+                <Grid item md={7}>
                     <WorkerEditForm
                     
                     />

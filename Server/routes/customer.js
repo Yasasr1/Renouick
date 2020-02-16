@@ -1,5 +1,6 @@
 // all routes related to customer info
 const express = require('express');
+const bcrypt = require('bcryptjs');
 const router = express.Router();
 //customer schema
 const Customer = require('../models/Customer.model');
@@ -38,12 +39,21 @@ router.post('/updatePw', (req, res) => {
             res.status(404).send('user is not found');
         }
         else {
-            customer.password = password;
-            customer.save().then(responce => {
-                res.json("password updated")
-            })
-            .catch(err => {
-                res.status(400).end("Update not possible");
+            //create salt and hash
+            bcrypt.genSalt(10,(err, salt)=>{
+                bcrypt.hash(password, salt, (err, hash)=>{
+                    if(err)
+                        console.log(err);
+                    customer.password = hash;
+                    let newCustomer = new Customer(customer);
+                    newCustomer.save()
+                .then(worker => {
+                    res.status(200).json('password updated');
+                })
+                .catch(err => {
+                    res.status(400).send('updating password failed');
+                });
+                })
             })
         }
 
@@ -53,12 +63,21 @@ router.post('/updatePw', (req, res) => {
             res.status(404).send('user is not found');
         }
         else {
-            user.password = password;
-            user.save().then(responce => {
-                res.json("password updated")
-            })
-            .catch(err => {
-                res.status(400).end("Update not possible");
+            //create salt and hash
+            bcrypt.genSalt(10,(err, salt)=>{
+                bcrypt.hash(password, salt, (err, hash)=>{
+                    if(err)
+                        console.log(err);
+                    user.password = hash;
+                    let newUser = new User(user);
+                    newUser.save()
+                .then(worker => {
+                    res.status(200).json({'user': 'password updated'});
+                })
+                .catch(err => {
+                    res.status(400).send('updating password failed');
+                });
+                })
             })
         }
 

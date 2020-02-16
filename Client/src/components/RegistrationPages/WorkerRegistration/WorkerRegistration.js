@@ -22,8 +22,8 @@ class WorkerRegistration extends Component {
         firstName: {value: '', isValid: true, message: ''},
         lastName: {value: '', isValid: true, message: ''},
         birthday: {value: '', isValid: true, message: ''},
+        contactNumber: {value: '', isValid: true, message: ''},
         email: {value: '', isValid: true, message: ''},
-        username: {value: '', isValid: true, message: ''},
         password: {value: '', isValid: true, message: ''},
         confirmPassword: {value: '', isValid: true, message: ''},
         workingCategory : {value: [], isValid: true}
@@ -96,15 +96,6 @@ class WorkerRegistration extends Component {
             copiedState.lastName.message = '';
         }
 
-        if(!copiedState.username.value){
-            copiedState.username.isValid = false;
-            copiedState.username.message = '*Required';
-            isConfirmed = false;
-        } else  {
-            copiedState.username.isValid = true;
-            copiedState.username.message = '';
-        }
-        
         if(copiedState.workingCategory.value.length === 0){
             copiedState.workingCategory.isValid = false;
             isConfirmed = false;
@@ -119,6 +110,15 @@ class WorkerRegistration extends Component {
         } else  {
             copiedState.email.isValid = true;
             copiedState.email.message = '';
+        }
+        
+        if(!copiedState.contactNumber.value){
+            copiedState.contactNumber.isValid = false;
+            copiedState.contactNumber.message = '*Required';
+            isConfirmed = false;
+        } else  {
+            copiedState.contactNumber.isValid = true;
+            copiedState.contactNumber.message = '';
         }
 
         if(!copiedState.password.value){
@@ -153,8 +153,8 @@ class WorkerRegistration extends Component {
               firstName: this.state.firstName.value,
               lastName: this.state.lastName.value,
               birthday: this.state.birthday.value,
+              contactNumber: this.state.contactNumber.value,
               email: this.state.email.value,
-              username: this.state.username.value,
               password: this.state.password.value,
               workingCategory: this.state.workingCategory.value,
               profilePicUrl: '',
@@ -237,20 +237,21 @@ class WorkerRegistration extends Component {
                         />
 
                         <MyTextField
+                        id="contactNumber"
+                        error={!this.state.contactNumber.isValid}
+                        label="Contact Number"
+                        placeholder="Insert Contact Number"
+                        helperText={!this.state.contactNumber.isValid ? <p style={{color: 'red'}}>{this.state.contactNumber.message}</p> : null}
+                        changed={this.inputHandler}
+                        />
+                        
+
+                        <MyTextField
                         error={!this.state.email.isValid}
                         id="email"
                         label="E-mail"
                         placeholder="Insert Email"
                         helperText={!this.state.email.isValid ? <p style={{color: 'red'}}>{this.state.email.message}</p> : null}
-                        changed={this.inputHandler}
-                        />
-
-                        <MyTextField
-                        error={!this.state.username.isValid}
-                        id="username"
-                        label="Username"
-                        placeholder="Insert Username"
-                        helperText={!this.state.username.isValid ? <p style={{color: 'red'}}>{this.state.username.message}</p> : null}
                         changed={this.inputHandler}
                         />
 
