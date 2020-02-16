@@ -14,9 +14,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import DashboardIcon  from '@material-ui/icons/Dashboard';
 import CreateIcon from '@material-ui/icons/Create';
 import WorkIcon from '@material-ui/icons/Work';
-import Badge from '@material-ui/core/Badge';
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
-import MailIcon from '@material-ui/icons/Mail';
 //placeholder avatar
 import DescriptionIcon from '@material-ui/icons/Description';
 import testAvatar from '../../../assests/AdminDash/admin.png';

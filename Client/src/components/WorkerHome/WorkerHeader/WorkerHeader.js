@@ -16,8 +16,6 @@ import CreateIcon from '@material-ui/icons/Create';
 import HistoryIcon from '@material-ui/icons/History';
 import ChatIcon from '@material-ui/icons/Chat';
 import WorkIcon from '@material-ui/icons/Work';
-import Badge from '@material-ui/core/Badge';
-import MailIcon from '@material-ui/icons/Mail';
 //placeholder avatar
 import testAvatar from '../../../assests/testAvatar/AT.png';
 import { Menu, MenuItem, ListItem, Divider } from '@material-ui/core';
@@ -144,8 +142,8 @@ const WorkerHeader = (props) =>  {
     let avatar = null;
     if(open) {
         avatar = <div>
-                    <img alt="Yasas Ramanayaka" 
-                    src={testAvatar} 
+                    <img alt="profile pic" 
+                    src={props.profilePicUrl} 
                     style={{height: '90px', width: '90px', alignSelf: 'center', borderRadius: '50%'}}
                     />
                     <br/>
@@ -253,12 +251,6 @@ const WorkerHeader = (props) =>  {
                         </ListItemIcon>
                         <ListItemText primary="Edit Profile"/>
                     </ListItem>
-                    <ListItem button to="/worker/report" component={MyLink} >
-                        <ListItemIcon>
-                            <DashboardIcon style={{color: 'black'}}/>
-                        </ListItemIcon>
-                        <ListItemText primary="Report"/>
-                    </ListItem>
                 </List>
             </Drawer>
         </div>
@@ -275,6 +267,7 @@ const matchDispatchToProps = dispatch => {
 const mapStateToProps = state => {
     return {
         fName: state.user.firstName,
+        profilePicUrl: state.user.profilePicUrl
     }
 }
 

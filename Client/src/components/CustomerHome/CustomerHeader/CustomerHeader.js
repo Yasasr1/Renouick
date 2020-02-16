@@ -19,12 +19,8 @@ import HistoryIcon from '@material-ui/icons/History';
 import ChatIcon from '@material-ui/icons/Chat';
 import WorkIcon from '@material-ui/icons/Work';
 import SearchIcon from '@material-ui/icons/Search';
-import Badge from '@material-ui/core/Badge';
-import MailIcon from '@material-ui/icons/Mail';
 import Avatar from '@material-ui/core/Avatar';
 import { NavLink } from 'react-router-dom';
-//placeholder avatar
-import testAvatar from '../../../assests/testAvatar/avatar.jpg';
 import './CustomerHeader.css';
 import { ListItem, Divider, Menu, MenuItem } from '@material-ui/core';
 
@@ -73,7 +69,7 @@ class CustomerHeader extends Component  {
             onClick={()=> this.toggleDrawer(false)}
             >
                 <Avatar alt="Yasas Ramanayaka" 
-                src={testAvatar} 
+                src={this.props.profilePicUrl}
                 style={{height: '90px', width: '90px', alignSelf: 'center', margin: '20px'}}
                 />
                 <Typography variant="caption">Logged in as</Typography>
@@ -169,6 +165,7 @@ const matchDispatchToProps = dispatch => {
 const mapStateToProps = state => {
     return {
         fName: state.user.firstName,
+        profilePicUrl: state.user.profilePicUrl
     }
 }
 

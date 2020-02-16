@@ -1,12 +1,11 @@
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
-import {Grid , Button} from '@material-ui/core';
+import {Grid } from '@material-ui/core';
 import EditInfo from './EditInfo/AdminEditInfo';
 import WorkerCount from './WorkerCount/WorkerCount';
 import * as actions from '../../../store/actions/user';
 import PieChart from './PieChart/PieChart';
 import Typography from '@material-ui/core/Typography';
-import LineChart from './LineChart/LineChart';
 import SimpleTable from './SimpleTable/SimpleTable';
 import axios from "axios";
  

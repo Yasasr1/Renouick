@@ -22,12 +22,10 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const WorkerCount = (props) => {
-  const [setSpacing] = React.useState(2);
+  //const [setSpacing] = React.useState(2);
   const classes = useStyles();
 
-  const handleChange = event => {
-    setSpacing(Number(event.target.value));
-  };
+  
 
   return (
     <Grid container className={classes.back} spacing={2}>
