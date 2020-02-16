@@ -150,7 +150,7 @@ const WorkerHeader = (props) =>  {
                     />
                     <br/>
                     <Typography variant="caption">Logged in as</Typography>
-                    <h6 style={{color: 'black'}}>Yasas</h6>
+                    <h6 style={{color: 'black'}}>{props.fName}</h6>
                     <Divider/>
                 </div>
 
@@ -178,14 +178,7 @@ const WorkerHeader = (props) =>  {
                     </IconButton>
                     <Grid justify="flex-end" container spacing={2} >
                         <Grid item>
-                            <IconButton style={{outline: 'none'}}>
-                                <Badge badgeContent={5} color="secondary">
-                                    <MailIcon style={{color: '#faba39'}}/>
-                                </Badge>
-                            </IconButton>
-                        </Grid>
-                        <Grid item>
-                            <h6 style={{marginTop: "10px"}}>Username</h6>
+                            <h6 style={{marginTop: "10px",color: 'white'}}>{props.fName}</h6>
                         </Grid>
                         <Grid item>
                             <IconButton 
@@ -279,6 +272,10 @@ const matchDispatchToProps = dispatch => {
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        fName: state.user.firstName,
+    }
+}
 
-
-export default connect(null,matchDispatchToProps)(WorkerHeader);
+export default connect(mapStateToProps,matchDispatchToProps)(WorkerHeader);

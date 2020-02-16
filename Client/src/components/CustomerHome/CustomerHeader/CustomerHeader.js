@@ -77,7 +77,7 @@ class CustomerHeader extends Component  {
                 style={{height: '90px', width: '90px', alignSelf: 'center', margin: '20px'}}
                 />
                 <Typography variant="caption">Logged in as</Typography>
-                <h6>Yasas</h6>
+                    <h6>{this.props.fName}</h6>
                 <Divider/>
                 <List>
                     <ListItem button to="/customer" component={MyLink}>
@@ -128,14 +128,7 @@ class CustomerHeader extends Component  {
                         </IconButton>
                         <Grid justify="flex-end" container spacing={2} >
                             <Grid item>
-                                <IconButton style={{outline: 'none'}}>
-                                    <Badge badgeContent={5} color="secondary">
-                                        <MailIcon style={{color: '#faba39'}}/>
-                                    </Badge>
-                                </IconButton>
-                            </Grid>
-                            <Grid item>
-                                <h6 style={{marginTop: "10px", color: 'white'}}>Yasas</h6>
+                                <h6 style={{marginTop: "10px", color: 'white'}}>{this.props.fName}</h6>
                             </Grid>
                             <Grid item>
                                 <IconButton 
@@ -173,4 +166,10 @@ const matchDispatchToProps = dispatch => {
     }
 }
 
-export default connect(null,matchDispatchToProps)(CustomerHeader);
+const mapStateToProps = state => {
+    return {
+        fName: state.user.firstName,
+    }
+}
+
+export default connect(mapStateToProps,matchDispatchToProps)(CustomerHeader);

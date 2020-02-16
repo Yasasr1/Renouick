@@ -200,6 +200,7 @@ class LatestJobInfo extends Component {
                     poster={bid.poster}
                     date={bid.postDate}
                     jobId={bid.jobId}
+                    posterRating={bid.posterRating}
                 />
             })
         }

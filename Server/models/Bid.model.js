@@ -16,6 +16,9 @@ let Bid = new Schema({
     },
     postDate: {
         type: Date
+    },
+    posterRating: {
+        type: Number
     }
 });
 

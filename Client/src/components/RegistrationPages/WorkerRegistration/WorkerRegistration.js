@@ -160,6 +160,8 @@ class WorkerRegistration extends Component {
               profilePicUrl: '',
               profilePicId: '',
               registrationDate: new Date(),
+              totalStars: 0,
+              numberOfRatings: 0,
               accountStatus: 'pending'
           }
 

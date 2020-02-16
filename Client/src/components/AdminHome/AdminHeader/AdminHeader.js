@@ -19,7 +19,7 @@ import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 import MailIcon from '@material-ui/icons/Mail';
 //placeholder avatar
 import DescriptionIcon from '@material-ui/icons/Description';
-import testAvatar from '../../../assests/OurTeam/member2.jpg';
+import testAvatar from '../../../assests/AdminDash/admin.png';
 import { Menu, MenuItem, ListItem, Divider } from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
@@ -141,13 +141,13 @@ const AdminHeader = (props) =>  {
     let avatar = null;
     if(open) {
         avatar = <div>
-                    <img alt="Yasas Ramanayaka" 
+                    <img alt="Profile pic" 
                     src={testAvatar} 
                     style={{height: '90px', width: '90px', alignSelf: 'center', borderRadius: '50%'}}
                     />
                     <br/>
                     <Typography variant="caption">Logged in as</Typography>
-                    <h6>Yasas</h6>
+                    <h6>Admin</h6>
                     <Divider/>
                 </div>
 
@@ -176,14 +176,7 @@ const AdminHeader = (props) =>  {
                     </IconButton>
                     <Grid justify="flex-end" container spacing={2} >
                         <Grid item>
-                            <IconButton style={{outline: 'none'}}>
-                                <Badge badgeContent={5} color="secondary">
-                                    <MailIcon style={{color: '#faba39'}}/>
-                                </Badge>
-                            </IconButton>
-                        </Grid>
-                        <Grid item>
-                            <h6 style={{marginTop: "10px", color:'#faba39'}}>Username</h6>
+                            <h6 style={{marginTop: "10px", color:'#faba39'}}>{props.fName}</h6>
                         </Grid>
                         <Grid item>
                             <IconButton 
@@ -274,5 +267,11 @@ const matchDispatchToProps = dispatch => {
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        fName: state.email,
+    }
+}
 
-export default connect(null,matchDispatchToProps)(AdminHeader);
+
+export default connect(mapStateToProps,matchDispatchToProps)(AdminHeader);

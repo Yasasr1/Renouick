@@ -5,6 +5,7 @@ import Layout from './components/Layout/Layout';
 import CustomerHome from './components/CustomerHome/CustomerHome';
 import AdminHome from './components/AdminHome/AdminHome';
 import WorkerHome from './components/WorkerHome/WorkerHome';
+import ErrorPage from './components/403Page/ErrorPage';
 
 import { connect } from 'react-redux';
 import * as actions from './store/actions/auth';
@@ -21,9 +22,9 @@ class App extends Component {
       //logged out
       let routes = (
         <Switch>
-          <Route path="/customer" render={() => <h1>not found</h1>}/>
-          <Route path="/worker" render={() => <h1>not found</h1>}/>
-          <Route path="/admin" render={() => <h1>not found</h1>}/>
+          <Route path="/customer" component={ErrorPage}/>
+          <Route path="/worker" component={ErrorPage}/>
+          <Route path="/admin" component={ErrorPage}/>
           <Route path="/" component={Layout}/>
         </Switch>
       );
@@ -32,8 +33,8 @@ class App extends Component {
         routes = (
           <Switch>
           <Route path="/customer" component={CustomerHome}/>
-          <Route path="/worker" render={() => <h1>not found</h1>}/>
-          <Route path="/admin" render={() => <h1>not found</h1>}/>
+          <Route path="/worker" component={ErrorPage}/>
+          <Route path="/admin" component={ErrorPage}/>
           <Route path="/" component={Layout}/> 
         </Switch>
         );
@@ -43,9 +44,9 @@ class App extends Component {
       if(this.props.isAuthenticated && this.props.userType === "worker") {
         routes = (
           <Switch>
-          <Route path="/customer" render={() => <h1>not found</h1>} />
+          <Route path="/customer" component={ErrorPage} />
           <Route path="/worker" component={WorkerHome}/>
-          <Route path="/admin" render={() => <h1>not found</h1>}/>
+          <Route path="/admin" component={ErrorPage}/>
           <Route path="/" component={Layout}/> 
         </Switch>
         );
@@ -56,8 +57,8 @@ class App extends Component {
       if(this.props.isAuthenticated && this.props.userType === "admin") {
         routes = (
           <Switch>
-          <Route path="/customer" render={() => <h1>not found</h1>}/>
-          <Route path="/worker" render={() => <h1>not found</h1>}/>
+          <Route path="/customer" component={ErrorPage}/>
+          <Route path="/worker" component={ErrorPage}/>
           <Route path="/admin" component={AdminHome}/>
           <Route path="/" component={Layout}/> 
         </Switch>

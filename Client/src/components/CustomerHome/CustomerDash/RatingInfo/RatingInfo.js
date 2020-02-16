@@ -21,7 +21,7 @@ const RatingInfo = (props) => {
                 </Grid>
                 <Grid item md={12}>
                     <Typography variant="h3">{fixedRating}</Typography>
-                    <Rating value={3}readOnly/>
+                    <Rating value={rating}readOnly/>
                     <Typography variant="body2">{props.numberOfRatings} reviews</Typography>
                 </Grid>
             </Grid>

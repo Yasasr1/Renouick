@@ -54,12 +54,14 @@ const ViewJob = (props) => {
     };
 
     const placeBIdHandler = () => {
+        const rating = props.totalStars / props.numberOfRatings
         const bid = {
             amount: amount,
             poster: props.email,
             jobId: props.location.state.id,
             status: "pending",
-            postDate: props.location.state.date
+            postDate: props.location.state.date,
+            posterRating: rating
         }
 
         axios.post('http://localhost:4000/bid/add',bid)
@@ -215,7 +217,9 @@ const ViewJob = (props) => {
 const mapStateToProps = state => {
     return {
         email: state.email,
-        chatToken: state.chatToken
+        chatToken: state.chatToken,
+        totalStars: state.user.totalStars,
+        numberOfRatings: state.user.numberOfRatings
         
     }
 }
