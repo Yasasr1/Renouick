@@ -49,7 +49,7 @@ class LatestJobInfo extends Component {
             console.log(err);
         })
 
-        if(this.props.status === "Ongoing"){
+        if(this.props.status === "Ongoing" || this.props.status === "completed"){
             axios.get("http://localhost:4000/worker/getsomeInfo", {
                 params: {
                     email: this.props.worker
@@ -187,7 +187,7 @@ class LatestJobInfo extends Component {
         let bids = <p className="h6">No bids..</p>
 
         let isOngoing = false;
-        if(this.props.status === "Ongoing"){
+        if(this.props.status === "Ongoing" || this.props.status === "completed"){
             isOngoing = true;
         }
 
@@ -223,7 +223,7 @@ class LatestJobInfo extends Component {
         }
     
         //if the props isWorkerAssigned is true worker info will also be displayed
-        const workerInfo = (
+        let workerInfo = (
             <React.Fragment>
                 <br/>
                 <Typography variant="body1">Assigned worker:</Typography>

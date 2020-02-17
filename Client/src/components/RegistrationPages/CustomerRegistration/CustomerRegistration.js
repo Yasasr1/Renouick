@@ -93,14 +93,19 @@ class CustomerRegistration extends Component {
             copiedState.password.isValid = true;
             copiedState.password.message = '';
         }
-
-        if(copiedState.password.value !== copiedState.confirmPassword.value || !copiedState.confirmPassword.value){
-            copiedState.confirmPassword.isValid = false;
-            copiedState.confirmPassword.message = 'Password do not match';
+        if(copiedState.password.value.length < 8){
+            copiedState.password.isValid = false;
+            copiedState.password.message = 'Password should have atleast 8 characters';
             isConfirmed = false;
         } else  {
-            copiedState.confirmPassword.isValid = true;
-            copiedState.confirmPassword.message = '';
+            if(copiedState.password.value !== copiedState.confirmPassword.value || !copiedState.confirmPassword.value){
+                copiedState.confirmPassword.isValid = false;
+                copiedState.confirmPassword.message = 'Password do not match';
+                isConfirmed = false;
+            } else  {
+                copiedState.confirmPassword.isValid = true;
+                copiedState.confirmPassword.message = '';
+            }
         }
 
         this.setState(copiedState);
@@ -166,6 +171,10 @@ class CustomerRegistration extends Component {
     }
 
     render() {
+        let passwordError = null;
+        if(!this.state.password.isValid){
+            passwordError = <p style={{color: 'red'}}>{this.state.password.message}</p>
+        }
         return(
             <div className="CustomerRegistrationOuterDiv">
                 <div className="CustomerRegistrationInnerDiv">
@@ -235,7 +244,7 @@ class CustomerRegistration extends Component {
                     label="Password"
                     changed={this.inputHandler}
                     />
-
+                    {passwordError}
                     <PasswordField
                     error={!this.state.confirmPassword.isValid}
                     id="confirmPassword"

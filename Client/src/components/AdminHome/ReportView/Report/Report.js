@@ -13,7 +13,8 @@ class Report extends Component {
     state = {
         isPopupOpen: false,
         show: false,
-        alert: null
+        alert: null,
+        alert2: null
     }
 
     handleModelOpen = () => {
@@ -44,6 +45,9 @@ class Report extends Component {
         axios.post('http://localhost:4000/report/updateStatus',send)
         .then(res=> {
             console.log(res.data);
+            let alert2 = <Alert variant="success">Status Updated</Alert>
+            this.setState({alert2: alert2})
+            
         })
         .catch(error=> {
             console.log(error);
@@ -156,6 +160,7 @@ class Report extends Component {
                             <Divider/>
                             <p>{this.props.description}</p>
                             {this.state.alert}
+                            {this.state.alert2}
                         </Modal.Body>
                         <Modal.Footer>
                         <Button variant="contained" color="secondary" onClick={this.handleBanUser}>

@@ -48,7 +48,7 @@ class WorkerInfo extends Component {
     }
 
     sendEmailHandler = (msg) => {
-        const templateId = "template_tKOaQC7Z";
+        const templateId = "template_F19KO30D";
         let message = "Your account has been "+msg;
         let variables = {
             message_html: message,
