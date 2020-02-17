@@ -12,9 +12,7 @@ class AdminRegistration extends Component {
         
             firstName: {value: '', isValid: true, message: ''},
             lastName: {value: '', isValid: true, message: ''},
-            contactNumber: {value: '', isValid: true, message: ''},
             email: {value: '', isValid: true, message: ''},
-            username: {value: '', isValid: true, message: ''},
             password: {value: '', isValid: true, message: ''},
             confirmPassword: {value: '', isValid: true, message: ''}
         
@@ -54,14 +52,6 @@ class AdminRegistration extends Component {
             copiedState.lastName.isValid = true;
             copiedState.lastName.message = '';
         }
-        if(!copiedState.contactNumber.value){
-            copiedState.contactNumber.isValid = false;
-            copiedState.contactNumber.message = '*Required';
-            isConfirmed = false;
-        } else  {
-            copiedState.contactNumber.isValid = true;
-            copiedState.contactNumber.message = '';
-        }
         if (!validator.isEmail(copiedState.email.value)) {
             copiedState.email.isValid = false;
             copiedState.email.message = 'Not a valid email address';
@@ -69,14 +59,6 @@ class AdminRegistration extends Component {
         } else  {
             copiedState.email.isValid = true;
             copiedState.email.message = '';
-        }
-        if(!copiedState.username.value){
-            copiedState.username.isValid = false;
-            copiedState.username.message = '*Required';
-            isConfirmed = false;
-        } else  {
-            copiedState.username.isValid = true;
-            copiedState.username.message = '';
         }
         if(!copiedState.password.value){
             copiedState.password.isValid = false;
@@ -108,9 +90,7 @@ class AdminRegistration extends Component {
           const newAdmin = {
             firstName: this.state.firstName.value,
             lastName: this.state.lastName.value,
-            contactNumber: this.state.contactNumber.value,
             email: this.state.email.value,
-            username: this.state.username.value,
             password: this.state.password.value
             }
 
@@ -175,15 +155,7 @@ class AdminRegistration extends Component {
         
                     
 
-                    <MyTextField
-                    error={!this.state.contactNumber.isValid}
-                    id="contactNumber"
-                    label="Telephone No"
-                    placeholder="Insert Telephone Number"
-                    helperText={!this.state.contactNumber.isValid ? <p style={{color: 'red'}}>{this.state.contactNumber.message}</p> : null}
-                    changed={this.inputHandler}
-                    />
-
+                   
                     <MyTextField
                     error={!this.state.email.isValid}
                     id="email"
@@ -193,14 +165,7 @@ class AdminRegistration extends Component {
                     changed={this.inputHandler}
                     />
 
-                    <MyTextField
-                    error={!this.state.username.isValid}
-                    id="username"
-                    label="Username"
-                    placeholder="Insert Username"
-                    helperText={!this.state.username.isValid ? <p style={{color: 'red'}}>{this.state.username.message}</p> : null}
-                    changed={this.inputHandler}
-                    />
+                    
 
                     <PasswordField
                     error={!this.state.password.isValid}

@@ -1,6 +1,8 @@
 // all routes related to admin dashboard info
 const express = require('express');
 const router = express.Router();
+const bcrypt = require('bcryptjs');
+
 //customer schema
 const Admin = require('../models/Admin.model');
 const Customer = require('../models/Customer.model');
@@ -191,12 +193,21 @@ router.post('/updatePw', (req, res) => {
             res.status(404).send('user is not found');
         }
         else {
-            admin.password = password;
-            admin.save().then(responce => {
-                res.json("password updated")
-            })
-            .catch(err => {
-                res.status(400).end("Update not possible");
+             //create salt and hash
+             bcrypt.genSalt(10,(err, salt)=>{
+                bcrypt.hash(password, salt, (err, hash)=>{
+                    if(err)
+                        console.log(err);
+                    admin.password = hash;
+                    let newAdmin = new Admin(admin);
+                    newAdmin.save()
+                .then(worker => {
+                    res.status(200).json('password updated');
+                })
+                .catch(err => {
+                    res.status(400).send('updating password failed');
+                });
+                })
             })
         }
 
@@ -206,13 +217,22 @@ router.post('/updatePw', (req, res) => {
             res.status(404).send('user is not found');
         }
         else {
-            user.password = password;
-            user.save().then(responce => {
-                res.json("password updated")
+           //create salt and hash
+           bcrypt.genSalt(10,(err, salt)=>{
+            bcrypt.hash(password, salt, (err, hash)=>{
+                if(err)
+                    console.log(err);
+                user.password = hash;
+                let newUser = new User(user);
+                newUser.save()
+            .then(worker => {
+                res.status(200).json({'user': 'password updated'});
             })
             .catch(err => {
-                res.status(400).end("Update not possible");
+                res.status(400).send('updating password failed');
+            });
             })
+        })
         }
 
     })
