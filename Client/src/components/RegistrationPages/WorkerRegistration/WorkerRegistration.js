@@ -117,8 +117,16 @@ class WorkerRegistration extends Component {
             copiedState.contactNumber.message = '*Required';
             isConfirmed = false;
         } else  {
-            copiedState.contactNumber.isValid = true;
-            copiedState.contactNumber.message = '';
+            let numbers = /^[0-9]+$/;
+            if(!copiedState.contactNumber.value.match(numbers)){
+                copiedState.contactNumber.isValid = false;
+                copiedState.contactNumber.message = 'Please input numeric characters only';
+                isConfirmed = false;
+            }else{
+                copiedState.contactNumber.isValid = true;
+                copiedState.contactNumber.message = '';
+            }
+            
         }
 
         if(!copiedState.password.value){
