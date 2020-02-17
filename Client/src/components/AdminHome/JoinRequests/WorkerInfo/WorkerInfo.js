@@ -48,13 +48,13 @@ class WorkerInfo extends Component {
     }
 
     sendEmailHandler = (msg) => {
-        const templateId = "template_F19KO30D";
+        const templateId = "template_tKOaQC7Z";
         let message = "Your account has been "+msg;
         let variables = {
             message_html: message,
             from_name: 'Renouick',
             to_name: this.props.fName,
-            reply_to: this.props.email
+            to_email: this.props.email
         }
         window.emailjs.send('gmail',templateId,variables)
         .then(res => {

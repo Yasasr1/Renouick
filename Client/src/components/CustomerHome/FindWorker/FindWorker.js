@@ -133,55 +133,8 @@ class FindWorker extends Component {
                 <Grid item md={9}>
                     <Divider orientation="horizontal"/>
                 </Grid>
-                <Grid item md ={9}>
+                <Grid item md ={12}>
                     {workers}
-                </Grid>
-                <Grid item xl={1}>
-                    <Divider orientation="vertical"/>
-                </Grid>
-                <Grid item md={2}>
-                    <Grid container spacing={1}>
-                        <Grid item xl={2}>
-                            <ExploreIcon/>
-                        </Grid>
-                        <Grid item xl={6}>
-                            <Typography variant="h5">Categories</Typography>
-                        </Grid>
-                    </Grid>
-                    <br/>
-                    
-                        <Button>
-                            All Categories
-                        </Button>
-                        <br/>
-                        <Button>
-                            Painting
-                        </Button>
-                        <br/>
-                        <Button>
-                            Plumbing
-                        </Button>
-                        <br/>
-                        <Button>
-                            A/C Reapir and Maintance
-                        </Button>
-                        <br/>
-                        <Button>
-                            Grass Cutting
-                        </Button>
-                        <br/>
-                        <Button>
-                            House Cleaning
-                        </Button>
-                        <br/>
-                        <Button>
-                            Electrical Work
-                        </Button>
-                        <br/>
-                        <Button>
-                            Equipment Repair
-                        </Button>
-                    
                 </Grid>
             </Grid>
         );

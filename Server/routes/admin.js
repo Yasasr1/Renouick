@@ -159,20 +159,6 @@ router.get('/getAllWorkers', auth, (req, res) => {
 })
 
 
-//@route GET /admin/getInfo
-//@desc get admin info
-//@access private
-router.get('/getInfo', (req, res) => {
-    const email = req.query.email
-    Admin.findOne((err, admin) => {
-        if(err)
-            console.log(err);
-        else
-            //console.log(admin);    
-            res.json(admin);    
-    })
-    
-})
 
 
 
@@ -181,7 +167,7 @@ router.get('/getInfo', (req, res) => {
 //@route GET /admin/getInfo
 //@desc get all info of a specific admin
 //@access private
-router.get('/getInfo', auth, (req, res) => {
+router.get('/getInfo', (req, res) => {
     const email = req.query.email
     console.log(email);
     Admin.findOne({email: email }, (err, info) => {
