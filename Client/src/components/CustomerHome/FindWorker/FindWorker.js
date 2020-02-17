@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Grid, Typography, Divider, Button, CircularProgress } from '@material-ui/core';
-import ExploreIcon from '@material-ui/icons/Explore';
 import Worker from './Worker/Worker';
 import axios from 'axios';
 import { connect } from 'react-redux';
@@ -39,7 +38,7 @@ class FindWorker extends Component {
             
         }
         else if(event.target.value === "2") {
-            workers.sort((a,b) => (a.firstName < b.firstName) ? -1 : 1);
+            workers.sort((a,b) => (a.totalStars/a.numberOfRatings > b.totalStars/b.numberOfRatings) ? -1 : 1);
             this.setState({workers: workers});
         }
         else if(event.target.value === "3") {
