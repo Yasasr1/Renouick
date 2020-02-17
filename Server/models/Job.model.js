@@ -31,6 +31,9 @@ let Job = new Schema({
    },
    images: {
        type: Object
+   },
+   postersAddress: {
+       type: String
    }
 
 });

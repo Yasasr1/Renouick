@@ -103,7 +103,7 @@ class HomePage extends Component {
           <Grid container direction="row" justify="center">
             <Grid item xs={8}>
               <p style={{ fontFamily:"Calibri " , fontSize:80 , fontStyle:"Italic" , color:"	#e28b05"}}>Renouick</p>
-              <p style={{ fontFamily:"Calibri " , fontSize:30 , fontStyle:"Italic" , color:"white"}}> a web application that will be used to connect  household repair and maintenance professionals to their clients.</p>
+              <p style={{ fontFamily:"Calibri " , fontSize:30 , fontStyle:"Italic" , color:"white"}}> A web application that will be used to connect  household repair and maintenance professionals to their clients.</p>
             </Grid>
             <Grid item xs={4}>
             <img

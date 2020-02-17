@@ -231,7 +231,7 @@ class LatestJobInfo extends Component {
                 <br/>
                 <Grid container>      
                     <Grid item md={4}>
-                        <img src={this.state.workerPic} alt="worker"/>
+                        <img style={{maxHeight: '300px', maxWidth: '300px'}} src={this.state.workerPic} alt="worker"/>
                     </Grid>
                     <Grid item md={8}>
                         <Typography variant="h5">{this.state.workerFName} {this.state.workerLName}</Typography>

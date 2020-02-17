@@ -81,6 +81,9 @@ class Job extends Component {
                             {this.props.desc}
                         </Typography>
                         <br/>
+                        <Typography variant="caption" color="textSecondary">
+                            Location: {this.props.address}
+                        </Typography>
                         <br/>
                         <Button onClick={this.selectJob} variant="outlined" style={{float: 'right', color: '#e68a00', borderColor: 'orange'}}>View</Button>
                     </Grid>

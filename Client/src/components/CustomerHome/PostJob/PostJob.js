@@ -78,7 +78,8 @@ class PostJob extends Component {
                 poster: this.props.email,
                 contactNumber:this.props.contactNumber,
                 status: 'pending',
-                images: [...this.state.images]
+                images: [...this.state.images],
+                postersAddress: this.props.postersAddress
             };
     
             axios.post('http://localhost:4000/job/post',newJob)
@@ -136,7 +137,8 @@ class PostJob extends Component {
 const matchStateToProps = state => {
     return {
         email: state.email,
-        contactNumber:state.contactNumber
+        contactNumber:state.contactNumber,
+        postersAddress: state.user.address
     }
 }
 

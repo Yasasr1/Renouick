@@ -204,6 +204,7 @@ class BrowseJobs extends Component {
                         date={job.postDate}
                         images={job.images}
                         contactNumber={job.contactNumber}
+                        address={job.postersAddress}
                         />
             })
         }
