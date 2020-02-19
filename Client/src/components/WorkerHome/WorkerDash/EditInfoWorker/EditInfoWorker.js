@@ -59,7 +59,7 @@ class EditInfoWorker extends Component {
         return(
             <div>
                 {this.state.redirect}
-                <Modal show={this.state.show} onHide={this.handlePopupClose}>
+                <Modal style={{marginTop: '50px'}} show={this.state.show} onHide={this.handlePopupClose}>
                     <Modal.Body>Do you really want to delete your account?</Modal.Body>
                     <Modal.Footer>
                     <Button variant="secondary" onClick={this.handlePopupClose}>

@@ -30,7 +30,6 @@ class EditProfile extends Component {
                 </Grid>
                 <Grid item md={8}>
                     <EditForm
-                    
                     />
                 </Grid>
             </Grid>

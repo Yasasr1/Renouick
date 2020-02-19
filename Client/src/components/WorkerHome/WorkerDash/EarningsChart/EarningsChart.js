@@ -52,21 +52,6 @@ class EarningsChart extends Component {
 
             <Paper>
                 <Card width="100%" style={{height: '55px', backgroundColor: '#E8E7E7'}}>
-                <FormControl style={{margin: '6px', Width: '100px'}}>
-                    <InputLabel>Year</InputLabel>
-                        <Select
-                        value={2019}
-                        inputProps={{
-                            name: 'age',
-                            id: 'age-simple',
-                        }}
-                        style={{width: '100px'}}
-                        >
-                        <MenuItem value={10}>2020</MenuItem>
-                        <MenuItem value={20}>2019</MenuItem>
-                        <MenuItem value={30}>2018</MenuItem>
-                        </Select>
-                </FormControl>
                 <br/>
                 </Card>
                 <ResponsiveContainer width="100%" height={300}>

@@ -85,7 +85,7 @@ router.get('/getLatest', auth, (req,res)=> {
 //@access private
 router.get('/getAll', auth, (req, res) => {
     const email = req.query.email
-    Bid.find({poster: email,status:"ongoing" },{postDate: 1, amount: 1}, (err, bids) => {
+    Bid.find({poster: email,status:"Ongoing" },{postDate: 1, amount: 1}, (err, bids) => {
         if(err)
             console.log(err);
         else{ 

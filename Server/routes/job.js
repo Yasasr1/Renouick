@@ -56,6 +56,12 @@ router.post('/update', (req,res) => {
             console.log(err);
         console.log("job updated");
     })
+
+    Bid.updateOne({_id: info.bidid},{$set:{status: 'Ongoing'}},(err,res)=>{
+        if(err)
+            console.log(err);
+        console.log("bid updated");
+    })
     
 })
 

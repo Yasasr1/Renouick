@@ -200,9 +200,7 @@ class WorkerDash extends Component {
                     </Grid>  
                 </Grid>
                 <Grid item md={11}>
-                    <EarningsChart 
-                    data={this.state.bids}
-                    />
+                    <EarningsChart/>
                 </Grid>
             </Grid>
         );
